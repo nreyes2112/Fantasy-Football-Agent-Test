@@ -10,12 +10,13 @@ A design-and-build repo for a multi-agent AI system that produces fantasy footba
 
 Two separate virtualenvs, because `nflreadpy` requires Python ≥3.10 while the rest of the capture code was built against the system's Python 3.9:
 
-- **`.venv`** (Python 3.9) — Sleeper/FFC/ESPN capture:
+- **`.venv`** (Python 3.9) — Sleeper/FFC/ESPN capture, and the agent access layer:
   ```
   source .venv/bin/activate
   pip install -r requirements.txt
   python -m capture.pull_daily            # Tier 1 daily capture (idempotent per ET date)
   python -m capture.espn_settings_check   # one-off: diff live ESPN league settings vs charter.md §5
+  python -c "from access import layer; print(layer.get_adp('<gsis_id>'))"  # agent access layer (§7); see access/layer.py
   ```
 - **`.venv311`** (Python ≥3.10, e.g. via `brew install python@3.11`) — nflverse crosswalk:
   ```
@@ -63,7 +64,8 @@ The design docs are **binding**, not suggestions. Deviating from one is allowed 
 - Canonical player ID = nflverse `gsis_id`. `capture/crosswalk.py` + `capture/pull_crosswalk.py` resolve Sleeper and ESPN deterministically via the DynastyProcess/nflreadpy crosswalk's own `sleeper_id`/`espn_id` columns; FFC has no shared ID, so it only gets a *proposed* name match (never auto-confirmed) that lands in an unmatched-review queue if ambiguous or absent. Acceptance metric (100% of charter's QB24/RB48/WR60/TE24 resolved across all sources) is checked but pre-freeze uses ESPN's ADP order as a consensus-board stand-in.
 - Storage: `/data/snapshots/YYYY-MM-DD/{raw,curated}/` + `manifest.json` (raw pulls) / `curated_manifest.json` (crosswalk + validation output) with hashes, row counts, code commit. Raw manifests are never rewritten once written — the crosswalk gets its own separate manifest file specifically so it can run after the fact without touching raw's immutability.
 - Validation (`capture/validation.py`, run from `pull_crosswalk.py` since several checks need identity resolution first) is staged per §6: Stage 1 re-affirms schema completeness against `data/schemas/{table}/v1.json`; Stage 2 does range/referential-integrity/cross-source-ADP-agreement checks; Stage 3 does day-over-day drift (informational, degrades gracefully with <2 days of history). A `GOLD` marker is written only when every stage passes — first achieved 2026-07-18. GOLD is a data-quality gate and does **not** require the crosswalk's cross-source completeness metric to be 100% (that's tracked separately). Every threshold was calibrated against real measured data, not guessed (e.g. ESPN/FFC ADP agreement is round-sensitive: near-perfect agreement in the top ~50 picks, real market noise beyond pick 100).
-- Not yet built: the read-only agent access layer (`get_player_stats`, `get_adp`, etc.), the curated layer beyond the crosswalk itself, the data dictionary (§5), and nflverse stats/pbp/roster pulls.
+- Agent access layer (§7, `access/`): all 8 tool functions from the design exist with the correct signature (`get_player_stats`, `get_adp`, `get_team_context`, `get_depth_chart`, `get_vacated_opportunity`, `get_comps`, `get_league_scoring`, `list_data_gaps`), pinned to the latest GOLD snapshot by default (`access/snapshot_resolver.py` refuses to serve anything that isn't GOLD-marked) and returning a `{values, source, snapshot_date, schema_version, available, note}` citation payload. Three of the eight (`get_player_stats`, `get_team_context`, `get_vacated_opportunity`) honestly report `available: False` rather than fabricate anything — they need nflverse pbp/player_stats/schedule data that hasn't been pulled yet. `get_comps` is real but scoped to bio/draft-capital similarity only (no production/efficiency stats exist yet).
+- Not yet built: the curated layer beyond the crosswalk itself, the data dictionary (§5) — needs real stat data to be meaningful — and nflverse stats/pbp/roster pulls (only `load_ff_playerids()` is used so far).
 
 **Phase 2 — Backtest harness** ([docs/phase2-backtest-harness-design.md](docs/phase2-backtest-harness-design.md)): frozen worlds (2024-07-15, 2025-07-15, growing walk-forward each season) reconstructed with strict as-of-date data and a leakage audit checklist; candidates (agents/ensemble/baseline) call the **same** Phase 1 access layer, just pinned to a frozen snapshot — identical code path for backtest and production. Every config run 3+ times (LLM output variance); results tied to a config-hash fingerprint for bisectability. Must beat naive baselines or the system ships the baseline instead.
 
