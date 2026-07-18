@@ -1,0 +1,33 @@
+{
+  "snapshot_date": "2026-07-18",
+  "generated_at": "2026-07-18T19:50:36.082514-04:00",
+  "code_git_commit": "473e686a0f6a0acdc1b57f9e034e3697cdf3eddd",
+  "built_from": [
+    "data/snapshots/2026-07-18/raw/nflverse/player_stats.parquet",
+    "data/snapshots/2026-07-18/curated/snap_counts_resolved.parquet"
+  ],
+  "files": [
+    {
+      "table": "weekly_stats",
+      "path": "data/snapshots/2026-07-18/curated/weekly_stats.parquet",
+      "row_count": 38402,
+      "sha256": "380e628596c32d786fa4b798826a06a6ecf03665966ce65cb808dd9594d76e9d",
+      "schema_version": "v1"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "check": "weekly_stats_row_count_matches_player_stats",
+        "passed": true,
+        "detail": "38402 rows (player_stats had 38402)"
+      },
+      {
+        "check": "weekly_stats_snap_share_reasonable_coverage",
+        "passed": true,
+        "detail": "94.53% of player-attributed rows have a snap_share value (not 100% expected -- snap_counts_resolved itself resolves ~81% of its rows to gsis_id)"
+      }
+    ],
+    "all_passed": true
+  }
+}

@@ -1,9 +1,12 @@
 name: Weekly Crosswalk + nflverse Refresh
 
 # phase1-data-platform-design.md §8's two weekly rows: "Crosswalk rebuild +
-# unmatched queue" and "Full nflverse refresh" (player_stats so far -- pbp/
-# rosters/schedules aren't pulled yet). Kept in one workflow since both need
-# the same nflreadpy/.venv311 runtime and run on the same schedule.
+# unmatched queue" and "Full nflverse refresh" (player_stats/team_stats/
+# snap_counts so far -- pbp/rosters/schedules/participation aren't pulled
+# yet), plus building the curated/weekly_stats table (capture/
+# build_curated_stats.py) that joins them. Kept in one workflow since all of
+# this needs the same nflreadpy/.venv311 runtime and runs on the same
+# schedule.
 # Sunday morning is a build-time choice (before the Thursday ops brief design
 # in Phase 5 lands) -- revisit once Phase 5 scheduling is actually wired up.
 on:
@@ -38,6 +41,9 @@ jobs:
 
       - name: Pull nflverse player_stats
         run: python -m capture.pull_stats
+
+      - name: Build curated weekly_stats (player_stats + snap_share joined)
+        run: python -m capture.build_curated_stats
 
       - name: Commit crosswalk output
         run: |

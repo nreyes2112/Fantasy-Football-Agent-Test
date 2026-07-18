@@ -44,7 +44,7 @@ STILL_UNPULLED_SOURCES_NOTE = (
 # counting stats, and EPA -- reported per-game as a total, so summed like
 # any other counting stat) is summed. This is a convention, documented here
 # rather than left implicit.
-_RATE_METRICS = {"target_share", "air_yards_share", "wopr", "racr", "passing_cpoe", "pacr", "fg_pct", "pat_pct"}
+_RATE_METRICS = {"target_share", "air_yards_share", "wopr", "racr", "passing_cpoe", "pacr", "fg_pct", "pat_pct", "snap_share"}
 
 
 def _response(values, source: str, snapshot_date: str | None, schema_version_: str | None,
@@ -83,15 +83,20 @@ def get_player_stats(player_id: str, metrics: list[str], window: str, snapshot_d
 
     pinned_date = resolve_snapshot_date(snapshot_date)
     try:
-        df = load_raw_table(pinned_date, "nflverse", "player_stats")
+        # curated/weekly_stats.parquet (capture/build_curated_stats.py) is
+        # player_stats already joined with snap_counts_resolved's
+        # snap_share -- the actual curated layer phase1 §5's data dictionary
+        # names as several metrics' source_tables, not raw player_stats.
+        df = load_curated_table(pinned_date, "weekly_stats")
     except FileNotFoundError:
         return _unavailable(
-            "nflverse player_stats",
-            f"no player_stats table in {pinned_date}'s snapshot -- run `python -m capture.pull_stats` (.venv311)",
+            "curated/weekly_stats",
+            f"no weekly_stats table in {pinned_date}'s snapshot -- run `python -m capture.build_curated_stats` "
+            "(after pull_stats and pull_crosswalk, .venv311)",
         )
     player_rows = df[df["player_id"] == player_id].sort_values(["season", "week"])
     if len(player_rows) == 0:
-        return _unavailable("nflverse player_stats", f"gsis_id {player_id} not found in player_stats")
+        return _unavailable("curated/weekly_stats", f"gsis_id {player_id} not found in weekly_stats")
 
     if window == "season":
         latest_season = int(player_rows["season"].max())
@@ -132,22 +137,6 @@ def get_player_stats(player_id: str, metrics: list[str], window: str, snapshot_d
                 values[metric] = _metrics.compute_carry_share(window_rows, team_stats_df)
             except FileNotFoundError:
                 unavailable_metrics.append(metric)
-        elif metric == "snap_share":
-            # snap_counts_resolved is curated (needs pfr_id->gsis_id
-            # resolution, unlike player_stats/team_stats) -- matched to the
-            # SAME (season, week) games already selected for this window,
-            # not snap_counts' own independent last-N, so "last8" means the
-            # same 8 games no matter which metric is requested.
-            try:
-                snap_df = load_curated_table(pinned_date, "snap_counts_resolved")
-            except FileNotFoundError:
-                unavailable_metrics.append(metric)
-                continue
-            player_snaps = snap_df[snap_df["gsis_id"] == player_id]
-            matched = window_rows[["season", "week"]].merge(
-                player_snaps[["season", "week", "offense_pct"]], on=["season", "week"], how="inner"
-            )
-            values[metric] = None if len(matched) == 0 else round(float(matched["offense_pct"].mean()), 4)
         elif metric not in window_rows.columns:
             unavailable_metrics.append(metric)
         else:
@@ -159,14 +148,14 @@ def get_player_stats(player_id: str, metrics: list[str], window: str, snapshot_d
     if len(window_rows) < (4 if window == "last4" else 8 if window == "last8" else 0):
         note = f"only {len(window_rows)} game(s) available for window={window!r}, fewer than requested"
     if unavailable_metrics:
-        extra = f"metrics not found in player_stats: {unavailable_metrics}"
+        extra = f"metrics not found in weekly_stats: {unavailable_metrics}"
         note = f"{note}; {extra}" if note else extra
 
     return _response(
         {"metrics": values, "games_in_window": len(window_rows), "aggregation": "mean for rate stats, sum otherwise"},
-        "nflverse player_stats (load_player_stats, week-level)",
+        "curated/weekly_stats (nflverse player_stats + snap_counts_resolved, week-level)",
         pinned_date,
-        schema_version("nflverse_player_stats"),
+        schema_version("weekly_stats"),
         note=note,
     )
 

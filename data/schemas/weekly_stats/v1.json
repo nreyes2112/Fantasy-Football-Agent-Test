@@ -1,0 +1,11 @@
+{
+  "table": "weekly_stats",
+  "version": "v1",
+  "columns": {
+    "gsis_id": "canonical player id (player_stats' native key)",
+    "season": "season year",
+    "week": "week number",
+    "snap_share": "this player's share of the team's offensive snaps that game -- joined in from snap_counts_resolved.offense_pct; null where snap_counts has no matching (gsis_id, season, week) row",
+    "...": "plus every column from raw/nflverse/player_stats.parquet, unchanged -- this table adds snap_share, it doesn't replace or filter player_stats"
+  }
+}
