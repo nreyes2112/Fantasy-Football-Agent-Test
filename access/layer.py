@@ -100,15 +100,44 @@ def get_player_stats(player_id: str, metrics: list[str], window: str, snapshot_d
         n = int(window.replace("last", ""))
         window_rows = player_rows.tail(n)
 
+    # Local import avoids a circular import (metrics.py imports
+    # get_league_scoring from this module).
+    from access import metrics as _metrics
+
     values = {}
     unavailable_metrics = []
     for metric in metrics:
-        if metric not in window_rows.columns:
+        if metric == "fantasy_points_league_ppg":
+            # league-accurate PPG (phase1 §5's flagship requirement -- "PPG",
+            # literally points PER GAME, so the window total is divided by
+            # games played) -- NOT nflverse's own fantasy_points_ppr, which
+            # uses nflverse's own scoring assumptions, not necessarily this
+            # league's.
+            scoring_by_column = _metrics.league_scoring_by_column()
+            if scoring_by_column is None or len(window_rows) == 0:
+                unavailable_metrics.append(metric)
+                continue
+            summed = window_rows.sum(numeric_only=True)
+            total_points = _metrics.compute_fantasy_points(summed, scoring_by_column)
+            values[metric] = round(total_points / len(window_rows), 2)
+        elif metric == "aDOT":
+            values[metric] = _metrics.compute_adot(window_rows)
+        elif metric == "EPA_per_target":
+            values[metric] = _metrics.compute_epa_per_target(window_rows)
+        elif metric == "TD_rate":
+            values[metric] = _metrics.compute_td_rate(window_rows)
+        elif metric == "carry_share":
+            try:
+                team_stats_df = load_raw_table(pinned_date, "nflverse", "team_stats")
+                values[metric] = _metrics.compute_carry_share(window_rows, team_stats_df)
+            except FileNotFoundError:
+                unavailable_metrics.append(metric)
+        elif metric not in window_rows.columns:
             unavailable_metrics.append(metric)
-            continue
-        agg = "mean" if metric in _RATE_METRICS else "sum"
-        val = window_rows[metric].agg(agg)
-        values[metric] = None if pd.isna(val) else round(float(val), 4)
+        else:
+            agg = "mean" if metric in _RATE_METRICS else "sum"
+            val = window_rows[metric].agg(agg)
+            values[metric] = None if pd.isna(val) else round(float(val), 4)
 
     note = None
     if len(window_rows) < (4 if window == "last4" else 8 if window == "last8" else 0):
