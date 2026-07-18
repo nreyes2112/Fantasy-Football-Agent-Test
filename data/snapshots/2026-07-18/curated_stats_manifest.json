@@ -1,7 +1,7 @@
 {
   "snapshot_date": "2026-07-18",
-  "generated_at": "2026-07-18T19:50:36.082514-04:00",
-  "code_git_commit": "473e686a0f6a0acdc1b57f9e034e3697cdf3eddd",
+  "generated_at": "2026-07-18T19:53:31.234965-04:00",
+  "code_git_commit": "860f38a84007aa1fcf59ba98f26248cb11a6d846",
   "built_from": [
     "data/snapshots/2026-07-18/raw/nflverse/player_stats.parquet",
     "data/snapshots/2026-07-18/curated/snap_counts_resolved.parquet"
@@ -11,7 +11,7 @@
       "table": "weekly_stats",
       "path": "data/snapshots/2026-07-18/curated/weekly_stats.parquet",
       "row_count": 38402,
-      "sha256": "380e628596c32d786fa4b798826a06a6ecf03665966ce65cb808dd9594d76e9d",
+      "sha256": "4b23e0d28380c18a072ace55c61002245413e25ea4b1889e043117eb2fb63376",
       "schema_version": "v1"
     }
   ],
