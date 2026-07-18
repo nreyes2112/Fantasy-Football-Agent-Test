@@ -1,18 +1,28 @@
 {
   "snapshot_date": "2026-07-18",
-  "generated_at": "2026-07-18T19:09:06.272885-04:00",
-  "code_git_commit": "ac832bf160e3245f00506bd9933ec8d5bbe47a16",
+  "generated_at": "2026-07-18T19:15:09.826872-04:00",
+  "code_git_commit": "053c7b2871268c522b179437e34881ada85fa469",
   "seasons_pulled": [
     2024,
     2025
   ],
-  "source_endpoint": "nflreadpy.load_player_stats(summary_level='week')",
+  "source_endpoints": {
+    "player_stats": "nflreadpy.load_player_stats(summary_level='week')",
+    "team_stats": "nflreadpy.load_team_stats(summary_level='week')"
+  },
   "files": [
     {
       "table": "player_stats",
       "path": "data/snapshots/2026-07-18/raw/nflverse/player_stats.parquet",
       "row_count": 38402,
       "sha256": "9fdbb93c9e948c1b1a410b25535f35fec45d5c50e250db651d97ec0795d354a1",
+      "schema_version": "v1"
+    },
+    {
+      "table": "team_stats",
+      "path": "data/snapshots/2026-07-18/raw/nflverse/team_stats.parquet",
+      "row_count": 1140,
+      "sha256": "5d81c054731ebe2dc03d0da6890e8ec8ab02fea6454a528edf967cd7c35abad5",
       "schema_version": "v1"
     }
   ],
@@ -33,6 +43,21 @@
         "check": "player_stats_player_id_non_null_for_player_rows",
         "passed": true,
         "detail": "0/38358 player-attributed rows missing player_id (44 team-level aggregate rows excluded from this check)"
+      },
+      {
+        "check": "team_stats_2024_min_rows",
+        "passed": true,
+        "detail": "570 rows (floor 250)"
+      },
+      {
+        "check": "team_stats_2025_min_rows",
+        "passed": true,
+        "detail": "570 rows (floor 250)"
+      },
+      {
+        "check": "team_stats_team_non_null",
+        "passed": true,
+        "detail": "0/1140 rows missing team"
       }
     ],
     "all_passed": true

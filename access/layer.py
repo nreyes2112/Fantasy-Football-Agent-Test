@@ -7,11 +7,15 @@ available, note}.
 Player identity everywhere here is the canonical nflverse `gsis_id` (§3) --
 never a Sleeper/ESPN/FFC platform id.
 
-get_player_stats now reads real nflverse weekly player_stats (2024-2025
-seasons, capture/pull_stats.py). get_team_context and get_vacated_opportunity
-still need nflverse schedules/Vegas win totals, not ingested yet -- those two
-honestly report `available: False` with a `note` explaining the gap, per the
-project's no-fabrication rule, rather than fabricate or get skipped entirely.
+get_player_stats and get_team_context now read real nflverse data
+(player_stats/team_stats, 2024-2025 seasons, capture/pull_stats.py).
+get_vacated_opportunity still needs season-over-season nflverse pbp/roster
+data to identify departed players, not ingested yet -- it honestly reports
+`available: False` with a `note` explaining the gap, per the project's
+no-fabrication rule, rather than fabricate or get skipped entirely. Some
+individual fields within get_team_context (PROE, Vegas win total, OL rank)
+are also genuinely unavailable even with team_stats pulled -- see that
+function's docstring for why each one specifically can't be answered yet.
 """
 
 from __future__ import annotations
@@ -32,9 +36,9 @@ from access.snapshot_resolver import (
 from capture.config import ESPN_LEAGUE_ID, ESPN_SEASON
 
 NOT_YET_INGESTED_NOTE = (
-    "nflverse schedules/Vegas win totals have not been ingested yet (Phase 1 §2 -- only "
-    "load_ff_playerids() and load_player_stats() have been pulled so far). This is not a "
-    "missing team; it's a source this project hasn't built yet."
+    "nflverse pbp/roster history has not been ingested yet (Phase 1 §2 -- only "
+    "load_ff_playerids(), load_player_stats(), and load_team_stats() have been pulled so "
+    "far). This is not a missing team; it's a source this project hasn't built yet."
 )
 
 # Rate/share stats are averaged across a window; everything else (raw
@@ -173,10 +177,46 @@ def get_adp(player_id: str, history_days: int = 30, snapshot_date: str | None = 
 
 # --- get_team_context -----------------------------------------------------
 
-def get_team_context(team: str, season: int) -> dict:
-    """Plays/game, PROE, win total, OL rank -- needs nflverse schedules +
-    Vegas win totals, neither ingested yet."""
-    return _unavailable("nflverse schedules / Vegas win totals (not yet ingested)", NOT_YET_INGESTED_NOTE)
+def get_team_context(team: str, season: int, snapshot_date: str | None = None) -> dict:
+    """Plays/game and pass rate come from real nflverse team_stats. PROE
+    (pass rate OVER EXPECTED -- needs a play-calling model conditioned on
+    score/time/down-distance, not just raw pass rate) and Vegas win total
+    (a betting-market product nflverse doesn't carry, and D-006 rules out
+    a paid odds API) and OL rank (not a raw stat -- that's a paid analyst
+    ranking like PFF's) are reported as genuinely unavailable per field,
+    not guessed or approximated with something that looks similar but isn't.
+    """
+    pinned_date = resolve_snapshot_date(snapshot_date)
+    try:
+        df = load_raw_table(pinned_date, "nflverse", "team_stats")
+    except FileNotFoundError:
+        return _unavailable(
+            "nflverse team_stats",
+            f"no team_stats table in {pinned_date}'s snapshot -- run `python -m capture.pull_stats` (.venv311)",
+        )
+
+    team_rows = df[(df["team"] == team) & (df["season"] == season)]
+    if len(team_rows) == 0:
+        return _unavailable("nflverse team_stats", f"no rows for team={team!r} season={season} in {pinned_date}'s snapshot")
+
+    total_plays = team_rows["attempts"] + team_rows["carries"]
+    values = {
+        "games": len(team_rows),
+        "plays_per_game": round(float(total_plays.mean()), 2),
+        "pass_rate": round(float(team_rows["attempts"].sum() / total_plays.sum()), 4),
+        "passing_epa_per_game": round(float(team_rows["passing_epa"].mean()), 4),
+        "rushing_epa_per_game": round(float(team_rows["rushing_epa"].mean()), 4),
+        "proe": None,       # unavailable -- needs a play-calling expectation model, not just raw pass rate
+        "win_total": None,  # unavailable -- Vegas season win-total futures aren't in any free source found (D-006)
+        "ol_rank": None,    # unavailable -- not a raw stat; would need a paid analyst ranking (e.g. PFF)
+    }
+    return _response(
+        values,
+        "nflverse team_stats (load_team_stats, week-level)",
+        pinned_date,
+        schema_version("nflverse_team_stats"),
+        note="proe/win_total/ol_rank are genuinely unavailable (see docstring), not zero or estimated",
+    )
 
 
 # --- get_depth_chart -------------------------------------------------------
@@ -342,7 +382,7 @@ def list_data_gaps(player_id: str, snapshot_date: str | None = None) -> dict:
     except FileNotFoundError:
         gaps.append(f"nflverse_player_stats: table does not exist in {pinned_date}'s snapshot")
 
-    gaps.append("nflverse schedules/Vegas win totals/pbp (get_team_context, get_vacated_opportunity): " + NOT_YET_INGESTED_NOTE)
+    gaps.append("nflverse pbp/roster history (get_vacated_opportunity): " + NOT_YET_INGESTED_NOTE)
 
     return _response(
         {"present_in": present, "gaps": gaps},

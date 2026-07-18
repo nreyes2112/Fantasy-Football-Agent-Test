@@ -42,3 +42,24 @@ def fetch_player_stats(seasons: list[int]) -> pd.DataFrame:
     """
     df = nfl.load_player_stats(seasons=seasons, summary_level="week")
     return df.to_pandas()
+
+
+# nflverse's load_team_stats uses "LA" for the Rams (a legacy convention);
+# every other source in this project (Sleeper, ESPN) uses "LAR". Normalized
+# here at the source so nothing downstream needs to special-case it.
+_TEAM_CODE_ALIASES = {"LA": "LAR"}
+
+
+def fetch_team_stats(seasons: list[int]) -> pd.DataFrame:
+    """Weekly team-level stats (133 columns -- team-side passing/rushing/
+    receiving/defense counting stats, EPA). Used for get_team_context's
+    plays-per-game and pass-rate; does NOT include Vegas season win totals
+    (a separate betting-market product nflverse doesn't carry, and no free
+    source for it has been found -- see D-006's zero-spend constraint) or
+    O-line rank (not a raw stat; would need a paid analyst ranking like PFF).
+    Both are reported as genuinely unavailable by get_team_context rather
+    than guessed.
+    """
+    df = nfl.load_team_stats(seasons=seasons, summary_level="week").to_pandas()
+    df["team"] = df["team"].replace(_TEAM_CODE_ALIASES)
+    return df

@@ -1,0 +1,15 @@
+{
+  "table": "nflverse_team_stats",
+  "version": "v1",
+  "columns": {
+    "team": "NFL team abbreviation -- normalized to this project's convention (nflverse's own 'LA' renamed to 'LAR', see capture/sources/nflverse.py)",
+    "season": "season year",
+    "week": "week number within season_type",
+    "season_type": "REG or POST",
+    "attempts": "team pass attempts that game -- used with carries for plays-per-game and pass rate",
+    "carries": "team rush attempts that game",
+    "passing_epa": "team EPA on pass plays",
+    "rushing_epa": "team EPA on rush plays",
+    "...": "133 columns total from nflreadpy's load_team_stats(); does NOT include Vegas season win totals (a betting-market product, no free source found -- D-006) or O-line rank (not a raw stat) -- get_team_context reports both as genuinely unavailable rather than guessing"
+  }
+}
