@@ -1,9 +1,16 @@
 """Tier 1 daily capture job (phase1-data-platform-design.md §2, §8).
 
 Pulls, in order: Sleeper player meta/injury status, Sleeper trending
-adds/drops, and ADP (from FantasyFootballCalculator -- see
-capture/sources/ffc_adp.py for why Sleeper isn't the ADP source despite
-the design doc). Writes one dated, immutable raw snapshot per §4.
+adds/drops, ADP from FantasyFootballCalculator (secondary/backup market
+source per D-007), and this league's own ESPN ADP/ownership view (PRIMARY
+market source per D-005). Writes one dated, immutable raw snapshot per §4.
+
+ESPN requires the owner's SWID/espn_s2 cookies (env vars ESPN_SWID/ESPN_S2,
+local .env or a CI secret -- never committed). If they aren't configured yet,
+the ESPN pull is skipped (not failed) so Sleeper/ADP capture -- the
+un-backfillable data -- is never blocked by ESPN auth. If they ARE configured
+but the pull fails (expired cookies, ESPN outage), that's recorded as a
+failing check so the run goes red without losing the rest of the snapshot.
 
 Usage:
     python -m capture.pull_daily
@@ -15,18 +22,23 @@ GitHub Actions run shows red and pages nobody but fails loudly (phase5's
 
 from __future__ import annotations
 
+import os
 import sys
 from datetime import datetime
 
-from capture.config import LEAGUE_SCORING, LEAGUE_TEAMS, LEAGUE_TIMEZONE
+from dotenv import load_dotenv
+
+from capture.config import ESPN_LEAGUE_ID, ESPN_SEASON, LEAGUE_SCORING, LEAGUE_TEAMS, LEAGUE_TIMEZONE
 from capture.snapshot import SnapshotWriter, today_snapshot_date
-from capture.sources import ffc_adp, sleeper
+from capture.sources import espn, ffc_adp, sleeper
 
 MIN_SLEEPER_PLAYERS = 8000  # observed ~12,200; generous floor against a truncated pull
 MIN_ADP_PLAYERS = 50
+MIN_ESPN_PLAYERS = 400  # pulled with limit=600; floor guards a truncated/filtered response
 
 
 def run() -> int:
+    load_dotenv()
     date = today_snapshot_date()
     writer = SnapshotWriter(date)
 
@@ -100,6 +112,44 @@ def run() -> int:
     endpoints_used["ffc_adp"] = f"{ffc_adp.BASE_URL}/{LEAGUE_SCORING}"
     adp_meta = ffc_adp.adp_meta(adp_payload)
     print(f"[capture] FFC ADP sample: {adp_meta}")
+
+    # --- ESPN: this league's own ADP/ownership (PRIMARY market source, D-005) ---
+    swid, espn_s2 = os.environ.get("ESPN_SWID"), os.environ.get("ESPN_S2")
+    if not swid or not espn_s2:
+        print("[capture] ESPN_SWID/ESPN_S2 not configured -- skipping ESPN pull (not a failure)")
+    else:
+        try:
+            print(f"[capture] pulling ESPN player pool (league {ESPN_LEAGUE_ID}, season {ESPN_SEASON})...")
+            espn_players = espn.fetch_player_pool(ESPN_SEASON, ESPN_LEAGUE_ID, swid, espn_s2)
+            espn_df = espn.player_pool_to_dataframe(espn_players)
+            writer.write_table("espn", "player_pool", espn_df)
+            writer.record_check(
+                "espn_player_pool_min_rows",
+                len(espn_df) >= MIN_ESPN_PLAYERS,
+                f"{len(espn_df)} rows (floor {MIN_ESPN_PLAYERS})",
+            )
+            writer.write_schema(
+                "espn_player_pool",
+                {
+                    "player_id": "ESPN internal player id (NOT gsis_id/sleeper_id -- crosswalk not yet built)",
+                    "full_name": "player full name (join risk -- name-based, per §3 human-confirmed only)",
+                    "position": "position (mapped from ESPN defaultPositionId)",
+                    "pro_team_id": "ESPN internal NFL team id",
+                    "injury_status": "ESPN injury designation",
+                    "average_draft_position": "this league's ESPN ADP -- PRIMARY market source per D-005",
+                    "average_draft_position_pct_change": "day-over-day ADP percent change",
+                    "percent_owned": "percent of ESPN leagues rostering this player",
+                    "percent_started": "percent of ESPN leagues starting this player",
+                    "auction_value_average": "ESPN auction value average",
+                },
+            )
+            endpoints_used["espn_player_pool"] = f"{espn.BASE_URL}/{ESPN_SEASON}/segments/0/leagues/{ESPN_LEAGUE_ID}?view=kona_player_info"
+        except espn.EspnAuthError as e:
+            print(f"[capture] ESPN AUTH FAILURE (cookies likely expired): {e}")
+            writer.record_check("espn_player_pool_pulled", False, str(e))
+        except Exception as e:
+            print(f"[capture] ESPN pull failed: {e}")
+            writer.record_check("espn_player_pool_pulled", False, str(e))
 
     all_passed = writer.all_checks_passed()
     manifest_path = writer.finalize(source_endpoints=endpoints_used)

@@ -1,0 +1,16 @@
+{
+  "table": "espn_player_pool",
+  "version": "v1",
+  "columns": {
+    "player_id": "ESPN internal player id (NOT gsis_id/sleeper_id -- crosswalk not yet built)",
+    "full_name": "player full name (join risk -- name-based, per \u00a73 human-confirmed only)",
+    "position": "position (mapped from ESPN defaultPositionId)",
+    "pro_team_id": "ESPN internal NFL team id",
+    "injury_status": "ESPN injury designation",
+    "average_draft_position": "this league's ESPN ADP -- PRIMARY market source per D-005",
+    "average_draft_position_pct_change": "day-over-day ADP percent change",
+    "percent_owned": "percent of ESPN leagues rostering this player",
+    "percent_started": "percent of ESPN leagues starting this player",
+    "auction_value_average": "ESPN auction value average"
+  }
+}

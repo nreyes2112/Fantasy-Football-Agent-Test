@@ -27,6 +27,9 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Run daily capture
+        env:
+          ESPN_SWID: ${{ secrets.ESPN_SWID }}
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
         run: python -m capture.pull_daily
 
       - name: Commit snapshot
