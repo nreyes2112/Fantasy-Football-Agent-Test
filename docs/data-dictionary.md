@@ -33,12 +33,12 @@ status: COMPUTABLE (implemented, verified against Jahmyr Gibbs' 2025 season: 54.
 ```
 metric: snap_share
 definition: player offensive snaps / team offensive snaps, per game window
-formula: sum(player snaps) / sum(team snaps)
+formula: mean(offense_pct) across the window's games -- offense_pct is already computed directly by Pro Football Reference/nflverse (load_snap_counts), no re-derivation needed; averaged across games the same way target_share/air_yards_share are (a rate stat, not summed)
 windows: [season, last8, last4]
-source_tables: none yet -- needs nflreadpy's load_snap_counts(), not pulled
-stability: HIGH (when available)
-notes: not fabricated from proxies (e.g. touches) -- snap share and touch share diverge meaningfully for pass-blocking backs, decoy routes, etc.
-status: NOT YET COMPUTABLE -- requires a new capture/pull_stats.py source (load_snap_counts)
+source_tables: [curated/snap_counts_resolved]
+stability: HIGH
+notes: NOT fabricated from proxies (e.g. touches) -- snap share and touch share diverge meaningfully for pass-blocking backs, decoy routes, etc. This table is pfr_player_id-keyed, not natively gsis_id like player_stats/team_stats -- resolved via nflverse_crosswalk's pfr_id column, reusing the same resolve_source() machinery Sleeper/ESPN use (capture/pull_crosswalk.py), matched to the SAME (season, week) games already selected for the requested window so "last8" means the same 8 games regardless of which metric is asked for.
+status: COMPUTABLE (implemented, verified: Josh Allen 2025 season = 98.11%, correct for a full-time starting QB; Jahmyr Gibbs 2025 season = 67%, sensibly higher than his 54.98% carry_share since he's also used on passing downs)
 ```
 
 ```
@@ -223,8 +223,8 @@ status: COMPUTABLE (implemented, hand-verified against 2 independent real exampl
 
 | Status | Count | Metrics |
 |---|---|---|
-| Computable (implemented + verified) | 10 | target_share, carry_share, aDOT, air_yards_share, EPA_per_target, TD_rate, team_plays_per_game, vacated_targets/carries, draft_capital_tier, ADP (raw), **PPG (hand-verified)** |
+| Computable (implemented + verified) | 11 | target_share, carry_share, **snap_share**, aDOT, air_yards_share, EPA_per_target, TD_rate, team_plays_per_game, vacated_targets/carries, draft_capital_tier, ADP (raw), **PPG (hand-verified)** |
 | Partially computable | 2 | weighted_opportunity (nflverse's `wopr` as an interim stand-in, not the red-zone-weighted version originally specified), ADP deltas (mechanism built, needs more days of snapshot history to accumulate) |
-| Not yet computable | 6 | snap_share, route_participation, YPRR, success_rate, pass_rate_over_expectation, age_curve_position (a methodology decision, not a data gap) |
+| Not yet computable | 5 | route_participation, YPRR, success_rate, pass_rate_over_expectation, age_curve_position (a methodology decision, not a data gap) |
 
-Closing the "not yet computable" list mostly needs one more nflverse pull (`load_snap_counts` and/or `load_participation`/`load_nextgen_stats` for snap_share/route_participation/YPRR) and one bigger lift (`load_pbp` for success_rate/PROE) — see [PROJECT-BRIEF.md](PROJECT-BRIEF.md) §7 for current priority.
+`load_snap_counts` is done (2026-07-18) -- snap_share moved from "not yet computable" to computable. Closing the rest of the list needs `load_participation`/`load_nextgen_stats` (route_participation/YPRR) and one bigger lift, `load_pbp` (success_rate/PROE) — see [PROJECT-BRIEF.md](PROJECT-BRIEF.md) §7 for current priority.

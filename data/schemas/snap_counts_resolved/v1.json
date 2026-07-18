@@ -1,0 +1,9 @@
+{
+  "table": "snap_counts_resolved",
+  "version": "v1",
+  "columns": {
+    "gsis_id": "resolved via nflverse_crosswalk.pfr_id <-> this table's pfr_player_id; null = not found in this week's crosswalk",
+    "offense_pct": "this player's share of the TEAM's offensive snaps that game -- IS phase1 \u00a75's snap_share metric directly, computed by PFR/nflverse, no derivation needed",
+    "...": "16 columns total from nflreadpy's load_snap_counts() (Pro Football Reference, via nflverse)"
+  }
+}

@@ -65,3 +65,19 @@ def fetch_team_stats(seasons: list[int]) -> pd.DataFrame:
     df = nfl.load_team_stats(seasons=seasons, summary_level="week").to_pandas()
     df["team"] = df["team"].replace(_TEAM_CODE_ALIASES)
     return df
+
+
+def fetch_snap_counts(seasons: list[int]) -> pd.DataFrame:
+    """Weekly snap counts (offense/defense/special-teams snaps and shares),
+    sourced from Pro Football Reference via nflreadpy. Unlike player_stats/
+    team_stats, this table is keyed by `pfr_player_id` (e.g. "BankKe01"),
+    NOT gsis_id -- verified 2026-07-18 that nflverse_crosswalk's own `pfr_id`
+    column uses the exact same format, so resolution reuses
+    capture.crosswalk.resolve_source() the same way Sleeper/ESPN do, rather
+    than needing a new matching mechanism. `offense_pct` is already exactly
+    phase1 §5's `snap_share` metric -- PFR/nflverse compute it directly, no
+    derivation needed once resolved to gsis_id.
+    """
+    df = nfl.load_snap_counts(seasons=seasons).to_pandas()
+    df["team"] = df["team"].replace(_TEAM_CODE_ALIASES)
+    return df

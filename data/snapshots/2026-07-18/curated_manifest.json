@@ -1,7 +1,7 @@
 {
   "snapshot_date": "2026-07-18",
-  "generated_at": "2026-07-18T19:25:39.126514-04:00",
-  "code_git_commit": "4557803b034538497efb0a205b9454b9a24f718e",
+  "generated_at": "2026-07-18T19:42:23.594095-04:00",
+  "code_git_commit": "afc7f0e826aeff9f4fb678b02a13d4c2325d4189",
   "resolution_stats": {
     "sleeper": {
       "method": "deterministic id join (sleeper_id)",
@@ -21,6 +21,12 @@
       "proposed_rows": 188,
       "unmatched_rows": 28,
       "proposed_pct": 87.04
+    },
+    "snap_counts": {
+      "method": "deterministic id join (pfr_id)",
+      "total_rows": 53227,
+      "resolved_rows": 43310,
+      "coverage_pct": 81.37
     }
   },
   "charter_universe_coverage": [
@@ -146,6 +152,12 @@
         "detail": "all documented columns present"
       },
       {
+        "stage": 1,
+        "check": "snap_counts_resolved_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
         "stage": 2,
         "check": "espn_percent_owned_in_0_100",
         "passed": true,
@@ -233,6 +245,18 @@
       "path": "data/snapshots/2026-07-18/curated/ffc_unmatched_queue.parquet",
       "row_count": 28,
       "sha256": "b2bc0718ccc79ce903c0002b00ef58e9f3524d2120ea7a24a615bd09bc5889c3"
+    },
+    {
+      "table": "snap_counts_resolved",
+      "path": "data/snapshots/2026-07-18/curated/snap_counts_resolved.parquet",
+      "row_count": 53227,
+      "sha256": "7ae6f33a86f5fd10ca48171c207c75b91526f63a11c16f160ac4253a9d8baa54"
+    },
+    {
+      "table": "snap_counts_raw",
+      "path": "data/snapshots/2026-07-18/raw/nflverse/snap_counts.parquet",
+      "row_count": 53227,
+      "sha256": "265f342e934b5fe790a5ac4a1a8a5e0ca30fdffc1a87de406ee579795f1f5649"
     }
   ]
 }

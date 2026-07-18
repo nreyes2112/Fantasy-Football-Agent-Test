@@ -26,7 +26,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from capture.config import LEAGUE_TIMEZONE, SCHEMA_ROOT, SNAPSHOT_ROOT
+from capture.config import LEAGUE_TIMEZONE, NFLVERSE_STATS_SEASONS, SCHEMA_ROOT, SNAPSHOT_ROOT
 from capture.crosswalk import charter_universe_coverage, propose_by_name, resolve_source
 from capture.manifest_utils import git_commit, sha256_file
 from capture.sources import nflverse
@@ -56,6 +56,11 @@ _SCHEMA_NOTES = {
     },
     "ffc_unmatched_queue": {
         "...": "FFC rows with no confident name proposal -- needs human review before any agent run treats FFC data as identity-resolved",
+    },
+    "snap_counts_resolved": {
+        "gsis_id": "resolved via nflverse_crosswalk.pfr_id <-> this table's pfr_player_id; null = not found in this week's crosswalk",
+        "offense_pct": "this player's share of the TEAM's offensive snaps that game -- IS phase1 §5's snap_share metric directly, computed by PFR/nflverse, no derivation needed",
+        "...": "16 columns total from nflreadpy's load_snap_counts() (Pro Football Reference, via nflverse)",
     },
 }
 
@@ -91,6 +96,19 @@ def run() -> int:
     espn_resolved, espn_stats = resolve_source(espn_df, "player_id", nflverse_df, "espn_id")
     ffc_proposed, ffc_unmatched, ffc_stats = propose_by_name(ffc_df, "name", nflverse_df, "merge_name")
 
+    # Snap counts (unlocks phase1 §5's snap_share metric) are pulled and
+    # resolved here, not in pull_stats.py, because resolution needs THIS
+    # crosswalk (pfr_id <-> gsis_id) that's already loaded -- unlike
+    # player_stats/team_stats, snap_counts is pfr_player_id-keyed, not
+    # natively gsis_id. Raw pull is still written immutably before resolving.
+    print(f"[crosswalk] pulling nflverse snap_counts for seasons {NFLVERSE_STATS_SEASONS}...")
+    snap_counts_df = nflverse.fetch_snap_counts(seasons=NFLVERSE_STATS_SEASONS)
+    snap_counts_raw_dir = raw_dir / "nflverse"
+    snap_counts_raw_dir.mkdir(parents=True, exist_ok=True)
+    snap_counts_raw_path = snap_counts_raw_dir / "snap_counts.parquet"
+    snap_counts_df.to_parquet(snap_counts_raw_path, index=False)
+    snap_counts_resolved, snap_counts_stats = resolve_source(snap_counts_df, "pfr_player_id", nflverse_df, "pfr_id")
+
     coverage = charter_universe_coverage(
         espn_resolved,
         CHARTER_UNIVERSE_SIZES,
@@ -117,6 +135,15 @@ def run() -> int:
     write("espn_resolved", espn_resolved)
     write("ffc_proposed_matches", ffc_proposed)
     write("ffc_unmatched_queue", ffc_unmatched)
+    write("snap_counts_resolved", snap_counts_resolved)
+    files.append(
+        {
+            "table": "snap_counts_raw",
+            "path": str(snap_counts_raw_path.relative_to(Path("."))),
+            "row_count": len(snap_counts_df),
+            "sha256": sha256_file(snap_counts_raw_path),
+        }
+    )
     for table, columns in _SCHEMA_NOTES.items():
         _write_schema_once(table, columns)
 
@@ -137,6 +164,7 @@ def run() -> int:
             "espn_resolved": espn_resolved,
             "ffc_proposed_matches": ffc_proposed,
             "ffc_unmatched_queue": ffc_unmatched,
+            "snap_counts_resolved": snap_counts_resolved,
         },
         Path(SCHEMA_ROOT),
     )
@@ -163,6 +191,7 @@ def run() -> int:
             "sleeper": sleeper_stats,
             "espn": espn_stats,
             "ffc": ffc_stats,
+            "snap_counts": snap_counts_stats,
         },
         "charter_universe_coverage": coverage,
         "validation": {
@@ -178,6 +207,7 @@ def run() -> int:
     print(f"[crosswalk] Sleeper resolved (all {sleeper_stats['total_rows']} players in Sleeper's dump): {sleeper_stats['coverage_pct']}%")
     print(f"[crosswalk] ESPN resolved (all {espn_stats['total_rows']} players in the pool): {espn_stats['coverage_pct']}%")
     print(f"[crosswalk] FFC proposed (name match, needs confirmation): {ffc_stats['proposed_pct']}%")
+    print(f"[crosswalk] snap_counts resolved (all {snap_counts_stats['total_rows']} player-games): {snap_counts_stats['coverage_pct']}%")
     print("[crosswalk] charter universe coverage -- SAME players resolved across ALL sources (ESPN ADP order as consensus proxy):")
     all_full = True
     for row in coverage:

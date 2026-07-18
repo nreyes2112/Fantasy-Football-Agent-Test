@@ -132,6 +132,22 @@ def get_player_stats(player_id: str, metrics: list[str], window: str, snapshot_d
                 values[metric] = _metrics.compute_carry_share(window_rows, team_stats_df)
             except FileNotFoundError:
                 unavailable_metrics.append(metric)
+        elif metric == "snap_share":
+            # snap_counts_resolved is curated (needs pfr_id->gsis_id
+            # resolution, unlike player_stats/team_stats) -- matched to the
+            # SAME (season, week) games already selected for this window,
+            # not snap_counts' own independent last-N, so "last8" means the
+            # same 8 games no matter which metric is requested.
+            try:
+                snap_df = load_curated_table(pinned_date, "snap_counts_resolved")
+            except FileNotFoundError:
+                unavailable_metrics.append(metric)
+                continue
+            player_snaps = snap_df[snap_df["gsis_id"] == player_id]
+            matched = window_rows[["season", "week"]].merge(
+                player_snaps[["season", "week", "offense_pct"]], on=["season", "week"], how="inner"
+            )
+            values[metric] = None if len(matched) == 0 else round(float(matched["offense_pct"].mean()), 4)
         elif metric not in window_rows.columns:
             unavailable_metrics.append(metric)
         else:
