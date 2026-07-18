@@ -19,13 +19,13 @@ A data-grounded, multi-agent AI system that produces fantasy football draft rank
 ## 2. Current Status (UPDATE THIS SECTION)
 
 **Phase: 0 COMPLETE (charter approved 2026-07-18). Phase 1 build IN PROGRESS.**
-**Current step: Tier 1 daily capture job (Sleeper player meta/injury/trending + ADP) is built and locally verified for 2026-07-18. Repo is `git init`'d locally only — NOT yet pushed to a GitHub remote, so the Actions cron in `.github/workflows/daily-capture.yml` is not yet actually running. NEXT: (a) push to a GitHub remote so the cron goes live — every day without it running is un-backfillable ADP history, (b) the ESPN reader (settings diff + primary ADP, D-005), (c) the canonical-ID crosswalk and curated-layer/validation pipeline (§3, §6) that the raw capture job intentionally does not yet build.**
+**Current step: Tier 1 daily capture job (Sleeper player meta/injury/trending + ADP) is built, pushed to https://github.com/nreyes2112/Fantasy-Football-Agent-Test, and confirmed LIVE — the GitHub Actions workflow ran end-to-end (fresh pull → commit → push) on 2026-07-18. Cron fires daily at 06:00 ET (`.github/workflows/daily-capture.yml`). NEXT: (a) the ESPN reader (settings diff + primary ADP, D-005), (b) the canonical-ID crosswalk and curated-layer/full validation pipeline (§3, §6) that the raw capture job intentionally does not yet build.**
 
 | Phase | Design doc | Build status |
 |---|---|---|
 | WBS (all phases) | fantasy-ai-project-wbs.md | n/a |
 | 0 Charter | phase0-charter-design.md | ✅ COMPLETE — charter.md approved; decisions.md live (D-001–D-007) |
-| 1 Data platform | phase1-data-platform-design.md | ☐ In progress — Tier 1 raw capture (Sleeper + FFC ADP) built (`capture/`), verified locally 2026-07-18. NOT yet: pushed to GitHub (cron inert until then), ESPN reader, crosswalk, curated layer, full validation pipeline (Stage 2/3), GOLD marking. |
+| 1 Data platform | phase1-data-platform-design.md | ☐ In progress — Tier 1 raw capture (Sleeper + FFC ADP) built (`capture/`) and LIVE on GitHub Actions cron since 2026-07-18. NOT yet: ESPN reader, crosswalk, curated layer, full validation pipeline (Stage 2/3), GOLD marking. |
 | 2 Backtest harness | phase2-backtest-harness-design.md | ☐ Not started |
 | 3 Agents (5 prompts) | phase3-agent-prompts.md | ☐ Not started |
 | 4 Debate + judge | phase4-debate-protocol.md | ☐ Not started |
@@ -75,7 +75,7 @@ A data-grounded, multi-agent AI system that produces fantasy football draft rank
 
 ## 7. Next Actions (UPDATE THIS SECTION)
 1. ~~**Claude Code:** create project folder (charter.md, decisions.md, docs/), `/init` the repo, verify/install Python~~ DONE 2026-07-18
-2. ~~**Build Tier 1 daily capture — Sleeper first** (ADP, injury, trending → dated immutable snapshots per phase1 §4) + GitHub Actions cron at 06:00 ET~~ Code done and locally verified 2026-07-18 (`capture/`, ADP via FantasyFootballCalculator per D-007, not Sleeper — see decision). **STILL OPEN: push this repo to a GitHub remote and confirm the first green Actions run** — the cron does nothing until the repo exists on GitHub with Actions enabled. Target: live well before Jul 24 (M1).
+2. ~~**Build Tier 1 daily capture — Sleeper first** (ADP, injury, trending → dated immutable snapshots per phase1 §4) + GitHub Actions cron at 06:00 ET~~ DONE 2026-07-18 — pushed to GitHub (https://github.com/nreyes2112/Fantasy-Football-Agent-Test), first end-to-end Actions run (pull → commit → push) confirmed green. ADP via FantasyFootballCalculator per D-007, not Sleeper. Well ahead of Jul 24 (M1).
 3. **ESPN reader:** pull league 94172663 settings with owner cookies, diff against charter §5; ESPN becomes the PRIMARY ADP source once built (D-005), demoting today's FFC pull to secondary
 4. Continue Phase 1 per design doc: canonical-ID crosswalk (§3), data dictionary (§5), full validation pipeline Stage 2/3 + GOLD marking (§6), curated layer, agent access layer (§7) — none of these exist yet, only raw capture does
 
