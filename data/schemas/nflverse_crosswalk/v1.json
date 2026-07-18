@@ -1,0 +1,11 @@
+{
+  "table": "nflverse_crosswalk",
+  "version": "v1",
+  "columns": {
+    "gsis_id": "canonical key (nflverse). Everything else in this project resolves to this.",
+    "sleeper_id": "join key against sleeper/players.parquet's player_id",
+    "espn_id": "join key against espn/player_pool.parquet's player_id",
+    "merge_name": "pre-normalized name, used only as a last-resort proposal key (\u00a73) -- never auto-joined",
+    "...": "35 columns total from nflreadpy's load_ff_playerids() (DynastyProcess.com); all other columns kept as-is"
+  }
+}

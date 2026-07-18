@@ -1,0 +1,43 @@
+name: Weekly Crosswalk
+
+# phase1-data-platform-design.md §8: "Crosswalk rebuild + unmatched queue | Weekly".
+# Sunday morning is a build-time choice (before the Thursday ops brief design
+# in Phase 5 lands) -- revisit once Phase 5 scheduling is actually wired up.
+on:
+  schedule:
+    - cron: "0 12 * * 0"  # ~08:00 ET Sunday (see daily-capture.yml for the DST caveat)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  crosswalk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"  # nflreadpy requires >= 3.10
+
+      - run: pip install -r requirements.txt -r requirements-crosswalk.txt
+
+      - name: Ensure today's raw snapshot exists
+        run: python -m capture.pull_daily
+        env:
+          ESPN_SWID: ${{ secrets.ESPN_SWID }}
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+
+      - name: Build crosswalk
+        run: python -m capture.pull_crosswalk
+        continue-on-error: true  # non-100% charter-universe coverage is a real, expected signal -- don't let it block the commit of what DID resolve
+
+      - name: Commit crosswalk output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && echo "no changes to commit" && exit 0
+          git commit -m "Weekly crosswalk rebuild $(date -u +%F)"
+          git push

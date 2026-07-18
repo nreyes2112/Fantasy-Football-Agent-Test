@@ -1,0 +1,100 @@
+{
+  "snapshot_date": "2026-07-18",
+  "generated_at": "2026-07-18T12:41:49.667778-04:00",
+  "code_git_commit": "0c68e213ffae84708a14128b6b9dc6682d58e6b5",
+  "resolution_stats": {
+    "sleeper": {
+      "method": "deterministic id join (sleeper_id)",
+      "total_rows": 12206,
+      "resolved_rows": 6154,
+      "coverage_pct": 50.42
+    },
+    "espn": {
+      "method": "deterministic id join (espn_id)",
+      "total_rows": 600,
+      "resolved_rows": 568,
+      "coverage_pct": 94.67
+    },
+    "ffc": {
+      "method": "proposed name match (name vs merge_name, ambiguous names excluded)",
+      "total_rows": 216,
+      "proposed_rows": 188,
+      "unmatched_rows": 28,
+      "proposed_pct": 87.04
+    }
+  },
+  "charter_universe_coverage": [
+    {
+      "position": "QB",
+      "universe_size": 24,
+      "rows_available": 24,
+      "espn_resolved": 24,
+      "sleeper_found": 24,
+      "ffc_proposed_found": 23,
+      "fully_resolved_across_all_sources": 23,
+      "coverage_pct": 95.83
+    },
+    {
+      "position": "RB",
+      "universe_size": 48,
+      "rows_available": 48,
+      "espn_resolved": 48,
+      "sleeper_found": 48,
+      "ffc_proposed_found": 45,
+      "fully_resolved_across_all_sources": 45,
+      "coverage_pct": 93.75
+    },
+    {
+      "position": "WR",
+      "universe_size": 60,
+      "rows_available": 60,
+      "espn_resolved": 60,
+      "sleeper_found": 60,
+      "ffc_proposed_found": 58,
+      "fully_resolved_across_all_sources": 58,
+      "coverage_pct": 96.67
+    },
+    {
+      "position": "TE",
+      "universe_size": 24,
+      "rows_available": 24,
+      "espn_resolved": 24,
+      "sleeper_found": 24,
+      "ffc_proposed_found": 21,
+      "fully_resolved_across_all_sources": 21,
+      "coverage_pct": 87.5
+    }
+  ],
+  "files": [
+    {
+      "table": "nflverse_crosswalk",
+      "path": "data/snapshots/2026-07-18/curated/nflverse_crosswalk.parquet",
+      "row_count": 12467,
+      "sha256": "1b2fbf93993a2de45f5a427ac7cf3837e6c4100423c4f20bc70df59c418692b0"
+    },
+    {
+      "table": "sleeper_resolved",
+      "path": "data/snapshots/2026-07-18/curated/sleeper_resolved.parquet",
+      "row_count": 12206,
+      "sha256": "f72dad4d690eb28a857f3b0f1bba866de9debd062e42f88603f3c3872b0eb81e"
+    },
+    {
+      "table": "espn_resolved",
+      "path": "data/snapshots/2026-07-18/curated/espn_resolved.parquet",
+      "row_count": 600,
+      "sha256": "a7a6caeb62760b0c59c38359f4af7f87e0533b0f4fbd0bf6a76fb8178d957aa2"
+    },
+    {
+      "table": "ffc_proposed_matches",
+      "path": "data/snapshots/2026-07-18/curated/ffc_proposed_matches.parquet",
+      "row_count": 188,
+      "sha256": "240f6f35700e9ac12c1bab7ce4581484f7e67378428fb7c5c9bd9cbc79601d96"
+    },
+    {
+      "table": "ffc_unmatched_queue",
+      "path": "data/snapshots/2026-07-18/curated/ffc_unmatched_queue.parquet",
+      "row_count": 28,
+      "sha256": "b2bc0718ccc79ce903c0002b00ef58e9f3524d2120ea7a24a615bd09bc5889c3"
+    }
+  ]
+}

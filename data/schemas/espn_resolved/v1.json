@@ -1,0 +1,7 @@
+{
+  "table": "espn_resolved",
+  "version": "v1",
+  "columns": {
+    "gsis_id": "resolved via nflverse_crosswalk.espn_id; null = not found in this week's crosswalk"
+  }
+}

@@ -4,7 +4,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A design-and-build repo for a multi-agent AI system that produces fantasy football draft rankings and a "My Guys" list for one specific ESPN league (12-team, 1.0 PPR, redraft, draft ~Aug 29/30 2026), scored against ADP/ECR in a January postmortem. **As of this writing there is no code yet** — the repo contains an approved charter, a decision log, and nine binding design documents. Phase 1 (data platform / daily capture job) is the next thing to be built. Do not assume a build system, test runner, or source tree exists — check before referencing one.
+A design-and-build repo for a multi-agent AI system that produces fantasy football draft rankings and a "My Guys" list for one specific ESPN league (12-team, 1.0 PPR, redraft, draft ~Aug 29/30 2026), scored against ADP/ECR in a January postmortem. The repo contains an approved charter, a decision log, nine binding design documents, and (as of Phase 1 build-out) a working `capture/` package: daily raw-data capture (Sleeper, FantasyPros-alternative ADP, ESPN) running live on GitHub Actions, plus a weekly canonical player-ID crosswalk. Phases 2–7 (backtest harness, agents, debate, ops, deliverables, postmortem) are still just design docs — check `docs/PROJECT-BRIEF.md` §2 for the current build status before assuming something exists.
+
+## Commands
+
+Two separate virtualenvs, because `nflreadpy` requires Python ≥3.10 while the rest of the capture code was built against the system's Python 3.9:
+
+- **`.venv`** (Python 3.9) — Sleeper/FFC/ESPN capture:
+  ```
+  source .venv/bin/activate
+  pip install -r requirements.txt
+  python -m capture.pull_daily            # Tier 1 daily capture (idempotent per ET date)
+  python -m capture.espn_settings_check   # one-off: diff live ESPN league settings vs charter.md §5
+  ```
+- **`.venv311`** (Python ≥3.10, e.g. via `brew install python@3.11`) — nflverse crosswalk:
+  ```
+  source .venv311/bin/activate
+  pip install -r requirements.txt -r requirements-crosswalk.txt
+  python -m capture.pull_crosswalk        # requires today's raw snapshot to already exist (run pull_daily first)
+  ```
+  Exit code is non-zero when charter-universe coverage isn't 100% across all sources — that's an expected, informative signal (e.g. unconfirmed name matches), not necessarily a bug; check `data/snapshots/<date>/curated_manifest.json` for the breakdown.
+
+Secrets (`ESPN_SWID`, `ESPN_S2`) live in a local, gitignored `.env` and as encrypted GitHub Actions repository secrets — never hardcode or commit them. `.github/workflows/daily-capture.yml` and `.github/workflows/weekly-crosswalk.yml` run these jobs unattended.
 
 ## Reading order (do this before making changes)
 
@@ -38,11 +59,10 @@ The design docs are **binding**, not suggestions. Deviating from one is allowed 
 ## Architecture (as designed — build order is Phase 1 → 7)
 
 **Phase 1 — Data platform** ([docs/phase1-data-platform-design.md](docs/phase1-data-platform-design.md)): sources → ingest → immutable dated snapshots → a read-only agent access layer.
-- Sources: `nflreadpy` (nflverse: pbp, player stats, rosters/depth charts, schedules, draft/combine — **not** `nfl_data_py`, which is deprecated and kept only as an emergency fallback for its `import_ids()` crosswalk), Sleeper API (ADP/trending/injury, daily, non-negotiable), FantasyPros (ECR), ESPN unofficial API (league settings source of truth + primary ADP per D-005).
-- Canonical player ID = nflverse `gsis_id`, with a weekly-rebuilt crosswalk. Name matching is proposal-only, human-confirmed — never silently auto-joined.
-- Storage: `/data/snapshots/YYYY-MM-DD/{raw,curated}/` + `manifest.json` (hashes, row counts, code commit, schema versions) + a `GOLD` marker written only after validation passes. Raw is immutable and append-only; curated is rebuilt from raw by versioned code.
-- Validation is staged and gated: schema/completeness → semantic (range/referential/cross-source) → statistical (drift/anomaly). A rule change is itself a decision-log entry.
-- Agents reach data **only** through a fixed read-only tool surface (`get_player_stats`, `get_adp`, `get_team_context`, `get_depth_chart`, `get_comps`, `get_league_scoring`, `list_data_gaps`, etc.), pinned to one gold snapshot per run, every response carrying `{source, snapshot_date}`. No free-form SQL/dataframe access for agents.
+- Sources actually pulled today (`capture/sources/`): Sleeper (player meta/injury/trending — it has **no ADP endpoint** despite the design doc, D-007), FantasyFootballCalculator (free ADP, secondary market source), ESPN (this league's own ADP — **primary** market source per D-005, plus settings verification against charter §5). ESPN's real API host is `lm-api-reads.fantasy.espn.com`, not the commonly-documented `fantasy.espn.com`, which now sits behind an AWS WAF challenge (D-008). `nflreadpy` (nflverse pbp/stats/rosters/schedules/draft-combine — **not** `nfl_data_py`, deprecated) is used so far only for `load_ff_playerids()`, the crosswalk source; the rest of nflverse's data isn't pulled yet.
+- Canonical player ID = nflverse `gsis_id`. `capture/crosswalk.py` + `capture/pull_crosswalk.py` resolve Sleeper and ESPN deterministically via the DynastyProcess/nflreadpy crosswalk's own `sleeper_id`/`espn_id` columns; FFC has no shared ID, so it only gets a *proposed* name match (never auto-confirmed) that lands in an unmatched-review queue if ambiguous or absent. Acceptance metric (100% of charter's QB24/RB48/WR60/TE24 resolved across all sources) is checked but pre-freeze uses ESPN's ADP order as a consensus-board stand-in.
+- Storage: `/data/snapshots/YYYY-MM-DD/{raw,curated}/` + `manifest.json` (raw pulls) / `curated_manifest.json` (crosswalk output) with hashes, row counts, code commit. Raw manifests are never rewritten once written — the crosswalk gets its own separate manifest file specifically so it can run after the fact without touching raw's immutability. **No `GOLD` marker yet** — only a lightweight row-count sanity check (stage1-lite) is implemented; the full staged schema/semantic/statistical validation (§6) doesn't exist yet.
+- Not yet built: the read-only agent access layer (`get_player_stats`, `get_adp`, etc.), the curated layer beyond the crosswalk itself, and nflverse stats/pbp/roster pulls.
 
 **Phase 2 — Backtest harness** ([docs/phase2-backtest-harness-design.md](docs/phase2-backtest-harness-design.md)): frozen worlds (2024-07-15, 2025-07-15, growing walk-forward each season) reconstructed with strict as-of-date data and a leakage audit checklist; candidates (agents/ensemble/baseline) call the **same** Phase 1 access layer, just pinned to a frozen snapshot — identical code path for backtest and production. Every config run 3+ times (LLM output variance); results tied to a config-hash fingerprint for bisectability. Must beat naive baselines or the system ships the baseline instead.
 
@@ -63,3 +83,5 @@ The design docs are **binding**, not suggestions. Deviating from one is allowed 
 - **D-004:** Five agents split by methodology (not persona); build Agent 1 (opportunity) end-to-end first, template the rest from it.
 - **D-005 (deviation from Phase 1 design):** ESPN, not Sleeper, is the league platform and PRIMARY ADP source. Sleeper is secondary/backup. FantasyPros ECR unchanged.
 - **D-006 (deviation from Phase 0 design):** Zero API spend — everything runs inside Claude Code sessions under the existing plan; only the daily capture job is unattended cron.
+- **D-007 (deviation from Phase 1 design):** Sleeper's real API has no ADP endpoint. FantasyFootballCalculator's free API fills that role instead.
+- **D-008 (implementation detail, not a design deviation):** ESPN's actual working API host is `lm-api-reads.fantasy.espn.com` — `fantasy.espn.com` is WAF-blocked for plain HTTP clients.

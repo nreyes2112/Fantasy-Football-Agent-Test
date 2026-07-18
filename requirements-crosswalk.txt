@@ -1,0 +1,7 @@
+# capture/pull_crosswalk.py and capture/sources/nflverse.py need nflreadpy,
+# which requires Python >= 3.10 -- newer than the project's main .venv
+# (built against the system's Python 3.9). Install into a separate venv,
+# e.g. .venv311, rather than the main one.
+nflreadpy>=0.1.0
+pandas>=2.0
+pyarrow>=14.0

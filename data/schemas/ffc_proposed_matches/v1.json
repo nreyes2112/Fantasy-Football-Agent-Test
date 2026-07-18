@@ -1,0 +1,7 @@
+{
+  "table": "ffc_proposed_matches",
+  "version": "v1",
+  "columns": {
+    "gsis_id": "PROPOSED via normalized-name match against merge_name -- NOT a confirmed crosswalk entry (\u00a73); ambiguous names (>1 gsis_id sharing a normalized name) are excluded, not guessed"
+  }
+}

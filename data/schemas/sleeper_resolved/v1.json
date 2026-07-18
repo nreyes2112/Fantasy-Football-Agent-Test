@@ -1,0 +1,8 @@
+{
+  "table": "sleeper_resolved",
+  "version": "v1",
+  "columns": {
+    "gsis_id": "resolved via nflverse_crosswalk.sleeper_id; null = not found in this week's crosswalk",
+    "gsis_id_source_reported": "Sleeper's own self-reported gsis_id field, if present -- NOT authoritative, kept only for cross-checking"
+  }
+}
