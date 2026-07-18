@@ -19,13 +19,13 @@ A data-grounded, multi-agent AI system that produces fantasy football draft rank
 ## 2. Current Status (UPDATE THIS SECTION)
 
 **Phase: 0 COMPLETE (charter approved 2026-07-18). Phase 1 build IN PROGRESS.**
-**Current step: Tier 1 daily capture job (Sleeper player meta/injury/trending + ADP) is built, pushed to https://github.com/nreyes2112/Fantasy-Football-Agent-Test, and confirmed LIVE — the GitHub Actions workflow ran end-to-end (fresh pull → commit → push) on 2026-07-18. Cron fires daily at 06:00 ET (`.github/workflows/daily-capture.yml`). NEXT: (a) the ESPN reader (settings diff + primary ADP, D-005), (b) the canonical-ID crosswalk and curated-layer/full validation pipeline (§3, §6) that the raw capture job intentionally does not yet build.**
+**Current step: Tier 1 daily capture (Sleeper meta/injury/trending + FFC ADP + ESPN ADP) is built and LIVE on GitHub Actions (https://github.com/nreyes2112/Fantasy-Football-Agent-Test), cron at 06:00 ET. ESPN league-settings vs. charter §5 diff run 2026-07-18: ALL FIELDS MATCH. ESPN's per-league ADP (PRIMARY market source, D-005) is wired into the daily job code but the cron won't actually pull it until ESPN_SWID/ESPN_S2 are added as GitHub repo secrets (pending owner go-ahead — the job degrades gracefully without them, it just skips ESPN and keeps capturing Sleeper/FFC). NEXT: (a) add those two repo secrets so ESPN ADP actually flows on the schedule, (b) the canonical-ID crosswalk and curated-layer/full validation pipeline (§3, §6) that the raw capture job intentionally does not yet build.**
 
 | Phase | Design doc | Build status |
 |---|---|---|
 | WBS (all phases) | fantasy-ai-project-wbs.md | n/a |
-| 0 Charter | phase0-charter-design.md | ✅ COMPLETE — charter.md approved; decisions.md live (D-001–D-007) |
-| 1 Data platform | phase1-data-platform-design.md | ☐ In progress — Tier 1 raw capture (Sleeper + FFC ADP) built (`capture/`) and LIVE on GitHub Actions cron since 2026-07-18. NOT yet: ESPN reader, crosswalk, curated layer, full validation pipeline (Stage 2/3), GOLD marking. |
+| 0 Charter | phase0-charter-design.md | ✅ COMPLETE — charter.md approved; decisions.md live (D-001–D-008) |
+| 1 Data platform | phase1-data-platform-design.md | ☐ In progress — Tier 1 raw capture (Sleeper + FFC ADP + ESPN ADP) built (`capture/`) and LIVE on GitHub Actions cron since 2026-07-18. ESPN settings-diff (`capture/espn_settings_check.py`) confirms charter §5 accurate. NOT yet: ESPN cookies as repo secrets (so ESPN ADP runs unattended), crosswalk, curated layer, full validation pipeline (Stage 2/3), GOLD marking. |
 | 2 Backtest harness | phase2-backtest-harness-design.md | ☐ Not started |
 | 3 Agents (5 prompts) | phase3-agent-prompts.md | ☐ Not started |
 | 4 Debate + judge | phase4-debate-protocol.md | ☐ Not started |
@@ -49,6 +49,7 @@ A data-grounded, multi-agent AI system that produces fantasy football draft rank
 10. **ESPN is the league platform and PRIMARY market signal** (league 94172663, private). ESPN reader is the league-settings source of truth (diffs against charter §5) and primary ADP for DELTA/My Guys pricing; Sleeper demoted to secondary/backup ADP (satisfies risk R2); FantasyPros ECR unchanged. Auth via owner's SWID/espn_s2 cookies, local-only, never committed. Supersedes the Phase 1 design's Sleeper-as-platform assumption. (D-005)
 11. **Zero API spend.** Agent/debate/backtest runs execute inside Claude Code sessions under Nick's Claude plan; the daily capture job runs on GitHub Actions free-tier cron (independent of any personal machine). Budget controls = agenda/round/word caps; capture takes priority over analysis if plan limits are hit. Supersedes the Phase 0 design's API-budget line. (D-006)
 12. **Sleeper has no ADP endpoint.** Verified against Sleeper's actual API (docs.sleeper.com): it exposes player meta/injury status and trending adds/drops only. FantasyFootballCalculator's free keyless API is the ADP source instead, scoped to this league's format. Supersedes phase1-data-platform-design.md §2's "Sleeper API → ADP" line and charter §10 R2's backup-source name. (D-007)
+13. **ESPN's real API host is `lm-api-reads.fantasy.espn.com`, not `fantasy.espn.com`.** The commonly-documented host now sits behind an AWS WAF JS challenge a plain HTTP client can't pass. Verified 2026-07-18 against league 94172663: `lm-api-reads` returns real data on the same `view` params, and every charter §5 field matched on the first settings-diff run. (D-008)
 
 ## 4. Success Criteria (summary — binding formulas live in phase0 doc, Appendix M)
 - SM1: My Guys hit rate ≥ 60% (dual condition: beat ADP-implied finish AND startable value)
@@ -59,8 +60,8 @@ A data-grounded, multi-agent AI system that produces fantasy football draft rank
 ## 5. Artifact Inventory
 - Nine design docs (§2 table) — binding; deviations recorded in decisions.md, designs never edited retroactively
 - **charter.md** — APPROVED 2026-07-18; §3/§4/§5 frozen (12-team ESPN, 1.0 PPR, 4pt pass TD, 7 bench, redraft snake, draft Aug 29/30)
-- **decisions.md** — append-only log, D-001 through D-006 live
-- Repo location: ______ (fill in once created in Claude Code)
+- **decisions.md** — append-only log, D-001 through D-008 live
+- Repo location: https://github.com/nreyes2112/Fantasy-Football-Agent-Test
 - Data snapshot location: /data/snapshots/ in repo per phase1 design §4
 **New chats: read this brief, then the charter, then the design doc for the phase being worked — the designs are binding.**
 
@@ -76,7 +77,7 @@ A data-grounded, multi-agent AI system that produces fantasy football draft rank
 ## 7. Next Actions (UPDATE THIS SECTION)
 1. ~~**Claude Code:** create project folder (charter.md, decisions.md, docs/), `/init` the repo, verify/install Python~~ DONE 2026-07-18
 2. ~~**Build Tier 1 daily capture — Sleeper first** (ADP, injury, trending → dated immutable snapshots per phase1 §4) + GitHub Actions cron at 06:00 ET~~ DONE 2026-07-18 — pushed to GitHub (https://github.com/nreyes2112/Fantasy-Football-Agent-Test), first end-to-end Actions run (pull → commit → push) confirmed green. ADP via FantasyFootballCalculator per D-007, not Sleeper. Well ahead of Jul 24 (M1).
-3. **ESPN reader:** pull league 94172663 settings with owner cookies, diff against charter §5; ESPN becomes the PRIMARY ADP source once built (D-005), demoting today's FFC pull to secondary
+3. ~~**ESPN reader:** pull league 94172663 settings with owner cookies, diff against charter §5; ESPN becomes the PRIMARY ADP source once built (D-005)~~ DONE 2026-07-18 — `capture/espn_settings_check.py` confirms every charter §5 field matches live ESPN settings; `capture/sources/espn.py` pulls this league's ADP/ownership view and it's wired into `pull_daily.py` as primary (FFC stays secondary). **STILL OPEN:** add `ESPN_SWID`/`ESPN_S2` as GitHub repo secrets so the Actions cron actually pulls ESPN data — right now it only runs locally where `.env` has them.
 4. Continue Phase 1 per design doc: canonical-ID crosswalk (§3), data dictionary (§5), full validation pipeline Stage 2/3 + GOLD marking (§6), curated layer, agent access layer (§7) — none of these exist yet, only raw capture does
 
 ## 8. Project History (one paragraph)
