@@ -1,0 +1,8 @@
+{
+  "table": "sleeper_trending_drops",
+  "version": "v1",
+  "columns": {
+    "player_id": "sleeper player_id",
+    "count": "number of drops in lookback window"
+  }
+}

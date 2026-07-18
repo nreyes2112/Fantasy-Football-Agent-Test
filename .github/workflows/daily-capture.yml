@@ -1,0 +1,39 @@
+name: Daily Capture
+
+# GitHub Actions cron is UTC-only and doesn't shift for daylight saving, so
+# 06:00 America/New_York is scheduled twice: 10:00 UTC covers EDT (~Mar-Nov),
+# 11:00 UTC covers EST (~Nov-Mar). Whichever one lands at the wrong wall-clock
+# time is a harmless no-op: capture/pull_daily.py exits immediately if a
+# manifest for today's ET date already exists.
+on:
+  schedule:
+    - cron: "0 10 * * *"
+    - cron: "0 11 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run daily capture
+        run: python -m capture.pull_daily
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && echo "no changes to commit" && exit 0
+          git commit -m "Daily capture $(date -u +%F)"
+          git push

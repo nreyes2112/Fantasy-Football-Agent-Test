@@ -1,0 +1,17 @@
+{
+  "table": "ffc_adp",
+  "version": "v1",
+  "columns": {
+    "player_id": "FFC internal player id (NOT gsis_id/sleeper_id -- crosswalk not yet built)",
+    "name": "player full name (join risk -- name-based, per \u00a73 human-confirmed only)",
+    "position": "position",
+    "team": "NFL team abbreviation",
+    "adp": "average draft position (float, overall pick number)",
+    "adp_formatted": "round.pick string",
+    "times_drafted": "sample size behind this ADP value",
+    "high": "earliest pick observed",
+    "low": "latest pick observed",
+    "stdev": "standard deviation of pick position",
+    "bye": "bye week"
+  }
+}
