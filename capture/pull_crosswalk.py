@@ -19,9 +19,7 @@ Usage:
 
 from __future__ import annotations
 
-import hashlib
 import json
-import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -30,6 +28,7 @@ import pandas as pd
 
 from capture.config import LEAGUE_TIMEZONE, SCHEMA_ROOT, SNAPSHOT_ROOT
 from capture.crosswalk import charter_universe_coverage, propose_by_name, resolve_source
+from capture.manifest_utils import git_commit, sha256_file
 from capture.sources import nflverse
 from capture.validation import stage1_schema_completeness, stage2_semantic, stage3_statistical
 
@@ -67,22 +66,6 @@ def _write_schema_once(table: str, columns: dict) -> None:
     path = schema_dir / "v1.json"
     if not path.exists():
         path.write_text(json.dumps({"table": table, "version": "v1", "columns": columns}, indent=2))
-
-
-def _sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def _git_commit() -> str | None:
-    try:
-        out = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, timeout=5, check=True)
-        return out.stdout.strip()
-    except Exception:
-        return None
 
 
 def run() -> int:
@@ -125,7 +108,7 @@ def run() -> int:
                 "table": name,
                 "path": str(path.relative_to(Path("."))),
                 "row_count": len(df),
-                "sha256": _sha256(path),
+                "sha256": sha256_file(path),
             }
         )
 
@@ -175,7 +158,7 @@ def run() -> int:
     report = {
         "snapshot_date": today,
         "generated_at": datetime.now(LEAGUE_TIMEZONE).isoformat(),
-        "code_git_commit": _git_commit(),
+        "code_git_commit": git_commit(),
         "resolution_stats": {
             "sleeper": sleeper_stats,
             "espn": espn_stats,

@@ -6,23 +6,23 @@ Layout:
   data/schemas/{table}/v1.json
 
 Nothing under a dated snapshot is ever edited after the fact -- corrections
-are a new snapshot, not an in-place fix. A GOLD marker is deliberately NOT
-written by this job: GOLD means "all validation stages (§6) passed", and only
-a lightweight Stage-1-style sanity check (row-count floors) is implemented so
-far. Full schema/semantic/statistical validation is future Phase 1 work.
+are a new snapshot, not an in-place fix. This module only writes the
+lightweight Stage-1 row-count sanity check at ingest time; the full
+Stage 1-3 validation (§6) and GOLD marking run later, from
+capture/pull_crosswalk.py (capture/validation.py), since several checks
+need identity resolution first.
 """
 
 from __future__ import annotations
 
-import hashlib
 import json
-import subprocess
 from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
 
 from capture.config import LEAGUE_TIMEZONE, SCHEMA_ROOT, SNAPSHOT_ROOT
+from capture.manifest_utils import git_commit, sha256_file
 
 
 def today_snapshot_date() -> str:
@@ -32,24 +32,6 @@ def today_snapshot_date() -> str:
 
 def snapshot_dir(date: str) -> Path:
     return Path(SNAPSHOT_ROOT) / date
-
-
-def _sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def _git_commit() -> str | None:
-    try:
-        out = subprocess.run(
-            ["git", "rev-parse", "HEAD"], capture_output=True, text=True, timeout=5, check=True
-        )
-        return out.stdout.strip()
-    except Exception:
-        return None
 
 
 class SnapshotWriter:
@@ -79,7 +61,7 @@ class SnapshotWriter:
                 "table": table,
                 "path": str(out_path.relative_to(Path("."))),
                 "row_count": len(df),
-                "sha256": _sha256(out_path),
+                "sha256": sha256_file(out_path),
                 "schema_version": schema_version,
                 "pulled_at": datetime.now(LEAGUE_TIMEZONE).isoformat(),
             }
@@ -105,11 +87,11 @@ class SnapshotWriter:
         manifest = {
             "snapshot_date": self.date,
             "generated_at": datetime.now(LEAGUE_TIMEZONE).isoformat(),
-            "code_git_commit": _git_commit(),
+            "code_git_commit": git_commit(),
             "source_endpoints": source_endpoints,
             "files": self._files,
             "validation": {
-                "stage": "stage1_lite (row-count sanity only; stage2/3 not yet implemented)",
+                "stage": "stage1_lite (row-count sanity only; full stage1-3 validation runs later from pull_crosswalk.py, see capture/validation.py)",
                 "checks": self._checks,
                 "all_passed": all_passed,
             },

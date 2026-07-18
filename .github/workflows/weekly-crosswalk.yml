@@ -1,6 +1,9 @@
-name: Weekly Crosswalk
+name: Weekly Crosswalk + nflverse Refresh
 
-# phase1-data-platform-design.md §8: "Crosswalk rebuild + unmatched queue | Weekly".
+# phase1-data-platform-design.md §8's two weekly rows: "Crosswalk rebuild +
+# unmatched queue" and "Full nflverse refresh" (player_stats so far -- pbp/
+# rosters/schedules aren't pulled yet). Kept in one workflow since both need
+# the same nflreadpy/.venv311 runtime and run on the same schedule.
 # Sunday morning is a build-time choice (before the Thursday ops brief design
 # in Phase 5 lands) -- revisit once Phase 5 scheduling is actually wired up.
 on:
@@ -32,6 +35,9 @@ jobs:
       - name: Build crosswalk
         run: python -m capture.pull_crosswalk
         continue-on-error: true  # non-100% charter-universe coverage is a real, expected signal -- don't let it block the commit of what DID resolve
+
+      - name: Pull nflverse player_stats
+        run: python -m capture.pull_stats
 
       - name: Commit crosswalk output
         run: |

@@ -7,15 +7,11 @@ available, note}.
 Player identity everywhere here is the canonical nflverse `gsis_id` (§3) --
 never a Sleeper/ESPN/FFC platform id.
 
-Several of the eight functions the design specifies (get_player_stats,
-get_team_context, get_vacated_opportunity) need nflverse pbp/player_stats/
-schedule data that Phase 1 hasn't pulled yet -- only load_ff_playerids()
-(the crosswalk) has been ingested so far. Those functions exist with the
-correct signature and honestly report `available: False` with a `note`
-explaining the gap, per the project's no-fabrication rule -- they do NOT
-return estimated/fabricated numbers, and they do NOT get skipped, because
-list_data_gaps() and every other caller need a real (if empty) answer
-rather than an AttributeError.
+get_player_stats now reads real nflverse weekly player_stats (2024-2025
+seasons, capture/pull_stats.py). get_team_context and get_vacated_opportunity
+still need nflverse schedules/Vegas win totals, not ingested yet -- those two
+honestly report `available: False` with a `note` explaining the gap, per the
+project's no-fabrication rule, rather than fabricate or get skipped entirely.
 """
 
 from __future__ import annotations
@@ -29,16 +25,23 @@ import pandas as pd
 from access.snapshot_resolver import (
     gold_snapshot_dates,
     load_curated_table,
+    load_raw_table,
     resolve_snapshot_date,
     schema_version,
 )
 from capture.config import ESPN_LEAGUE_ID, ESPN_SEASON
 
 NOT_YET_INGESTED_NOTE = (
-    "nflverse pbp/player_stats/schedule data has not been ingested yet (Phase 1 §2 -- only "
-    "load_ff_playerids(), the ID crosswalk, has been pulled so far). This is not a missing "
-    "player; it's a source this project hasn't built yet."
+    "nflverse schedules/Vegas win totals have not been ingested yet (Phase 1 §2 -- only "
+    "load_ff_playerids() and load_player_stats() have been pulled so far). This is not a "
+    "missing team; it's a source this project hasn't built yet."
 )
+
+# Rate/share stats are averaged across a window; everything else (raw
+# counting stats, and EPA -- reported per-game as a total, so summed like
+# any other counting stat) is summed. This is a convention, documented here
+# rather than left implicit.
+_RATE_METRICS = {"target_share", "air_yards_share", "wopr", "racr", "passing_cpoe", "pacr", "fg_pct", "pat_pct"}
 
 
 def _response(values, source: str, snapshot_date: str | None, schema_version_: str | None,
@@ -59,9 +62,65 @@ def _unavailable(source: str, note: str) -> dict:
 
 # --- get_player_stats -------------------------------------------------
 
-def get_player_stats(player_id: str, metrics: list[str], window: str) -> dict:
-    """player_id = gsis_id. metrics = e.g. ['target_share', 'ypRR']. window = e.g. 'last8'."""
-    return _unavailable("nflverse player_stats (not yet ingested)", NOT_YET_INGESTED_NOTE)
+_SUPPORTED_WINDOWS = ("season", "last4", "last8")
+
+
+def get_player_stats(player_id: str, metrics: list[str], window: str, snapshot_date: str | None = None) -> dict:
+    """player_id = gsis_id. metrics = e.g. ['target_share', 'receiving_epa'].
+    window = 'season' (most recent season with data), 'last4', or 'last8'
+    (most recent N games by season+week -- 'post_event' windows from phase1
+    §5's data dictionary aren't supported yet, that needs role-change
+    detection this project hasn't built).
+    """
+    if window not in _SUPPORTED_WINDOWS:
+        return _unavailable(
+            "nflverse player_stats",
+            f"window={window!r} not supported yet (supported: {_SUPPORTED_WINDOWS})",
+        )
+
+    pinned_date = resolve_snapshot_date(snapshot_date)
+    try:
+        df = load_raw_table(pinned_date, "nflverse", "player_stats")
+    except FileNotFoundError:
+        return _unavailable(
+            "nflverse player_stats",
+            f"no player_stats table in {pinned_date}'s snapshot -- run `python -m capture.pull_stats` (.venv311)",
+        )
+    player_rows = df[df["player_id"] == player_id].sort_values(["season", "week"])
+    if len(player_rows) == 0:
+        return _unavailable("nflverse player_stats", f"gsis_id {player_id} not found in player_stats")
+
+    if window == "season":
+        latest_season = int(player_rows["season"].max())
+        window_rows = player_rows[player_rows["season"] == latest_season]
+    else:
+        n = int(window.replace("last", ""))
+        window_rows = player_rows.tail(n)
+
+    values = {}
+    unavailable_metrics = []
+    for metric in metrics:
+        if metric not in window_rows.columns:
+            unavailable_metrics.append(metric)
+            continue
+        agg = "mean" if metric in _RATE_METRICS else "sum"
+        val = window_rows[metric].agg(agg)
+        values[metric] = None if pd.isna(val) else round(float(val), 4)
+
+    note = None
+    if len(window_rows) < (4 if window == "last4" else 8 if window == "last8" else 0):
+        note = f"only {len(window_rows)} game(s) available for window={window!r}, fewer than requested"
+    if unavailable_metrics:
+        extra = f"metrics not found in player_stats: {unavailable_metrics}"
+        note = f"{note}; {extra}" if note else extra
+
+    return _response(
+        {"metrics": values, "games_in_window": len(window_rows), "aggregation": "mean for rate stats, sum otherwise"},
+        "nflverse player_stats (load_player_stats, week-level)",
+        pinned_date,
+        schema_version("nflverse_player_stats"),
+        note=note,
+    )
 
 
 # --- get_adp ------------------------------------------------------------
@@ -274,7 +333,16 @@ def list_data_gaps(player_id: str, snapshot_date: str | None = None) -> dict:
         except FileNotFoundError:
             gaps.append(f"{table}: table does not exist in {pinned_date}'s snapshot")
 
-    gaps.append("player_stats/pbp/team_context/depth_chart_history: " + NOT_YET_INGESTED_NOTE)
+    try:
+        stats_df = load_raw_table(pinned_date, "nflverse", "player_stats")
+        if player_id in set(stats_df["player_id"].dropna()):
+            present.append("nflverse_player_stats")
+        else:
+            gaps.append("nflverse_player_stats: gsis_id has no rows (never played in 2024-2025, or a rookie)")
+    except FileNotFoundError:
+        gaps.append(f"nflverse_player_stats: table does not exist in {pinned_date}'s snapshot")
+
+    gaps.append("nflverse schedules/Vegas win totals/pbp (get_team_context, get_vacated_opportunity): " + NOT_YET_INGESTED_NOTE)
 
     return _response(
         {"present_in": present, "gaps": gaps},

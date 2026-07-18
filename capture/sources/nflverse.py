@@ -24,3 +24,21 @@ def fetch_ff_playerids() -> pd.DataFrame:
     project actually keeps."""
     df = nfl.load_ff_playerids()
     return df.to_pandas()
+
+
+def fetch_player_stats(seasons: list[int]) -> pd.DataFrame:
+    """Weekly player stats (145 columns: passing/rushing/receiving counting
+    stats, EPA, target_share, air_yards_share, wopr, racr, etc.) for the
+    given seasons. `player_id` here is ALREADY the canonical gsis_id --
+    verified 2026-07-18 (e.g. "00-0023459") -- so this table needs no
+    crosswalk join, unlike Sleeper/ESPN/FFC.
+
+    Note: nflverse's own `fantasy_points`/`fantasy_points_ppr` columns use
+    nflverse's default scoring assumptions, which are NOT verified to match
+    this league's exact settings (charter §5: 4pt passing TD, 1.0 PPR) --
+    don't treat them as this league's PPG without checking get_league_scoring()
+    first. Compute league-accurate fantasy points from the raw counting
+    stats instead.
+    """
+    df = nfl.load_player_stats(seasons=seasons, summary_level="week")
+    return df.to_pandas()

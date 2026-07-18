@@ -29,3 +29,10 @@ CHARTER_ROSTER_SLOTS = {
 }
 CHARTER_PASSING_TD_POINTS = 4.0
 CHARTER_RECEPTION_POINTS = 1.0  # 1.0 PPR
+
+# nflverse player_stats seasons to pull (phase1 §2). Hardcoded to the two
+# most recently COMPLETED seasons rather than computed from today's date --
+# it's currently the 2026 offseason (no games played yet), and these are
+# exactly D-003's frozen-world years (2024-07-15, 2025-07-15). Bump this
+# once the 2026 season completes.
+NFLVERSE_STATS_SEASONS = [2024, 2025]

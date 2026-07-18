@@ -1,0 +1,23 @@
+{
+  "table": "nflverse_player_stats",
+  "version": "v1",
+  "columns": {
+    "player_id": "canonical gsis_id -- ALREADY the crosswalk key, verified 2026-07-18; no join needed",
+    "player_display_name": "player name",
+    "position": "position",
+    "team": "NFL team abbreviation for that game",
+    "season": "season year",
+    "week": "week number within season_type",
+    "season_type": "REG or POST",
+    "targets": "raw target count",
+    "target_share": "player targets / team pass attempts -- matches phase1 \u00a75's target_share metric directly",
+    "air_yards_share": "matches phase1 \u00a75's air_yards_share metric directly",
+    "wopr": "weighted opportunity rating -- nflverse's own version of phase1 \u00a75's weighted_opportunity metric",
+    "racr": "receiver air conversion ratio",
+    "passing_epa": "EPA on pass plays",
+    "rushing_epa": "EPA on rush plays",
+    "receiving_epa": "EPA on targets",
+    "fantasy_points_ppr": "nflverse's OWN ppr scoring assumption -- NOT verified to match this league's exact settings (charter \u00a75: 4pt passing TD); don't treat as this league's PPG without checking get_league_scoring()",
+    "...": "145 columns total from nflreadpy's load_player_stats(); most of the rest are position-specific (K/DST/IDP) counting stats out of charter scope (\u00a74) but kept as-pulled since raw data is never filtered"
+  }
+}

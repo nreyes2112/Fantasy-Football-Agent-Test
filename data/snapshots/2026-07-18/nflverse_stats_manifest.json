@@ -1,0 +1,40 @@
+{
+  "snapshot_date": "2026-07-18",
+  "generated_at": "2026-07-18T19:06:59.692064-04:00",
+  "code_git_commit": "26c2b7915b00a329763b5607c63afc2bf450acbe",
+  "seasons_pulled": [
+    2024,
+    2025
+  ],
+  "source_endpoint": "nflreadpy.load_player_stats(summary_level='week')",
+  "files": [
+    {
+      "table": "player_stats",
+      "path": "data/snapshots/2026-07-18/raw/nflverse/player_stats.parquet",
+      "row_count": 38402,
+      "sha256": "9fdbb93c9e948c1b1a410b25535f35fec45d5c50e250db651d97ec0795d354a1",
+      "schema_version": "v1"
+    }
+  ],
+  "validation": {
+    "stage": "stage1_lite (row-count + non-null id sanity; not yet folded into pull_crosswalk.py's GOLD marker)",
+    "checks": [
+      {
+        "check": "player_stats_2024_min_rows",
+        "passed": true,
+        "detail": "18981 rows (floor 15000)"
+      },
+      {
+        "check": "player_stats_2025_min_rows",
+        "passed": true,
+        "detail": "19421 rows (floor 15000)"
+      },
+      {
+        "check": "player_stats_player_id_non_null_for_player_rows",
+        "passed": true,
+        "detail": "0/38358 player-attributed rows missing player_id (44 team-level aggregate rows excluded from this check)"
+      }
+    ],
+    "all_passed": true
+  }
+}
