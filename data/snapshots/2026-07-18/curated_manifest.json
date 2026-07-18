@@ -1,7 +1,7 @@
 {
   "snapshot_date": "2026-07-18",
-  "generated_at": "2026-07-18T12:45:20.246711-04:00",
-  "code_git_commit": "d2fa5c0d6875ea1f36c7f7c6f556b05bacd35049",
+  "generated_at": "2026-07-18T18:45:49.352822-04:00",
+  "code_git_commit": "b91490df4551865020ba386aa31c007246141107",
   "resolution_stats": {
     "sleeper": {
       "method": "deterministic id join (sleeper_id)",
@@ -65,6 +65,144 @@
       "coverage_pct": 87.5
     }
   ],
+  "validation": {
+    "checks": [
+      {
+        "stage": 1,
+        "check": "raw_sleeper_players_min_rows",
+        "passed": true,
+        "detail": "12200 rows (floor 8000)"
+      },
+      {
+        "stage": 1,
+        "check": "raw_sleeper_trending_adds_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "stage": 1,
+        "check": "raw_sleeper_trending_drops_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "stage": 1,
+        "check": "raw_ffc_adp_min_rows",
+        "passed": true,
+        "detail": "216 rows (floor 50)"
+      },
+      {
+        "stage": 1,
+        "check": "raw_espn_player_pool_min_rows",
+        "passed": true,
+        "detail": "600 rows (floor 400)"
+      },
+      {
+        "stage": 1,
+        "check": "sleeper_players_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "espn_player_pool_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_adp_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "nflverse_crosswalk_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "sleeper_resolved_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "espn_resolved_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_proposed_matches_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_unmatched_queue_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 2,
+        "check": "espn_percent_owned_in_0_100",
+        "passed": true,
+        "detail": "all 600 values within [0, 100]"
+      },
+      {
+        "stage": 2,
+        "check": "espn_percent_started_in_0_100",
+        "passed": true,
+        "detail": "all 600 values within [0, 100]"
+      },
+      {
+        "stage": 2,
+        "check": "espn_adp_positive",
+        "passed": true,
+        "detail": "all 600 values within [0, None]"
+      },
+      {
+        "stage": 2,
+        "check": "ffc_adp_positive",
+        "passed": true,
+        "detail": "all 216 values within [0, None]"
+      },
+      {
+        "stage": 2,
+        "check": "sleeper_age_plausible",
+        "passed": true,
+        "detail": "5/10960 values (0.05%) outside [18, 50] (tolerance 0.2%)"
+      },
+      {
+        "stage": 2,
+        "check": "sleeper_team_codes_known",
+        "passed": true,
+        "detail": "1 rows with unrecognized team codes: ['OAK']"
+      },
+      {
+        "stage": 2,
+        "check": "espn_ffc_adp_agreement_premium",
+        "passed": true,
+        "detail": "0/42 players (0.0%) with ESPN ADP<50 diverge >24 picks from FFC"
+      },
+      {
+        "stage": 2,
+        "check": "espn_ffc_adp_agreement_overall",
+        "passed": true,
+        "detail": "43/188 matched players (22.9%) diverge >24 picks overall (higher tolerance than the premium bucket -- late-round cross-market noise is expected, not an error)"
+      },
+      {
+        "stage": 3,
+        "check": "adp_drift_vs_prior_day",
+        "passed": true,
+        "detail": "first snapshot -- no prior day to compare yet"
+      }
+    ],
+    "all_passed": true,
+    "gold_marked": true
+  },
   "files": [
     {
       "table": "nflverse_crosswalk",

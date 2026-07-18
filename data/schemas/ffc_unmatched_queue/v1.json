@@ -2,6 +2,6 @@
   "table": "ffc_unmatched_queue",
   "version": "v1",
   "columns": {
-    "note": "FFC rows with no confident name proposal -- needs human review before any agent run treats FFC data as identity-resolved"
+    "...": "FFC rows with no confident name proposal -- needs human review before any agent run treats FFC data as identity-resolved"
   }
 }

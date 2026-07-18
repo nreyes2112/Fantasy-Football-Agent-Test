@@ -31,6 +31,7 @@ import pandas as pd
 from capture.config import LEAGUE_TIMEZONE, SCHEMA_ROOT, SNAPSHOT_ROOT
 from capture.crosswalk import charter_universe_coverage, propose_by_name, resolve_source
 from capture.sources import nflverse
+from capture.validation import stage1_schema_completeness, stage2_semantic, stage3_statistical
 
 # Charter's fixed player universe (charter.md §5), used as the acceptance
 # metric's denominator.
@@ -55,7 +56,7 @@ _SCHEMA_NOTES = {
         "gsis_id": "PROPOSED via normalized-name match against merge_name -- NOT a confirmed crosswalk entry (§3); ambiguous names (>1 gsis_id sharing a normalized name) are excluded, not guessed",
     },
     "ffc_unmatched_queue": {
-        "note": "FFC rows with no confident name proposal -- needs human review before any agent run treats FFC data as identity-resolved",
+        "...": "FFC rows with no confident name proposal -- needs human review before any agent run treats FFC data as identity-resolved",
     },
 }
 
@@ -136,6 +137,41 @@ def run() -> int:
     for table, columns in _SCHEMA_NOTES.items():
         _write_schema_once(table, columns)
 
+    # --- Validation pipeline (§6), staged. GOLD is about data quality --
+    # it is NOT gated on crosswalk completeness (`coverage` above), which is
+    # tracked as its own Phase 1 exit-checklist item. ---
+    print("[crosswalk] running validation stages 1-3...")
+    raw_manifest = json.loads((snapshot_dir / "manifest.json").read_text())
+    raw_stage1_lite = raw_manifest["validation"]["checks"]  # pull_daily.py's row-count sanity, re-surfaced here
+
+    stage1 = stage1_schema_completeness(
+        {
+            "sleeper_players": sleeper_df,
+            "espn_player_pool": espn_df,
+            "ffc_adp": ffc_df,
+            "nflverse_crosswalk": nflverse_df,
+            "sleeper_resolved": sleeper_resolved,
+            "espn_resolved": espn_resolved,
+            "ffc_proposed_matches": ffc_proposed,
+            "ffc_unmatched_queue": ffc_unmatched,
+        },
+        Path(SCHEMA_ROOT),
+    )
+    stage2 = stage2_semantic(sleeper_resolved, espn_resolved, ffc_df, ffc_proposed, nflverse_df)
+    stage3 = stage3_statistical(Path(SNAPSHOT_ROOT), today, espn_df)
+
+    all_validation_checks = (
+        [{"stage": 1, "check": f"raw_{c['check']}", "passed": c["passed"], "detail": c["detail"]} for c in raw_stage1_lite]
+        + stage1
+        + stage2
+        + stage3
+    )
+    validation_passed = all(c["passed"] for c in all_validation_checks)
+
+    gold_path = snapshot_dir / "GOLD"
+    if validation_passed and not gold_path.exists():
+        gold_path.write_text("")  # empty marker per §4; written once, never moved
+
     report = {
         "snapshot_date": today,
         "generated_at": datetime.now(LEAGUE_TIMEZONE).isoformat(),
@@ -146,6 +182,11 @@ def run() -> int:
             "ffc": ffc_stats,
         },
         "charter_universe_coverage": coverage,
+        "validation": {
+            "checks": all_validation_checks,
+            "all_passed": validation_passed,
+            "gold_marked": gold_path.exists(),
+        },
         "files": files,
     }
     manifest_path = snapshot_dir / "curated_manifest.json"
@@ -163,10 +204,15 @@ def run() -> int:
         )
         if row["coverage_pct"] < 100.0:
             all_full = False
+    print(f"[crosswalk] validation: {sum(c['passed'] for c in all_validation_checks)}/{len(all_validation_checks)} checks passed"
+          + (" -- GOLD marked" if gold_path.exists() else " -- GOLD NOT marked"))
+    for c in all_validation_checks:
+        if not c["passed"]:
+            print(f"  [FAIL] stage{c['stage']} {c['check']}: {c['detail']}")
     print(f"[crosswalk] wrote {manifest_path}")
     print(f"[crosswalk] unmatched FFC queue: {len(ffc_unmatched)} rows -- needs human review before any agent run")
 
-    return 0 if all_full else 1
+    return 0 if (all_full and validation_passed) else 1
 
 
 if __name__ == "__main__":
