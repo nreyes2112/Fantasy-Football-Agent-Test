@@ -1,0 +1,75 @@
+{
+  "snapshot_date": "2026-07-18",
+  "generated_at": "2026-07-18T11:25:02.011203-04:00",
+  "code_git_commit": "ccdcb2e534b7b11a2cf03491b30246ff562cbb21",
+  "source_endpoints": {
+    "sleeper_players": "https://api.sleeper.app/v1/players/nfl",
+    "sleeper_trending_adds": "https://api.sleeper.app/v1/players/nfl/trending/add",
+    "sleeper_trending_drops": "https://api.sleeper.app/v1/players/nfl/trending/drop",
+    "ffc_adp": "https://fantasyfootballcalculator.com/api/v1/adp/ppr"
+  },
+  "files": [
+    {
+      "source": "sleeper",
+      "table": "players",
+      "path": "data/snapshots/2026-07-18/raw/sleeper/players.parquet",
+      "row_count": 12200,
+      "sha256": "805d8395b46fa53e513110f31eedfd7ca38de6ff3fea46b5360d269488d9cc34",
+      "schema_version": "v1",
+      "pulled_at": "2026-07-18T11:25:01.161216-04:00"
+    },
+    {
+      "source": "sleeper",
+      "table": "trending_adds",
+      "path": "data/snapshots/2026-07-18/raw/sleeper/trending_adds.parquet",
+      "row_count": 100,
+      "sha256": "811db62b1fc477f5f3d1e88ca4e6f84ecc8411ee3bad34f97b801e952ecece46",
+      "schema_version": "v1",
+      "pulled_at": "2026-07-18T11:25:01.387252-04:00"
+    },
+    {
+      "source": "sleeper",
+      "table": "trending_drops",
+      "path": "data/snapshots/2026-07-18/raw/sleeper/trending_drops.parquet",
+      "row_count": 100,
+      "sha256": "32e792531295ba288ddf7cc9dbf10e83a056a6ec87a3d3ef6d8d074082799eb0",
+      "schema_version": "v1",
+      "pulled_at": "2026-07-18T11:25:01.610154-04:00"
+    },
+    {
+      "source": "ffc",
+      "table": "adp",
+      "path": "data/snapshots/2026-07-18/raw/ffc/adp.parquet",
+      "row_count": 216,
+      "sha256": "9d0bab85ece8e7b77a2498312675e876fc992b5685627ad38588b5882ab88df7",
+      "schema_version": "v1",
+      "pulled_at": "2026-07-18T11:25:02.011122-04:00"
+    }
+  ],
+  "validation": {
+    "stage": "stage1_lite (row-count sanity only; stage2/3 not yet implemented)",
+    "checks": [
+      {
+        "check": "sleeper_players_min_rows",
+        "passed": true,
+        "detail": "12200 rows (floor 8000)"
+      },
+      {
+        "check": "sleeper_trending_adds_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "check": "sleeper_trending_drops_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "check": "ffc_adp_min_rows",
+        "passed": true,
+        "detail": "216 rows (floor 50)"
+      }
+    ],
+    "all_passed": true
+  }
+}
