@@ -1,7 +1,7 @@
 {
   "snapshot_date": "2026-07-18",
-  "generated_at": "2026-07-18T19:17:39.349167-04:00",
-  "code_git_commit": "b044b56385d849a8d69e773383c5472127486470",
+  "generated_at": "2026-07-18T19:22:29.035145-04:00",
+  "code_git_commit": "46ba9e23c8998e2defca8ef12ab0896fbc29238e",
   "seasons_pulled": [
     2024,
     2025
@@ -15,7 +15,7 @@
       "table": "player_stats",
       "path": "data/snapshots/2026-07-18/raw/nflverse/player_stats.parquet",
       "row_count": 38402,
-      "sha256": "9fdbb93c9e948c1b1a410b25535f35fec45d5c50e250db651d97ec0795d354a1",
+      "sha256": "125f20e116a65d38bfddfbf369052ebeb9df5d5fe6dd494212cfe749b44f8138",
       "schema_version": "v1"
     },
     {

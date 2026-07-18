@@ -7,15 +7,13 @@ available, note}.
 Player identity everywhere here is the canonical nflverse `gsis_id` (§3) --
 never a Sleeper/ESPN/FFC platform id.
 
-get_player_stats and get_team_context now read real nflverse data
-(player_stats/team_stats, 2024-2025 seasons, capture/pull_stats.py).
-get_vacated_opportunity still needs season-over-season nflverse pbp/roster
-data to identify departed players, not ingested yet -- it honestly reports
-`available: False` with a `note` explaining the gap, per the project's
-no-fabrication rule, rather than fabricate or get skipped entirely. Some
-individual fields within get_team_context (PROE, Vegas win total, OL rank)
-are also genuinely unavailable even with team_stats pulled -- see that
-function's docstring for why each one specifically can't be answered yet.
+All 8 functions now return real data for at least their primary case.
+get_vacated_opportunity reuses player_stats (season-level team volume) and
+sleeper_resolved's live team field (no separate nflverse rosters pull
+needed) to detect departed players. Some individual fields still can't be
+answered honestly with real data: get_team_context's `proe`/`win_total`/
+`ol_rank` are `None` with a reason each (no free source exists for any of
+the three) rather than guessed -- see that function's docstring.
 """
 
 from __future__ import annotations
@@ -35,10 +33,11 @@ from access.snapshot_resolver import (
 )
 from capture.config import ESPN_LEAGUE_ID, ESPN_SEASON
 
-NOT_YET_INGESTED_NOTE = (
-    "nflverse pbp/roster history has not been ingested yet (Phase 1 §2 -- only "
-    "load_ff_playerids(), load_player_stats(), and load_team_stats() have been pulled so "
-    "far). This is not a missing team; it's a source this project hasn't built yet."
+STILL_UNPULLED_SOURCES_NOTE = (
+    "nflverse pbp, full rosters/depth-charts, and draft/combine measurables have not been "
+    "ingested yet (Phase 1 §2 -- load_ff_playerids(), load_player_stats(), and "
+    "load_team_stats() have been pulled so far). get_depth_chart currently substitutes "
+    "Sleeper's own depth_chart_position/_order fields, which cover this adequately for now."
 )
 
 # Rate/share stats are averaged across a window; everything else (raw
@@ -252,10 +251,71 @@ def get_depth_chart(team: str, snapshot_date: str | None = None) -> dict:
 
 # --- get_vacated_opportunity -----------------------------------------------
 
-def get_vacated_opportunity(team: str) -> dict:
-    """Targets/carries vacated by departed players -- needs season-over-season
-    nflverse player_stats, not yet ingested."""
-    return _unavailable("nflverse player_stats (not yet ingested)", NOT_YET_INGESTED_NOTE)
+def get_vacated_opportunity(team: str, season: int | None = None, snapshot_date: str | None = None) -> dict:
+    """Targets/carries vacated by players who had volume on `team` in
+    `season` (default: most recent season pulled) but aren't on `team` per
+    Sleeper's CURRENT team field -- reuses sleeper_resolved (already
+    live-updated day to day) rather than a separate nflverse rosters pull,
+    since "who's on the team right now" is exactly what Sleeper's own team
+    field already tracks. A player showing no current team (retired, or a
+    free agent Sleeper hasn't attached to a roster) counts as departed too.
+    """
+    pinned_date = resolve_snapshot_date(snapshot_date)
+    try:
+        stats_df = load_raw_table(pinned_date, "nflverse", "player_stats")
+    except FileNotFoundError:
+        return _unavailable(
+            "nflverse player_stats",
+            f"no player_stats table in {pinned_date}'s snapshot -- run `python -m capture.pull_stats` (.venv311)",
+        )
+
+    if season is None:
+        season = int(stats_df["season"].max())
+
+    team_season_rows = stats_df[
+        (stats_df["season"] == season) & (stats_df["team"] == team) & stats_df["position"].notna()
+    ]
+    if len(team_season_rows) == 0:
+        return _unavailable("nflverse player_stats", f"no {season} rows for team={team!r}")
+
+    agg = (
+        team_season_rows.groupby("player_id")
+        .agg(targets=("targets", "sum"), carries=("carries", "sum"), name=("player_display_name", "first"))
+        .reset_index()
+    )
+    agg = agg[(agg["targets"] > 0) | (agg["carries"] > 0)]
+
+    try:
+        sleeper_df = load_curated_table(pinned_date, "sleeper_resolved")
+    except FileNotFoundError:
+        return _unavailable("sleeper_resolved", f"no sleeper_resolved table in {pinned_date}'s snapshot")
+
+    current_team_by_gsis = sleeper_df.set_index("gsis_id")["team"].to_dict()
+    agg["current_team"] = agg["player_id"].map(current_team_by_gsis)
+    departed = agg[agg["current_team"] != team].sort_values("targets", ascending=False)
+
+    values = {
+        "vacated_targets": int(departed["targets"].sum()),
+        "vacated_carries": int(departed["carries"].sum()),
+        "departed_players": [
+            {
+                "gsis_id": r["player_id"],
+                "name": r["name"],
+                f"{season}_targets": int(r["targets"]),
+                f"{season}_carries": int(r["carries"]),
+                "current_team": None if pd.isna(r["current_team"]) else r["current_team"],
+            }
+            for _, r in departed.iterrows()
+        ],
+    }
+    return _response(
+        values,
+        f"nflverse player_stats ({season}) vs. Sleeper's current team field",
+        pinned_date,
+        schema_version("nflverse_player_stats"),
+        note=f"'departed' means not currently on {team!r} per Sleeper's live team field as of {pinned_date} "
+        "-- includes trades, free-agent signings elsewhere, retirements, and unsigned free agents alike",
+    )
 
 
 # --- get_comps --------------------------------------------------------
@@ -382,7 +442,7 @@ def list_data_gaps(player_id: str, snapshot_date: str | None = None) -> dict:
     except FileNotFoundError:
         gaps.append(f"nflverse_player_stats: table does not exist in {pinned_date}'s snapshot")
 
-    gaps.append("nflverse pbp/roster history (get_vacated_opportunity): " + NOT_YET_INGESTED_NOTE)
+    gaps.append(STILL_UNPULLED_SOURCES_NOTE)
 
     return _response(
         {"present_in": present, "gaps": gaps},

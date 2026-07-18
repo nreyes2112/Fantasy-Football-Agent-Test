@@ -16,6 +16,13 @@ from __future__ import annotations
 import nflreadpy as nfl
 import pandas as pd
 
+# nflverse uses "LA" for the Rams (a legacy convention) in player_stats AND
+# team_stats (verified 2026-07-18); every other source in this project
+# (Sleeper, ESPN) uses "LAR". Normalized here at the source, on every table
+# that carries a `team` column, so nothing downstream needs to special-case
+# it or silently fail to match Sleeper's current-team field.
+_TEAM_CODE_ALIASES = {"LA": "LAR"}
+
 
 def fetch_ff_playerids() -> pd.DataFrame:
     """One row per player across platforms. Includes gsis_id, sleeper_id,
@@ -40,14 +47,9 @@ def fetch_player_stats(seasons: list[int]) -> pd.DataFrame:
     first. Compute league-accurate fantasy points from the raw counting
     stats instead.
     """
-    df = nfl.load_player_stats(seasons=seasons, summary_level="week")
-    return df.to_pandas()
-
-
-# nflverse's load_team_stats uses "LA" for the Rams (a legacy convention);
-# every other source in this project (Sleeper, ESPN) uses "LAR". Normalized
-# here at the source so nothing downstream needs to special-case it.
-_TEAM_CODE_ALIASES = {"LA": "LAR"}
+    df = nfl.load_player_stats(seasons=seasons, summary_level="week").to_pandas()
+    df["team"] = df["team"].replace(_TEAM_CODE_ALIASES)
+    return df
 
 
 def fetch_team_stats(seasons: list[int]) -> pd.DataFrame:
