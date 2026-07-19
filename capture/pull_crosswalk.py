@@ -27,10 +27,12 @@ from pathlib import Path
 import pandas as pd
 
 from capture.config import LEAGUE_TIMEZONE, NFLVERSE_STATS_SEASONS, SCHEMA_ROOT, SNAPSHOT_ROOT
-from capture.crosswalk import charter_universe_coverage, propose_by_name, resolve_source
+from capture.crosswalk import apply_confirmed_overrides, charter_universe_coverage, propose_by_name, resolve_source
 from capture.manifest_utils import git_commit, sha256_file
 from capture.sources import nflverse
 from capture.validation import stage1_schema_completeness, stage2_semantic, stage3_statistical
+
+CONFIRMED_OVERRIDES_PATH = Path(__file__).parent / "ffc_confirmed_matches.json"
 
 # Charter's fixed player universe (charter.md §5), used as the acceptance
 # metric's denominator.
@@ -54,8 +56,11 @@ _SCHEMA_NOTES = {
     "ffc_proposed_matches": {
         "gsis_id": "PROPOSED via normalized-name match against merge_name -- NOT a confirmed crosswalk entry (§3); ambiguous names (>1 gsis_id sharing a normalized name) are excluded, not guessed",
     },
+    "ffc_confirmed_matches": {
+        "gsis_id": "CONFIRMED by a human after reviewing the unmatched queue -- see capture/ffc_confirmed_matches.json for the reason each entry was confirmed",
+    },
     "ffc_unmatched_queue": {
-        "...": "FFC rows with no confident name proposal -- needs human review before any agent run treats FFC data as identity-resolved",
+        "...": "FFC rows with no confident name proposal AND no human-confirmed override yet -- needs human review before any agent run treats FFC data as identity-resolved",
     },
     "snap_counts_resolved": {
         "gsis_id": "resolved via nflverse_crosswalk.pfr_id <-> this table's pfr_player_id; null = not found in this week's crosswalk",
@@ -96,6 +101,19 @@ def run() -> int:
     espn_resolved, espn_stats = resolve_source(espn_df, "player_id", nflverse_df, "espn_id")
     ffc_proposed, ffc_unmatched, ffc_stats = propose_by_name(ffc_df, "name", nflverse_df, "merge_name")
 
+    # Human-confirmed overrides (capture/ffc_confirmed_matches.json) --
+    # what a queue entry becomes once someone actually looks at it and
+    # confirms who it is (§3). Applied AFTER propose_by_name so a confirmed
+    # override can resolve exactly the ambiguous/nickname cases the
+    # algorithm correctly refused to guess.
+    confirmed_overrides = json.loads(CONFIRMED_OVERRIDES_PATH.read_text())["confirmed"]
+    valid_gsis_ids = set(nflverse_df["gsis_id"].dropna())
+    ffc_confirmed, ffc_unmatched, override_warnings = apply_confirmed_overrides(
+        ffc_unmatched, "name", confirmed_overrides, valid_gsis_ids
+    )
+    for w in override_warnings:
+        print(f"[crosswalk] WARNING: {w}")
+
     # Snap counts (unlocks phase1 §5's snap_share metric) are pulled and
     # resolved here, not in pull_stats.py, because resolution needs THIS
     # crosswalk (pfr_id <-> gsis_id) that's already loaded -- unlike
@@ -109,10 +127,15 @@ def run() -> int:
     snap_counts_df.to_parquet(snap_counts_raw_path, index=False)
     snap_counts_resolved, snap_counts_stats = resolve_source(snap_counts_df, "pfr_player_id", nflverse_df, "pfr_id")
 
+    # Proposed (algorithmic) + confirmed (human-reviewed) FFC matches both
+    # count as resolved for the coverage check -- a confirmed match is at
+    # least as trustworthy as an unconfirmed algorithmic one.
+    ffc_resolved_all = pd.concat([ffc_proposed, ffc_confirmed], ignore_index=True)
+
     coverage = charter_universe_coverage(
         espn_resolved,
         CHARTER_UNIVERSE_SIZES,
-        other_sources={"sleeper": sleeper_resolved, "ffc_proposed": ffc_proposed},
+        other_sources={"sleeper": sleeper_resolved, "ffc_proposed": ffc_resolved_all},
     )
 
     curated_dir.mkdir(parents=True, exist_ok=True)
@@ -134,6 +157,7 @@ def run() -> int:
     write("sleeper_resolved", sleeper_resolved)
     write("espn_resolved", espn_resolved)
     write("ffc_proposed_matches", ffc_proposed)
+    write("ffc_confirmed_matches", ffc_confirmed)
     write("ffc_unmatched_queue", ffc_unmatched)
     write("snap_counts_resolved", snap_counts_resolved)
     files.append(
@@ -163,6 +187,7 @@ def run() -> int:
             "sleeper_resolved": sleeper_resolved,
             "espn_resolved": espn_resolved,
             "ffc_proposed_matches": ffc_proposed,
+            "ffc_confirmed_matches": ffc_confirmed,
             "ffc_unmatched_queue": ffc_unmatched,
             "snap_counts_resolved": snap_counts_resolved,
         },
@@ -191,6 +216,8 @@ def run() -> int:
             "sleeper": sleeper_stats,
             "espn": espn_stats,
             "ffc": ffc_stats,
+            "ffc_confirmed_overrides_applied": len(ffc_confirmed),
+            "ffc_confirmed_override_warnings": override_warnings,
             "snap_counts": snap_counts_stats,
         },
         "charter_universe_coverage": coverage,
@@ -207,6 +234,7 @@ def run() -> int:
     print(f"[crosswalk] Sleeper resolved (all {sleeper_stats['total_rows']} players in Sleeper's dump): {sleeper_stats['coverage_pct']}%")
     print(f"[crosswalk] ESPN resolved (all {espn_stats['total_rows']} players in the pool): {espn_stats['coverage_pct']}%")
     print(f"[crosswalk] FFC proposed (name match, needs confirmation): {ffc_stats['proposed_pct']}%")
+    print(f"[crosswalk] FFC confirmed via human-reviewed overrides: {len(ffc_confirmed)} rows")
     print(f"[crosswalk] snap_counts resolved (all {snap_counts_stats['total_rows']} player-games): {snap_counts_stats['coverage_pct']}%")
     print("[crosswalk] charter universe coverage -- SAME players resolved across ALL sources (ESPN ADP order as consensus proxy):")
     all_full = True

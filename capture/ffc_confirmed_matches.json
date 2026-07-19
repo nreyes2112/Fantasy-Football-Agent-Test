@@ -1,0 +1,47 @@
+{
+  "_comment": "Human-confirmed FFC name -> gsis_id matches (phase1-data-platform-design.md §3: name matches are proposals only; this file is where a proposal becomes a confirmed match after a human actually looks at it). NEVER add an entry here programmatically -- only after a human reviews capture/pull_crosswalk.py's ffc_unmatched_queue output and confirms which player is meant. Each gsis_id is checked against the live crosswalk at build time (capture/pull_crosswalk.py) and the whole entry is skipped with a loud warning if it no longer resolves, rather than silently trusting a stale value.",
+  "confirmed": [
+    {
+      "ffc_name": "Justin Jefferson",
+      "gsis_id": "00-0036322",
+      "reason": "ambiguous collision with a 2026 rookie LB (Cleveland, gsis_id JEF270909) sharing the same normalized name -- confirmed WR (Minnesota)",
+      "confirmed_by": "Nick",
+      "confirmed_date": "2026-07-18"
+    },
+    {
+      "ffc_name": "Lamar Jackson",
+      "gsis_id": "00-0034796",
+      "reason": "ambiguous collision with a CB (Carolina, gsis_id 00-0036152) sharing the same normalized name -- confirmed QB (Baltimore)",
+      "confirmed_by": "Nick",
+      "confirmed_date": "2026-07-18"
+    },
+    {
+      "ffc_name": "DJ Moore",
+      "gsis_id": "00-0034827",
+      "reason": "ambiguous collision with a CB free agent (gsis_id 00-0026907) sharing the same normalized name -- confirmed WR (Buffalo, crosswalk lists him as 'D.J. Moore')",
+      "confirmed_by": "Nick",
+      "confirmed_date": "2026-07-18"
+    },
+    {
+      "ffc_name": "Antonio Williams",
+      "gsis_id": "WIL143106",
+      "reason": "ambiguous collision with an RB free agent (gsis_id 00-0036188) sharing the same normalized name -- confirmed WR (Washington)",
+      "confirmed_by": "Nick",
+      "confirmed_date": "2026-07-18"
+    },
+    {
+      "ffc_name": "Kenny Gainwell",
+      "gsis_id": "00-0036919",
+      "reason": "nickname for Kenneth Gainwell -- the crosswalk uses his formal first name, FFC/ESPN use his common nickname",
+      "confirmed_by": "Nick",
+      "confirmed_date": "2026-07-18"
+    },
+    {
+      "ffc_name": "Chig Okonkwo",
+      "gsis_id": "00-0037809",
+      "reason": "nickname for Chigoziem Okonkwo -- the crosswalk uses his formal first name, FFC/ESPN use his common nickname",
+      "confirmed_by": "Nick",
+      "confirmed_date": "2026-07-18"
+    }
+  ]
+}

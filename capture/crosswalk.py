@@ -118,6 +118,51 @@ def propose_by_name(
     return proposed, unmatched, stats
 
 
+def apply_confirmed_overrides(
+    unmatched_df: pd.DataFrame, name_col: str, overrides: list[dict], valid_gsis_ids: set
+) -> tuple[pd.DataFrame, pd.DataFrame, list[str]]:
+    """Applies human-confirmed name -> gsis_id overrides (capture/
+    ffc_confirmed_matches.json) to whatever propose_by_name() couldn't
+    resolve -- this is what a queue entry becomes AFTER a human actually
+    looks at it and confirms who it is (§3's "human confirmation").
+
+    An override whose gsis_id no longer exists in the live crosswalk is
+    skipped with a warning rather than trusted blindly (a player could
+    theoretically be dropped from a future DynastyProcess release).
+
+    Returns (confirmed_df, still_unmatched_df, warnings).
+    """
+    warnings = []
+    confirmed_rows = []
+    remaining = unmatched_df
+
+    for override in overrides:
+        name = override["ffc_name"]
+        gsis_id = override["gsis_id"]
+        if gsis_id not in valid_gsis_ids:
+            warnings.append(
+                f"override for {name!r} points to gsis_id {gsis_id!r}, which no longer exists "
+                "in the crosswalk -- skipped, NOT applied"
+            )
+            continue
+        matches = remaining[remaining[name_col] == name]
+        if len(matches) == 0:
+            continue  # not currently unmatched (already resolved another way, or absent from this pull)
+        for _, row in matches.iterrows():
+            row_dict = row.to_dict()
+            row_dict["gsis_id"] = gsis_id
+            confirmed_rows.append(row_dict)
+        remaining = remaining.drop(matches.index)
+
+    if confirmed_rows:
+        confirmed_df = pd.DataFrame(confirmed_rows)
+    else:
+        confirmed_df = unmatched_df.iloc[0:0].copy()
+        confirmed_df["gsis_id"] = pd.Series(dtype=object)
+
+    return confirmed_df, remaining, warnings
+
+
 def charter_universe_coverage(
     espn_resolved: pd.DataFrame,
     universe_sizes: dict[str, int],

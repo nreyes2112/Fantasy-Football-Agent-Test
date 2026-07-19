@@ -1,0 +1,7 @@
+{
+  "table": "ffc_confirmed_matches",
+  "version": "v1",
+  "columns": {
+    "gsis_id": "CONFIRMED by a human after reviewing the unmatched queue -- see capture/ffc_confirmed_matches.json for the reason each entry was confirmed"
+  }
+}

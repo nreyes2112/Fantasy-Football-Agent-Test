@@ -1,7 +1,7 @@
 {
   "snapshot_date": "2026-07-18",
-  "generated_at": "2026-07-18T19:53:29.203574-04:00",
-  "code_git_commit": "860f38a84007aa1fcf59ba98f26248cb11a6d846",
+  "generated_at": "2026-07-18T20:08:55.410958-04:00",
+  "code_git_commit": "fdc8815a4811b0d05703cff108421391b4afefad",
   "resolution_stats": {
     "sleeper": {
       "method": "deterministic id join (sleeper_id)",
@@ -22,6 +22,8 @@
       "unmatched_rows": 28,
       "proposed_pct": 87.04
     },
+    "ffc_confirmed_overrides_applied": 6,
+    "ffc_confirmed_override_warnings": [],
     "snap_counts": {
       "method": "deterministic id join (pfr_id)",
       "total_rows": 53227,
@@ -36,9 +38,9 @@
       "rows_available": 24,
       "espn_resolved": 24,
       "sleeper_found": 24,
-      "ffc_proposed_found": 23,
-      "fully_resolved_across_all_sources": 23,
-      "coverage_pct": 95.83
+      "ffc_proposed_found": 24,
+      "fully_resolved_across_all_sources": 24,
+      "coverage_pct": 100.0
     },
     {
       "position": "RB",
@@ -46,9 +48,9 @@
       "rows_available": 48,
       "espn_resolved": 48,
       "sleeper_found": 48,
-      "ffc_proposed_found": 45,
-      "fully_resolved_across_all_sources": 45,
-      "coverage_pct": 93.75
+      "ffc_proposed_found": 46,
+      "fully_resolved_across_all_sources": 46,
+      "coverage_pct": 95.83
     },
     {
       "position": "WR",
@@ -56,9 +58,9 @@
       "rows_available": 60,
       "espn_resolved": 60,
       "sleeper_found": 60,
-      "ffc_proposed_found": 58,
-      "fully_resolved_across_all_sources": 58,
-      "coverage_pct": 96.67
+      "ffc_proposed_found": 60,
+      "fully_resolved_across_all_sources": 60,
+      "coverage_pct": 100.0
     },
     {
       "position": "TE",
@@ -142,6 +144,12 @@
       {
         "stage": 1,
         "check": "ffc_proposed_matches_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_confirmed_matches_columns_match_schema",
         "passed": true,
         "detail": "all documented columns present"
       },
@@ -241,10 +249,16 @@
       "sha256": "240f6f35700e9ac12c1bab7ce4581484f7e67378428fb7c5c9bd9cbc79601d96"
     },
     {
+      "table": "ffc_confirmed_matches",
+      "path": "data/snapshots/2026-07-18/curated/ffc_confirmed_matches.parquet",
+      "row_count": 6,
+      "sha256": "763c49d57211ebaf5de2ff4a6fe48823a17a7b0e237a177dd1ea73e22823e003"
+    },
+    {
       "table": "ffc_unmatched_queue",
       "path": "data/snapshots/2026-07-18/curated/ffc_unmatched_queue.parquet",
-      "row_count": 28,
-      "sha256": "b2bc0718ccc79ce903c0002b00ef58e9f3524d2120ea7a24a615bd09bc5889c3"
+      "row_count": 22,
+      "sha256": "f12dbf4a0e7148966bc49334ac62bcb9ecfb220dcf07c9ecea58e2b161f3163b"
     },
     {
       "table": "snap_counts_resolved",
