@@ -1,0 +1,23 @@
+{
+  "season": 2024,
+  "generated_at": "2026-07-18T20:48:35.488034-04:00",
+  "code_git_commit": "d8672a00fdbf8f472f9a719c1244efcdbee673bd",
+  "source_snapshot_date": "2026-07-18",
+  "source_table": "raw/nflverse/player_stats (nflreadpy load_player_stats)",
+  "source_schema_version": "v1",
+  "scoring_source": "access.metrics.league_scoring_by_column() -- ESPN live settings, charter.md \u00a75",
+  "games_threshold": 8,
+  "positions": [
+    "QB",
+    "RB",
+    "WR",
+    "TE"
+  ],
+  "season_type_included": "REG only",
+  "row_count": 375,
+  "file": {
+    "path": "backtest/ground_truth/2024/positional_finishes.parquet",
+    "sha256": "c02b17d089b2518a917a64fd804f059d7baefefc8ba94b32fe3ea157560e545b"
+  },
+  "note": "Ground truth built from a completed season -- no as-of-date leakage risk by construction. Kept outside data/snapshots/ and outside frozen_worlds/ per the phase2 leakage checklist ('ground truth stored outside the world directory with access denied to candidate runs')."
+}

@@ -1,0 +1,45 @@
+{
+  "world_date": "2024-06-18",
+  "audited_at": "2026-07-19T14:42:35.627703",
+  "auditor": "backtest/leakage_audit.py (automated)",
+  "checks": [
+    {
+      "check": "source_timestamps_on_or_before_world_date",
+      "passed": true,
+      "detail": "34 source timestamps checked across 3 manifests"
+    },
+    {
+      "check": "provenance_documented_per_snapshot",
+      "passed": true,
+      "detail": "3 source manifests checked"
+    },
+    {
+      "check": "ground_truth_isolated_from_candidate_building_code",
+      "passed": true,
+      "detail": "checked 3 candidate-building modules for ground-truth imports (none should exist); backtest/ground_truth/ and backtest/frozen_worlds/ confirmed directory-separated"
+    },
+    {
+      "check": "spot_check_surprises",
+      "passed": true,
+      "detail": "Found 3 real market-vs-outcome surprises (>5-spot gap required to pass): Ray-Ray McCloud III (WR): ADP had him at WR166 pre-season, actually finished WR64 (8.38 PPG) -- a 102-spot surprise; Jalen Coker (WR): ADP had him at WR154 pre-season, actually finished WR63 (8.41 PPG) -- a 91-spot surprise; Kareem Hunt (RB): ADP had him at RB116 pre-season, actually finished RB26 (11.95 PPG) -- a 90-spot surprise. Large positive surprises are structurally impossible if this world's ADP secretly knew the season's outcome -- their presence is itself evidence against leakage, not proof by absence."
+    }
+  ],
+  "not_applicable_or_by_construction": [
+    {
+      "check": "no_curated_column_derived_from_post_date_data",
+      "status": "N/A",
+      "detail": "no curated/derived tables exist within a frozen world yet -- only raw pulled data"
+    },
+    {
+      "check": "rookie_data_limited_to_pre_date_events",
+      "status": "N/A",
+      "detail": "no separate as-of-date draft-capital pull exists yet; draft class/round/pick are fixed historical facts from the current (non-dated) crosswalk, low-risk but undocumented per-world"
+    },
+    {
+      "check": "missing_values_never_backfilled",
+      "status": "BY_CONSTRUCTION",
+      "detail": "no code path in capture/ or backtest/frozen_worlds/ imputes a missing value from a later snapshot -- verified by inspection, not automatically scanned"
+    }
+  ],
+  "all_automated_checks_passed": true
+}

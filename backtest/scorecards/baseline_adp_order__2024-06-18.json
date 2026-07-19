@@ -1,0 +1,41 @@
+{
+  "run_id": "baseline_adp_order__2024-06-18",
+  "config_hash": "778d0a2ab228ce42",
+  "world": "2024-06-18",
+  "outcome_season": 2024,
+  "system": "baseline_adp_order",
+  "runs": 1,
+  "generated_at": "2026-07-19T14:38:57.231792",
+  "code_git_commit": "d8672a00fdbf8f472f9a719c1244efcdbee673bd",
+  "headline": {
+    "spearman_by_pos": {
+      "QB": {
+        "spearman": 0.4527,
+        "universe_size": 24
+      },
+      "RB": {
+        "spearman": 0.627,
+        "universe_size": 48
+      },
+      "WR": {
+        "spearman": 0.6072,
+        "universe_size": 60
+      },
+      "TE": {
+        "spearman": 0.4002,
+        "universe_size": 24
+      }
+    },
+    "spearman_overall_naive": 0.398
+  },
+  "diagnostics": {
+    "mae_by_pos": {
+      "QB": 7.58,
+      "RB": 13.42,
+      "WR": 19.17,
+      "TE": 7.21
+    },
+    "positions_beating_naive_zero": 4
+  },
+  "notes": "spearman_overall_naive is NOT VORP-adjusted (see backtest/scoring.py's module docstring) -- raw-PPG pooling across positions trivially favors QBs under this league's 4pt-passing-TD scoring, so it is not yet the operational SM2 'overall' figure. Per-position spearman_by_pos is the trustworthy signal from this run. tier_accuracy (SM3) not computed -- needs Phase 6's Gaussian-mixture tiering, not built yet."
+}

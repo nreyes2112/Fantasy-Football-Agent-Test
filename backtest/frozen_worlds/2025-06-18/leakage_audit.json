@@ -1,0 +1,45 @@
+{
+  "world_date": "2025-06-18",
+  "audited_at": "2026-07-19T14:42:35.648820",
+  "auditor": "backtest/leakage_audit.py (automated)",
+  "checks": [
+    {
+      "check": "source_timestamps_on_or_before_world_date",
+      "passed": true,
+      "detail": "34 source timestamps checked across 3 manifests"
+    },
+    {
+      "check": "provenance_documented_per_snapshot",
+      "passed": true,
+      "detail": "3 source manifests checked"
+    },
+    {
+      "check": "ground_truth_isolated_from_candidate_building_code",
+      "passed": true,
+      "detail": "checked 3 candidate-building modules for ground-truth imports (none should exist); backtest/ground_truth/ and backtest/frozen_worlds/ confirmed directory-separated"
+    },
+    {
+      "check": "spot_check_surprises",
+      "passed": true,
+      "detail": "Found 3 real market-vs-outcome surprises (>5-spot gap required to pass): Christian Watson (WR): ADP had him at WR129 pre-season, actually finished WR16 (13.24 PPG) -- a 113-spot surprise; Sterling Shepard (WR): ADP had him at WR156 pre-season, actually finished WR70 (6.31 PPG) -- a 86-spot surprise; Parker Washington (WR): ADP had him at WR120 pre-season, actually finished WR36 (10.79 PPG) -- a 84-spot surprise. Large positive surprises are structurally impossible if this world's ADP secretly knew the season's outcome -- their presence is itself evidence against leakage, not proof by absence."
+    }
+  ],
+  "not_applicable_or_by_construction": [
+    {
+      "check": "no_curated_column_derived_from_post_date_data",
+      "status": "N/A",
+      "detail": "no curated/derived tables exist within a frozen world yet -- only raw pulled data"
+    },
+    {
+      "check": "rookie_data_limited_to_pre_date_events",
+      "status": "N/A",
+      "detail": "no separate as-of-date draft-capital pull exists yet; draft class/round/pick are fixed historical facts from the current (non-dated) crosswalk, low-risk but undocumented per-world"
+    },
+    {
+      "check": "missing_values_never_backfilled",
+      "status": "BY_CONSTRUCTION",
+      "detail": "no code path in capture/ or backtest/frozen_worlds/ imputes a missing value from a later snapshot -- verified by inspection, not automatically scanned"
+    }
+  ],
+  "all_automated_checks_passed": true
+}

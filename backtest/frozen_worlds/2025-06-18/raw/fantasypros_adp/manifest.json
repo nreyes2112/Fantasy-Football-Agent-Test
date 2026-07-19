@@ -1,0 +1,28 @@
+{
+  "world_date": "2025-06-18",
+  "generated_at": "2026-07-18T20:57:46.678923",
+  "code_git_commit": "d8672a00fdbf8f472f9a719c1244efcdbee673bd",
+  "source": {
+    "provider": "FantasyPros ADP (fantasypros.com/nfl/adp/ppr-overall.php), via Wayback Machine archive",
+    "original_url": "https://www.fantasypros.com/nfl/adp/ppr-overall.php",
+    "wayback_url": "http://web.archive.org/web/20250618085726id_/https://www.fantasypros.com/nfl/adp/ppr-overall.php",
+    "source_timestamp": "2025-06-18T08:57:26",
+    "decision": "decisions.md D-009"
+  },
+  "resolution": {
+    "method": "deterministic id join (fantasypros_id)",
+    "crosswalk_snapshot_date": "2026-07-18",
+    "total_rows": 403,
+    "resolved_rows": 401,
+    "coverage_pct": 99.5
+  },
+  "row_count": 403,
+  "file": {
+    "path": "backtest/frozen_worlds/2025-06-18/raw/fantasypros_adp/adp.parquet",
+    "sha256": "b53e70e92cc72b19af1771c9b996e033959e700eb3128b0e2d7256e92b1abaed"
+  },
+  "leakage_audit": {
+    "source_timestamp_on_or_before_world_date": true,
+    "note": "source_timestamp (2025-06-18T08:57:26) predates world_date (2025-06-18) -- world_date IS the snapshot date (D-009 re-anchored the world to the data, not the reverse), so this is trivially satisfied by construction. Still recorded explicitly per the phase2 leakage checklist's first line item."
+  }
+}

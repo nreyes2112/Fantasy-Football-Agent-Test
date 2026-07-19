@@ -1,0 +1,94 @@
+{
+  "run_id": "baseline_naive_repeat__2025-06-18__20260719T144525",
+  "config_hash": "ffe72276cbed97a4",
+  "world": "2025-06-18",
+  "outcome_season": 2025,
+  "system": "baseline_naive_repeat",
+  "runs": 3,
+  "generated_at": "2026-07-19T14:45:25.124537",
+  "code_git_commit": "d8672a00fdbf8f472f9a719c1244efcdbee673bd",
+  "headline": {
+    "spearman_overall": null,
+    "spearman_overall_naive": {
+      "mean": 0.5399,
+      "range": [
+        0.5399,
+        0.5399
+      ]
+    },
+    "spearman_by_pos": {
+      "QB": {
+        "mean": 0.2406,
+        "range": [
+          0.2406,
+          0.2406
+        ]
+      },
+      "RB": {
+        "mean": 0.6495,
+        "range": [
+          0.6495,
+          0.6495
+        ]
+      },
+      "WR": {
+        "mean": 0.5264,
+        "range": [
+          0.5264,
+          0.5264
+        ]
+      },
+      "TE": {
+        "mean": 0.1882,
+        "range": [
+          0.1882,
+          0.1882
+        ]
+      }
+    },
+    "tier_accuracy": null,
+    "myguys_sim": null
+  },
+  "diagnostics": {
+    "mae_by_pos": {
+      "QB": {
+        "mean": 9.0,
+        "range": [
+          9.0,
+          9.0
+        ]
+      },
+      "RB": {
+        "mean": 13.38,
+        "range": [
+          13.38,
+          13.38
+        ]
+      },
+      "WR": {
+        "mean": 23.6,
+        "range": [
+          23.6,
+          23.6
+        ]
+      },
+      "TE": {
+        "mean": 13.33,
+        "range": [
+          13.33,
+          13.33
+        ]
+      }
+    },
+    "topN_hits": null,
+    "calibration": null,
+    "bust_avoidance": null,
+    "positional_failure_flags": [
+      "QB",
+      "TE"
+    ]
+  },
+  "vs_baselines": null,
+  "verdict": null,
+  "notes": "headline.spearman_overall / tier_accuracy / myguys_sim, diagnostics.topN_hits / calibration / bust_avoidance, and vs_baselines / verdict are all null -- they need infrastructure not built yet (Phase 6 VORP for a fair cross-position overall rank, Phase 6 tiering, the My Guys selection rule, bootstrap CIs, and/or a real non-baseline candidate to compare against). Present in the schema, not faked or silently dropped, so a future real run fills them in without a schema migration. positional_failure_flags is a crude stand-in (>0.15 Spearman gap vs. WR) for phase2 \u00a73's real definition ('any position whose Spearman trails ADP's by more than the overall gap') -- the real definition needs spearman_overall to exist first. runs=3: every system registered today is deterministic (no LLM involved yet), so this mechanically proves the N-run/mean/range infrastructure (phase2 \u00a75) rather than measuring real variance -- range will be [x,x] until a real nondeterministic agent exists."
+}

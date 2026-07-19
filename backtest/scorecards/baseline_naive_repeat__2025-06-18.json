@@ -1,0 +1,41 @@
+{
+  "run_id": "baseline_naive_repeat__2025-06-18",
+  "config_hash": "7a8a2c6f0fbb5dfd",
+  "world": "2025-06-18",
+  "outcome_season": 2025,
+  "system": "baseline_naive_repeat",
+  "runs": 1,
+  "generated_at": "2026-07-19T14:38:57.647655",
+  "code_git_commit": "d8672a00fdbf8f472f9a719c1244efcdbee673bd",
+  "headline": {
+    "spearman_by_pos": {
+      "QB": {
+        "spearman": 0.2406,
+        "universe_size": 24
+      },
+      "RB": {
+        "spearman": 0.6495,
+        "universe_size": 48
+      },
+      "WR": {
+        "spearman": 0.5264,
+        "universe_size": 60
+      },
+      "TE": {
+        "spearman": 0.1882,
+        "universe_size": 24
+      }
+    },
+    "spearman_overall_naive": 0.5399
+  },
+  "diagnostics": {
+    "mae_by_pos": {
+      "QB": 9.0,
+      "RB": 13.38,
+      "WR": 23.6,
+      "TE": 13.33
+    },
+    "positions_beating_naive_zero": 4
+  },
+  "notes": "spearman_overall_naive is NOT VORP-adjusted (see backtest/scoring.py's module docstring) -- raw-PPG pooling across positions trivially favors QBs under this league's 4pt-passing-TD scoring, so it is not yet the operational SM2 'overall' figure. Per-position spearman_by_pos is the trustworthy signal from this run. tier_accuracy (SM3) not computed -- needs Phase 6's Gaussian-mixture tiering, not built yet. Candidate = actual 2024 season finish used as the 2025 guess."
+}

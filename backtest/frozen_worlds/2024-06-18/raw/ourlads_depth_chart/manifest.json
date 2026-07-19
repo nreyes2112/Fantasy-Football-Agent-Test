@@ -1,0 +1,71 @@
+{
+  "world_date": "2024-06-18",
+  "generated_at": "2026-07-19T14:29:13.396445",
+  "code_git_commit": "d8672a00fdbf8f472f9a719c1244efcdbee673bd",
+  "source": {
+    "provider": "Ourlads NFL depth charts (ourlads.com/nfldepthcharts), via Wayback Machine archive",
+    "teams_requested": 32,
+    "teams_fetched": 32,
+    "teams_failed": [],
+    "per_team_source_timestamp": {
+      "ARI": "20240603214224",
+      "ATL": "20240603214347",
+      "BAL": "20240301041321",
+      "BUF": "20240603214242",
+      "CAR": "20240603214252",
+      "CHI": "20240603214314",
+      "CIN": "20240603214216",
+      "CLE": "20240612132742",
+      "DAL": "20240603214407",
+      "DEN": "20240602132410",
+      "GB": "20240603214202",
+      "HOU": "20240603214331",
+      "IND": "20240224215807",
+      "JAX": "20240603214220",
+      "KC": "20240614001646",
+      "LAC": "20240306230850",
+      "LAR": "20240603214151",
+      "LV": "20240603214239",
+      "MIA": "20240614033706",
+      "MIN": "20240603214152",
+      "NO": "20240524103522",
+      "NYG": "20240529012214",
+      "NYJ": "20240603214246",
+      "PHI": "20240603214256",
+      "PIT": "20240603214308",
+      "SEA": "20240603214245",
+      "SF": "20240226104232",
+      "TB": "20240603214138",
+      "TEN": "20240528144436",
+      "WAS": "20240510213653",
+      "DET": "20240603214208",
+      "NE": "20240603214134"
+    },
+    "latest_source_timestamp": "20240614033706"
+  },
+  "resolution": {
+    "method": "proposed name match (player_name vs merge_name, ambiguous names excluded)",
+    "crosswalk_snapshot_date": "2026-07-18",
+    "total_rows": 848,
+    "proposed_rows": 753,
+    "unmatched_rows": 95,
+    "proposed_pct": 88.8
+  },
+  "scope": "offense skill positions only (QB/RB/WR/TE) per charter.md \u00a74 -- O-line/defense/special-teams/FB rows dropped",
+  "files": {
+    "proposed_matches": {
+      "path": "backtest/frozen_worlds/2024-06-18/raw/ourlads_depth_chart/depth_chart_proposed.parquet",
+      "sha256": "9a4a92ba466b3921eee5f3bac88847579461f09c9196be3808c5103064255db5",
+      "row_count": 753
+    },
+    "unmatched_queue": {
+      "path": "backtest/frozen_worlds/2024-06-18/raw/ourlads_depth_chart/unmatched_queue.parquet",
+      "sha256": "a2d8f8401380a42e724bf3805fd59a7877ad504e85a2297f15c470746409e660",
+      "row_count": 95
+    }
+  },
+  "leakage_audit": {
+    "source_timestamp_on_or_before_world_date": true,
+    "note": "every team's snapshot was queried with an explicit CDX `to=2024-06-18` cutoff, so each one is individually guaranteed <= world_date by construction, not just the latest of the batch."
+  }
+}
