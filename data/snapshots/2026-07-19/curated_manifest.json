@@ -1,0 +1,276 @@
+{
+  "snapshot_date": "2026-07-19",
+  "generated_at": "2026-07-19T08:51:31.042534-04:00",
+  "code_git_commit": "8f0ceefab92253023b3b23395d458ddd5589f587",
+  "resolution_stats": {
+    "sleeper": {
+      "method": "deterministic id join (sleeper_id)",
+      "total_rows": 12206,
+      "resolved_rows": 6154,
+      "coverage_pct": 50.42
+    },
+    "espn": {
+      "method": "deterministic id join (espn_id)",
+      "total_rows": 600,
+      "resolved_rows": 568,
+      "coverage_pct": 94.67
+    },
+    "ffc": {
+      "method": "proposed name match (name vs merge_name, ambiguous names excluded)",
+      "total_rows": 217,
+      "proposed_rows": 188,
+      "unmatched_rows": 29,
+      "proposed_pct": 86.64
+    },
+    "ffc_confirmed_overrides_applied": 6,
+    "ffc_confirmed_override_warnings": [],
+    "snap_counts": {
+      "method": "deterministic id join (pfr_id)",
+      "total_rows": 53227,
+      "resolved_rows": 43310,
+      "coverage_pct": 81.37
+    }
+  },
+  "charter_universe_coverage": [
+    {
+      "position": "QB",
+      "universe_size": 24,
+      "rows_available": 24,
+      "espn_resolved": 24,
+      "sleeper_found": 24,
+      "ffc_proposed_found": 24,
+      "fully_resolved_across_all_sources": 24,
+      "coverage_pct": 100.0
+    },
+    {
+      "position": "RB",
+      "universe_size": 48,
+      "rows_available": 48,
+      "espn_resolved": 48,
+      "sleeper_found": 48,
+      "ffc_proposed_found": 47,
+      "fully_resolved_across_all_sources": 47,
+      "coverage_pct": 97.92
+    },
+    {
+      "position": "WR",
+      "universe_size": 60,
+      "rows_available": 60,
+      "espn_resolved": 60,
+      "sleeper_found": 60,
+      "ffc_proposed_found": 60,
+      "fully_resolved_across_all_sources": 60,
+      "coverage_pct": 100.0
+    },
+    {
+      "position": "TE",
+      "universe_size": 24,
+      "rows_available": 24,
+      "espn_resolved": 24,
+      "sleeper_found": 24,
+      "ffc_proposed_found": 21,
+      "fully_resolved_across_all_sources": 21,
+      "coverage_pct": 87.5
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "stage": 1,
+        "check": "raw_sleeper_players_min_rows",
+        "passed": true,
+        "detail": "12200 rows (floor 8000)"
+      },
+      {
+        "stage": 1,
+        "check": "raw_sleeper_trending_adds_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "stage": 1,
+        "check": "raw_sleeper_trending_drops_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "stage": 1,
+        "check": "raw_ffc_adp_min_rows",
+        "passed": true,
+        "detail": "217 rows (floor 50)"
+      },
+      {
+        "stage": 1,
+        "check": "raw_espn_player_pool_min_rows",
+        "passed": true,
+        "detail": "600 rows (floor 400)"
+      },
+      {
+        "stage": 1,
+        "check": "sleeper_players_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "espn_player_pool_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_adp_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "nflverse_crosswalk_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "sleeper_resolved_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "espn_resolved_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_proposed_matches_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_confirmed_matches_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "ffc_unmatched_queue_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 1,
+        "check": "snap_counts_resolved_columns_match_schema",
+        "passed": true,
+        "detail": "all documented columns present"
+      },
+      {
+        "stage": 2,
+        "check": "espn_percent_owned_in_0_100",
+        "passed": true,
+        "detail": "all 600 values within [0, 100]"
+      },
+      {
+        "stage": 2,
+        "check": "espn_percent_started_in_0_100",
+        "passed": true,
+        "detail": "all 600 values within [0, 100]"
+      },
+      {
+        "stage": 2,
+        "check": "espn_adp_positive",
+        "passed": true,
+        "detail": "all 600 values within [0, None]"
+      },
+      {
+        "stage": 2,
+        "check": "ffc_adp_positive",
+        "passed": true,
+        "detail": "all 217 values within [0, None]"
+      },
+      {
+        "stage": 2,
+        "check": "sleeper_age_plausible",
+        "passed": true,
+        "detail": "5/10960 values (0.05%) outside [18, 50] (tolerance 0.2%)"
+      },
+      {
+        "stage": 2,
+        "check": "sleeper_team_codes_known",
+        "passed": true,
+        "detail": "1 rows with unrecognized team codes: ['OAK']"
+      },
+      {
+        "stage": 2,
+        "check": "espn_ffc_adp_agreement_premium",
+        "passed": true,
+        "detail": "0/42 players (0.0%) with ESPN ADP<50 diverge >24 picks from FFC"
+      },
+      {
+        "stage": 2,
+        "check": "espn_ffc_adp_agreement_overall",
+        "passed": true,
+        "detail": "44/188 matched players (23.4%) diverge >24 picks overall (higher tolerance than the premium bucket -- late-round cross-market noise is expected, not an error)"
+      },
+      {
+        "stage": 3,
+        "check": "adp_drift_vs_prior_day",
+        "passed": true,
+        "detail": "0/600 players moved >20 ADP picks vs 2026-07-18 -- informational (Phase 5 signal), not necessarily a data error unless the rate itself is extreme"
+      }
+    ],
+    "all_passed": true,
+    "gold_marked": true
+  },
+  "files": [
+    {
+      "table": "nflverse_crosswalk",
+      "path": "data/snapshots/2026-07-19/curated/nflverse_crosswalk.parquet",
+      "row_count": 12467,
+      "sha256": "1b2fbf93993a2de45f5a427ac7cf3837e6c4100423c4f20bc70df59c418692b0"
+    },
+    {
+      "table": "sleeper_resolved",
+      "path": "data/snapshots/2026-07-19/curated/sleeper_resolved.parquet",
+      "row_count": 12206,
+      "sha256": "47640de8138456098b09cc40489b320186408d2270ad6433f8681d3ed119036f"
+    },
+    {
+      "table": "espn_resolved",
+      "path": "data/snapshots/2026-07-19/curated/espn_resolved.parquet",
+      "row_count": 600,
+      "sha256": "a856483918005a329275aff0b9f2c3aad4b10885439bfcfb44a29a08f0efe1b1"
+    },
+    {
+      "table": "ffc_proposed_matches",
+      "path": "data/snapshots/2026-07-19/curated/ffc_proposed_matches.parquet",
+      "row_count": 188,
+      "sha256": "3d5c407202505baadc6c439a986f02ce7d1b2960f1ecdef7af863e42b10bf36f"
+    },
+    {
+      "table": "ffc_confirmed_matches",
+      "path": "data/snapshots/2026-07-19/curated/ffc_confirmed_matches.parquet",
+      "row_count": 6,
+      "sha256": "2b787be5dfe1bd8ddee996c5e4ccbf03dcb80d9af62faf86e4a3975f95a4ba29"
+    },
+    {
+      "table": "ffc_unmatched_queue",
+      "path": "data/snapshots/2026-07-19/curated/ffc_unmatched_queue.parquet",
+      "row_count": 23,
+      "sha256": "74dfece7af61385fc1d12e4582c60b35cb44777c488a5e95ba9903619448a49a"
+    },
+    {
+      "table": "snap_counts_resolved",
+      "path": "data/snapshots/2026-07-19/curated/snap_counts_resolved.parquet",
+      "row_count": 53227,
+      "sha256": "7ae6f33a86f5fd10ca48171c207c75b91526f63a11c16f160ac4253a9d8baa54"
+    },
+    {
+      "table": "snap_counts_raw",
+      "path": "data/snapshots/2026-07-19/raw/nflverse/snap_counts.parquet",
+      "row_count": 53227,
+      "sha256": "265f342e934b5fe790a5ac4a1a8a5e0ca30fdffc1a87de406ee579795f1f5649"
+    }
+  ]
+}
