@@ -1,7 +1,7 @@
 {
   "snapshot_date": "2026-07-18",
-  "generated_at": "2026-07-18T19:53:31.234965-04:00",
-  "code_git_commit": "860f38a84007aa1fcf59ba98f26248cb11a6d846",
+  "generated_at": "2026-07-18T20:10:30.754802-04:00",
+  "code_git_commit": "1a914c6866c3ca95a285e2298e66bcb8ed036c0f",
   "built_from": [
     "data/snapshots/2026-07-18/raw/nflverse/player_stats.parquet",
     "data/snapshots/2026-07-18/curated/snap_counts_resolved.parquet"
