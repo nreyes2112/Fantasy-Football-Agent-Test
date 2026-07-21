@@ -1,0 +1,1283 @@
+{
+ "team_context": {
+  "ARI": {
+   "plays_per_game": 59.18,
+   "pass_rate": 0.5398
+  },
+  "ATL": {
+   "plays_per_game": 62.0,
+   "pass_rate": 0.5304
+  },
+  "BAL": {
+   "plays_per_game": 60.65,
+   "pass_rate": 0.4627
+  },
+  "BUF": {
+   "plays_per_game": 59.47,
+   "pass_rate": 0.5143
+  },
+  "CHI": {
+   "plays_per_game": 58.65,
+   "pass_rate": 0.5677
+  },
+  "CIN": {
+   "plays_per_game": 60.71,
+   "pass_rate": 0.6318
+  },
+  "CLE": {
+   "plays_per_game": 61.88,
+   "pass_rate": 0.6283
+  },
+  "DAL": {
+   "plays_per_game": 62.71,
+   "pass_rate": 0.5976
+  },
+  "DEN": {
+   "plays_per_game": 60.65,
+   "pass_rate": 0.5529
+  },
+  "DET": {
+   "plays_per_game": 63.82,
+   "pass_rate": 0.5078
+  },
+  "GB": {
+   "plays_per_game": 59.12,
+   "pass_rate": 0.4766
+  },
+  "IND": {
+   "plays_per_game": 59.35,
+   "pass_rate": 0.5084
+  },
+  "JAX": {
+   "plays_per_game": 56.47,
+   "pass_rate": 0.5687
+  },
+  "KC": {
+   "plays_per_game": 61.76,
+   "pass_rate": 0.5714
+  },
+  "LV": {
+   "plays_per_game": 59.71,
+   "pass_rate": 0.6256
+  },
+  "MIA": {
+   "plays_per_game": 61.12,
+   "pass_rate": 0.5688
+  },
+  "MIN": {
+   "plays_per_game": 59.12,
+   "pass_rate": 0.5453
+  },
+  "NE": {
+   "plays_per_game": 57.35,
+   "pass_rate": 0.5426
+  },
+  "PHI": {
+   "plays_per_game": 62.88,
+   "pass_rate": 0.4191
+  },
+  "PIT": {
+   "plays_per_game": 60.71,
+   "pass_rate": 0.4835
+  },
+  "SF": {
+   "plays_per_game": 58.24,
+   "pass_rate": 0.5384
+  },
+  "TB": {
+   "plays_per_game": 62.0,
+   "pass_rate": 0.5417
+  },
+  "WAS": {
+   "plays_per_game": 61.82,
+   "pass_rate": 0.4995
+  }
+ },
+ "vacated_targets": {
+  "ARI": 11,
+  "ATL": 1,
+  "BAL": 6,
+  "BUF": 99,
+  "CHI": 154,
+  "CIN": 19,
+  "CLE": 258,
+  "DAL": 135,
+  "DEN": 146,
+  "DET": 11,
+  "GB": 0,
+  "IND": 14,
+  "JAX": 218,
+  "KC": 163,
+  "LV": 176,
+  "MIA": 66,
+  "MIN": 58,
+  "NE": 38,
+  "PHI": 44,
+  "PIT": 224,
+  "SF": 127,
+  "TB": 0,
+  "WAS": 118
+ },
+ "te_rooms": {
+  "ARI": [
+   [
+    "Trey McBride",
+    "00-0037744",
+    1
+   ],
+   [
+    "Tip Reiman",
+    "00-0039737",
+    2
+   ],
+   [
+    "Elijah Higgins",
+    "00-0039041",
+    3
+   ],
+   [
+    "Josiah Deguara",
+    "00-0036332",
+    4
+   ],
+   [
+    "Travis Vokolek",
+    "00-0038456",
+    5
+   ]
+  ],
+  "ATL": [
+   [
+    "Kyle Pitts",
+    "00-0036970",
+    1
+   ],
+   [
+    "Charlie Woerner",
+    "00-0036429",
+    2
+   ],
+   [
+    "Teagan Quitoriano",
+    "00-0037277",
+    3
+   ],
+   [
+    "Feleipe Franks",
+    "00-0036825",
+    4
+   ],
+   [
+    "Nikola Kalinic",
+    "00-0037031",
+    5
+   ],
+   [
+    "Joshua Simon",
+    "00-0040552",
+    5
+   ]
+  ],
+  "BAL": [
+   [
+    "Mark Andrews",
+    "00-0034753",
+    1
+   ],
+   [
+    "Isaiah Likely",
+    "00-0037838",
+    2
+   ],
+   [
+    "Charlie Kolar",
+    "00-0038046",
+    3
+   ]
+  ],
+  "BUF": [
+   [
+    "Dawson Knox",
+    "00-0035689",
+    1
+   ],
+   [
+    "Dalton Kincaid",
+    "00-0038933",
+    2
+   ],
+   [
+    "Jackson Hawes",
+    "00-0040194",
+    3
+   ],
+   [
+    "Zach Davidson",
+    "00-0036640",
+    4
+   ],
+   [
+    "Keleki Latu",
+    "00-0040363",
+    5
+   ]
+  ],
+  "CHI": [
+   [
+    "Colston Loveland",
+    "00-0040126",
+    1
+   ],
+   [
+    "Cole Kmet",
+    "00-0036290",
+    2
+   ],
+   [
+    "Durham Smythe",
+    "00-0034798",
+    3
+   ],
+   [
+    "Stephen Carlson",
+    "00-0035039",
+    4
+   ]
+  ],
+  "CIN": [
+   [
+    "Mike Gesicki",
+    "00-0034829",
+    1
+   ],
+   [
+    "Drew Sample",
+    "00-0035631",
+    2
+   ],
+   [
+    "Erick All Jr.",
+    "00-0039814",
+    3
+   ],
+   [
+    "Cam Grandy",
+    "00-0039631",
+    4
+   ],
+   [
+    "TANNER HUDSON",
+    "00-0034613",
+    5
+   ],
+   [
+    "Tanner McLachlan",
+    "00-0039399",
+    5
+   ]
+  ],
+  "CLE": [
+   [
+    "David Njoku",
+    "00-0033885",
+    1
+   ],
+   [
+    "Harold Fannin Jr.",
+    "00-0040663",
+    2
+   ],
+   [
+    "Blake Whiteheart",
+    "00-0038710",
+    3
+   ],
+   [
+    "Brenden Bates",
+    "00-0039458",
+    4
+   ],
+   [
+    "Tre' McKitty",
+    "00-0037011",
+    5
+   ]
+  ],
+  "DAL": [
+   [
+    "Jake Ferguson",
+    "00-0038041",
+    1
+   ],
+   [
+    "Luke Schoonmaker",
+    "00-0038547",
+    2
+   ],
+   [
+    "Brevyn Spann-Ford",
+    "00-0039530",
+    3
+   ],
+   [
+    "John Stephens Jr.",
+    "00-0038741",
+    4
+   ],
+   [
+    "Princeton Fant",
+    "00-0038735",
+    4
+   ]
+  ],
+  "DEN": [
+   [
+    "EVAN ENGRAM",
+    "00-0033881",
+    1
+   ],
+   [
+    "Adam Trautman",
+    "00-0036422",
+    2
+   ],
+   [
+    "Nate Adkins",
+    "00-0038783",
+    3
+   ],
+   [
+    "Lucas Krull",
+    "00-0037539",
+    4
+   ],
+   [
+    "Caleb Lohner",
+    "00-0040240",
+    5
+   ]
+  ],
+  "DET": [
+   [
+    "Sam LaPorta",
+    "00-0039065",
+    1
+   ],
+   [
+    "Brock Wright",
+    "00-0036754",
+    2
+   ],
+   [
+    "Kenny Yeboah",
+    "00-0036510",
+    3
+   ],
+   [
+    "Shane Zylstra",
+    "00-0036534",
+    4
+   ]
+  ],
+  "GB": [
+   [
+    "Tucker Kraft",
+    "00-0038996",
+    1
+   ],
+   [
+    "Luke Musgrave",
+    "00-0039144",
+    2
+   ],
+   [
+    "Ben Sims",
+    "00-0038809",
+    3
+   ],
+   [
+    "John FitzPatrick",
+    "00-0037306",
+    4
+   ]
+  ],
+  "IND": [
+   [
+    "MO ALIE-COX",
+    "00-0033217",
+    1
+   ],
+   [
+    "Kylen Granson",
+    "00-0036876",
+    3
+   ],
+   [
+    "Jelani Woods",
+    "00-0037755",
+    4
+   ],
+   [
+    "Will Mallory",
+    "00-0038394",
+    5
+   ]
+  ],
+  "JAX": [
+   [
+    "Brenton Strange",
+    "00-0038935",
+    1
+   ],
+   [
+    "JOHNNY MUNDT",
+    "00-0033246",
+    2
+   ],
+   [
+    "Hunter Long",
+    "00-0037004",
+    3
+   ]
+  ],
+  "KC": [
+   [
+    "TRAVIS KELCE",
+    "00-0030506",
+    1
+   ],
+   [
+    "Noah Gray",
+    "00-0036637",
+    2
+   ],
+   [
+    "Jared Wiley",
+    "00-0039824",
+    3
+   ],
+   [
+    "ANTHONY FIRKSER",
+    "00-0033455",
+    3
+   ],
+   [
+    "Baylor Cupp",
+    "00-0039316",
+    4
+   ],
+   [
+    "ROBERT TONYAN",
+    "00-0033757",
+    4
+   ],
+   [
+    "Jake Briningstool",
+    "00-0040081",
+    5
+   ]
+  ],
+  "LV": [
+   [
+    "Brock Bowers",
+    "00-0039338",
+    1
+   ],
+   [
+    "Michael Mayer",
+    "00-0039066",
+    2
+   ],
+   [
+    "Ian Thomas",
+    "00-0034365",
+    3
+   ],
+   [
+    "Justin Shorter",
+    "00-0038590",
+    4
+   ],
+   [
+    "Carter Runyon",
+    "00-0040488",
+    5
+   ]
+  ],
+  "MIA": [
+   [
+    "Jonnu Smith",
+    "00-0033858",
+    1
+   ],
+   [
+    "Julian Hill",
+    "00-0038720",
+    2
+   ],
+   [
+    "Tanner Conner",
+    "00-0037348",
+    3
+   ],
+   [
+    "Jack Stoll",
+    "00-0036741",
+    4
+   ]
+  ],
+  "MIN": [
+   [
+    "T.J. Hockenson",
+    "00-0035229",
+    1
+   ],
+   [
+    "Josh Oliver",
+    "00-0035249",
+    2
+   ],
+   [
+    "Gavin Bartholomew",
+    "00-0040215",
+    3
+   ],
+   [
+    "Giovanni Ricci",
+    "00-0035956",
+    4
+   ],
+   [
+    "Ben Yurosek",
+    "00-0040509",
+    5
+   ]
+  ],
+  "NE": [
+   [
+    "HUNTER HENRY",
+    "00-0033090",
+    1
+   ],
+   [
+    "AUSTIN HOOPER",
+    "00-0032392",
+    2
+   ],
+   [
+    "Jaheim Bell",
+    "00-0039420",
+    3
+   ],
+   [
+    "Jack Westover",
+    "00-0039305",
+    4
+   ],
+   [
+    "CJ Dippre",
+    "00-0040566",
+    5
+   ],
+   [
+    "Gee Scott Jr.",
+    "00-0040571",
+    5
+   ]
+  ],
+  "PHI": [
+   [
+    "DALLAS GOEDERT",
+    "00-0034351",
+    1
+   ],
+   [
+    "Grant Calcaterra",
+    "00-0037086",
+    2
+   ],
+   [
+    "Kylen Granson",
+    "00-0036876",
+    3
+   ],
+   [
+    "Harrison Bryant",
+    "00-0036232",
+    4
+   ],
+   [
+    "E.J. Jenkins",
+    "00-0038498",
+    4
+   ],
+   [
+    "Nick Muse",
+    "00-0037317",
+    5
+   ],
+   [
+    "Cameron Latu",
+    "00-0038564",
+    5
+   ]
+  ],
+  "PIT": [
+   [
+    "Pat Freiermuth",
+    "00-0036894",
+    1
+   ],
+   [
+    "Darnell Washington",
+    "00-0038558",
+    2
+   ],
+   [
+    "Donald Parham Jr.",
+    "00-0035329",
+    3
+   ]
+  ],
+  "SF": [
+   [
+    "GEORGE KITTLE",
+    "00-0033288",
+    1
+   ],
+   [
+    "Luke Farrell",
+    "00-0036887",
+    2
+   ],
+   [
+    "Brayden Willis",
+    "00-0038643",
+    3
+   ],
+   [
+    "Jake Tonges",
+    "00-0037112",
+    4
+   ],
+   [
+    "Mason Pline",
+    "00-0039702",
+    5
+   ]
+  ],
+  "TB": [
+   [
+    "Cade Otton",
+    "00-0038129",
+    1
+   ],
+   [
+    "Payne Durham",
+    "00-0039050",
+    2
+   ],
+   [
+    "Ko Kieft",
+    "00-0037311",
+    3
+   ],
+   [
+    "Devin Culp",
+    "00-0039754",
+    4
+   ]
+  ],
+  "WAS": [
+   [
+    "ZACH ERTZ",
+    "00-0030061",
+    1
+   ],
+   [
+    "John Bates",
+    "00-0036628",
+    2
+   ],
+   [
+    "Ben Sinnott",
+    "00-0039912",
+    3
+   ],
+   [
+    "Colson Yankoff",
+    "00-0039686",
+    4
+   ],
+   [
+    "Cole Turner",
+    "00-0037078",
+    4
+   ],
+   [
+    "Tyree Jackson",
+    "00-0035356",
+    5
+   ],
+   [
+    "Lawrence Cager",
+    "00-0036145",
+    5
+   ]
+  ]
+ },
+ "players": [
+  {
+   "gsis": "00-0039338",
+   "name": "Brock Bowers",
+   "team": "LV",
+   "g24": 17,
+   "fantasy_points_league_ppg": 15.45,
+   "target_share": 0.2554,
+   "targets": 153.0,
+   "receptions": 112.0,
+   "receiving_yards": 1194.0,
+   "receiving_tds": 5.0,
+   "snap_share": 0.8494,
+   "l8": {
+    "ppg": 16.81,
+    "ts": 0.2718,
+    "ss": 0.9225,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037744",
+   "name": "Trey McBride",
+   "team": "ARI",
+   "g24": 16,
+   "fantasy_points_league_ppg": 15.61,
+   "target_share": 0.2864,
+   "targets": 147.0,
+   "receptions": 111.0,
+   "receiving_yards": 1146.0,
+   "receiving_tds": 2.0,
+   "snap_share": 0.8981,
+   "l8": {
+    "ppg": 18.06,
+    "ts": 0.3071,
+    "ss": 0.9012,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033288",
+   "name": "George Kittle",
+   "team": "SF",
+   "g24": 15,
+   "fantasy_points_league_ppg": 15.77,
+   "target_share": 0.2074,
+   "targets": 94.0,
+   "receptions": 78.0,
+   "receiving_yards": 1106.0,
+   "receiving_tds": 8.0,
+   "snap_share": 0.866,
+   "l8": {
+    "ppg": 13.79,
+    "ts": 0.1824,
+    "ss": 0.8438,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039065",
+   "name": "Sam LaPorta",
+   "team": "DET",
+   "g24": 16,
+   "fantasy_points_league_ppg": 10.91,
+   "target_share": 0.1752,
+   "targets": 83.0,
+   "receptions": 60.0,
+   "receiving_yards": 726.0,
+   "receiving_tds": 7.0,
+   "snap_share": 0.8488,
+   "l8": {
+    "ppg": 13.82,
+    "ts": 0.2082,
+    "ss": 0.8988,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0035229",
+   "name": "T.J. Hockenson",
+   "team": "MIN",
+   "g24": 10,
+   "fantasy_points_league_ppg": 8.65,
+   "target_share": 0.1813,
+   "targets": 62.0,
+   "receptions": 41.0,
+   "receiving_yards": 455.0,
+   "receiving_tds": 0.0,
+   "snap_share": 0.615,
+   "l8": {
+    "ppg": 8.2,
+    "ts": 0.1811,
+    "ss": 0.655,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0030506",
+   "name": "Travis Kelce",
+   "team": "KC",
+   "g24": 16,
+   "fantasy_points_league_ppg": 12.21,
+   "target_share": 0.2334,
+   "targets": 133.0,
+   "receptions": 97.0,
+   "receiving_yards": 823.0,
+   "receiving_tds": 3.0,
+   "snap_share": 0.8456,
+   "l8": {
+    "ppg": 11.97,
+    "ts": 0.2222,
+    "ss": 0.865,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033881",
+   "name": "Evan Engram",
+   "team": "DEN",
+   "g24": 9,
+   "fantasy_points_league_ppg": 9.94,
+   "target_share": 0.2546,
+   "targets": 64.0,
+   "receptions": 47.0,
+   "receiving_yards": 365.0,
+   "receiving_tds": 1.0,
+   "snap_share": 0.72,
+   "l8": {
+    "ppg": 11.0,
+    "ts": 0.2601,
+    "ss": 0.725,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0034753",
+   "name": "Mark Andrews",
+   "team": "BAL",
+   "g24": 17,
+   "fantasy_points_league_ppg": 11.11,
+   "target_share": 0.1496,
+   "targets": 69.0,
+   "receptions": 55.0,
+   "receiving_yards": 673.0,
+   "receiving_tds": 11.0,
+   "snap_share": 0.6112,
+   "l8": {
+    "ppg": 13.99,
+    "ts": 0.1862,
+    "ss": 0.6763,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033858",
+   "name": "Jonnu Smith",
+   "team": "MIA",
+   "g24": 17,
+   "fantasy_points_league_ppg": 13.08,
+   "target_share": 0.1933,
+   "targets": 111.0,
+   "receptions": 88.0,
+   "receiving_yards": 884.0,
+   "receiving_tds": 8.0,
+   "snap_share": 0.5488,
+   "l8": {
+    "ppg": 18.59,
+    "ts": 0.2248,
+    "ss": 0.6438,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033885",
+   "name": "David Njoku",
+   "team": "CLE",
+   "g24": 11,
+   "fantasy_points_league_ppg": 13.5,
+   "target_share": 0.2272,
+   "targets": 97.0,
+   "receptions": 64.0,
+   "receiving_yards": 505.0,
+   "receiving_tds": 5.0,
+   "snap_share": 0.7491,
+   "l8": {
+    "ppg": 16.2,
+    "ts": 0.2465,
+    "ss": 0.8387,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0040128",
+   "name": "Tyler Warren",
+   "team": "IND",
+   "no_2024_stats": true,
+   "dc_order": null
+  },
+  {
+   "gsis": "00-0040126",
+   "name": "Colston Loveland",
+   "team": "CHI",
+   "no_2024_stats": true,
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038996",
+   "name": "Tucker Kraft",
+   "team": "GB",
+   "g24": 17,
+   "fantasy_points_league_ppg": 9.61,
+   "target_share": 0.151,
+   "targets": 70.0,
+   "receptions": 50.0,
+   "receiving_yards": 707.0,
+   "receiving_tds": 7.0,
+   "snap_share": 0.8576,
+   "l8": {
+    "ppg": 8.41,
+    "ts": 0.1589,
+    "ss": 0.8538,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038933",
+   "name": "Dalton Kincaid",
+   "team": "BUF",
+   "g24": 13,
+   "fantasy_points_league_ppg": 7.75,
+   "target_share": 0.2019,
+   "targets": 75.0,
+   "receptions": 44.0,
+   "receiving_yards": 448.0,
+   "receiving_tds": 2.0,
+   "snap_share": 0.57,
+   "l8": {
+    "ppg": 7.9,
+    "ts": 0.2104,
+    "ss": 0.5463,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0034351",
+   "name": "Dallas Goedert",
+   "team": "PHI",
+   "g24": 10,
+   "fantasy_points_league_ppg": 10.36,
+   "target_share": 0.1928,
+   "targets": 52.0,
+   "receptions": 42.0,
+   "receiving_yards": 496.0,
+   "receiving_tds": 2.0,
+   "snap_share": 0.65,
+   "l8": {
+    "ppg": 11.21,
+    "ts": 0.2022,
+    "ss": 0.5887,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037838",
+   "name": "Isaiah Likely",
+   "team": "BAL",
+   "g24": 15,
+   "fantasy_points_league_ppg": 8.25,
+   "target_share": 0.1332,
+   "targets": 58.0,
+   "receptions": 42.0,
+   "receiving_yards": 477.0,
+   "receiving_tds": 6.0,
+   "snap_share": 0.5973,
+   "l8": {
+    "ppg": 7.91,
+    "ts": 0.125,
+    "ss": 0.5837,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0038041",
+   "name": "Jake Ferguson",
+   "team": "DAL",
+   "g24": 14,
+   "fantasy_points_league_ppg": 7.46,
+   "target_share": 0.1738,
+   "targets": 86.0,
+   "receptions": 59.0,
+   "receiving_yards": 494.0,
+   "receiving_tds": 0.0,
+   "snap_share": 0.6529,
+   "l8": {
+    "ppg": 5.89,
+    "ts": 0.1628,
+    "ss": 0.6088,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036970",
+   "name": "Kyle Pitts",
+   "team": "ATL",
+   "g24": 17,
+   "fantasy_points_league_ppg": 7.72,
+   "target_share": 0.1391,
+   "targets": 74.0,
+   "receptions": 47.0,
+   "receiving_yards": 602.0,
+   "receiving_tds": 4.0,
+   "snap_share": 0.62,
+   "l8": {
+    "ppg": 5.03,
+    "ts": 0.1289,
+    "ss": 0.5262,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038935",
+   "name": "Brenton Strange",
+   "team": "JAX",
+   "g24": 14,
+   "fantasy_points_league_ppg": 6.51,
+   "target_share": 0.1143,
+   "targets": 53.0,
+   "receptions": 40.0,
+   "receiving_yards": 411.0,
+   "receiving_tds": 2.0,
+   "snap_share": 0.5879,
+   "l8": {
+    "ppg": 5.26,
+    "ts": 0.1037,
+    "ss": 0.5662,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036894",
+   "name": "Pat Freiermuth",
+   "team": "PIT",
+   "g24": 17,
+   "fantasy_points_league_ppg": 10.02,
+   "target_share": 0.1695,
+   "targets": 78.0,
+   "receptions": 65.0,
+   "receiving_yards": 653.0,
+   "receiving_tds": 7.0,
+   "snap_share": 0.6929,
+   "l8": {
+    "ppg": 11.9,
+    "ts": 0.1939,
+    "ss": 0.6612,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033090",
+   "name": "Hunter Henry",
+   "team": "NE",
+   "g24": 16,
+   "fantasy_points_league_ppg": 9.09,
+   "target_share": 0.2036,
+   "targets": 97.0,
+   "receptions": 66.0,
+   "receiving_yards": 674.0,
+   "receiving_tds": 2.0,
+   "snap_share": 0.8062,
+   "l8": {
+    "ppg": 8.95,
+    "ts": 0.2072,
+    "ss": 0.8075,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0030061",
+   "name": "Zach Ertz",
+   "team": "WAS",
+   "g24": 17,
+   "fantasy_points_league_ppg": 10.44,
+   "target_share": 0.1786,
+   "targets": 91.0,
+   "receptions": 66.0,
+   "receiving_yards": 654.0,
+   "receiving_tds": 7.0,
+   "snap_share": 0.6688,
+   "l8": {
+    "ppg": 12.68,
+    "ts": 0.1738,
+    "ss": 0.6875,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0034829",
+   "name": "Mike Gesicki",
+   "team": "CIN",
+   "g24": 16,
+   "fantasy_points_league_ppg": 8.84,
+   "target_share": 0.1317,
+   "targets": 83.0,
+   "receptions": 65.0,
+   "receiving_yards": 665.0,
+   "receiving_tds": 2.0,
+   "snap_share": 0.4531,
+   "l8": {
+    "ppg": 8.28,
+    "ts": 0.1329,
+    "ss": 0.4962,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038129",
+   "name": "Cade Otton",
+   "team": "TB",
+   "g24": 14,
+   "fantasy_points_league_ppg": 10.04,
+   "target_share": 0.1844,
+   "targets": 87.0,
+   "receptions": 59.0,
+   "receiving_yards": 600.0,
+   "receiving_tds": 4.0,
+   "snap_share": 0.9286,
+   "l8": {
+    "ppg": 12.71,
+    "ts": 0.2043,
+    "ss": 0.9338,
+    "g": 8
+   },
+   "dc_order": 1
+  }
+ ],
+ "enriched_d017": {
+  "00-0039338": {
+   "red_zone_target_share": 0.1798,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0037744": {
+   "red_zone_target_share": 0.2973,
+   "red_zone_carry_share": 0.0127
+  },
+  "00-0033288": {
+   "red_zone_target_share": 0.2386,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0039065": {
+   "red_zone_target_share": 0.198,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0035229": {
+   "red_zone_target_share": 0.125,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0030506": {
+   "red_zone_target_share": 0.2411,
+   "red_zone_carry_share": 0.0114
+  },
+  "00-0033881": {
+   "red_zone_target_share": 0.1892,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0034753": {
+   "red_zone_target_share": 0.2162,
+   "red_zone_carry_share": 0.0111
+  },
+  "00-0033858": {
+   "red_zone_target_share": 0.1782,
+   "red_zone_carry_share": 0.0141
+  },
+  "00-0033885": {
+   "red_zone_target_share": 0.2759,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0040128": {
+   "red_zone_target_share": null,
+   "red_zone_carry_share": null
+  },
+  "00-0040126": {
+   "red_zone_target_share": null,
+   "red_zone_carry_share": null
+  },
+  "00-0038996": {
+   "red_zone_target_share": 0.1818,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0038933": {
+   "red_zone_target_share": 0.1471,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0034351": {
+   "red_zone_target_share": 0.2143,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0037838": {
+   "red_zone_target_share": 0.2,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0038041": {
+   "red_zone_target_share": 0.0882,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0036970": {
+   "red_zone_target_share": 0.1912,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0038935": {
+   "red_zone_target_share": 0.0923,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0036894": {
+   "red_zone_target_share": 0.1842,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0033090": {
+   "red_zone_target_share": 0.2222,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0030061": {
+   "red_zone_target_share": 0.2644,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0034829": {
+   "red_zone_target_share": 0.0752,
+   "red_zone_carry_share": 0.0
+  },
+  "00-0038129": {
+   "red_zone_target_share": 0.2222,
+   "red_zone_carry_share": 0.0
+  }
+ }
+}

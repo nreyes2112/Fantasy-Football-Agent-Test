@@ -1,0 +1,422 @@
+[
+  {
+    "gsis_id":"00-0036900",
+    "player_name":"Ja'Marr Chase",
+    "team":"CIN",
+    "position":"WR",
+    "pool_rank_source":1
+  },
+  {
+    "gsis_id":"00-0036322",
+    "player_name":"Justin Jefferson",
+    "team":"MIN",
+    "position":"WR",
+    "pool_rank_source":2
+  },
+  {
+    "gsis_id":"00-0036358",
+    "player_name":"CeeDee Lamb",
+    "team":"DAL",
+    "position":"WR",
+    "pool_rank_source":3
+  },
+  {
+    "gsis_id":"00-0039075",
+    "player_name":"Puka Nacua",
+    "team":"LAR",
+    "position":"WR",
+    "pool_rank_source":4
+  },
+  {
+    "gsis_id":"00-0039337",
+    "player_name":"Malik Nabers",
+    "team":"NYG",
+    "position":"WR",
+    "pool_rank_source":5
+  },
+  {
+    "gsis_id":"00-0036963",
+    "player_name":"Amon-Ra St. Brown",
+    "team":"DET",
+    "position":"WR",
+    "pool_rank_source":6
+  },
+  {
+    "gsis_id":"00-0036554",
+    "player_name":"Nico Collins",
+    "team":"HOU",
+    "position":"WR",
+    "pool_rank_source":7
+  },
+  {
+    "gsis_id":"00-0039893",
+    "player_name":"Brian Thomas Jr.",
+    "team":"JAX",
+    "position":"WR",
+    "pool_rank_source":8
+  },
+  {
+    "gsis_id":"00-0037238",
+    "player_name":"Drake London",
+    "team":"ATL",
+    "position":"WR",
+    "pool_rank_source":9
+  },
+  {
+    "gsis_id":"00-0035676",
+    "player_name":"A.J. Brown",
+    "team":"PHI",
+    "position":"WR",
+    "pool_rank_source":10
+  },
+  {
+    "gsis_id":"00-0039915",
+    "player_name":"Ladd McConkey",
+    "team":"LAC",
+    "position":"WR",
+    "pool_rank_source":11
+  },
+  {
+    "gsis_id":"00-0039067",
+    "player_name":"Rashee Rice",
+    "team":"KC",
+    "position":"WR",
+    "pool_rank_source":12
+  },
+  {
+    "gsis_id":"00-0036410",
+    "player_name":"Tee Higgins",
+    "team":"CIN",
+    "position":"WR",
+    "pool_rank_source":13
+  },
+  {
+    "gsis_id":"00-0037740",
+    "player_name":"Garrett Wilson",
+    "team":"NYJ",
+    "position":"WR",
+    "pool_rank_source":14
+  },
+  {
+    "gsis_id":"00-0039849",
+    "player_name":"Marvin Harrison Jr.",
+    "team":"ARI",
+    "position":"WR",
+    "pool_rank_source":15
+  },
+  {
+    "gsis_id":"00-0031381",
+    "player_name":"Davante Adams",
+    "team":"LAR",
+    "position":"WR",
+    "pool_rank_source":16
+  },
+  {
+    "gsis_id":"00-0033040",
+    "player_name":"Tyreek Hill",
+    "team":"MIA",
+    "position":"WR",
+    "pool_rank_source":17
+  },
+  {
+    "gsis_id":"00-0038543",
+    "player_name":"Jaxon Smith-Njigba",
+    "team":"SEA",
+    "position":"WR",
+    "pool_rank_source":18
+  },
+  {
+    "gsis_id":"00-0035659",
+    "player_name":"Terry McLaurin",
+    "team":"WAS",
+    "position":"WR",
+    "pool_rank_source":19
+  },
+  {
+    "gsis_id":"00-0031408",
+    "player_name":"Mike Evans",
+    "team":"TB",
+    "position":"WR",
+    "pool_rank_source":20
+  },
+  {
+    "gsis_id":"00-0039894",
+    "player_name":"Xavier Worthy",
+    "team":"KC",
+    "position":"WR",
+    "pool_rank_source":21
+  },
+  {
+    "gsis_id":"00-0040124",
+    "player_name":"Tetairoa McMillan",
+    "team":"CAR",
+    "position":"WR",
+    "pool_rank_source":22
+  },
+  {
+    "gsis_id":"00-0034827",
+    "player_name":"DJ Moore",
+    "team":"CHI",
+    "position":"WR",
+    "pool_rank_source":23
+  },
+  {
+    "gsis_id":"00-0037240",
+    "player_name":"Jameson Williams",
+    "team":"DET",
+    "position":"WR",
+    "pool_rank_source":24
+  },
+  {
+    "gsis_id":"00-0035640",
+    "player_name":"DK Metcalf",
+    "team":"PIT",
+    "position":"WR",
+    "pool_rank_source":25
+  },
+  {
+    "gsis_id":"00-0036912",
+    "player_name":"DeVonta Smith",
+    "team":"PHI",
+    "position":"WR",
+    "pool_rank_source":26
+  },
+  {
+    "gsis_id":"00-0040718",
+    "player_name":"Travis Hunter",
+    "team":"JAX",
+    "position":"WR",
+    "pool_rank_source":27
+  },
+  {
+    "gsis_id":"00-0034348",
+    "player_name":"Courtland Sutton",
+    "team":"DEN",
+    "position":"WR",
+    "pool_rank_source":28
+  },
+  {
+    "gsis_id":"00-0037247",
+    "player_name":"George Pickens",
+    "team":"DAL",
+    "position":"WR",
+    "pool_rank_source":29
+  },
+  {
+    "gsis_id":"00-0039064",
+    "player_name":"Zay Flowers",
+    "team":"BAL",
+    "position":"WR",
+    "pool_rank_source":30
+  },
+  {
+    "gsis_id":"00-0036613",
+    "player_name":"Jaylen Waddle",
+    "team":"MIA",
+    "position":"WR",
+    "pool_rank_source":31
+  },
+  {
+    "gsis_id":"00-0034837",
+    "player_name":"Calvin Ridley",
+    "team":"TEN",
+    "position":"WR",
+    "pool_rank_source":32
+  },
+  {
+    "gsis_id":"00-0036259",
+    "player_name":"Jauan Jennings",
+    "team":"SF",
+    "position":"WR",
+    "pool_rank_source":33
+  },
+  {
+    "gsis_id":"00-0033921",
+    "player_name":"Chris Godwin",
+    "team":"TB",
+    "position":"WR",
+    "pool_rank_source":34
+  },
+  {
+    "gsis_id":"00-0039919",
+    "player_name":"Rome Odunze",
+    "team":"CHI",
+    "position":"WR",
+    "pool_rank_source":35
+  },
+  {
+    "gsis_id":"00-0038994",
+    "player_name":"Jordan Addison",
+    "team":"MIN",
+    "position":"WR",
+    "pool_rank_source":36
+  },
+  {
+    "gsis_id":"00-0037239",
+    "player_name":"Chris Olave",
+    "team":"NO",
+    "position":"WR",
+    "pool_rank_source":37
+  },
+  {
+    "gsis_id":"00-0036407",
+    "player_name":"Jerry Jeudy",
+    "team":"CLE",
+    "position":"WR",
+    "pool_rank_source":38
+  },
+  {
+    "gsis_id":"00-0035719",
+    "player_name":"Deebo Samuel Sr.",
+    "team":"WAS",
+    "position":"WR",
+    "pool_rank_source":39
+  },
+  {
+    "gsis_id":"00-0034960",
+    "player_name":"Jakobi Meyers",
+    "team":"LV",
+    "position":"WR",
+    "pool_rank_source":40
+  },
+  {
+    "gsis_id":"00-0039916",
+    "player_name":"Ricky Pearsall",
+    "team":"SF",
+    "position":"WR",
+    "pool_rank_source":41
+  },
+  {
+    "gsis_id":"00-0037261",
+    "player_name":"Khalil Shakir",
+    "team":"BUF",
+    "position":"WR",
+    "pool_rank_source":42
+  },
+  {
+    "gsis_id":"00-0040667",
+    "player_name":"Matthew Golden",
+    "team":"GB",
+    "position":"WR",
+    "pool_rank_source":43
+  },
+  {
+    "gsis_id":"00-0031588",
+    "player_name":"Stefon Diggs",
+    "team":"NE",
+    "position":"WR",
+    "pool_rank_source":44
+  },
+  {
+    "gsis_id":"00-0039146",
+    "player_name":"Jayden Reed",
+    "team":"GB",
+    "position":"WR",
+    "pool_rank_source":45
+  },
+  {
+    "gsis_id":"00-0038997",
+    "player_name":"Josh Downs",
+    "team":"IND",
+    "position":"WR",
+    "pool_rank_source":46
+  },
+  {
+    "gsis_id":"00-0036309",
+    "player_name":"Darnell Mooney",
+    "team":"ATL",
+    "position":"WR",
+    "pool_rank_source":47
+  },
+  {
+    "gsis_id":"00-0036261",
+    "player_name":"Brandon Aiyuk",
+    "team":"SF",
+    "position":"WR",
+    "pool_rank_source":48
+  },
+  {
+    "gsis_id":"00-0033908",
+    "player_name":"Cooper Kupp",
+    "team":"SEA",
+    "position":"WR",
+    "pool_rank_source":49
+  },
+  {
+    "gsis_id":"00-0036252",
+    "player_name":"Michael Pittman Jr.",
+    "team":"IND",
+    "position":"WR",
+    "pool_rank_source":50
+  },
+  {
+    "gsis_id":"00-0040129",
+    "player_name":"Emeka Egbuka",
+    "team":"TB",
+    "position":"WR",
+    "pool_rank_source":51
+  },
+  {
+    "gsis_id":"00-0040130",
+    "player_name":"Jayden Higgins",
+    "team":"HOU",
+    "position":"WR",
+    "pool_rank_source":52
+  },
+  {
+    "gsis_id":"00-0040727",
+    "player_name":"Tre Harris",
+    "team":"LAC",
+    "position":"WR",
+    "pool_rank_source":53
+  },
+  {
+    "gsis_id":"00-0039901",
+    "player_name":"Keon Coleman",
+    "team":"BUF",
+    "position":"WR",
+    "pool_rank_source":54
+  },
+  {
+    "gsis_id":"00-0037545",
+    "player_name":"Rashid Shaheed",
+    "team":"NO",
+    "position":"WR",
+    "pool_rank_source":55
+  },
+  {
+    "gsis_id":"00-0036550",
+    "player_name":"Rashod Bateman",
+    "team":"BAL",
+    "position":"WR",
+    "pool_rank_source":56
+  },
+  {
+    "gsis_id":"00-0040735",
+    "player_name":"Luther Burden III",
+    "team":"CHI",
+    "position":"WR",
+    "pool_rank_source":57
+  },
+  {
+    "gsis_id":"00-0040131",
+    "player_name":"Kyle Williams",
+    "team":"NE",
+    "position":"WR",
+    "pool_rank_source":58
+  },
+  {
+    "gsis_id":"00-0034775",
+    "player_name":"Christian Kirk",
+    "team":"HOU",
+    "position":"WR",
+    "pool_rank_source":59
+  },
+  {
+    "gsis_id":"00-0038976",
+    "player_name":"Marvin Mims Jr.",
+    "team":"DEN",
+    "position":"WR",
+    "pool_rank_source":60
+  }
+]

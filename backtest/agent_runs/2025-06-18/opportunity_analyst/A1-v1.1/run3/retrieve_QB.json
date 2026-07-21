@@ -1,0 +1,1172 @@
+{
+ "team_context": {
+  "ARI": {
+   "plays_per_game": 59.18,
+   "pass_rate": 0.5398,
+   "passing_epa_per_game": 3.7957
+  },
+  "ATL": {
+   "plays_per_game": 62.0,
+   "pass_rate": 0.5304,
+   "passing_epa_per_game": 2.0186
+  },
+  "BAL": {
+   "plays_per_game": 60.65,
+   "pass_rate": 0.4627,
+   "passing_epa_per_game": 10.0276
+  },
+  "BUF": {
+   "plays_per_game": 59.47,
+   "pass_rate": 0.5143,
+   "passing_epa_per_game": 7.8042
+  },
+  "CAR": {
+   "plays_per_game": 56.29,
+   "pass_rate": 0.5716,
+   "passing_epa_per_game": -2.9006
+  },
+  "CHI": {
+   "plays_per_game": 58.65,
+   "pass_rate": 0.5677,
+   "passing_epa_per_game": -3.1361
+  },
+  "CIN": {
+   "plays_per_game": 60.71,
+   "pass_rate": 0.6318,
+   "passing_epa_per_game": 6.7722
+  },
+  "DAL": {
+   "plays_per_game": 62.71,
+   "pass_rate": 0.5976,
+   "passing_epa_per_game": -2.7163
+  },
+  "DEN": {
+   "plays_per_game": 60.65,
+   "pass_rate": 0.5529,
+   "passing_epa_per_game": 2.3549
+  },
+  "DET": {
+   "plays_per_game": 63.82,
+   "pass_rate": 0.5078,
+   "passing_epa_per_game": 10.1402
+  },
+  "GB": {
+   "plays_per_game": 59.12,
+   "pass_rate": 0.4766,
+   "passing_epa_per_game": 4.5552
+  },
+  "HOU": {
+   "plays_per_game": 59.06,
+   "pass_rate": 0.5677,
+   "passing_epa_per_game": -0.9579
+  },
+  "JAX": {
+   "plays_per_game": 56.47,
+   "pass_rate": 0.5687,
+   "passing_epa_per_game": 0.1656
+  },
+  "KC": {
+   "plays_per_game": 61.76,
+   "pass_rate": 0.5714,
+   "passing_epa_per_game": 3.7052
+  },
+  "LAC": {
+   "plays_per_game": 57.24,
+   "pass_rate": 0.5242,
+   "passing_epa_per_game": 3.7329
+  },
+  "LAR": {
+   "plays_per_game": 59.35,
+   "pass_rate": 0.554,
+   "passing_epa_per_game": 2.0246
+  },
+  "MIA": {
+   "plays_per_game": 61.12,
+   "pass_rate": 0.5688,
+   "passing_epa_per_game": 2.5578
+  },
+  "MIN": {
+   "plays_per_game": 59.12,
+   "pass_rate": 0.5453,
+   "passing_epa_per_game": 3.3499
+  },
+  "NE": {
+   "plays_per_game": 57.35,
+   "pass_rate": 0.5426,
+   "passing_epa_per_game": -3.1234
+  },
+  "NYJ": {
+   "plays_per_game": 57.06,
+   "pass_rate": 0.6258,
+   "passing_epa_per_game": 1.2554
+  },
+  "PHI": {
+   "plays_per_game": 62.88,
+   "pass_rate": 0.4191,
+   "passing_epa_per_game": 3.3453
+  },
+  "SF": {
+   "plays_per_game": 58.24,
+   "pass_rate": 0.5384,
+   "passing_epa_per_game": 4.0215
+  },
+  "TB": {
+   "plays_per_game": 62.0,
+   "pass_rate": 0.5417,
+   "passing_epa_per_game": 6.8051
+  },
+  "WAS": {
+   "plays_per_game": 61.82,
+   "pass_rate": 0.4995,
+   "passing_epa_per_game": 4.6642
+  }
+ },
+ "qb_rooms": {
+  "ARI": [
+   [
+    "Kyler Murray",
+    "00-0035228",
+    1
+   ],
+   [
+    "JACOBY BRISSETT",
+    "00-0033119",
+    2
+   ],
+   [
+    "Clayton Tune",
+    "00-0038582",
+    3
+   ]
+  ],
+  "ATL": [
+   [
+    "Michael Penix Jr.",
+    "00-0039917",
+    1
+   ],
+   [
+    "KIRK COUSINS",
+    "00-0029604",
+    2
+   ],
+   [
+    "Easton Stick",
+    "00-0035282",
+    3
+   ]
+  ],
+  "BAL": [
+   [
+    "Lamar Jackson",
+    "00-0034796",
+    1
+   ]
+  ],
+  "BUF": [
+   [
+    "Josh Allen",
+    "00-0034857",
+    1
+   ],
+   [
+    "MITCHELL TRUBISKY",
+    "00-0033869",
+    2
+   ],
+   [
+    "Shane Buechele",
+    "00-0036679",
+    3
+   ],
+   [
+    "MIKE WHITE",
+    "00-0034401",
+    4
+   ]
+  ],
+  "CAR": [
+   [
+    "Bryce Young",
+    "00-0039150",
+    1
+   ],
+   [
+    "ANDY DALTON",
+    "00-0027973",
+    2
+   ],
+   [
+    "Jack Plummer",
+    "00-0039501",
+    3
+   ]
+  ],
+  "CHI": [
+   [
+    "Caleb Williams",
+    "00-0039918",
+    1
+   ],
+   [
+    "Tyson Bagent",
+    "00-0038416",
+    2
+   ],
+   [
+    "CASE KEENUM",
+    "00-0028986",
+    3
+   ],
+   [
+    "Austin Reed",
+    "00-0039464",
+    4
+   ]
+  ],
+  "CIN": [
+   [
+    "Joe Burrow",
+    "00-0036442",
+    1
+   ],
+   [
+    "Jake Browning",
+    "00-0035100",
+    2
+   ]
+  ],
+  "DAL": [
+   [
+    "DAK PRESCOTT",
+    "00-0033077",
+    1
+   ],
+   [
+    "Joe Milton III",
+    "00-0039398",
+    2
+   ],
+   [
+    "WILL GRIER",
+    "00-0035251",
+    3
+   ]
+  ],
+  "DEN": [
+   [
+    "Bo Nix",
+    "00-0039732",
+    1
+   ],
+   [
+    "Jarrett Stidham",
+    "00-0035264",
+    2
+   ],
+   [
+    "Sam Ehlinger",
+    "00-0036879",
+    3
+   ]
+  ],
+  "DET": [
+   [
+    "JARED GOFF",
+    "00-0033106",
+    1
+   ],
+   [
+    "Hendon Hooker",
+    "00-0038550",
+    2
+   ],
+   [
+    "Kyle Allen",
+    "00-0034577",
+    3
+   ],
+   [
+    "Jake Fromm",
+    "00-0036197",
+    4
+   ]
+  ],
+  "GB": [
+   [
+    "Jordan Love",
+    "00-0036264",
+    1
+   ],
+   [
+    "Malik Willis",
+    "00-0038128",
+    2
+   ],
+   [
+    "Sean Clifford",
+    "00-0038391",
+    3
+   ]
+  ],
+  "HOU": [
+   [
+    "C.J. Stroud",
+    "00-0039163",
+    1
+   ],
+   [
+    "Davis Mills",
+    "00-0036898",
+    2
+   ],
+   [
+    "Graham Mertz",
+    "00-0040211",
+    3
+   ],
+   [
+    "Kedon Slovis",
+    "00-0039577",
+    4
+   ]
+  ],
+  "JAX": [
+   [
+    "Trevor Lawrence",
+    "00-0036971",
+    1
+   ],
+   [
+    "NICK MULLENS",
+    "00-0033319",
+    2
+   ],
+   [
+    "John Wolford",
+    "00-0034899",
+    3
+   ],
+   [
+    "Seth Henigan",
+    "00-0040330",
+    4
+   ]
+  ],
+  "KC": [
+   [
+    "Patrick Mahomes",
+    "00-0033873",
+    1
+   ],
+   [
+    "Gardner Minshew",
+    "00-0035289",
+    2
+   ],
+   [
+    "Bailey Zappe",
+    "00-0038108",
+    3
+   ],
+   [
+    "Chris Oladokun",
+    "00-0037324",
+    4
+   ]
+  ],
+  "LAC": [
+   [
+    "Justin Herbert",
+    "00-0036355",
+    1
+   ],
+   [
+    "TAYLOR HEINICKE",
+    "00-0031800",
+    2
+   ],
+   [
+    "Trey Lance",
+    "00-0037012",
+    3
+   ],
+   [
+    "DJ Uiagalelei",
+    "00-0040464",
+    4
+   ]
+  ],
+  "LAR": [
+   [
+    "MATTHEW STAFFORD",
+    "00-0026498",
+    1
+   ],
+   [
+    "JIMMY GAROPPOLO",
+    "00-0031345",
+    2
+   ],
+   [
+    "Stetson Bennett",
+    "00-0039107",
+    3
+   ]
+  ],
+  "MIA": [
+   [
+    "Tua Tagovailoa",
+    "00-0036212",
+    1
+   ],
+   [
+    "Tyler Huntley",
+    "00-0035993",
+    2
+   ]
+  ],
+  "MIN": [
+   [
+    "J.J. McCarthy",
+    "00-0039923",
+    1
+   ],
+   [
+    "Sam Howell",
+    "00-0037077",
+    2
+   ],
+   [
+    "Brett Rypien",
+    "00-0034955",
+    3
+   ],
+   [
+    "Max Brosmer",
+    "00-0040494",
+    4
+   ]
+  ],
+  "NE": [
+   [
+    "Drake Maye",
+    "00-0039851",
+    1
+   ],
+   [
+    "JOSHUA DOBBS",
+    "00-0033949",
+    2
+   ]
+  ],
+  "NYJ": [
+   [
+    "AARON RODGERS",
+    "00-0023459",
+    1
+   ],
+   [
+    "TYROD TAYLOR",
+    "00-0028118",
+    2
+   ],
+   [
+    "Jordan Travis",
+    "00-0039797",
+    3
+   ]
+  ],
+  "PHI": [
+   [
+    "Jalen Hurts",
+    "00-0036389",
+    1
+   ],
+   [
+    "Tanner McKee",
+    "00-0038400",
+    2
+   ],
+   [
+    "Kyle McCord",
+    "00-0040014",
+    3
+   ],
+   [
+    "Dorian Thompson-Robinson",
+    "00-0038583",
+    4
+   ]
+  ],
+  "SF": [
+   [
+    "Brock Purdy",
+    "00-0037834",
+    1
+   ],
+   [
+    "Mac Jones",
+    "00-0036972",
+    2
+   ],
+   [
+    "Kurtis Rourke",
+    "00-0040589",
+    3
+   ],
+   [
+    "Tanner Mordecai",
+    "00-0039699",
+    4
+   ]
+  ],
+  "TB": [
+   [
+    "BAKER MAYFIELD",
+    "00-0034855",
+    1
+   ],
+   [
+    "Kyle Trask",
+    "00-0036928",
+    2
+   ],
+   [
+    "Michael Pratt",
+    "00-0039238",
+    3
+   ]
+  ],
+  "WAS": [
+   [
+    "Jayden Daniels",
+    "00-0039910",
+    1
+   ],
+   [
+    "MARCUS MARIOTA",
+    "00-0032268",
+    2
+   ],
+   [
+    "Sam Hartman",
+    "00-0039677",
+    4
+   ]
+  ]
+ },
+ "players": [
+  {
+   "gsis": "00-0034796",
+   "name": "Lamar Jackson",
+   "team": "BAL",
+   "g24": 17,
+   "fantasy_points_league_ppg": 25.32,
+   "attempts": 474.0,
+   "carries": 139.0,
+   "rushing_yards": 915.0,
+   "rushing_tds": 4.0,
+   "passing_yards": 4172.0,
+   "passing_tds": 41.0,
+   "snap_share": 0.9653,
+   "l8": {
+    "ppg": 25.59,
+    "att": 219.0,
+    "car": 55.0,
+    "ry": 410.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0034857",
+   "name": "Josh Allen",
+   "team": "BUF",
+   "g24": 16,
+   "fantasy_points_league_ppg": 23.69,
+   "attempts": 483.0,
+   "carries": 102.0,
+   "rushing_yards": 531.0,
+   "rushing_tds": 12.0,
+   "passing_yards": 3731.0,
+   "passing_tds": 28.0,
+   "snap_share": 0.9456,
+   "l8": {
+    "ppg": 27.5,
+    "att": 260.0,
+    "car": 57.0,
+    "ry": 327.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039910",
+   "name": "Jayden Daniels",
+   "team": "WAS",
+   "g24": 17,
+   "fantasy_points_league_ppg": 20.93,
+   "attempts": 480.0,
+   "carries": 148.0,
+   "rushing_yards": 891.0,
+   "rushing_tds": 6.0,
+   "passing_yards": 3568.0,
+   "passing_tds": 25.0,
+   "snap_share": 0.9088,
+   "l8": {
+    "ppg": 21.77,
+    "att": 252.0,
+    "car": 66.0,
+    "ry": 432.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036389",
+   "name": "Jalen Hurts",
+   "team": "PHI",
+   "g24": 15,
+   "fantasy_points_league_ppg": 21.01,
+   "attempts": 361.0,
+   "carries": 150.0,
+   "rushing_yards": 630.0,
+   "rushing_tds": 14.0,
+   "passing_yards": 2903.0,
+   "passing_tds": 18.0,
+   "snap_share": 0.916,
+   "l8": {
+    "ppg": 20.98,
+    "att": 170.0,
+    "car": 77.0,
+    "ry": 375.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036442",
+   "name": "Joe Burrow",
+   "team": "CIN",
+   "g24": 17,
+   "fantasy_points_league_ppg": 21.93,
+   "attempts": 652.0,
+   "carries": 42.0,
+   "rushing_yards": 201.0,
+   "rushing_tds": 2.0,
+   "passing_yards": 4918.0,
+   "passing_tds": 43.0,
+   "snap_share": 0.9953,
+   "l8": {
+    "ppg": 24.42,
+    "att": 350.0,
+    "car": 15.0,
+    "ry": 84.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033873",
+   "name": "Patrick Mahomes II",
+   "team": "KC",
+   "g24": 16,
+   "fantasy_points_league_ppg": 17.69,
+   "attempts": 581.0,
+   "carries": 58.0,
+   "rushing_yards": 307.0,
+   "rushing_tds": 2.0,
+   "passing_yards": 3928.0,
+   "passing_tds": 26.0,
+   "snap_share": 0.9931,
+   "l8": {
+    "ppg": 19.67,
+    "att": 312.0,
+    "car": 22.0,
+    "ry": 159.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0034855",
+   "name": "Baker Mayfield",
+   "team": "TB",
+   "g24": 17,
+   "fantasy_points_league_ppg": 21.52,
+   "attempts": 570.0,
+   "carries": 60.0,
+   "rushing_yards": 378.0,
+   "rushing_tds": 3.0,
+   "passing_yards": 4500.0,
+   "passing_tds": 41.0,
+   "snap_share": 0.9853,
+   "l8": {
+    "ppg": 20.42,
+    "att": 255.0,
+    "car": 27.0,
+    "ry": 189.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0035228",
+   "name": "Kyler Murray",
+   "team": "ARI",
+   "g24": 17,
+   "fantasy_points_league_ppg": 17.48,
+   "attempts": 541.0,
+   "carries": 78.0,
+   "rushing_yards": 572.0,
+   "rushing_tds": 5.0,
+   "passing_yards": 3851.0,
+   "passing_tds": 21.0,
+   "snap_share": 0.9712,
+   "l8": {
+    "ppg": 18.32,
+    "att": 289.0,
+    "car": 35.0,
+    "ry": 222.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036945",
+   "name": "Justin Fields",
+   "team": "NYJ",
+   "g24": 10,
+   "fantasy_points_league_ppg": 11.91,
+   "attempts": 161.0,
+   "carries": 62.0,
+   "rushing_yards": 289.0,
+   "rushing_tds": 5.0,
+   "passing_yards": 1106.0,
+   "passing_tds": 5.0,
+   "snap_share": 0.616,
+   "l8": {
+    "ppg": 11.98,
+    "att": 118.0,
+    "car": 40.0,
+    "ry": 205.0,
+    "g": 8
+   },
+   "dc_order": null
+  },
+  {
+   "gsis": "00-0039732",
+   "name": "Bo Nix",
+   "team": "DEN",
+   "g24": 17,
+   "fantasy_points_league_ppg": 18.66,
+   "attempts": 567.0,
+   "carries": 92.0,
+   "rushing_yards": 430.0,
+   "rushing_tds": 4.0,
+   "passing_yards": 3775.0,
+   "passing_tds": 29.0,
+   "snap_share": 0.9882,
+   "l8": {
+    "ppg": 20.8,
+    "att": 273.0,
+    "car": 34.0,
+    "ry": 135.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037834",
+   "name": "Brock Purdy",
+   "team": "SF",
+   "g24": 15,
+   "fantasy_points_league_ppg": 17.79,
+   "attempts": 455.0,
+   "carries": 66.0,
+   "rushing_yards": 323.0,
+   "rushing_tds": 5.0,
+   "passing_yards": 3864.0,
+   "passing_tds": 20.0,
+   "snap_share": 0.9893,
+   "l8": {
+    "ppg": 18.48,
+    "att": 239.0,
+    "car": 32.0,
+    "ry": 169.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039918",
+   "name": "Caleb Williams",
+   "team": "CHI",
+   "g24": 17,
+   "fantasy_points_league_ppg": 14.97,
+   "attempts": 562.0,
+   "carries": 81.0,
+   "rushing_yards": 489.0,
+   "rushing_tds": 0.0,
+   "passing_yards": 3541.0,
+   "passing_tds": 20.0,
+   "snap_share": 0.9876,
+   "l8": {
+    "ppg": 16.69,
+    "att": 268.0,
+    "car": 41.0,
+    "ry": 253.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033106",
+   "name": "Jared Goff",
+   "team": "DET",
+   "g24": 17,
+   "fantasy_points_league_ppg": 19.09,
+   "attempts": 539.0,
+   "carries": 35.0,
+   "rushing_yards": 56.0,
+   "rushing_tds": 0.0,
+   "passing_yards": 4629.0,
+   "passing_tds": 37.0,
+   "snap_share": 0.9712,
+   "l8": {
+    "ppg": 23.22,
+    "att": 298.0,
+    "car": 17.0,
+    "ry": 38.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033077",
+   "name": "Dak Prescott",
+   "team": "DAL",
+   "g24": 8,
+   "fantasy_points_league_ppg": 14.56,
+   "attempts": 286.0,
+   "carries": 13.0,
+   "rushing_yards": 54.0,
+   "rushing_tds": 1.0,
+   "passing_yards": 1978.0,
+   "passing_tds": 11.0,
+   "snap_share": 0.9112,
+   "l8": {
+    "ppg": 14.56,
+    "att": 286.0,
+    "car": 13.0,
+    "ry": 54.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039851",
+   "name": "Drake Maye",
+   "team": "NE",
+   "g24": 13,
+   "fantasy_points_league_ppg": 13.63,
+   "attempts": 338.0,
+   "carries": 54.0,
+   "rushing_yards": 421.0,
+   "rushing_tds": 2.0,
+   "passing_yards": 2276.0,
+   "passing_tds": 15.0,
+   "snap_share": 0.8046,
+   "l8": {
+    "ppg": 13.43,
+    "att": 213.0,
+    "car": 33.0,
+    "ry": 212.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036355",
+   "name": "Justin Herbert",
+   "team": "LAC",
+   "g24": 17,
+   "fantasy_points_league_ppg": 16.79,
+   "attempts": 504.0,
+   "carries": 69.0,
+   "rushing_yards": 306.0,
+   "rushing_tds": 2.0,
+   "passing_yards": 3870.0,
+   "passing_tds": 23.0,
+   "snap_share": 0.9771,
+   "l8": {
+    "ppg": 19.02,
+    "att": 263.0,
+    "car": 33.0,
+    "ry": 189.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039923",
+   "name": "J.J. McCarthy",
+   "team": "MIN",
+   "no_2024_stats": true,
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036264",
+   "name": "Jordan Love",
+   "team": "GB",
+   "g24": 15,
+   "fantasy_points_league_ppg": 15.59,
+   "attempts": 425.0,
+   "carries": 25.0,
+   "rushing_yards": 83.0,
+   "rushing_tds": 1.0,
+   "passing_yards": 3389.0,
+   "passing_tds": 25.0,
+   "snap_share": 0.9173,
+   "l8": {
+    "ppg": 14.28,
+    "att": 185.0,
+    "car": 12.0,
+    "ry": 55.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036971",
+   "name": "Trevor Lawrence",
+   "team": "JAX",
+   "g24": 10,
+   "fantasy_points_league_ppg": 14.52,
+   "attempts": 284.0,
+   "carries": 26.0,
+   "rushing_yards": 119.0,
+   "rushing_tds": 3.0,
+   "passing_yards": 2045.0,
+   "passing_tds": 11.0,
+   "snap_share": 0.902,
+   "l8": {
+    "ppg": 15.08,
+    "att": 233.0,
+    "car": 23.0,
+    "ry": 66.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039163",
+   "name": "C.J. Stroud",
+   "team": "HOU",
+   "g24": 17,
+   "fantasy_points_league_ppg": 12.96,
+   "attempts": 532.0,
+   "carries": 52.0,
+   "rushing_yards": 233.0,
+   "rushing_tds": 0.0,
+   "passing_yards": 3727.0,
+   "passing_tds": 20.0,
+   "snap_share": 0.9306,
+   "l8": {
+    "ppg": 11.31,
+    "att": 236.0,
+    "car": 21.0,
+    "ry": 90.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039917",
+   "name": "Michael Penix Jr.",
+   "team": "ATL",
+   "g24": 5,
+   "fantasy_points_league_ppg": 8.82,
+   "attempts": 105.0,
+   "carries": 7.0,
+   "rushing_yards": 11.0,
+   "rushing_tds": 1.0,
+   "passing_yards": 775.0,
+   "passing_tds": 3.0,
+   "snap_share": 0.664,
+   "l8": {
+    "ppg": 8.82,
+    "att": 105.0,
+    "car": 7.0,
+    "ry": 11.0,
+    "g": 5
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036212",
+   "name": "Tua Tagovailoa",
+   "team": "MIA",
+   "g24": 11,
+   "fantasy_points_league_ppg": 16.51,
+   "attempts": 399.0,
+   "carries": 17.0,
+   "rushing_yards": 49.0,
+   "rushing_tds": 0.0,
+   "passing_yards": 2867.0,
+   "passing_tds": 19.0,
+   "snap_share": 0.9718,
+   "l8": {
+    "ppg": 17.85,
+    "att": 299.0,
+    "car": 11.0,
+    "ry": 8.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039150",
+   "name": "Bryce Young",
+   "team": "CAR",
+   "g24": 14,
+   "fantasy_points_league_ppg": 13.93,
+   "attempts": 384.0,
+   "carries": 43.0,
+   "rushing_yards": 249.0,
+   "rushing_tds": 6.0,
+   "passing_yards": 2403.0,
+   "passing_tds": 15.0,
+   "snap_share": 0.8671,
+   "l8": {
+    "ppg": 19.64,
+    "att": 256.0,
+    "car": 30.0,
+    "ry": 208.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0026498",
+   "name": "Matthew Stafford",
+   "team": "LAR",
+   "g24": 16,
+   "fantasy_points_league_ppg": 13.41,
+   "attempts": 517.0,
+   "carries": 30.0,
+   "rushing_yards": 41.0,
+   "rushing_tds": 0.0,
+   "passing_yards": 3762.0,
+   "passing_tds": 20.0,
+   "snap_share": 1.0,
+   "l8": {
+    "ppg": 14.56,
+    "att": 241.0,
+    "car": 23.0,
+    "ry": 48.0,
+    "g": 8
+   },
+   "dc_order": 1
+  }
+ ],
+ "enriched_d017": {
+  "00-0034796": {
+   "designed_run_rate": 0.6484,
+   "red_zone_carry_share": 0.2333
+  },
+  "00-0034857": {
+   "designed_run_rate": 0.5319,
+   "red_zone_carry_share": 0.3107
+  },
+  "00-0039910": {
+   "designed_run_rate": 0.4783,
+   "red_zone_carry_share": 0.3101
+  },
+  "00-0036389": {
+   "designed_run_rate": 0.7023,
+   "red_zone_carry_share": 0.3864
+  },
+  "00-0036442": {
+   "designed_run_rate": 0.2903,
+   "red_zone_carry_share": 0.0833
+  },
+  "00-0033873": {
+   "designed_run_rate": 0.0263,
+   "red_zone_carry_share": 0.1136
+  },
+  "00-0034855": {
+   "designed_run_rate": 0.2075,
+   "red_zone_carry_share": 0.1111
+  },
+  "00-0035228": {
+   "designed_run_rate": 0.4384,
+   "red_zone_carry_share": 0.1786
+  },
+  "00-0036945": {
+   "designed_run_rate": 0.6724,
+   "red_zone_carry_share": 0.34
+  },
+  "00-0039732": {
+   "designed_run_rate": 0.359,
+   "red_zone_carry_share": 0.2468
+  },
+  "00-0037834": {
+   "designed_run_rate": 0.2787,
+   "red_zone_carry_share": 0.1596
+  },
+  "00-0039918": {
+   "designed_run_rate": 0.3333,
+   "red_zone_carry_share": 0.1833
+  },
+  "00-0033106": {
+   "designed_run_rate": 0.3,
+   "red_zone_carry_share": 0.082
+  },
+  "00-0033077": {
+   "designed_run_rate": 0.4545,
+   "red_zone_carry_share": 0.1176
+  },
+  "00-0039851": {
+   "designed_run_rate": 0.1346,
+   "red_zone_carry_share": 0.1
+  },
+  "00-0036355": {
+   "designed_run_rate": 0.3673,
+   "red_zone_carry_share": 0.0988
+  },
+  "00-0039923": {
+   "designed_run_rate": null,
+   "red_zone_carry_share": null
+  },
+  "00-0036264": {
+   "designed_run_rate": 0.3333,
+   "red_zone_carry_share": 0.1158
+  },
+  "00-0036971": {
+   "designed_run_rate": 0.4348,
+   "red_zone_carry_share": 0.08
+  },
+  "00-0039163": {
+   "designed_run_rate": 0.075,
+   "red_zone_carry_share": 0.0795
+  },
+  "00-0039917": {
+   "designed_run_rate": 0.2,
+   "red_zone_carry_share": 0.0606
+  },
+  "00-0036212": {
+   "designed_run_rate": 0.3636,
+   "red_zone_carry_share": 0.04
+  },
+  "00-0039150": {
+   "designed_run_rate": 0.0263,
+   "red_zone_carry_share": 0.1786
+  },
+  "00-0026498": {
+   "designed_run_rate": 0.8,
+   "red_zone_carry_share": 0.0652
+  }
+ }
+}

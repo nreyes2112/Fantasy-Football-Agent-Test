@@ -1,0 +1,2588 @@
+{
+ "pool_teams_context": {
+  "ARI": {
+   "plays_per_game": 59.18,
+   "pass_rate": 0.5398
+  },
+  "ATL": {
+   "plays_per_game": 62.0,
+   "pass_rate": 0.5304
+  },
+  "BAL": {
+   "plays_per_game": 60.65,
+   "pass_rate": 0.4627
+  },
+  "BUF": {
+   "plays_per_game": 59.47,
+   "pass_rate": 0.5143
+  },
+  "CAR": {
+   "plays_per_game": 56.29,
+   "pass_rate": 0.5716
+  },
+  "CHI": {
+   "plays_per_game": 58.65,
+   "pass_rate": 0.5677
+  },
+  "CIN": {
+   "plays_per_game": 60.71,
+   "pass_rate": 0.6318
+  },
+  "CLE": {
+   "plays_per_game": 61.88,
+   "pass_rate": 0.6283
+  },
+  "DAL": {
+   "plays_per_game": 62.71,
+   "pass_rate": 0.5976
+  },
+  "DEN": {
+   "plays_per_game": 60.65,
+   "pass_rate": 0.5529
+  },
+  "DET": {
+   "plays_per_game": 63.82,
+   "pass_rate": 0.5078
+  },
+  "GB": {
+   "plays_per_game": 59.12,
+   "pass_rate": 0.4766
+  },
+  "HOU": {
+   "plays_per_game": 59.06,
+   "pass_rate": 0.5677
+  },
+  "IND": {
+   "plays_per_game": 59.35,
+   "pass_rate": 0.5084
+  },
+  "JAC": null,
+  "KC": {
+   "plays_per_game": 61.76,
+   "pass_rate": 0.5714
+  },
+  "LAC": {
+   "plays_per_game": 57.24,
+   "pass_rate": 0.5242
+  },
+  "LAR": {
+   "plays_per_game": 59.35,
+   "pass_rate": 0.554
+  },
+  "LV": {
+   "plays_per_game": 59.71,
+   "pass_rate": 0.6256
+  },
+  "MIA": {
+   "plays_per_game": 61.12,
+   "pass_rate": 0.5688
+  },
+  "MIN": {
+   "plays_per_game": 59.12,
+   "pass_rate": 0.5453
+  },
+  "NE": {
+   "plays_per_game": 57.35,
+   "pass_rate": 0.5426
+  },
+  "NO": {
+   "plays_per_game": 58.53,
+   "pass_rate": 0.5538
+  },
+  "NYG": {
+   "plays_per_game": 59.71,
+   "pass_rate": 0.5823
+  },
+  "NYJ": {
+   "plays_per_game": 57.06,
+   "pass_rate": 0.6258
+  },
+  "PHI": {
+   "plays_per_game": 62.88,
+   "pass_rate": 0.4191
+  },
+  "PIT": {
+   "plays_per_game": 60.71,
+   "pass_rate": 0.4835
+  },
+  "SEA": {
+   "plays_per_game": 57.41,
+   "pass_rate": 0.6076
+  },
+  "SF": {
+   "plays_per_game": 58.24,
+   "pass_rate": 0.5384
+  },
+  "TB": {
+   "plays_per_game": 62.0,
+   "pass_rate": 0.5417
+  },
+  "TEN": {
+   "plays_per_game": 57.65,
+   "pass_rate": 0.5408
+  },
+  "WAS": {
+   "plays_per_game": 61.82,
+   "pass_rate": 0.4995
+  },
+  "JAX": {
+   "plays_per_game": 56.47,
+   "pass_rate": 0.5687
+  }
+ },
+ "vacated": {
+  "ARI": {
+   "vac_tgts": 11,
+   "vac_carries": 39,
+   "departed": [
+    [
+     "Michael Carter",
+     11,
+     35
+    ],
+    [
+     "Tony Jones",
+     0,
+     4
+    ]
+   ]
+  },
+  "ATL": {
+   "vac_tgts": 1,
+   "vac_carries": 0,
+   "departed": [
+    [
+     "Ross Dwelley",
+     1,
+     0
+    ]
+   ]
+  },
+  "BAL": {
+   "vac_tgts": 6,
+   "vac_carries": 4,
+   "departed": [
+    [
+     "Patrick Ricard",
+     5,
+     0
+    ],
+    [
+     "Anthony Miller",
+     1,
+     0
+    ],
+    [
+     "Josh Johnson",
+     0,
+     4
+    ]
+   ]
+  },
+  "BUF": {
+   "vac_tgts": 99,
+   "vac_carries": 3,
+   "departed": [
+    [
+     "Mack Hollins",
+     50,
+     0
+    ],
+    [
+     "Amari Cooper",
+     32,
+     0
+    ],
+    [
+     "Marquez Valdes-Scantling",
+     9,
+     0
+    ],
+    [
+     "Quintin Morris",
+     8,
+     0
+    ]
+   ]
+  },
+  "CAR": {
+   "vac_tgts": 135,
+   "vac_carries": 84,
+   "departed": [
+    [
+     "Diontae Johnson",
+     58,
+     2
+    ],
+    [
+     "Miles Sanders",
+     30,
+     55
+    ],
+    [
+     "Jonathan Mingo",
+     26,
+     2
+    ],
+    [
+     "Ian Thomas",
+     6,
+     0
+    ]
+   ]
+  },
+  "CHI": {
+   "vac_tgts": 154,
+   "vac_carries": 13,
+   "departed": [
+    [
+     "Keenan Allen",
+     121,
+     0
+    ],
+    [
+     "DeAndre Carter",
+     14,
+     0
+    ],
+    [
+     "Gerald Everett",
+     13,
+     0
+    ],
+    [
+     "Collin Johnson",
+     2,
+     0
+    ]
+   ]
+  },
+  "CIN": {
+   "vac_tgts": 19,
+   "vac_carries": 28,
+   "departed": [
+    [
+     "Trenton Irwin",
+     10,
+     0
+    ],
+    [
+     "Khalil Herbert",
+     9,
+     28
+    ]
+   ]
+  },
+  "CLE": {
+   "vac_tgts": 258,
+   "vac_carries": 229,
+   "departed": [
+    [
+     "Elijah Moore",
+     102,
+     1
+    ],
+    [
+     "Jordan Akins",
+     58,
+     0
+    ],
+    [
+     "Amari Cooper",
+     53,
+     0
+    ],
+    [
+     "Mike Woods",
+     17,
+     0
+    ]
+   ]
+  },
+  "DAL": {
+   "vac_tgts": 135,
+   "vac_carries": 369,
+   "departed": [
+    [
+     "Brandin Cooks",
+     54,
+     3
+    ],
+    [
+     "Rico Dowdle",
+     49,
+     235
+    ],
+    [
+     "Hunter Luepke",
+     16,
+     12
+    ],
+    [
+     "Ezekiel Elliott",
+     15,
+     74
+    ]
+   ]
+  },
+  "DEN": {
+   "vac_tgts": 146,
+   "vac_carries": 139,
+   "departed": [
+    [
+     "Javonte Williams",
+     70,
+     139
+    ],
+    [
+     "Lil'Jordan Humphrey",
+     45,
+     0
+    ],
+    [
+     "Josh Reynolds",
+     19,
+     0
+    ],
+    [
+     "Greg Dulcich",
+     12,
+     0
+    ]
+   ]
+  },
+  "DET": {
+   "vac_tgts": 11,
+   "vac_carries": 6,
+   "departed": [
+    [
+     "Allen Robinson",
+     7,
+     0
+    ],
+    [
+     "Isaiah Williams",
+     3,
+     0
+    ],
+    [
+     "Jermar Jefferson",
+     1,
+     6
+    ]
+   ]
+  },
+  "GB": {
+   "vac_tgts": 0,
+   "vac_carries": 0,
+   "departed": []
+  },
+  "HOU": {
+   "vac_tgts": 105,
+   "vac_carries": 45,
+   "departed": [
+    [
+     "Stefon Diggs",
+     64,
+     3
+    ],
+    [
+     "Robert Woods",
+     30,
+     0
+    ],
+    [
+     "Cam Akers",
+     7,
+     40
+    ],
+    [
+     "Diontae Johnson",
+     4,
+     0
+    ]
+   ]
+  },
+  "IND": {
+   "vac_tgts": 14,
+   "vac_carries": 0,
+   "departed": [
+    [
+     "Andrew Ogletree",
+     14,
+     0
+    ]
+   ]
+  },
+  "JAC": null,
+  "KC": {
+   "vac_tgts": 163,
+   "vac_carries": 28,
+   "departed": [
+    [
+     "DeAndre Hopkins",
+     59,
+     0
+    ],
+    [
+     "Samaje Perine",
+     35,
+     20
+    ],
+    [
+     "Justin Watson",
+     32,
+     0
+    ],
+    [
+     "Marquise Brown",
+     15,
+     0
+    ]
+   ]
+  },
+  "LAC": {
+   "vac_tgts": 170,
+   "vac_carries": 296,
+   "departed": [
+    [
+     "Josh Palmer",
+     65,
+     0
+    ],
+    [
+     "J.K. Dobbins",
+     38,
+     195
+    ],
+    [
+     "Stone Smartt",
+     19,
+     0
+    ],
+    [
+     "Simi Fehoko",
+     16,
+     0
+    ]
+   ]
+  },
+  "LAR": {
+   "vac_tgts": 214,
+   "vac_carries": 2,
+   "departed": [
+    [
+     "Cooper Kupp",
+     100,
+     2
+    ],
+    [
+     "Demarcus Robinson",
+     64,
+     0
+    ],
+    [
+     "Tyler Johnson",
+     41,
+     0
+    ],
+    [
+     "Hunter Long",
+     9,
+     0
+    ]
+   ]
+  },
+  "LV": {
+   "vac_tgts": 176,
+   "vac_carries": 233,
+   "departed": [
+    [
+     "Alexander Mattison",
+     48,
+     132
+    ],
+    [
+     "Ameer Abdullah",
+     47,
+     66
+    ],
+    [
+     "DJ Turner",
+     29,
+     5
+    ],
+    [
+     "Davante Adams",
+     27,
+     0
+    ]
+   ]
+  },
+  "MIA": {
+   "vac_tgts": 66,
+   "vac_carries": 88,
+   "departed": [
+    [
+     "Raheem Mostert",
+     23,
+     85
+    ],
+    [
+     "Odell Beckham Jr.",
+     19,
+     0
+    ],
+    [
+     "Durham Smythe",
+     17,
+     0
+    ],
+    [
+     "Robbie Chosen",
+     4,
+     0
+    ]
+   ]
+  },
+  "MIN": {
+   "vac_tgts": 58,
+   "vac_carries": 137,
+   "departed": [
+    [
+     "Johnny Mundt",
+     27,
+     0
+    ],
+    [
+     "Cam Akers",
+     11,
+     64
+    ],
+    [
+     "Brandon Powell",
+     10,
+     0
+    ],
+    [
+     "Trent Sherfield",
+     9,
+     0
+    ]
+   ]
+  },
+  "NE": {
+   "vac_tgts": 38,
+   "vac_carries": 45,
+   "departed": [
+    [
+     "K.J. Osborn",
+     18,
+     0
+    ],
+    [
+     "JaMycal Hasty",
+     12,
+     20
+    ],
+    [
+     "Tyquan Thornton",
+     8,
+     0
+    ],
+    [
+     "Jacoby Brissett",
+     0,
+     15
+    ]
+   ]
+  },
+  "NO": {
+   "vac_tgts": 64,
+   "vac_carries": 87,
+   "departed": [
+    [
+     "Marquez Valdes-Scantling",
+     35,
+     1
+    ],
+    [
+     "Jordan Mims",
+     18,
+     20
+    ],
+    [
+     "Jamaal Williams",
+     11,
+     48
+    ],
+    [
+     "Derek Carr",
+     0,
+     17
+    ]
+   ]
+  },
+  "NYG": {
+   "vac_tgts": 2,
+   "vac_carries": 86,
+   "departed": [
+    [
+     "Isaiah Hodgins",
+     2,
+     0
+    ],
+    [
+     "Tim Boyle",
+     0,
+     1
+    ],
+    [
+     "Drew Lock",
+     0,
+     18
+    ],
+    [
+     "Daniel Jones",
+     0,
+     67
+    ]
+   ]
+  },
+  "NYJ": {
+   "vac_tgts": 21,
+   "vac_carries": 0,
+   "departed": [
+    [
+     "Mike Williams",
+     21,
+     0
+    ]
+   ]
+  },
+  "PHI": {
+   "vac_tgts": 44,
+   "vac_carries": 87,
+   "departed": [
+    [
+     "Kenny Gainwell",
+     22,
+     75
+    ],
+    [
+     "Parris Campbell",
+     8,
+     0
+    ],
+    [
+     "Britain Covey",
+     8,
+     0
+    ],
+    [
+     "Jack Stoll",
+     3,
+     0
+    ]
+   ]
+  },
+  "PIT": {
+   "vac_tgts": 224,
+   "vac_carries": 376,
+   "departed": [
+    [
+     "George Pickens",
+     103,
+     2
+    ],
+    [
+     "Najee Harris",
+     48,
+     263
+    ],
+    [
+     "Van Jefferson",
+     40,
+     0
+    ],
+    [
+     "Mike Williams",
+     13,
+     0
+    ]
+   ]
+  },
+  "SEA": {
+   "vac_tgts": 199,
+   "vac_carries": 55,
+   "departed": [
+    [
+     "DK Metcalf",
+     108,
+     0
+    ],
+    [
+     "Tyler Lockett",
+     74,
+     0
+    ],
+    [
+     "Pharaoh Brown",
+     12,
+     0
+    ],
+    [
+     "Laviska Shenault Jr.",
+     5,
+     1
+    ]
+   ]
+  },
+  "SF": {
+   "vac_tgts": 127,
+   "vac_carries": 209,
+   "departed": [
+    [
+     "Deebo Samuel Sr.",
+     81,
+     42
+    ],
+    [
+     "Eric Saubert",
+     14,
+     0
+    ],
+    [
+     "Jordan Mason",
+     14,
+     153
+    ],
+    [
+     "Chris Conley",
+     12,
+     0
+    ]
+   ]
+  },
+  "TB": {
+   "vac_tgts": 0,
+   "vac_carries": 0,
+   "departed": []
+  },
+  "TEN": {
+   "vac_tgts": 160,
+   "vac_carries": 27,
+   "departed": [
+    [
+     "Nick Westbrook-Ikhine",
+     60,
+     0
+    ],
+    [
+     "Tyler Boyd",
+     57,
+     1
+    ],
+    [
+     "DeAndre Hopkins",
+     21,
+     0
+    ],
+    [
+     "Nick Vannett",
+     20,
+     0
+    ]
+   ]
+  },
+  "WAS": {
+   "vac_tgts": 118,
+   "vac_carries": 4,
+   "departed": [
+    [
+     "Olamide Zaccheaus",
+     64,
+     1
+    ],
+    [
+     "Dyami Brown",
+     40,
+     3
+    ],
+    [
+     "Jamison Crowder",
+     13,
+     0
+    ],
+    [
+     "Brycen Tremayne",
+     1,
+     0
+    ]
+   ]
+  },
+  "JAX": {
+   "vac_tgts": 218,
+   "vac_carries": 64,
+   "departed": [
+    [
+     "Evan Engram",
+     64,
+     0
+    ],
+    [
+     "Christian Kirk",
+     47,
+     0
+    ],
+    [
+     "Gabe Davis",
+     42,
+     0
+    ],
+    [
+     "D'Ernest Johnson",
+     19,
+     32
+    ]
+   ]
+  }
+ },
+ "rb_rooms": {
+  "ARI": [
+   [
+    "JAMES CONNER",
+    "00-0033553",
+    1
+   ],
+   [
+    "Trey Benson",
+    "00-0039921",
+    2
+   ],
+   [
+    "Emari Demercado",
+    "00-0038705",
+    3
+   ],
+   [
+    "DeeJay Dallas",
+    "00-0036425",
+    4
+   ],
+   [
+    "Bam Knight",
+    "00-0037157",
+    5
+   ]
+  ],
+  "ATL": [
+   [
+    "Bijan Robinson",
+    "00-0038542",
+    1
+   ],
+   [
+    "Tyler Allgeier",
+    "00-0037263",
+    2
+   ],
+   [
+    "Jase McClellan",
+    "00-0039393",
+    3
+   ],
+   [
+    "Carlos Washington Jr.",
+    "00-0038930",
+    4
+   ],
+   [
+    "Elijah Dotson",
+    "00-0038862",
+    5
+   ],
+   [
+    "Nathan Carter",
+    "00-0040547",
+    5
+   ]
+  ],
+  "BAL": [
+   [
+    "DERRICK HENRY",
+    "00-0032764",
+    1
+   ],
+   [
+    "Justice Hill",
+    "00-0034975",
+    2
+   ],
+   [
+    "Keaton Mitchell",
+    "00-0038454",
+    3
+   ],
+   [
+    "Rasheen Ali",
+    "00-0039796",
+    4
+   ],
+   [
+    "Owen Wright",
+    "00-0038458",
+    5
+   ]
+  ],
+  "BUF": [
+   [
+    "James Cook",
+    "00-0037248",
+    1
+   ],
+   [
+    "Ty Johnson",
+    "00-0035537",
+    2
+   ],
+   [
+    "Ray Davis",
+    "00-0039875",
+    3
+   ],
+   [
+    "Darrynton Evans",
+    "00-0036297",
+    4
+   ]
+  ],
+  "CAR": [
+   [
+    "Chuba Hubbard",
+    "00-0036555",
+    1
+   ],
+   [
+    "Rico Dowdle",
+    "00-0036139",
+    2
+   ],
+   [
+    "Trevor Etienne",
+    "00-0040644",
+    3
+   ],
+   [
+    "Raheem Blackshear",
+    "00-0037429",
+    4
+   ],
+   [
+    "Emani Bailey",
+    "00-0039311",
+    5
+   ]
+  ],
+  "CHI": [
+   [
+    "D'Andre Swift",
+    "00-0036275",
+    1
+   ],
+   [
+    "Roschon Johnson",
+    "00-0039021",
+    2
+   ],
+   [
+    "Kyle Monangai",
+    "00-0040236",
+    3
+   ],
+   [
+    "Travis Homer",
+    "00-0035594",
+    4
+   ],
+   [
+    "Ian Wheeler",
+    "00-0039466",
+    5
+   ]
+  ],
+  "CIN": [
+   [
+    "Chase Brown",
+    "00-0038597",
+    1
+   ],
+   [
+    "Zack Moss",
+    "00-0036251",
+    2
+   ],
+   [
+    "Samaje Perine",
+    "00-0033526",
+    3
+   ],
+   [
+    "Kendall Milton",
+    "00-0039266",
+    4
+   ],
+   [
+    "Gary Brightwell",
+    "00-0036569",
+    5
+   ]
+  ],
+  "CLE": [
+   [
+    "Jerome Ford",
+    "00-0037267",
+    1
+   ],
+   [
+    "Quinshon Judkins",
+    "00-0040784",
+    2
+   ],
+   [
+    "Dylan Sampson",
+    "00-0040162",
+    3
+   ],
+   [
+    "Pierre Strong Jr.",
+    "00-0038098",
+    4
+   ],
+   [
+    "Ahmani Marshall",
+    "00-0040260",
+    5
+   ]
+  ],
+  "DAL": [
+   [
+    "Javonte Williams",
+    "00-0036997",
+    1
+   ],
+   [
+    "Jaydon Blue",
+    "00-0040586",
+    2
+   ],
+   [
+    "Miles Sanders",
+    "00-0035243",
+    3
+   ],
+   [
+    "Phil Mafah",
+    "00-0040021",
+    4
+   ],
+   [
+    "Deuce Vaughn",
+    "00-0038622",
+    5
+   ]
+  ],
+  "DEN": [
+   [
+    "RJ Harvey",
+    "00-0040730",
+    1
+   ],
+   [
+    "Jaleel McLaughlin",
+    "00-0038794",
+    2
+   ],
+   [
+    "Audric Estime",
+    "00-0039373",
+    3
+   ],
+   [
+    "Tyler Badie",
+    "00-0037085",
+    4
+   ],
+   [
+    "Blake Watson",
+    "00-0039573",
+    5
+   ]
+  ],
+  "DET": [
+   [
+    "Jahmyr Gibbs",
+    "00-0039139",
+    1
+   ],
+   [
+    "David Montgomery",
+    "00-0035685",
+    2
+   ],
+   [
+    "Craig Reynolds",
+    "00-0035567",
+    3
+   ],
+   [
+    "Sione Vaki",
+    "00-0039364",
+    4
+   ]
+  ],
+  "GB": [
+   [
+    "Josh Jacobs",
+    "00-0035700",
+    1
+   ],
+   [
+    "MarShawn Lloyd",
+    "00-0039811",
+    2
+   ],
+   [
+    "Emanuel Wilson",
+    "00-0038797",
+    3
+   ],
+   [
+    "Chris Brooks",
+    "00-0038685",
+    4
+   ],
+   [
+    "Amar Johnson",
+    "00-0040039",
+    5
+   ]
+  ],
+  "HOU": [
+   [
+    "Joe Mixon",
+    "00-0033897",
+    1
+   ],
+   [
+    "Nick Chubb",
+    "00-0034791",
+    2
+   ],
+   [
+    "Dameon Pierce",
+    "00-0037258",
+    3
+   ],
+   [
+    "Woody Marks",
+    "00-0040583",
+    4
+   ],
+   [
+    "DARE OGUNBOWALE",
+    "00-0033854",
+    4
+   ],
+   [
+    "J.J. Taylor",
+    "00-0036096",
+    5
+   ],
+   [
+    "Jawhar Jordan",
+    "00-0039405",
+    5
+   ]
+  ],
+  "IND": [
+   [
+    "Jonathan Taylor",
+    "00-0036223",
+    1
+   ],
+   [
+    "Trey Sermon",
+    "00-0036984",
+    2
+   ],
+   [
+    "Tyler Goodson",
+    "00-0037120",
+    3
+   ]
+  ],
+  "JAC": null,
+  "KC": [
+   [
+    "Isiah Pacheco",
+    "00-0037197",
+    1
+   ],
+   [
+    "Kareem Hunt",
+    "00-0033923",
+    2
+   ],
+   [
+    "Elijah Mitchell",
+    "00-0036567",
+    3
+   ],
+   [
+    "Carson Steele",
+    "00-0039325",
+    4
+   ],
+   [
+    "Brashard Smith",
+    "00-0040078",
+    5
+   ],
+   [
+    "Keaontay Ingram",
+    "00-0037299",
+    5
+   ]
+  ],
+  "LAC": [
+   [
+    "Omarion Hampton",
+    "00-0040666",
+    1
+   ],
+   [
+    "Najee Harris",
+    "00-0036893",
+    2
+   ],
+   [
+    "Hassan Haskins",
+    "00-0037617",
+    3
+   ],
+   [
+    "Kimani Vidal",
+    "00-0039391",
+    4
+   ],
+   [
+    "Jaret Patterson",
+    "00-0036755",
+    5
+   ],
+   [
+    "Raheim Sanders",
+    "00-0040466",
+    5
+   ]
+  ],
+  "LAR": [
+   [
+    "Kyren Williams",
+    "00-0037840",
+    1
+   ],
+   [
+    "Blake Corum",
+    "00-0039738",
+    2
+   ],
+   [
+    "Jarquez Hunter",
+    "00-0040692",
+    3
+   ],
+   [
+    "Ronnie Rivers",
+    "00-0037557",
+    4
+   ],
+   [
+    "Cody Schrader",
+    "00-0039703",
+    5
+   ]
+  ],
+  "LV": [
+   [
+    "Ashton Jeanty",
+    "00-0040122",
+    1
+   ],
+   [
+    "RAHEEM MOSTERT",
+    "00-0031687",
+    2
+   ],
+   [
+    "Sincere McCormick",
+    "00-0037509",
+    3
+   ],
+   [
+    "Zamir White",
+    "00-0038040",
+    4
+   ],
+   [
+    "Dylan Laube",
+    "00-0039407",
+    5
+   ],
+   [
+    "Chris Collier",
+    "00-0039244",
+    5
+   ]
+  ],
+  "MIA": [
+   [
+    "De'Von Achane",
+    "00-0039040",
+    1
+   ],
+   [
+    "Jaylen Wright",
+    "00-0039874",
+    2
+   ],
+   [
+    "Jeff Wilson Jr.",
+    "00-0034115",
+    3
+   ]
+  ],
+  "MIN": [
+   [
+    "AARON JONES SR.",
+    "00-0033293",
+    1
+   ],
+   [
+    "Jordan Mason",
+    "00-0037525",
+    2
+   ],
+   [
+    "Ty Chandler",
+    "00-0037276",
+    3
+   ],
+   [
+    "Zavier Scott",
+    "00-0038440",
+    4
+   ]
+  ],
+  "NE": [
+   [
+    "Rhamondre Stevenson",
+    "00-0036875",
+    1
+   ],
+   [
+    "TreVeyon Henderson",
+    "00-0040734",
+    2
+   ],
+   [
+    "Antonio Gibson",
+    "00-0036328",
+    3
+   ],
+   [
+    "Trayveon Williams",
+    "00-0035291",
+    4
+   ],
+   [
+    "Lan Larison",
+    "00-0040568",
+    5
+   ],
+   [
+    "Terrell Jennings",
+    "00-0039757",
+    5
+   ]
+  ],
+  "NO": [
+   [
+    "Alvin Kamara",
+    "00-0033906",
+    1
+   ],
+   [
+    "Kendre Miller",
+    "00-0038551",
+    2
+   ],
+   [
+    "Devin Neal",
+    "00-0040202",
+    3
+   ],
+   [
+    "Clyde Edwards-Helaire",
+    "00-0036360",
+    4
+   ],
+   [
+    "Velus Jones Jr.",
+    "00-0037745",
+    4
+   ],
+   [
+    "Xazavian Valladay",
+    "00-0038727",
+    5
+   ]
+  ],
+  "NYG": [
+   [
+    "Tyrone Tracy Jr.",
+    "00-0039384",
+    1
+   ],
+   [
+    "Devin Singletary",
+    "00-0035250",
+    2
+   ],
+   [
+    "Eric Gray",
+    "00-0038396",
+    3
+   ],
+   [
+    "Dante Miller",
+    "00-0039230",
+    4
+   ]
+  ],
+  "NYJ": [
+   [
+    "Breece Hall",
+    "00-0038120",
+    1
+   ],
+   [
+    "Braelon Allen",
+    "00-0039794",
+    2
+   ],
+   [
+    "Isaiah Davis",
+    "00-0039798",
+    3
+   ],
+   [
+    "Kene Nwangwu",
+    "00-0036842",
+    4
+   ]
+  ],
+  "PHI": [
+   [
+    "Saquon Barkley",
+    "00-0034844",
+    1
+   ],
+   [
+    "A.J. Dillon",
+    "00-0036265",
+    2
+   ],
+   [
+    "Will Shipley",
+    "00-0039746",
+    3
+   ],
+   [
+    "Keilan Robinson",
+    "00-0039385",
+    4
+   ],
+   [
+    "Montrell Johnson Jr.",
+    "00-0040028",
+    5
+   ],
+   [
+    "Lew Nichols",
+    "00-0038409",
+    5
+   ]
+  ],
+  "PIT": [
+   [
+    "Kaleb Johnson",
+    "00-0040142",
+    1
+   ],
+   [
+    "Jaylen Warren",
+    "00-0037228",
+    2
+   ],
+   [
+    "Kenneth Gainwell",
+    "00-0036919",
+    3
+   ],
+   [
+    "CORDARRELLE PATTERSON",
+    "00-0030578",
+    3
+   ],
+   [
+    "Trey Sermon",
+    "00-0036984",
+    4
+   ],
+   [
+    "Jonathan Ward",
+    "00-0035924",
+    4
+   ],
+   [
+    "Evan Hull",
+    "00-0038397",
+    5
+   ]
+  ],
+  "SEA": [
+   [
+    "Kenneth Walker III",
+    "00-0038134",
+    1
+   ],
+   [
+    "Zach Charbonnet",
+    "00-0039165",
+    2
+   ],
+   [
+    "Kenny McIntosh",
+    "00-0038636",
+    3
+   ],
+   [
+    "Damien Martinez",
+    "00-0040651",
+    4
+   ],
+   [
+    "George Holani",
+    "00-0039299",
+    5
+   ],
+   [
+    "Jacardia Wright",
+    "00-0040067",
+    5
+   ]
+  ],
+  "SF": [
+   [
+    "Christian McCaffrey",
+    "00-0033280",
+    1
+   ],
+   [
+    "Isaac Guerendo",
+    "00-0039363",
+    2
+   ],
+   [
+    "Jordan James",
+    "00-0040177",
+    3
+   ],
+   [
+    "Patrick Taylor Jr.",
+    "00-0035973",
+    4
+   ],
+   [
+    "Israel Abanikanda",
+    "00-0038389",
+    5
+   ],
+   [
+    "Corey Kiner",
+    "00-0040556",
+    5
+   ]
+  ],
+  "TB": [
+   [
+    "Bucky Irving",
+    "00-0039361",
+    1
+   ],
+   [
+    "Rachaad White",
+    "00-0037256",
+    2
+   ],
+   [
+    "Sean Tucker",
+    "00-0038951",
+    3
+   ],
+   [
+    "Josh Williams",
+    "00-0040429",
+    5
+   ]
+  ],
+  "TEN": [
+   [
+    "Tony Pollard",
+    "00-0035261",
+    1
+   ],
+   [
+    "Tyjae Spears",
+    "00-0039032",
+    2
+   ],
+   [
+    "Julius Chestnut",
+    "00-0037594",
+    3
+   ],
+   [
+    "Kalel Mullings",
+    "00-0040205",
+    4
+   ],
+   [
+    "Jabari Small",
+    "00-0039652",
+    5
+   ]
+  ],
+  "WAS": [
+   [
+    "Brian Robinson Jr.",
+    "00-0037746",
+    1
+   ],
+   [
+    "Austin Ekeler",
+    "00-0033699",
+    2
+   ],
+   [
+    "Jeremy McNichols",
+    "00-0033955",
+    3
+   ],
+   [
+    "Chris Rodriguez Jr.",
+    "00-0038611",
+    4
+   ],
+   [
+    "Michael Wiley",
+    "00-0039684",
+    5
+   ],
+   [
+    "Demetric Felton",
+    "00-0036654",
+    5
+   ]
+  ],
+  "JAX": [
+   [
+    "Travis Etienne Jr.",
+    "00-0036973",
+    1
+   ],
+   [
+    "Tank Bigsby",
+    "00-0038555",
+    2
+   ],
+   [
+    "Bhayshul Tuten",
+    "00-0040719",
+    3
+   ],
+   [
+    "Keilan Robinson",
+    "00-0039385",
+    4
+   ],
+   [
+    "LeQuint Allen Jr.",
+    "00-0040238",
+    5
+   ],
+   [
+    "Ja'Quinden Jackson",
+    "00-0040332",
+    5
+   ]
+  ]
+ },
+ "players": [
+  {
+   "gsis": "00-0034844",
+   "name": "Saquon Barkley",
+   "team": "PHI",
+   "g24": 16,
+   "fantasy_points_league_ppg": 22.21,
+   "carry_share": 0.5789,
+   "target_share": 0.1187,
+   "snap_share": 0.7344,
+   "carries": 345.0,
+   "targets": 43.0,
+   "l8": {
+    "cs": 0.6065,
+    "ts": 0.1105,
+    "ss": 0.7288,
+    "ppg": 22.27,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038542",
+   "name": "Bijan Robinson",
+   "team": "ATL",
+   "g24": 17,
+   "fantasy_points_league_ppg": 20.1,
+   "carry_share": 0.6141,
+   "target_share": 0.1408,
+   "snap_share": 0.7535,
+   "carries": 304.0,
+   "targets": 72.0,
+   "l8": {
+    "cs": 0.655,
+    "ts": 0.1172,
+    "ss": 0.7975,
+    "ppg": 22.52,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039139",
+   "name": "Jahmyr Gibbs",
+   "team": "DET",
+   "g24": 17,
+   "fantasy_points_league_ppg": 21.35,
+   "carry_share": 0.4682,
+   "target_share": 0.114,
+   "snap_share": 0.5529,
+   "carries": 250.0,
+   "targets": 63.0,
+   "l8": {
+    "cs": 0.5039,
+    "ts": 0.1207,
+    "ss": 0.5913,
+    "ppg": 25.0,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033280",
+   "name": "Christian McCaffrey",
+   "team": "SF",
+   "g24": 4,
+   "fantasy_points_league_ppg": 11.95,
+   "carry_share": 0.5435,
+   "target_share": 0.1787,
+   "snap_share": 0.7225,
+   "carries": 50.0,
+   "targets": 19.0,
+   "l8": {
+    "cs": 0.5435,
+    "ts": 0.1787,
+    "ss": 0.7225,
+    "ppg": 11.95,
+    "g": 4
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0040122",
+   "name": "Ashton Jeanty",
+   "team": "LV",
+   "no_2024_stats": true,
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0032764",
+   "name": "Derrick Henry",
+   "team": "BAL",
+   "g24": 17,
+   "fantasy_points_league_ppg": 19.79,
+   "carry_share": 0.5866,
+   "target_share": 0.0528,
+   "snap_share": 0.5741,
+   "carries": 325.0,
+   "targets": 22.0,
+   "l8": {
+    "cs": 0.6038,
+    "ts": 0.0536,
+    "ss": 0.5962,
+    "ppg": 16.86,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039040",
+   "name": "De'Von Achane",
+   "team": "MIA",
+   "g24": 17,
+   "fantasy_points_league_ppg": 17.64,
+   "carry_share": 0.4531,
+   "target_share": 0.1527,
+   "snap_share": 0.6241,
+   "carries": 203.0,
+   "targets": 87.0,
+   "l8": {
+    "cs": 0.5385,
+    "ts": 0.1318,
+    "ss": 0.6638,
+    "ppg": 18.81,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036223",
+   "name": "Jonathan Taylor",
+   "team": "IND",
+   "g24": 14,
+   "fantasy_points_league_ppg": 17.48,
+   "carry_share": 0.7372,
+   "target_share": 0.0745,
+   "snap_share": 0.8029,
+   "carries": 303.0,
+   "targets": 31.0,
+   "l8": {
+    "cs": 0.7586,
+    "ts": 0.0553,
+    "ss": 0.8275,
+    "ppg": 18.06,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039361",
+   "name": "Bucky Irving",
+   "team": "TB",
+   "g24": 17,
+   "fantasy_points_league_ppg": 14.38,
+   "carry_share": 0.4286,
+   "target_share": 0.0912,
+   "snap_share": 0.4441,
+   "carries": 207.0,
+   "targets": 52.0,
+   "l8": {
+    "cs": 0.4825,
+    "ts": 0.1075,
+    "ss": 0.495,
+    "ppg": 18.26,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0035700",
+   "name": "Josh Jacobs",
+   "team": "GB",
+   "g24": 17,
+   "fantasy_points_league_ppg": 17.24,
+   "carry_share": 0.5722,
+   "target_share": 0.0897,
+   "snap_share": 0.6341,
+   "carries": 301.0,
+   "targets": 43.0,
+   "l8": {
+    "cs": 0.5813,
+    "ts": 0.1031,
+    "ss": 0.6262,
+    "ppg": 20.39,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038597",
+   "name": "Chase Brown",
+   "team": "CIN",
+   "g24": 16,
+   "fantasy_points_league_ppg": 15.94,
+   "carry_share": 0.6379,
+   "target_share": 0.1073,
+   "snap_share": 0.6275,
+   "carries": 229.0,
+   "targets": 65.0,
+   "l8": {
+    "cs": 0.8297,
+    "ts": 0.1291,
+    "ss": 0.8575,
+    "ppg": 20.62,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037840",
+   "name": "Kyren Williams",
+   "team": "LAR",
+   "g24": 16,
+   "fantasy_points_league_ppg": 17.01,
+   "carry_share": 0.7366,
+   "target_share": 0.0785,
+   "snap_share": 0.8638,
+   "carries": 316.0,
+   "targets": 40.0,
+   "l8": {
+    "cs": 0.6982,
+    "ts": 0.0604,
+    "ss": 0.85,
+    "ppg": 15.29,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038120",
+   "name": "Breece Hall",
+   "team": "NYJ",
+   "g24": 16,
+   "fantasy_points_league_ppg": 15.06,
+   "carry_share": 0.6111,
+   "target_share": 0.1413,
+   "snap_share": 0.7238,
+   "carries": 209.0,
+   "targets": 76.0,
+   "l8": {
+    "cs": 0.5939,
+    "ts": 0.1129,
+    "ss": 0.6838,
+    "ppg": 13.94,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037248",
+   "name": "James Cook",
+   "team": "BUF",
+   "g24": 16,
+   "fantasy_points_league_ppg": 16.67,
+   "carry_share": 0.452,
+   "target_share": 0.0781,
+   "snap_share": 0.4769,
+   "carries": 207.0,
+   "targets": 38.0,
+   "l8": {
+    "cs": 0.3984,
+    "ts": 0.0619,
+    "ss": 0.4088,
+    "ppg": 16.64,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0040666",
+   "name": "Omarion Hampton",
+   "team": "LAC",
+   "no_2024_stats": true,
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0038134",
+   "name": "Kenneth Walker III",
+   "team": "SEA",
+   "g24": 11,
+   "fantasy_points_league_ppg": 16.47,
+   "carry_share": 0.6245,
+   "target_share": 0.1367,
+   "snap_share": 0.6327,
+   "carries": 153.0,
+   "targets": 53.0,
+   "l8": {
+    "cs": 0.6374,
+    "ts": 0.1355,
+    "ss": 0.63,
+    "ppg": 14.26,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036555",
+   "name": "Chuba Hubbard",
+   "team": "CAR",
+   "g24": 15,
+   "fantasy_points_league_ppg": 16.11,
+   "carry_share": 0.6812,
+   "target_share": 0.1195,
+   "snap_share": 0.7733,
+   "carries": 250.0,
+   "targets": 54.0,
+   "l8": {
+    "cs": 0.7241,
+    "ts": 0.1352,
+    "ss": 0.8562,
+    "ppg": 16.82,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033897",
+   "name": "Joe Mixon",
+   "team": "HOU",
+   "g24": 14,
+   "fantasy_points_league_ppg": 17.18,
+   "carry_share": 0.6694,
+   "target_share": 0.1224,
+   "snap_share": 0.6171,
+   "carries": 245.0,
+   "targets": 52.0,
+   "l8": {
+    "cs": 0.6685,
+    "ts": 0.131,
+    "ss": 0.6312,
+    "ppg": 14.01,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033906",
+   "name": "Alvin Kamara",
+   "team": "NO",
+   "g24": 14,
+   "fantasy_points_league_ppg": 18.95,
+   "carry_share": 0.5816,
+   "target_share": 0.2127,
+   "snap_share": 0.7086,
+   "carries": 228.0,
+   "targets": 89.0,
+   "l8": {
+    "cs": 0.5688,
+    "ts": 0.2161,
+    "ss": 0.6825,
+    "ppg": 16.09,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0040730",
+   "name": "RJ Harvey",
+   "team": "DEN",
+   "no_2024_stats": true,
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033553",
+   "name": "James Conner",
+   "team": "ARI",
+   "g24": 16,
+   "fantasy_points_league_ppg": 15.86,
+   "carry_share": 0.5413,
+   "target_share": 0.1148,
+   "snap_share": 0.6062,
+   "carries": 236.0,
+   "targets": 55.0,
+   "l8": {
+    "cs": 0.4931,
+    "ts": 0.1347,
+    "ss": 0.5462,
+    "ppg": 17.57,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0040734",
+   "name": "TreVeyon Henderson",
+   "team": "NE",
+   "no_2024_stats": true,
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0035685",
+   "name": "David Montgomery",
+   "team": "DET",
+   "g24": 14,
+   "fantasy_points_league_ppg": 15.84,
+   "carry_share": 0.4224,
+   "target_share": 0.0907,
+   "snap_share": 0.4186,
+   "carries": 185.0,
+   "targets": 38.0,
+   "l8": {
+    "cs": 0.4106,
+    "ts": 0.0966,
+    "ss": 0.4263,
+    "ppg": 15.4,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0040142",
+   "name": "Kaleb Johnson",
+   "team": "PIT",
+   "no_2024_stats": true,
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0040784",
+   "name": "Quinshon Judkins",
+   "team": "CLE",
+   "no_2024_stats": true,
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0036275",
+   "name": "D'Andre Swift",
+   "team": "CHI",
+   "g24": 17,
+   "fantasy_points_league_ppg": 12.62,
+   "carry_share": 0.587,
+   "target_share": 0.1011,
+   "snap_share": 0.6682,
+   "carries": 253.0,
+   "targets": 52.0,
+   "l8": {
+    "cs": 0.5989,
+    "ts": 0.0882,
+    "ss": 0.6838,
+    "ppg": 10.39,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0035261",
+   "name": "Tony Pollard",
+   "team": "TEN",
+   "g24": 16,
+   "fantasy_points_league_ppg": 12.54,
+   "carry_share": 0.619,
+   "target_share": 0.1217,
+   "snap_share": 0.6781,
+   "carries": 260.0,
+   "targets": 57.0,
+   "l8": {
+    "cs": 0.6146,
+    "ts": 0.1078,
+    "ss": 0.6288,
+    "ppg": 10.38,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037197",
+   "name": "Isiah Pacheco",
+   "team": "KC",
+   "g24": 7,
+   "fantasy_points_league_ppg": 8.13,
+   "carry_share": 0.4716,
+   "target_share": 0.0767,
+   "snap_share": 0.4757,
+   "carries": 83.0,
+   "targets": 16.0,
+   "l8": {
+    "cs": 0.4716,
+    "ts": 0.0767,
+    "ss": 0.4757,
+    "ppg": 8.13,
+    "g": 7
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0033293",
+   "name": "Aaron Jones Sr.",
+   "team": "MIN",
+   "g24": 17,
+   "fantasy_points_league_ppg": 14.21,
+   "carry_share": 0.558,
+   "target_share": 0.1217,
+   "snap_share": 0.6324,
+   "carries": 255.0,
+   "targets": 62.0,
+   "l8": {
+    "cs": 0.5736,
+    "ts": 0.1084,
+    "ss": 0.63,
+    "ppg": 13.31,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037746",
+   "name": "Brian Robinson Jr.",
+   "team": "WAS",
+   "g24": 14,
+   "fantasy_points_league_ppg": 11.41,
+   "carry_share": 0.4174,
+   "target_share": 0.0598,
+   "snap_share": 0.5157,
+   "carries": 187.0,
+   "targets": 25.0,
+   "l8": {
+    "cs": 0.4198,
+    "ts": 0.0529,
+    "ss": 0.4938,
+    "ppg": 8.68,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0037525",
+   "name": "Jordan Mason",
+   "team": "MIN",
+   "g24": 12,
+   "fantasy_points_league_ppg": 9.58,
+   "carry_share": 0.45,
+   "target_share": 0.0409,
+   "snap_share": 0.4867,
+   "carries": 153.0,
+   "targets": 14.0,
+   "l8": {
+    "cs": 0.2938,
+    "ts": 0.0308,
+    "ss": 0.34,
+    "ppg": 5.08,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0037228",
+   "name": "Jaylen Warren",
+   "team": "PIT",
+   "g24": 15,
+   "fantasy_points_league_ppg": 8.27,
+   "carry_share": 0.2516,
+   "target_share": 0.1175,
+   "snap_share": 0.4493,
+   "carries": 120.0,
+   "targets": 47.0,
+   "l8": {
+    "cs": 0.2902,
+    "ts": 0.1372,
+    "ss": 0.4863,
+    "ppg": 10.1,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0040715",
+   "name": "Cam Skattebo",
+   "team": "NYG",
+   "no_2024_stats": true,
+   "dc_order": null
+  },
+  {
+   "gsis": "00-0036893",
+   "name": "Najee Harris",
+   "team": "LAC",
+   "g24": 17,
+   "fantasy_points_league_ppg": 12.04,
+   "carry_share": 0.4934,
+   "target_share": 0.0986,
+   "snap_share": 0.5,
+   "carries": 263.0,
+   "targets": 48.0,
+   "l8": {
+    "cs": 0.4732,
+    "ts": 0.097,
+    "ss": 0.4325,
+    "ppg": 11.24,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0039384",
+   "name": "Tyrone Tracy Jr.",
+   "team": "NYG",
+   "g24": 17,
+   "fantasy_points_league_ppg": 10.72,
+   "carry_share": 0.4528,
+   "target_share": 0.0922,
+   "snap_share": 0.5735,
+   "carries": 192.0,
+   "targets": 53.0,
+   "l8": {
+    "cs": 0.5538,
+    "ts": 0.1176,
+    "ss": 0.6675,
+    "ppg": 12.19,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0036973",
+   "name": "Travis Etienne Jr.",
+   "team": "JAX",
+   "g24": 15,
+   "fantasy_points_league_ppg": 8.68,
+   "carry_share": 0.4261,
+   "target_share": 0.1105,
+   "snap_share": 0.5393,
+   "carries": 150.0,
+   "targets": 52.0,
+   "l8": {
+    "cs": 0.4483,
+    "ts": 0.1023,
+    "ss": 0.5737,
+    "ppg": 8.39,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039165",
+   "name": "Zach Charbonnet",
+   "team": "SEA",
+   "g24": 17,
+   "fantasy_points_league_ppg": 10.99,
+   "carry_share": 0.3525,
+   "target_share": 0.0938,
+   "snap_share": 0.5271,
+   "carries": 135.0,
+   "targets": 52.0,
+   "l8": {
+    "cs": 0.4066,
+    "ts": 0.0903,
+    "ss": 0.56,
+    "ppg": 11.46,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0036997",
+   "name": "Javonte Williams",
+   "team": "DAL",
+   "g24": 17,
+   "fantasy_points_league_ppg": 9.29,
+   "carry_share": 0.3015,
+   "target_share": 0.1277,
+   "snap_share": 0.5218,
+   "carries": 139.0,
+   "targets": 70.0,
+   "l8": {
+    "cs": 0.1721,
+    "ts": 0.1216,
+    "ss": 0.445,
+    "ppg": 7.58,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0040719",
+   "name": "Bhayshul Tuten",
+   "team": "JAX",
+   "no_2024_stats": true,
+   "dc_order": 3
+  },
+  {
+   "gsis": "00-0036875",
+   "name": "Rhamondre Stevenson",
+   "team": "NE",
+   "g24": 15,
+   "fantasy_points_league_ppg": 11.73,
+   "carry_share": 0.5308,
+   "target_share": 0.0912,
+   "snap_share": 0.6153,
+   "carries": 207.0,
+   "targets": 41.0,
+   "l8": {
+    "cs": 0.4882,
+    "ts": 0.0691,
+    "ss": 0.6175,
+    "ppg": 10.2,
+    "g": 8
+   },
+   "dc_order": 1
+  },
+  {
+   "gsis": "00-0039032",
+   "name": "Tyjae Spears",
+   "team": "TEN",
+   "g24": 12,
+   "fantasy_points_league_ppg": 9.47,
+   "carry_share": 0.2897,
+   "target_share": 0.0993,
+   "snap_share": 0.4275,
+   "carries": 84.0,
+   "targets": 35.0,
+   "l8": {
+    "cs": 0.3081,
+    "ts": 0.0925,
+    "ss": 0.445,
+    "ppg": 9.91,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0039875",
+   "name": "Ray Davis",
+   "team": "BUF",
+   "g24": 17,
+   "fantasy_points_league_ppg": 6.83,
+   "carry_share": 0.2301,
+   "target_share": 0.0416,
+   "snap_share": 0.2435,
+   "carries": 113.0,
+   "targets": 19.0,
+   "l8": {
+    "cs": 0.2114,
+    "ts": 0.0361,
+    "ss": 0.27,
+    "ppg": 5.88,
+    "g": 8
+   },
+   "dc_order": 3
+  },
+  {
+   "gsis": "00-0040586",
+   "name": "Jaydon Blue",
+   "team": "DAL",
+   "no_2024_stats": true,
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0037256",
+   "name": "Rachaad White",
+   "team": "TB",
+   "g24": 15,
+   "fantasy_points_league_ppg": 13.31,
+   "carry_share": 0.3453,
+   "target_share": 0.113,
+   "snap_share": 0.586,
+   "carries": 144.0,
+   "targets": 57.0,
+   "l8": {
+    "cs": 0.3143,
+    "ts": 0.1003,
+    "ss": 0.5475,
+    "ppg": 13.3,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0039921",
+   "name": "Trey Benson",
+   "team": "ARI",
+   "g24": 12,
+   "fantasy_points_league_ppg": 3.92,
+   "carry_share": 0.1909,
+   "target_share": 0.0202,
+   "snap_share": 0.175,
+   "carries": 63.0,
+   "targets": 6.0,
+   "l8": {
+    "cs": 0.1767,
+    "ts": 0.0203,
+    "ss": 0.1775,
+    "ppg": 4.46,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0036158",
+   "name": "J.K. Dobbins",
+   "team": "DEN",
+   "g24": 13,
+   "fantasy_points_league_ppg": 14.75,
+   "carry_share": 0.5091,
+   "target_share": 0.1062,
+   "snap_share": 0.6338,
+   "carries": 195.0,
+   "targets": 38.0,
+   "l8": {
+    "cs": 0.4957,
+    "ts": 0.1047,
+    "ss": 0.6387,
+    "ppg": 14.12,
+    "g": 8
+   },
+   "dc_order": null
+  },
+  {
+   "gsis": "00-0039363",
+   "name": "Isaac Guerendo",
+   "team": "SF",
+   "g24": 16,
+   "fantasy_points_league_ppg": 6.01,
+   "carry_share": 0.1913,
+   "target_share": 0.0355,
+   "snap_share": 0.2294,
+   "carries": 84.0,
+   "targets": 16.0,
+   "l8": {
+    "cs": 0.2461,
+    "ts": 0.047,
+    "ss": 0.2863,
+    "ppg": 7.66,
+    "g": 8
+   },
+   "dc_order": 2
+  },
+  {
+   "gsis": "00-0033699",
+   "name": "Austin Ekeler",
+   "team": "WAS",
+   "g24": 12,
+   "fantasy_points_league_ppg": 11.03,
+   "carry_share": 0.2206,
+   "target_share": 0.1217,
+   "snap_share": 0.5267,
+   "carries": 77.0,
+   "targets": 41.0,
+   "l8": {
+    "cs": 0.2661,
+    "ts": 0.1286,
+    "ss": 0.5813,
+    "ppg": 10.65,
+    "g": 8
+   },
+   "dc_order": 2
+  }
+ ]
+}

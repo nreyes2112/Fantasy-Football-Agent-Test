@@ -55,12 +55,45 @@ status: NOT YET COMPUTABLE
 ```
 metric: weighted_opportunity
 definition: a single number blending target volume and quality (air yards) into one opportunity score; the design's own spec calls for red-zone/end-zone touches to be weighted more heavily
-formula (interim stand-in): nflverse's own `wopr` column = 1.5 x target_share + 0.7 x air_yards_share (the published WOPR formula, Josh Hermsmeyer) -- NOT custom red-zone-weighted per the original spec, since no clean red-zone-specific target/carry count has been pulled yet
+formula (interim stand-in): nflverse's own `wopr` column = 1.5 x target_share + 0.7 x air_yards_share (the published WOPR formula, Josh Hermsmeyer) -- NOT custom red-zone-weighted per the original spec, even though red-zone-specific target/carry counts ARE now pulled (D-017, see red_zone_target_share/red_zone_carry_share below) -- combining them into ONE blended score would mean inventing a weighting formula from scratch, which is a design decision this project hasn't made, not a data gap
 windows: [season, last8, last4]
 source_tables: [raw/nflverse/player_stats]
 stability: MEDIUM -- real metric, but known to differ from the design's original red-zone-weighted intent
-notes: get_player_stats(metrics=["wopr"]) works today as an interim stand-in. A true red-zone-weighted version needs red-zone-specific target/carry counts (e.g. from load_pbp filtered to yardline <= 20), not pulled yet -- flagged here rather than silently treating wopr as equivalent.
-status: PARTIALLY COMPUTABLE (nflverse's wopr proxy only)
+notes: get_player_stats(metrics=["wopr"]) works today as an interim stand-in. D-017 makes a true red-zone-weighted version buildable (the raw ingredients exist), but the blending formula itself is deferred pending an actual design decision -- an agent can use red_zone_target_share/red_zone_carry_share directly alongside wopr instead of waiting for a single combined number.
+status: PARTIALLY COMPUTABLE (nflverse's wopr proxy only; red-zone-specific components now separately computable, see below)
+```
+
+```
+metric: red_zone_target_share
+definition: player's share of the TEAM's red-zone (yardline_100 <= 20) pass attempts -- targets a receiver draws inside the scoring area specifically, distinct from season-long target_share
+formula: sum(player red-zone targets) / sum(team red-zone pass attempts), matched game-by-game (same team/season/week)
+windows: [season, last8, last4]
+source_tables: [curated/weekly_stats (rz_targets column, joined from curated/redzone_player_stats), curated/redzone_team_stats]
+stability: MEDIUM -- red-zone volume is a smaller, noisier sample than season-long targets, but directly reflects a team's scoring-situation usage plan
+notes: built for agents/prompts.py's opportunity_analyst methodology, which named this exact gap in its own D-015/D-016 output ("weighted opportunity ... red-zone and end-zone usage weighted up"). Implemented as access.metrics.compute_red_zone_target_share(); exposed via get_player_stats(metrics=["red_zone_target_share"]). Sourced from capture/pull_pbp.py (D-017) -- an aggregated pbp summary, NOT the full play-by-play table, which is never persisted (repo-size deviation, see that module's docstring).
+status: COMPUTABLE (implemented 2026-07-19, hand-verified: Saquon Barkley's 2024 red-zone carries/TDs matched pre-confirmed real facts exactly -- 64 carries, 6 TDs -- at the raw aggregation level; the share computation itself reconciled exactly [0.4604] once the established per-game-matched methodology, same as carry_share, was applied to the correct 16-game denominator)
+```
+
+```
+metric: red_zone_carry_share
+definition: player's share of the TEAM's red-zone (yardline_100 <= 20) rush attempts
+formula: sum(player red-zone carries) / sum(team red-zone rush attempts), matched game-by-game
+windows: [season, last8, last4]
+source_tables: [curated/weekly_stats (rz_carries column), curated/redzone_team_stats]
+stability: MEDIUM -- same red-zone-sample-size caveat as red_zone_target_share; often the clearest signal for goal-line-role questions (e.g. a change-of-pace back with a real season carry_share but near-zero red_zone_carry_share)
+notes: implemented as access.metrics.compute_red_zone_carry_share(); exposed via get_player_stats(metrics=["red_zone_carry_share"])
+status: COMPUTABLE (implemented 2026-07-19, same verification as red_zone_target_share)
+```
+
+```
+metric: designed_run_rate
+definition: for QBs, the share of a player's rush attempts that were called runs vs. broken-pocket scrambles -- separates a designed rushing role (stable, scheme-driven) from scramble production (less repeatable, more QB-play-quality-dependent)
+formula: designed_carries / (designed_carries + scramble_carries), where designed_carries excludes plays flagged qb_scramble AND qb_kneel (kneel-downs are clock management, not a rushing opportunity signal either way)
+windows: [season, last8, last4]
+source_tables: [curated/weekly_stats (designed_carries/scramble_carries columns)]
+stability: HIGH for QBs with real rushing volume; meaningless (returns ~1.0, not an error) for non-QBs, since scramble_carries is structurally 0 for anyone who was never the passer on the play -- agents must gate on position before reading this metric, same as any other position-scoped field
+notes: built for agents/prompts.py's opportunity_analyst methodology, which named this exact gap in its D-015/D-016 QB runs ("designed-run vs scramble split... not retrievable"). Implemented as access.metrics.compute_designed_run_rate(); exposed via get_player_stats(metrics=["designed_run_rate"])
+status: COMPUTABLE (implemented 2026-07-19, hand-verified: Lamar Jackson's 2024 designed/scramble split matched a pre-confirmed real fact exactly -- 83 designed carries, 45 scrambles, 12 kneels excluded -- both at the raw aggregation level and through the full get_player_stats() call path, live and frozen-world modes both tested)
 ```
 
 ```
@@ -226,5 +259,7 @@ status: COMPUTABLE (implemented, hand-verified against 2 independent real exampl
 | Computable (implemented + verified) | 11 | target_share, carry_share, **snap_share**, aDOT, air_yards_share, EPA_per_target, TD_rate, team_plays_per_game, vacated_targets/carries, draft_capital_tier, ADP (raw), **PPG (hand-verified)** |
 | Partially computable | 2 | weighted_opportunity (nflverse's `wopr` as an interim stand-in, not the red-zone-weighted version originally specified), ADP deltas (mechanism built, needs more days of snapshot history to accumulate) |
 | Not yet computable | 5 | route_participation, YPRR, success_rate, pass_rate_over_expectation, age_curve_position (a methodology decision, not a data gap) |
+
+This table counts phase1 §5's original 18-metric spec only. **D-017 (2026-07-19) adds 3 extension metrics beyond that original list**, built specifically to close a gap Agent 1's own opportunity/volume methodology named in its D-015/D-016 output (not part of the original spec, so counted separately rather than inflating the 18): **red_zone_target_share**, **red_zone_carry_share**, **designed_run_rate** -- all COMPUTABLE, hand-verified against pre-confirmed real facts (Saquon Barkley's 2024 red-zone carries/TDs, Lamar Jackson's 2024 designed/scramble split), sourced from `capture/pull_pbp.py`'s aggregated red-zone/rush-type summary (full play-by-play is never persisted -- see that module's docstring for the repo-size deviation this required). This also means `load_pbp` -- previously listed as "not currently blocking anything" in Phase 1's exit notes -- is now partially pulled, though only as this narrow aggregation; `success_rate`/`pass_rate_over_expectation` still need the full play-level table (or, per nflverse's pbp already carrying a `success` column verified 2026-07-19, `success_rate` specifically may now be a much smaller lift than previously scoped -- flagged for whoever builds Agent 2's efficiency methodology, not pursued now to keep D-017's scope to what Agent 1 actually needed).
 
 `load_snap_counts` is done (2026-07-18) -- snap_share moved from "not yet computable" to computable. Closing the rest of the list needs `load_participation`/`load_nextgen_stats` (route_participation/YPRR) and one bigger lift, `load_pbp` (success_rate/PROE) — see [PROJECT-BRIEF.md](PROJECT-BRIEF.md) §7 for current priority.

@@ -1,0 +1,11 @@
+{
+  "table": "redzone_team_stats",
+  "version": "v1",
+  "columns": {
+    "season": "season year",
+    "week": "week number (REG only)",
+    "team": "posteam, normalized LA->LAR",
+    "team_rz_pass_attempts": "team pass attempts with yardline_100 <= 20 -- red_zone_target_share denominator",
+    "team_rz_rush_attempts": "team rush attempts with yardline_100 <= 20 -- red_zone_carry_share denominator"
+  }
+}

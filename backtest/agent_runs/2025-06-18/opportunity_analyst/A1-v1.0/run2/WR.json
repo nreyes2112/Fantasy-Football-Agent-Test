@@ -1,0 +1,1453 @@
+{
+  "agent_id": "opportunity_analyst",
+  "position": "WR",
+  "snapshot_date": "2025-06-18",
+  "data_gaps": [
+    "route_participation / red-zone target share not retrievable (needs nflverse participation/pbp)",
+    "injury status unavailable in frozen world (Godwin/Rice/Diggs/Aiyuk/Olave/Shaheed recoveries unverifiable)",
+    "rookies with no NFL usage data (confidence capped): McMillan, Hunter, Golden, Egbuka, J.Higgins, T.Harris, Burden, K.Williams",
+    "Kyle Williams absent from NE depth chart"
+  ],
+  "rankings": [
+    {
+      "rank": 1,
+      "player": "Ja'Marr Chase",
+      "player_id": "00-0036900",
+      "proj_ppg": 21.5,
+      "proj_season_total": 344.0,
+      "confidence": 0.9,
+      "rationale": "27.2% target share on 175 targets, RISING to 30.9% at 29.2 PPG over the last 8, in the pool's most pass-heavy offense (63.2%). The 17 TDs regress; the target monopoly doesn't.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "27.2% (175 tgt; l8 30.9%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "63.2%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Target share below 24% in September."
+    },
+    {
+      "rank": 2,
+      "player": "Justin Jefferson",
+      "player_id": "00-0036322",
+      "proj_ppg": 18.6,
+      "proj_season_total": 297.6,
+      "confidence": 0.9,
+      "rationale": "30.1% target share on 154 targets at 93.2% snaps -- the pool's second-best target funnel, held late. The unproven new QB changes the thrower, not the share.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "30.1% (154 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "93.2%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 25% with the new QB through Week 4."
+    },
+    {
+      "rank": 3,
+      "player": "Puka Nacua",
+      "player_id": "00-0039075",
+      "proj_ppg": 18.2,
+      "proj_season_total": 273.0,
+      "confidence": 0.8,
+      "rationale": "A 39.1% last-8 target share -- the highest windowed share in the pool -- at 32.5% season share. Kupp's 214 vacated targets consolidate the funnel further; the 11-game season is the availability caveat.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "39.1% (season 32.5%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "214 (LAR, Kupp departed)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Adams absorbing 28%+ of targets (down 3-5); another soft-tissue absence (down)."
+    },
+    {
+      "rank": 4,
+      "player": "Malik Nabers",
+      "player_id": "00-0039337",
+      "proj_ppg": 18.0,
+      "proj_season_total": 288.0,
+      "confidence": 0.85,
+      "rationale": "The pool's highest target share (35.7%, 170 targets in 15 games) at 90.6% snaps -- a rookie-year funnel that is pure opportunity. QB instability caps efficiency, not volume.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "35.7% (170 tgt, 15 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "90.6%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 28% across Weeks 1-3."
+    },
+    {
+      "rank": 5,
+      "player": "Amon-Ra St. Brown",
+      "player_id": "00-0036963",
+      "proj_ppg": 17.6,
+      "proj_season_total": 281.6,
+      "confidence": 0.85,
+      "rationale": "26.7% share, 115 receptions, 88.3% snaps in the pool's highest-volume offense -- the most catch-dense profile here; 12 TDs regress modestly.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "26.7% (115 rec)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "63.82",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "New-coordinator share below 22%."
+    },
+    {
+      "rank": 6,
+      "player": "CeeDee Lamb",
+      "player_id": "00-0036358",
+      "proj_ppg": 17.4,
+      "proj_season_total": 278.4,
+      "confidence": 0.85,
+      "rationale": "28.3% share on 152 targets in a 59.8%-pass offense; Pickens' arrival takes deep targets but Dallas also vacated 135. Elite, stable volume.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "28.3% (152 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "135 (DAL)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 24% with Pickens active."
+    },
+    {
+      "rank": 7,
+      "player": "Drake London",
+      "player_id": "00-0037238",
+      "proj_ppg": 16.9,
+      "proj_season_total": 270.4,
+      "confidence": 0.8,
+      "rationale": "28.2% share on 158 targets, exploding to 33.0% at 92.8% snaps over the last 8 (the Penix window) -- the late trend is the QB-change signal, and it points up.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "33.0% (season 28.2%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_l8",
+          "value": "92.8%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 24% in the full-season Penix offense."
+    },
+    {
+      "rank": 8,
+      "player": "Brian Thomas Jr.",
+      "player_id": "00-0039893",
+      "proj_ppg": 16.5,
+      "proj_season_total": 264.0,
+      "confidence": 0.75,
+      "rationale": "A 32.0% last-8 target share at 19.3 PPG (season 25.5%) -- the pool's steepest ascending rookie trend. The new staff and Hunter's arrival are the unknowns.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "32.0% (season 25.5%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "19.25",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Hunter cutting his share below 24% early."
+    },
+    {
+      "rank": 9,
+      "player": "A.J. Brown",
+      "player_id": "00-0035676",
+      "proj_ppg": 16.1,
+      "proj_season_total": 241.5,
+      "confidence": 0.8,
+      "rationale": "33.9% target share when active -- second-highest in the pool -- but inside the league's most run-leaning offense (41.9% pass) and a 13-game season. Share elite, pie small.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "33.9% (13 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "41.9%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "PHI pass rate above 47% (up 3); share below 27% (down)."
+    },
+    {
+      "rank": 10,
+      "player": "Nico Collins",
+      "player_id": "00-0036554",
+      "proj_ppg": 15.6,
+      "proj_season_total": 218.4,
+      "confidence": 0.75,
+      "rationale": "24.5% share at 17.6 PPG when active, and Diggs' exit vacated 105 targets -- the WR1 funnel is his; 12-game 2024 availability is the discount.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "24.5% (12 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "105 (HOU, Diggs departed)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 22% as rookies integrate."
+    },
+    {
+      "rank": 11,
+      "player": "Ladd McConkey",
+      "player_id": "00-0039915",
+      "proj_ppg": 15.2,
+      "proj_season_total": 243.2,
+      "confidence": 0.75,
+      "rationale": "24.6% share as a rookie at 17.2 last-8 PPG in an offense that vacated 170 targets -- the clear alpha in a rising passing game.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "24.6% (112 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "170 (LAC)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 20% as Harris/rookies integrate."
+    },
+    {
+      "rank": 12,
+      "player": "Tee Higgins",
+      "player_id": "00-0036410",
+      "proj_ppg": 15.0,
+      "proj_season_total": 210.0,
+      "confidence": 0.7,
+      "rationale": "26.1% share at 18.5 PPG across 12 games with 10 TDs I regress -- elite per-game volume shaded by a 12-and-14-game availability run and Chase's 30%+ share ceiling on the other side.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "26.1% (12 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "19.9",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A 17-game pace September at 24%+ share moves him top-8."
+    },
+    {
+      "rank": 13,
+      "player": "Jaxon Smith-Njigba",
+      "player_id": "00-0038543",
+      "proj_ppg": 14.8,
+      "proj_season_total": 236.8,
+      "confidence": 0.75,
+      "rationale": "23.8% share rising to 25.6% late at 86.4% snaps, with Metcalf and Lockett vacating 199 targets -- though Kupp's arrival claims part of them. Net trend up.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "25.6% (season 23.8%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "199 (SEA)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Kupp out-targeting him in September."
+    },
+    {
+      "rank": 14,
+      "player": "Davante Adams",
+      "player_id": "00-0031381",
+      "proj_ppg": 14.6,
+      "proj_season_total": 219.0,
+      "confidence": 0.7,
+      "rationale": "29.6% aggregate share (32.2% last 8) now moved into the Rams offense with 214 vacated targets -- but sharing a funnel with Nacua's 39% late share. Volume-rich, ceiling-shared.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "29.6% (l8 32.2%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "214 (LAR)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 22% share in his first month as a Ram."
+    },
+    {
+      "rank": 15,
+      "player": "Garrett Wilson",
+      "player_id": "00-0037740",
+      "proj_ppg": 14.3,
+      "proj_season_total": 228.8,
+      "confidence": 0.75,
+      "rationale": "25.9% share on 153 targets at a 96.3% snap share -- volume locked -- though the late window sagged (22.0%, 11.9 PPG) amid QB churn. New QB, same funnel.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "25.9% (153 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "96.3%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 22% with the new QB."
+    },
+    {
+      "rank": 16,
+      "player": "Terry McLaurin",
+      "player_id": "00-0035659",
+      "proj_ppg": 14.1,
+      "proj_season_total": 225.6,
+      "confidence": 0.7,
+      "rationale": "23.3% share on 117 targets with 13 TDs -- the TDs regress hard, the share holds, and Washington vacated 118 targets while adding Deebo.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "23.3% (13 TD)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "118 (WAS)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Deebo eating into a sub-20% share."
+    },
+    {
+      "rank": 17,
+      "player": "Mike Evans",
+      "player_id": "00-0031408",
+      "proj_ppg": 13.9,
+      "proj_season_total": 208.5,
+      "confidence": 0.7,
+      "rationale": "25.0% share at 19.3 last-8 PPG with 11 TDs regressing; Godwin's recovery timeline and Egbuka's arrival redistribute, but the WR1 role held every prior year.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "25.0% (l8 26.8%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "receiving_tds_2024",
+          "value": "11",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 21% with Godwin healthy."
+    },
+    {
+      "rank": 18,
+      "player": "DJ Moore",
+      "player_id": "00-0034827",
+      "proj_ppg": 13.7,
+      "proj_season_total": 219.2,
+      "confidence": 0.7,
+      "rationale": "27.1% share on 140 targets at 93.8% snaps, rising late (30.1%) -- but Chicago added Odunze's growth, Burden, and Loveland to the same pie under a new staff.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "27.1% (l8 30.1%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "93.8%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 22% in the new offense."
+    },
+    {
+      "rank": 19,
+      "player": "Chris Godwin",
+      "player_id": "00-0033921",
+      "proj_ppg": 13.5,
+      "proj_season_total": 189.0,
+      "confidence": 0.6,
+      "rationale": "A 28.2% share at 19.7 PPG across 7 games before the season-ending injury -- elite slot volume IF health returns, which my data cannot verify; Egbuka's arrival hedges the team's bet and mine.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "28.2% (7 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_2024",
+          "value": "19.69",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Missing Week 1 or a snap share under 70% (down 5+)."
+    },
+    {
+      "rank": 20,
+      "player": "Jerry Jeudy",
+      "player_id": "00-0036407",
+      "proj_ppg": 13.2,
+      "proj_season_total": 211.2,
+      "confidence": 0.7,
+      "rationale": "22.7% share on 145 targets surging to 27.6% at 19.8 PPG over the last 8 (post-Cooper) -- Cleveland's 258 vacated targets keep that funnel his regardless of who plays QB.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "27.6% at 19.76 PPG",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "258 (CLE)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 22% in September."
+    },
+    {
+      "rank": 21,
+      "player": "DeVonta Smith",
+      "player_id": "00-0036912",
+      "proj_ppg": 13.1,
+      "proj_season_total": 196.5,
+      "confidence": 0.7,
+      "rationale": "28.0% target share when active -- but the same 41.9%-pass, smallest-pie problem as Brown, from the WR2 chair, across a 13-game season.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "28.0% (13 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "41.9%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "PHI pass rate above 47% (up 3)."
+    },
+    {
+      "rank": 22,
+      "player": "Rashee Rice",
+      "player_id": "00-0039067",
+      "proj_ppg": 13.0,
+      "proj_season_total": 182.0,
+      "confidence": 0.55,
+      "rationale": "24.6% share at 16.2 PPG in his 4 games before injury -- per-game volume that led KC's receivers -- and 163 vacated targets await. A 4-game sample plus unverifiable recovery caps confidence.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "24.6% (4 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "163 (KC)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A healthy Week 1-2 at 22%+ share (up 5+); limited snaps (down 5+)."
+    },
+    {
+      "rank": 23,
+      "player": "Courtland Sutton",
+      "player_id": "00-0034348",
+      "proj_ppg": 12.8,
+      "proj_season_total": 204.8,
+      "confidence": 0.7,
+      "rationale": "25.9% share on 135 targets with the pool's highest air-yards share (47.7%) -- a deep-target monopoly that held all season; rookie additions dilute modestly.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "25.9% (135 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "air_yards_share_2024",
+          "value": "47.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 21% as the rookie class integrates."
+    },
+    {
+      "rank": 24,
+      "player": "Jameson Williams",
+      "player_id": "00-0037240",
+      "proj_ppg": 12.6,
+      "proj_season_total": 201.6,
+      "confidence": 0.65,
+      "rationale": "18.7% share but 1,001 yards on it -- deep-role efficiency I partially regress -- with the share rising late (20.4%) at 16.2 PPG in an elite-volume offense.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "20.4% (season 18.7%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "receiving_yards_2024",
+          "value": "1001",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "New-coordinator share below 16%."
+    },
+    {
+      "rank": 25,
+      "player": "Jakobi Meyers",
+      "player_id": "00-0034960",
+      "proj_ppg": 12.4,
+      "proj_season_total": 198.4,
+      "confidence": 0.7,
+      "rationale": "25.2% share on 129 targets at 91.7% snaps -- quietly a top-12 target funnel; the new regime and a run-tilting rookie back are the unknowns.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "25.2% (129 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "91.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 20% under the new staff."
+    },
+    {
+      "rank": 26,
+      "player": "Jordan Addison",
+      "player_id": "00-0038994",
+      "proj_ppg": 12.3,
+      "proj_season_total": 196.8,
+      "confidence": 0.65,
+      "rationale": "21.2% share rising to 25.0% at 17.7 PPG over the last 8, with 9 TDs regressing -- solid WR2 volume behind Jefferson's monopoly.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "25.0% (season 21.2%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "17.71",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 17% with the new QB."
+    },
+    {
+      "rank": 27,
+      "player": "Tyreek Hill",
+      "player_id": "00-0033040",
+      "proj_ppg": 12.1,
+      "proj_season_total": 193.6,
+      "confidence": 0.65,
+      "rationale": "21.7% share on 122 targets -- still real volume despite the down year, with a mild late rebound (14.8 PPG). The trend is down but the floor share held every week.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "21.7% (122 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "14.79",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 18% -- the age-cliff signal my data would show."
+    },
+    {
+      "rank": 28,
+      "player": "DK Metcalf",
+      "player_id": "00-0035640",
+      "proj_ppg": 11.9,
+      "proj_season_total": 190.4,
+      "confidence": 0.65,
+      "rationale": "20.8% share now moved to Pittsburgh, which vacated 224 targets (Pickens) in a 48.4%-pass offense -- a bigger share of a smaller pie; the trade signals feature intent.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "20.8% (SEA)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "224 (PIT)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 22% share in the new offense by October."
+    },
+    {
+      "rank": 29,
+      "player": "Jauan Jennings",
+      "player_id": "00-0036259",
+      "proj_ppg": 11.8,
+      "proj_season_total": 188.8,
+      "confidence": 0.65,
+      "rationale": "25.2% share rising to 27.9% late, and Deebo's exit vacated 127 targets -- but Aiyuk's return and Pearsall's growth compete for the same recovered pie.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "27.9% (season 25.2%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "127 (SF)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Aiyuk healthy AND Jennings under 18% share."
+    },
+    {
+      "rank": 30,
+      "player": "Zay Flowers",
+      "player_id": "00-0039064",
+      "proj_ppg": 11.6,
+      "proj_season_total": 185.6,
+      "confidence": 0.7,
+      "rationale": "25.4% share on 116 targets -- a real funnel inside the league's second-lowest pass rate (46.3%), with a soft late window (9.4 PPG) that is efficiency, not share.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "25.4% (116 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "46.3%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 21%, or BAL pass rate under 44%."
+    },
+    {
+      "rank": 31,
+      "player": "Xavier Worthy",
+      "player_id": "00-0039894",
+      "proj_ppg": 11.4,
+      "proj_season_total": 182.4,
+      "confidence": 0.65,
+      "rationale": "17.9% share rising to 19.3% at 13.9 PPG over the last 8, with 163 vacated targets and Rice's recovery unverifiable -- the volume path is open.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "19.3% (season 17.9%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "163 (KC)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Rice healthy and Worthy under 16% share."
+    },
+    {
+      "rank": 32,
+      "player": "Marvin Harrison Jr.",
+      "player_id": "00-0039849",
+      "proj_ppg": 11.3,
+      "proj_season_total": 180.8,
+      "confidence": 0.65,
+      "rationale": "22.6% share on 116 targets with a 41.9% air-yards share -- rookie volume was fine; the output (11.6 PPG) wasn't. Role-average efficiency on held volume projects the bounce.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "22.6% (116 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "air_yards_share_2024",
+          "value": "41.9%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 19% in September."
+    },
+    {
+      "rank": 33,
+      "player": "George Pickens",
+      "player_id": "00-0037247",
+      "proj_ppg": 11.2,
+      "proj_season_total": 179.2,
+      "confidence": 0.6,
+      "rationale": "26.7% share at Pittsburgh, now the Dallas WR2 where 135 targets vacated -- real volume pedigree, but second fiddle to Lamb's 28% for the first time.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "26.7% (PIT)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "135 (DAL)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A sub-18% share behind Lamb by October."
+    },
+    {
+      "rank": 34,
+      "player": "Calvin Ridley",
+      "player_id": "00-0034837",
+      "proj_ppg": 11.0,
+      "proj_season_total": 176.0,
+      "confidence": 0.65,
+      "rationale": "23.8% share on 120 targets with a 43.2% air-yards share in a slow offense -- the volume is real, the environment and catch rate cap it; a rookie QB cuts both ways.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "23.8% (120 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "air_yards_share_2024",
+          "value": "43.2%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share below 19% with the new QB room."
+    },
+    {
+      "rank": 35,
+      "player": "Josh Downs",
+      "player_id": "00-0038997",
+      "proj_ppg": 10.9,
+      "proj_season_total": 174.4,
+      "confidence": 0.65,
+      "rationale": "26.1% share when active from the slot at only 64.4% snaps -- per-route volume is elite; the QB carousel and two-down role cap the ceiling.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "26.1% (14 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "64.4%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Snap share above 75% (up 5); a run-lean rookie-QB offense (down)."
+    },
+    {
+      "rank": 36,
+      "player": "Michael Pittman Jr.",
+      "player_id": "00-0036252",
+      "proj_ppg": 10.7,
+      "proj_season_total": 171.2,
+      "confidence": 0.65,
+      "rationale": "25.2% share on 111 targets at 88.1% snaps with weak output (10.4 PPG) -- volume solid, efficiency and QB play poor; role-average efficiency projects mild recovery.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "25.2% (111 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "88.1%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Downs/rookies pushing his share under 20%."
+    },
+    {
+      "rank": 37,
+      "player": "Cooper Kupp",
+      "player_id": "00-0033908",
+      "proj_ppg": 10.5,
+      "proj_season_total": 157.5,
+      "confidence": 0.6,
+      "rationale": "24.9% share across 12 games at LAR, now in Seattle where 199 targets vacated -- the slot volume transfers in principle; age-decline and the JSN overlap are the risks my data can only hint at (12.2 late PPG).",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "24.9% (12 g, LAR)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "199 (SEA)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 20% share in his first Seattle month."
+    },
+    {
+      "rank": 38,
+      "player": "Khalil Shakir",
+      "player_id": "00-0037261",
+      "proj_ppg": 10.3,
+      "proj_season_total": 164.8,
+      "confidence": 0.65,
+      "rationale": "23.0% share (25.5% late) on 61.3% snaps -- Buffalo's most-targeted receiver per snap, with 99 vacated targets; the slot-only role caps total volume.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "25.5% (season 23.0%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "99 (BUF)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Coleman/newcomers pushing his share under 19%."
+    },
+    {
+      "rank": 39,
+      "player": "Stefon Diggs",
+      "player_id": "00-0031588",
+      "proj_ppg": 10.1,
+      "proj_season_total": 141.4,
+      "confidence": 0.55,
+      "rationale": "24.4% share at 15.2 PPG through 8 games before the season-ending injury, now on his second move in two years (NE, chart-confirmed) -- share pedigree against recovery and a low-volume offense.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "24.4% (8 g, HOU)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "WR1 (NE)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Full Week 1 snaps (up 3-5); a rehab-limited camp (down 5+)."
+    },
+    {
+      "rank": 40,
+      "player": "Tetairoa McMillan",
+      "player_id": "00-0040124",
+      "proj_ppg": 10.0,
+      "proj_season_total": 160.0,
+      "confidence": 0.45,
+      "rationale": "Rookie, no NFL usage data -- confidence capped. Listed WR1 immediately in an offense that vacated 135 targets; the clearest rookie target runway in the pool.",
+      "evidence": [
+        {
+          "metric": "depth_chart_order",
+          "value": "WR1 (CAR)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "135 (CAR)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 18% target share by October (down 5+)."
+    },
+    {
+      "rank": 41,
+      "player": "Darnell Mooney",
+      "player_id": "00-0036309",
+      "proj_ppg": 9.8,
+      "proj_season_total": 156.8,
+      "confidence": 0.6,
+      "rationale": "20.6% share on 106 targets at 92.8% snaps -- stable WR2 volume behind London, with the late window fading (10.4 PPG) as London's share surged.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "20.6% (106 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "92.8%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "London's growth pushing him under 16%."
+    },
+    {
+      "rank": 42,
+      "player": "Chris Olave",
+      "player_id": "00-0037239",
+      "proj_ppg": 9.6,
+      "proj_season_total": 144.0,
+      "confidence": 0.55,
+      "rationale": "19.7% share across an 8-game, twice-concussed season -- his prior seasons ran higher, and New Orleans returns a thin target room; health, not opportunity, is the question my data can't answer.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "19.7% (8 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "64 (NO)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A healthy September at 24%+ share (up 5+)."
+    },
+    {
+      "rank": 43,
+      "player": "Jaylen Waddle",
+      "player_id": "00-0036613",
+      "proj_ppg": 9.4,
+      "proj_season_total": 150.4,
+      "confidence": 0.6,
+      "rationale": "16.3% share -- a sharp down year with Hill still absorbing 21.7% -- at 78.7% snaps; the volume path requires a Hill decline or exit my data doesn't show.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "16.3% (83 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "78.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share above 21% early signals the rebound (up 5+)."
+    },
+    {
+      "rank": 44,
+      "player": "Deebo Samuel Sr.",
+      "player_id": "00-0035719",
+      "proj_ppg": 9.3,
+      "proj_season_total": 139.5,
+      "confidence": 0.55,
+      "rationale": "18.8% share in a down 15-game year, traded to Washington where 118 targets vacated -- a hybrid role reboot with declining receiving usage (14.5% air-yards share).",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "18.8% (SF)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "118 (WAS)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 15% share behind McLaurin by October."
+    },
+    {
+      "rank": 45,
+      "player": "Travis Hunter",
+      "player_id": "00-0040718",
+      "proj_ppg": 9.1,
+      "proj_season_total": 145.6,
+      "confidence": 0.4,
+      "rationale": "Rookie, no NFL usage data, and a two-way deployment plan that makes his offensive snap share genuinely unknowable -- the widest outcome range in the pool; Jacksonville's 218 vacated targets are the upside path.",
+      "evidence": [
+        {
+          "metric": "depth_chart_order",
+          "value": "WR1 (JAX)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "218 (JAX)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A full-time offensive snap share Week 1 (up 8+); true two-way rotation (down)."
+    },
+    {
+      "rank": 46,
+      "player": "Rashid Shaheed",
+      "player_id": "00-0037545",
+      "proj_ppg": 8.9,
+      "proj_season_total": 133.5,
+      "confidence": 0.55,
+      "rationale": "24.4% share with a 50.7% air-yards share in his 6 games -- the deepest role in the pool per target -- before injury; a thin Saints room keeps the role his if healthy.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "24.4% (6 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "air_yards_share_2024",
+          "value": "50.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A healthy 20%+ share September (up 5)."
+    },
+    {
+      "rank": 47,
+      "player": "Emeka Egbuka",
+      "player_id": "00-0040129",
+      "proj_ppg": 8.8,
+      "proj_season_total": 140.8,
+      "confidence": 0.45,
+      "rationale": "Rookie, no NFL usage data -- capped. Behind Evans and a recovering Godwin on a team that vacated nothing; the path to targets requires an injury ahead of him.",
+      "evidence": [
+        {
+          "metric": "depth_chart_order",
+          "value": "WR1-listed room: Evans/Godwin present (TB)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "0 (TB)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A Godwin setback promoting him to full slot snaps (up 8+)."
+    },
+    {
+      "rank": 48,
+      "player": "Rome Odunze",
+      "player_id": "00-0039919",
+      "proj_ppg": 8.6,
+      "proj_season_total": 137.6,
+      "confidence": 0.6,
+      "rationale": "18.9% share on 101 rookie targets at 83.6% snaps with poor efficiency -- volume was fine; the new staff, Burden, and Loveland now crowd the same pie.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "18.9% (101 tgt)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "83.6%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share above 23% in the new offense (up 5+)."
+    },
+    {
+      "rank": 49,
+      "player": "Keon Coleman",
+      "player_id": "00-0039901",
+      "proj_ppg": 8.5,
+      "proj_season_total": 136.0,
+      "confidence": 0.6,
+      "rationale": "15.5% rookie share rising to 17.3% late with 99 vacated targets in the room -- modest growth path in a spread-it-around offense.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "17.3% (season 15.5%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "99 (BUF)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 14% share by October (down)."
+    },
+    {
+      "rank": 50,
+      "player": "Rashod Bateman",
+      "player_id": "00-0036550",
+      "proj_ppg": 8.4,
+      "proj_season_total": 134.4,
+      "confidence": 0.6,
+      "rationale": "16.9% share with 9 TDs on 72 targets -- TD-dependent scoring that regresses hard in a 46.3%-pass offense; the share itself was flat all year.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "16.9% (9 TD)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "46.3%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share above 20% post-Andrews-decline (up 5)."
+    },
+    {
+      "rank": 51,
+      "player": "Jayden Reed",
+      "player_id": "00-0039146",
+      "proj_ppg": 8.3,
+      "proj_season_total": 132.8,
+      "confidence": 0.6,
+      "rationale": "16.2% share fading to 14.0% late (8.0 PPG) as the rotation deepened -- and Green Bay drafted Golden into the same room; the trend and the draft signal both point down.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "14.0% (season 16.2%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Golden added (GB)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A 20%+ share month restoring the 2023 role (up 5+)."
+    },
+    {
+      "rank": 52,
+      "player": "Christian Kirk",
+      "player_id": "00-0034775",
+      "proj_ppg": 8.1,
+      "proj_season_total": 121.5,
+      "confidence": 0.55,
+      "rationale": "19.1% share in 8 games before injury, now in Houston where Diggs' exit vacated 105 targets -- a clean slot-volume path behind Collins if healthy.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "19.1% (8 g, JAX)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "105 (HOU)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 15% share behind the rookie class (down)."
+    },
+    {
+      "rank": 53,
+      "player": "Matthew Golden",
+      "player_id": "00-0040667",
+      "proj_ppg": 8.0,
+      "proj_season_total": 128.0,
+      "confidence": 0.45,
+      "rationale": "Rookie, no NFL usage data -- capped. Green Bay vacated zero targets and spreads its passing tree wider than any contender; the first-round capital argues intent, the structure argues patience.",
+      "evidence": [
+        {
+          "metric": "depth_chart_order",
+          "value": "WR1-listed (GB)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "0 (GB)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A 20%+ target share month (up 8+)."
+    },
+    {
+      "rank": 54,
+      "player": "Brandon Aiyuk",
+      "player_id": "00-0036261",
+      "proj_ppg": 7.9,
+      "proj_season_total": 110.6,
+      "confidence": 0.5,
+      "rationale": "22.2% share in 7 games with zero TDs before the multi-ligament injury -- recovery timeline unverifiable in my data, and Jennings' late surge claims his X role in the interim.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "22.2% (7 g, 0 TD)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "127 (SF)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Active Week 1 at 80%+ snaps (up 8+); a PUP start (down 5+)."
+    },
+    {
+      "rank": 55,
+      "player": "Jayden Higgins",
+      "player_id": "00-0040130",
+      "proj_ppg": 7.7,
+      "proj_season_total": 123.2,
+      "confidence": 0.45,
+      "rationale": "Rookie, no NFL usage data -- capped. Second-round capital into the exact WR2 vacancy Diggs left (105 targets) behind Collins; the cleanest rookie WR2 path in the pool.",
+      "evidence": [
+        {
+          "metric": "depth_chart_order",
+          "value": "WR2-listed (HOU)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "105 (HOU)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Kirk winning the slot AND Higgins under 12% share (down)."
+    },
+    {
+      "rank": 56,
+      "player": "Ricky Pearsall",
+      "player_id": "00-0039916",
+      "proj_ppg": 7.5,
+      "proj_season_total": 120.0,
+      "confidence": 0.55,
+      "rationale": "12.8% rookie share on 67.0% snaps -- but Deebo's 127 vacated targets and Aiyuk's unverifiable recovery open real volume; the late-2024 usage never confirmed it.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "12.8% (11 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "127 (SF)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "An 18%+ share September (up 8+)."
+    },
+    {
+      "rank": 57,
+      "player": "Marvin Mims Jr.",
+      "player_id": "00-0038976",
+      "proj_ppg": 7.3,
+      "proj_season_total": 116.8,
+      "confidence": 0.55,
+      "rationale": "A 14.4-PPG last 8 on just a 14.3% share and 31.8% snaps -- TD-burst efficiency my rules regress hardest; until the snap share doubles, the role isn't real.",
+      "evidence": [
+        {
+          "metric": "snap_share_l8",
+          "value": "31.8% (l8 ppg 14.4)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "target_share_2024",
+          "value": "9.6%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A 60%+ snap share Week 1 (up 8+); the burst was the peak (hold)."
+    },
+    {
+      "rank": 58,
+      "player": "Luther Burden III",
+      "player_id": "00-0040735",
+      "proj_ppg": 7.1,
+      "proj_season_total": 113.6,
+      "confidence": 0.4,
+      "rationale": "Rookie, no NFL usage data -- capped. Third receiver at best in a room with Moore, Odunze, and a rookie TE, under a new staff; 154 vacated targets spread across all of them.",
+      "evidence": [
+        {
+          "metric": "depth_chart",
+          "value": "CHI room: Moore/Odunze ahead",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "154 (CHI)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Slot-role usage above 15% share early (up 5+)."
+    },
+    {
+      "rank": 59,
+      "player": "Tre Harris",
+      "player_id": "00-0040727",
+      "proj_ppg": 6.9,
+      "proj_season_total": 110.4,
+      "confidence": 0.4,
+      "rationale": "Rookie, no NFL usage data, listed WR2 behind McConkey in a vacated-volume offense (170 targets) -- a real path, second in line.",
+      "evidence": [
+        {
+          "metric": "depth_chart_order",
+          "value": "WR2 (LAC)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "170 (LAC)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Out-targeting McConkey in any September week (up 8+)."
+    },
+    {
+      "rank": 60,
+      "player": "Kyle Williams",
+      "player_id": "00-0040131",
+      "proj_ppg": 6.7,
+      "proj_season_total": 107.2,
+      "confidence": 0.35,
+      "rationale": "Rookie, no NFL usage data, AND absent from my New England chart -- the pool's lowest-information player; Diggs' arrival further crowds the target tree.",
+      "evidence": [
+        {
+          "metric": "depth_chart_presence",
+          "value": "absent (NE chart)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "38 (NE)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Preseason usage ahead of Boutte/Douglas (up 5+)."
+    }
+  ]
+}

@@ -65,6 +65,12 @@ CANDIDATE_BUILDING_MODULES = [
     Path("backtest/frozen_worlds/historical_adp.py"),
     Path("backtest/frozen_worlds/historical_ecr.py"),
     Path("backtest/frozen_worlds/historical_depth_charts.py"),
+    # Phase 3 agent harness: candidate-building code, must never touch ground truth
+    Path("agents/prompts.py"),
+    Path("agents/pool.py"),
+    Path("agents/runner.py"),
+    Path("access/layer.py"),
+    Path("access/snapshot_resolver.py"),
 ]
 WORLD_TO_SEASON = {"2024-06-18": 2024, "2025-06-18": 2025}
 
@@ -175,6 +181,88 @@ def spot_check_surprises(world_date: str, top_n: int = 3) -> dict:
     }
 
 
+def check_frozen_serving_path(world_date: str) -> dict:
+    """Serving-path audit (added with the Phase 3 frozen-world access-layer
+    bridge): pins THIS process to the world via FROZEN_WORLD_PIN and asserts
+    the access layer cannot leak -- no post-world-date season rows served, the
+    world's own season refused, ADP limited to the single archived snapshot,
+    live snapshot resolution refused outright, and (for the 2024-06-18 world,
+    whose prior season was never pulled) player stats honestly unavailable
+    rather than silently served from the world's own season.
+
+    Requires the world's file-level audit to already be written and passing
+    (pinned_world() enforces that gate), so run_audit() writes the file-level
+    result BEFORE running this check, then appends it -- the bootstrap order
+    for a brand-new world, not an oversight."""
+    import os
+
+    season = WORLD_TO_SEASON[world_date]
+    failures = []
+    prior_env = os.environ.get("FROZEN_WORLD_PIN")
+    os.environ["FROZEN_WORLD_PIN"] = world_date
+    try:
+        from access import layer
+        from access.snapshot_resolver import FrozenWorldError, resolve_snapshot_date
+
+        # 1. Live snapshot resolution must be refused while pinned.
+        try:
+            resolve_snapshot_date(None)
+            failures.append("resolve_snapshot_date served a live snapshot while world-pinned")
+        except FrozenWorldError:
+            pass
+
+        # 2. ADP: exactly one history entry, dated the world date.
+        adp_table = pd.read_parquet(FROZEN_WORLDS_ROOT / world_date / "raw" / "fantasypros_adp" / "adp.parquet")
+        probe_id = adp_table[adp_table["gsis_id"].notna()].iloc[0]["gsis_id"]
+        adp = layer.get_adp(probe_id)
+        if not adp["available"]:
+            failures.append(f"get_adp unavailable for a player known to be in the world's ADP table: {adp['note']}")
+        else:
+            hist = adp["values"]["history"]
+            if len(hist) != 1 or hist[0]["snapshot_date"] != world_date:
+                failures.append(f"get_adp served {len(hist)} history entries / wrong date (must be exactly 1 @ {world_date})")
+
+        # 3. Player stats: either strictly-pre-world seasons, or honestly
+        #    unavailable when the prior season was never pulled -- NEVER rows
+        #    from the world's own (unplayed) season.
+        stats = layer.get_player_stats(probe_id, ["targets"], "season")
+        if stats["available"]:
+            seasons = stats["values"]["seasons_in_window"]
+            if any(s >= season for s in seasons):
+                failures.append(f"get_player_stats served season(s) {seasons} >= world season {season} -- LEAK")
+            if stats["snapshot_date"] != world_date:
+                failures.append(f"get_player_stats cited snapshot_date {stats['snapshot_date']}, not the world date")
+        elif "never pulled" not in (stats["note"] or "") and "no pre-" not in (stats["note"] or ""):
+            failures.append(f"get_player_stats unavailable for an unexpected reason: {stats['note']}")
+
+        # 4. The world's own season must be refused by get_team_context.
+        ctx = layer.get_team_context("DET", season)
+        if ctx["available"]:
+            failures.append(f"get_team_context served season {season}, the world's own unplayed season -- LEAK")
+
+        # 5. An explicit live snapshot_date must be refused.
+        live = layer.get_player_stats(probe_id, ["targets"], "season", snapshot_date="2026-07-18")
+        if live["available"]:
+            failures.append("get_player_stats served an explicit live snapshot_date while world-pinned -- LEAK")
+
+        # 6. Comps (present-day bio fields) must be refused.
+        comps = layer.get_comps(probe_id)
+        if comps["available"]:
+            failures.append("get_comps served present-day bio data while world-pinned -- LEAK")
+    finally:
+        if prior_env is None:
+            os.environ.pop("FROZEN_WORLD_PIN", None)
+        else:
+            os.environ["FROZEN_WORLD_PIN"] = prior_env
+
+    return {
+        "check": "frozen_serving_path_cannot_leak",
+        "passed": len(failures) == 0,
+        "detail": "6 serving-path assertions run with the process pinned to this world via FROZEN_WORLD_PIN"
+        + (f"; FAILURES: {failures}" if failures else ""),
+    }
+
+
 def run_audit(world_date: str) -> dict:
     checks = [
         check_source_timestamps(world_date),
@@ -202,6 +290,25 @@ def run_audit(world_date: str) -> dict:
         "all_automated_checks_passed": all_passed,
     }
     out_path = FROZEN_WORLDS_ROOT / world_date / "leakage_audit.json"
+    # Two-pass write: the serving-path check pins the access layer to this
+    # world, and pinned_world() refuses worlds without a PASSING audit on
+    # disk -- so the file-level result is written first (bootstrapping a
+    # brand-new world), then the serving-path check runs and the file is
+    # rewritten with it included. If file-level checks failed, the serving
+    # check is skipped (the world is unservable anyway) and recorded as such.
+    out_path.write_text(json.dumps(result, indent=2))
+    if all_passed:
+        serving_check = check_frozen_serving_path(world_date)
+    else:
+        serving_check = {
+            "check": "frozen_serving_path_cannot_leak",
+            "passed": False,
+            "detail": "SKIPPED: file-level checks failed, so the world is refused by the serving layer outright",
+        }
+    checks.append(serving_check)
+    all_passed = all_passed and serving_check["passed"]
+    result["checks"] = checks
+    result["all_automated_checks_passed"] = all_passed
     out_path.write_text(json.dumps(result, indent=2))
     print(f"[leakage_audit] {world_date}: all_automated_checks_passed={all_passed} -- wrote {out_path}")
     for c in checks:

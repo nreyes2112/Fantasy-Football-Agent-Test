@@ -1,0 +1,170 @@
+[
+  {
+    "gsis_id":"00-0034796",
+    "player_name":"Lamar Jackson",
+    "team":"BAL",
+    "position":"QB",
+    "pool_rank_source":1
+  },
+  {
+    "gsis_id":"00-0034857",
+    "player_name":"Josh Allen",
+    "team":"BUF",
+    "position":"QB",
+    "pool_rank_source":2
+  },
+  {
+    "gsis_id":"00-0039910",
+    "player_name":"Jayden Daniels",
+    "team":"WAS",
+    "position":"QB",
+    "pool_rank_source":3
+  },
+  {
+    "gsis_id":"00-0036389",
+    "player_name":"Jalen Hurts",
+    "team":"PHI",
+    "position":"QB",
+    "pool_rank_source":4
+  },
+  {
+    "gsis_id":"00-0036442",
+    "player_name":"Joe Burrow",
+    "team":"CIN",
+    "position":"QB",
+    "pool_rank_source":5
+  },
+  {
+    "gsis_id":"00-0033873",
+    "player_name":"Patrick Mahomes II",
+    "team":"KC",
+    "position":"QB",
+    "pool_rank_source":6
+  },
+  {
+    "gsis_id":"00-0034855",
+    "player_name":"Baker Mayfield",
+    "team":"TB",
+    "position":"QB",
+    "pool_rank_source":7
+  },
+  {
+    "gsis_id":"00-0035228",
+    "player_name":"Kyler Murray",
+    "team":"ARI",
+    "position":"QB",
+    "pool_rank_source":8
+  },
+  {
+    "gsis_id":"00-0036945",
+    "player_name":"Justin Fields",
+    "team":"NYJ",
+    "position":"QB",
+    "pool_rank_source":9
+  },
+  {
+    "gsis_id":"00-0039732",
+    "player_name":"Bo Nix",
+    "team":"DEN",
+    "position":"QB",
+    "pool_rank_source":10
+  },
+  {
+    "gsis_id":"00-0037834",
+    "player_name":"Brock Purdy",
+    "team":"SF",
+    "position":"QB",
+    "pool_rank_source":11
+  },
+  {
+    "gsis_id":"00-0039918",
+    "player_name":"Caleb Williams",
+    "team":"CHI",
+    "position":"QB",
+    "pool_rank_source":12
+  },
+  {
+    "gsis_id":"00-0033106",
+    "player_name":"Jared Goff",
+    "team":"DET",
+    "position":"QB",
+    "pool_rank_source":13
+  },
+  {
+    "gsis_id":"00-0033077",
+    "player_name":"Dak Prescott",
+    "team":"DAL",
+    "position":"QB",
+    "pool_rank_source":14
+  },
+  {
+    "gsis_id":"00-0039851",
+    "player_name":"Drake Maye",
+    "team":"NE",
+    "position":"QB",
+    "pool_rank_source":15
+  },
+  {
+    "gsis_id":"00-0036355",
+    "player_name":"Justin Herbert",
+    "team":"LAC",
+    "position":"QB",
+    "pool_rank_source":16
+  },
+  {
+    "gsis_id":"00-0039923",
+    "player_name":"J.J. McCarthy",
+    "team":"MIN",
+    "position":"QB",
+    "pool_rank_source":17
+  },
+  {
+    "gsis_id":"00-0036264",
+    "player_name":"Jordan Love",
+    "team":"GB",
+    "position":"QB",
+    "pool_rank_source":18
+  },
+  {
+    "gsis_id":"00-0036971",
+    "player_name":"Trevor Lawrence",
+    "team":"JAX",
+    "position":"QB",
+    "pool_rank_source":19
+  },
+  {
+    "gsis_id":"00-0039163",
+    "player_name":"C.J. Stroud",
+    "team":"HOU",
+    "position":"QB",
+    "pool_rank_source":20
+  },
+  {
+    "gsis_id":"00-0039917",
+    "player_name":"Michael Penix Jr.",
+    "team":"ATL",
+    "position":"QB",
+    "pool_rank_source":21
+  },
+  {
+    "gsis_id":"00-0036212",
+    "player_name":"Tua Tagovailoa",
+    "team":"MIA",
+    "position":"QB",
+    "pool_rank_source":22
+  },
+  {
+    "gsis_id":"00-0039150",
+    "player_name":"Bryce Young",
+    "team":"CAR",
+    "position":"QB",
+    "pool_rank_source":23
+  },
+  {
+    "gsis_id":"00-0026498",
+    "player_name":"Matthew Stafford",
+    "team":"LAR",
+    "position":"QB",
+    "pool_rank_source":24
+  }
+]

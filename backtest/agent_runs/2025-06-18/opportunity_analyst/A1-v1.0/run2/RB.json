@@ -1,0 +1,1167 @@
+{
+  "agent_id": "opportunity_analyst",
+  "position": "RB",
+  "snapshot_date": "2025-06-18",
+  "data_gaps": [
+    "route_participation and weighted opportunity (red-zone/end-zone usage) not retrievable -- needs nflverse participation/pbp, not pulled",
+    "injury status unavailable in frozen world",
+    "rookies with no NFL usage data (confidence capped): Jeanty, Hampton, Harvey, K.Johnson, Judkins, Henderson, Blue, Skattebo, Tuten",
+    "J.K. Dobbins absent from DEN depth chart (captured 2025-04-27, pre-signing)",
+    "Cam Skattebo absent from NYG depth chart (captured 2025-04-26)",
+    "NYJ/BAL/IND/MIA depth charts captured 2025-02-20 (pre-free-agency staleness)"
+  ],
+  "rankings": [
+    {
+      "rank": 1,
+      "player": "Saquon Barkley",
+      "player_id": "00-0034844",
+      "proj_ppg": 20.4,
+      "proj_season_total": 326.4,
+      "confidence": 0.9,
+      "rationale": "57.9% carry share rising to 60.7% late, 73.4% snaps, in the league's most run-committed offense (41.9% pass rate, 62.9 plays/game). Largest secure carry pie in the pool; efficiency regressed to role-average still clears 20 PPG.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "57.9% (l8 60.7%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "41.9%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "PHI Week 1-3 pass rate above 50%, or carry share below 50% in a healthy stretch."
+    },
+    {
+      "rank": 2,
+      "player": "Bijan Robinson",
+      "player_id": "00-0038542",
+      "proj_ppg": 20.2,
+      "proj_season_total": 323.2,
+      "confidence": 0.9,
+      "rationale": "61.4% carry share plus 14.1% target share at 75.4% snaps, late-window carry share 65.5%, and zero vacated-volume ambiguity in Atlanta. The best combined rush+receiving volume in the pool needs no efficiency assumptions.",
+      "evidence": [
+        {
+          "metric": "shares_2024",
+          "value": "cs 61.4% / ts 14.1% / snap 75.4%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_volume",
+          "value": "1 target / 0 carries",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Allgeier above 30% of carries in Weeks 1-2, or snap share under 65%."
+    },
+    {
+      "rank": 3,
+      "player": "Jahmyr Gibbs",
+      "player_id": "00-0039139",
+      "proj_ppg": 19.8,
+      "proj_season_total": 316.8,
+      "confidence": 0.85,
+      "rationale": "Last-8 carry share 50.4% (up from 46.8%) at 25.0 PPG in the pool's highest-volume offense (63.8 plays/game) -- the late window rules. Montgomery's stable RB2 role caps the share ceiling, and his 55.3% snap share means efficiency is carrying scoring I partially regress.",
+      "evidence": [
+        {
+          "metric": "carry_share_l8",
+          "value": "50.4% at 25.0 PPG",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "63.82",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Montgomery absent (up), or snap share under 55% through Week 3 (down)."
+    },
+    {
+      "rank": 4,
+      "player": "Jonathan Taylor",
+      "player_id": "00-0036223",
+      "proj_ppg": 17.8,
+      "proj_season_total": 284.8,
+      "confidence": 0.85,
+      "rationale": "Pool-best 73.7% carry share (75.9% late) at 80.3% snaps with no listed competition -- the most monopolized backfield in the data. The 7.5% target share caps the PPR ceiling, keeping him under the dual-threat tier.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "73.7% (l8 75.9%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "80.3%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Target share above 10% early (up a tier); carry share below 60% (down)."
+    },
+    {
+      "rank": 5,
+      "player": "De'Von Achane",
+      "player_id": "00-0039040",
+      "proj_ppg": 17.4,
+      "proj_season_total": 278.4,
+      "confidence": 0.8,
+      "rationale": "In full-PPR I weight his 87 targets (15.3% share) as the most bankable volume in this tier, and his carry share ROSE to 53.9% late while Mostert's departure vacated 88 carries. Both trend lines up; second pass moves him ahead of the pure rushers.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "15.3% (87 targets)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "carry_share_l8",
+          "value": "53.9%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Target share below 11% over Weeks 1-3, or a 40%+ committee partner."
+    },
+    {
+      "rank": 6,
+      "player": "Derrick Henry",
+      "player_id": "00-0032764",
+      "proj_ppg": 17.3,
+      "proj_season_total": 276.8,
+      "confidence": 0.85,
+      "rationale": "325 carries at 58.7% share in a 46.3%-pass offense -- elite, stable rush volume. The season-vs-late-8 PPG gap (19.8 vs 16.9) on flat share is the efficiency regression my rules mandate, and the 5.3% target share offers no PPR cushion.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "58.7%, 325 carries",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8_vs_season",
+          "value": "16.86 vs 19.79",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A 10+ carry/game committee partner emerging in Baltimore."
+    },
+    {
+      "rank": 7,
+      "player": "Chase Brown",
+      "player_id": "00-0038597",
+      "proj_ppg": 16.9,
+      "proj_season_total": 270.4,
+      "confidence": 0.75,
+      "rationale": "83.0% carry share and 85.8% snap share over the final 8 games is near-total backfield control, worth 20.6 PPG in that window; on this pass I weight that monopoly more heavily than run 1 did. Cincinnati's 63.2% pass rate is the structural cap.",
+      "evidence": [
+        {
+          "metric": "carry_share_l8",
+          "value": "83.0% (season 63.8%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_l8",
+          "value": "85.8%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Moss or a newcomer at 30%+ of early carries."
+    },
+    {
+      "rank": 8,
+      "player": "Josh Jacobs",
+      "player_id": "00-0035700",
+      "proj_ppg": 16.8,
+      "proj_season_total": 268.8,
+      "confidence": 0.85,
+      "rationale": "57.2% carry share on 301 carries, rising late (58.1%, 20.4 PPG), in a 47.7%-pass offense returning its full touch distribution. Zero vacated-volume ambiguity; the projection is pure volume continuity.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "57.2%, 301 carries",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "47.7%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Green Bay rotation pushing his share below 50% in the first month."
+    },
+    {
+      "rank": 9,
+      "player": "Kyren Williams",
+      "player_id": "00-0037840",
+      "proj_ppg": 16.1,
+      "proj_season_total": 257.6,
+      "confidence": 0.85,
+      "rationale": "86.4% snap share and 73.7% carry share on 316 carries -- volume security a tier above his scoring, which the thin 7.9% target share and soft late window (15.3 PPG) explain. Ranked on the snap monopoly; Kupp's 214 vacated targets don't reroute to backs at this usage.",
+      "evidence": [
+        {
+          "metric": "snap_share_2024",
+          "value": "86.4%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "carry_share_2024",
+          "value": "73.7%, 316 carries",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Corum above 25% of carries early, or snap share below 75%."
+    },
+    {
+      "rank": 10,
+      "player": "Christian McCaffrey",
+      "player_id": "00-0033280",
+      "proj_ppg": 16.2,
+      "proj_season_total": 226.8,
+      "confidence": 0.55,
+      "rationale": "Elite 4-game shares (54.3% carries, 17.9% targets, 72.3% snaps) and 209 vacated carries from Mason's exit leave him the unchallenged SF feature back -- but 4 games after an injury-lost year, with injury status structurally unavailable in my data, is a stated blind spot. Projected on a 14-game season.",
+      "evidence": [
+        {
+          "metric": "shares_2024_4games",
+          "value": "cs 54.3% / ts 17.9% / snap 72.3%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_carries",
+          "value": "209",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Any camp absence (down 5+); healthy 65%+ snap share Weeks 1-2 (up toward top 5)."
+    },
+    {
+      "rank": 11,
+      "player": "Bucky Irving",
+      "player_id": "00-0039361",
+      "proj_ppg": 15.6,
+      "proj_season_total": 249.6,
+      "confidence": 0.75,
+      "rationale": "Carry share 42.9%\u219248.3% late with PPG rising to 18.3 in a 62-plays/game offense that returns everything -- the cleanest ascending-role trend in the pool, weighted per my late-window rule. White's fading share is the confirming signal.",
+      "evidence": [
+        {
+          "metric": "carry_share_l8",
+          "value": "48.3% (season 42.9%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "18.26",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "White out-snapping Irving in Weeks 1-2."
+    },
+    {
+      "rank": 12,
+      "player": "Alvin Kamara",
+      "player_id": "00-0033906",
+      "proj_ppg": 15.5,
+      "proj_season_total": 248.0,
+      "confidence": 0.75,
+      "rationale": "21.3% target share (89 targets), stable late at 21.6% -- the pool's best PPR floor -- plus 58.2% of carries. Late-window PPG (16.1) under season (18.95) points to efficiency cooling on stable volume, so I project near the late window.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "21.3% (l8 21.6%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "carry_share_2024",
+          "value": "58.2%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Target share below 15% Weeks 1-3, or a 40%+ committee."
+    },
+    {
+      "rank": 13,
+      "player": "Ashton Jeanty",
+      "player_id": "00-0040122",
+      "proj_ppg": 14.9,
+      "proj_season_total": 238.4,
+      "confidence": 0.45,
+      "rationale": "Rookie (confidence capped by rule) with the pool's cleanest inherited-volume path: 233 vacated carries and an immediate RB1 listing over Mostert. Structure, not usage data, sets this rank.",
+      "evidence": [
+        {
+          "metric": "team_vacated_carries",
+          "value": "233",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart_order",
+          "value": "RB1 (LV)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Committee signals with Mostert/White, or Week 1-2 carry share under 50%."
+    },
+    {
+      "rank": 14,
+      "player": "Breece Hall",
+      "player_id": "00-0038120",
+      "proj_ppg": 14.3,
+      "proj_season_total": 228.8,
+      "confidence": 0.7,
+      "rationale": "61.1% carry share, 14.1% target share, 72.4% snaps -- top-10 volume in 2024 -- with mild late-window erosion and the pool's second-lowest team play volume. On this pass I discount the Feb-captured chart less: no volume-taker was added per any of my sources.",
+      "evidence": [
+        {
+          "metric": "shares_2024",
+          "value": "cs 61.1% / ts 14.1%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "57.06",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Allen above 35% of early snaps."
+    },
+    {
+      "rank": 15,
+      "player": "Chuba Hubbard",
+      "player_id": "00-0036555",
+      "proj_ppg": 14.5,
+      "proj_season_total": 232.0,
+      "confidence": 0.7,
+      "rationale": "Late-window bell-cow usage (72.4% carries, 85.6% snaps) argues top-12; Dowdle's arrival as listed RB2 in a 56.3-plays/game offense argues a real split. I project the majority side of a new committee.",
+      "evidence": [
+        {
+          "metric": "carry_share_l8",
+          "value": "72.4% at 85.6% snap",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Hubbard RB1, Dowdle RB2 (CAR)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Dowdle above 35% of carries in the first month."
+    },
+    {
+      "rank": 16,
+      "player": "Joe Mixon",
+      "player_id": "00-0033897",
+      "proj_ppg": 14.2,
+      "proj_season_total": 227.2,
+      "confidence": 0.7,
+      "rationale": "66.9% carry share in both windows with a 12.2% target share -- volume held rock-steady even as late-window scoring (14.0) cooled from season (17.2), the classic efficiency-not-opportunity decline I project through. Chubb behind him is insurance, not a proven share threat.",
+      "evidence": [
+        {
+          "metric": "carry_share",
+          "value": "66.9% season and l8",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Mixon RB1, Chubb RB2 (HOU)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Chubb at 30%+ of carries in any healthy September week."
+    },
+    {
+      "rank": 17,
+      "player": "James Conner",
+      "player_id": "00-0033553",
+      "proj_ppg": 14.0,
+      "proj_season_total": 224.0,
+      "confidence": 0.75,
+      "rationale": "Late window BEAT season (17.6 vs 15.9 PPG) on a rising 13.5% target share -- growing receiving volume is the most PPR-valuable trend in this tier. Benson's 19.1% share never threatened the lead role.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "13.5% (season 11.5%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "17.57",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Benson above 30% of September carries."
+    },
+    {
+      "rank": 18,
+      "player": "Kenneth Walker III",
+      "player_id": "00-0038134",
+      "proj_ppg": 13.9,
+      "proj_season_total": 222.4,
+      "confidence": 0.65,
+      "rationale": "62.5% carry share and 13.7% target share in 11 games is top-10 per-game volume; the 11-game availability and Charbonnet's proven 40%+ relief share are why it doesn't rank there. Second pass weighs the availability risk slightly more than run 1.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "62.5% (11 games)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "target_share_2024",
+          "value": "13.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Charbonnet above 40% of snaps with Walker healthy."
+    },
+    {
+      "rank": 19,
+      "player": "James Cook",
+      "player_id": "00-0037248",
+      "proj_ppg": 13.6,
+      "proj_season_total": 217.6,
+      "confidence": 0.7,
+      "rationale": "45.2% carry share, 47.7% snaps, both LOWER late (39.8%/40.9%) -- committee usage whose 16.7 PPG rode touchdown efficiency my rules regress. The three-back rotation behind him is structural, not incidental.",
+      "evidence": [
+        {
+          "metric": "shares_l8",
+          "value": "cs 39.8% / snap 40.9%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_2024",
+          "value": "16.67",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Week 1-3 snap share above 60% (up 5+)."
+    },
+    {
+      "rank": 20,
+      "player": "Omarion Hampton",
+      "player_id": "00-0040666",
+      "proj_ppg": 13.3,
+      "proj_season_total": 212.8,
+      "confidence": 0.45,
+      "rationale": "Rookie (capped confidence) atop a backfield with 296 vacated carries, but sharing it with a 263-carry-durable veteran makes a committee the base case. Best structure after Jeanty; discounted for the split.",
+      "evidence": [
+        {
+          "metric": "team_vacated_carries",
+          "value": "296",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Hampton RB1, Harris RB2 (LAC)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Harris opening at 45%+ of carries (down 5+); 60%+ early share (up 5+)."
+    },
+    {
+      "rank": 21,
+      "player": "David Montgomery",
+      "player_id": "00-0035685",
+      "proj_ppg": 12.8,
+      "proj_season_total": 204.8,
+      "confidence": 0.75,
+      "rationale": "The most stable committee share in the data -- 42.2% season, 41.1% late -- inside the pool's highest-volume offense. Scoring leans on high-value usage my tools can't see (red-zone weighting is a listed gap), so I hold the projection just under his 15.8 PPG output.",
+      "evidence": [
+        {
+          "metric": "carry_share",
+          "value": "42.2% season / 41.1% l8",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "63.82",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Detroit moving past a 60/40 split toward Gibbs."
+    },
+    {
+      "rank": 22,
+      "player": "D'Andre Swift",
+      "player_id": "00-0036275",
+      "proj_ppg": 12.6,
+      "proj_season_total": 201.6,
+      "confidence": 0.7,
+      "rationale": "Secure volume (58.7% carries, 66.8% snaps, no listed threat) with poor output (12.6 PPG) -- my methodology projects role-average efficiency onto the volume, which lands slightly above his 2024 line. New-coordinator play volume is the stated unknown.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "58.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "66.8%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A new back taking 30%+ of first-team camp carries."
+    },
+    {
+      "rank": 23,
+      "player": "Kaleb Johnson",
+      "player_id": "00-0040142",
+      "proj_ppg": 12.4,
+      "proj_season_total": 198.4,
+      "confidence": 0.45,
+      "rationale": "Rookie (capped) inheriting the pool's largest vacated rush volume (376 carries) as listed RB1 in a 48.4%-pass offense. Warren's locked passing-down role bounds this to a two-down majority.",
+      "evidence": [
+        {
+          "metric": "team_vacated_carries",
+          "value": "376",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Johnson RB1, Warren RB2 (PIT)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Warren opening as carry leader (down 5+); 60%+ share by Week 3 (up 5+)."
+    },
+    {
+      "rank": 24,
+      "player": "Tony Pollard",
+      "player_id": "00-0035261",
+      "proj_ppg": 12.1,
+      "proj_season_total": 193.6,
+      "confidence": 0.7,
+      "rationale": "61.9% carry share on 260 carries is top-12 volume trapped in a bottom-tier environment (57.7 plays/game, 10.4 late PPG). Volume is the signal, environment the cap; Spears' stable 29% bounds the downside.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "61.9%, 260 carries",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "57.65",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Spears above 40%, or team play volume above 62/game (up)."
+    },
+    {
+      "rank": 25,
+      "player": "Aaron Jones Sr.",
+      "player_id": "00-0033293",
+      "proj_ppg": 12.2,
+      "proj_season_total": 195.2,
+      "confidence": 0.6,
+      "rationale": "Balanced 55.8%/12.2% carry/target shares over 17 games, but Minnesota traded real assets for Mason and vacated 137 carries -- revealed intent to cut the workload. I project a low-50s share with receiving work intact; slightly more committee-worried than run 1.",
+      "evidence": [
+        {
+          "metric": "shares_2024",
+          "value": "cs 55.8% / ts 12.2%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Jones RB1, Mason RB2 (MIN)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Mason above 40% of September carries."
+    },
+    {
+      "rank": 26,
+      "player": "Isiah Pacheco",
+      "player_id": "00-0037197",
+      "proj_ppg": 11.8,
+      "proj_season_total": 188.8,
+      "confidence": 0.55,
+      "rationale": "7-game injury year at 47.2% share makes 2024 nearly uninformative; the RB1 listing with Hunt behind, KC's 61.8 plays/game, and 163 vacated targets frame a rebound whose size my data can't verify. Sample-size risk stated.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "47.2% (7 games)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Pacheco RB1, Hunt RB2 (KC)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "55%+ carry share Weeks 1-2 (up 5+); even split with Hunt (down)."
+    },
+    {
+      "rank": 27,
+      "player": "Tyrone Tracy Jr.",
+      "player_id": "00-0039384",
+      "proj_ppg": 11.6,
+      "proj_season_total": 185.6,
+      "confidence": 0.65,
+      "rationale": "Rising trend: 45.3%\u219255.4% carry share, 66.8% late snaps, listed RB1 with 86 vacated carries. The drafted rookie absent from my chart data is the acknowledged risk to the trend case.",
+      "evidence": [
+        {
+          "metric": "carry_share_l8",
+          "value": "55.4% (season 45.3%)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Tracy RB1, Singletary RB2 (NYG)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Skattebo or Singletary above 35% of early carries."
+    },
+    {
+      "rank": 28,
+      "player": "RJ Harvey",
+      "player_id": "00-0040730",
+      "proj_ppg": 11.5,
+      "proj_season_total": 184.0,
+      "confidence": 0.45,
+      "rationale": "Rookie (capped) listed RB1 with 139 vacated carries and 146 vacated targets -- but Dobbins' post-capture signing is invisible to my tools, so the split is unverifiable. Lead-committee projection with the gap stated.",
+      "evidence": [
+        {
+          "metric": "team_vacated_volume",
+          "value": "146 t / 139 c",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Harvey RB1 (DEN, 2025-04-27)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Dobbins taking 40%+ of Week-1 work (down 5+); clean RB1 September (up 5+)."
+    },
+    {
+      "rank": 29,
+      "player": "Quinshon Judkins",
+      "player_id": "00-0040784",
+      "proj_ppg": 11.3,
+      "proj_season_total": 180.8,
+      "confidence": 0.45,
+      "rationale": "Rookie (capped) behind Ford on the chart, but Cleveland's 229 vacated carries and 258 vacated targets are the pool's largest combined redistribution in a 61.9-plays/game offense. Structure strong, chart order the discount.",
+      "evidence": [
+        {
+          "metric": "team_vacated_volume",
+          "value": "258 t / 229 c",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Ford RB1, Judkins RB2 (CLE)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "RB1 usage by Week 1 (up 5+); three-way rotation (down)."
+    },
+    {
+      "rank": 30,
+      "player": "Rhamondre Stevenson",
+      "player_id": "00-0036875",
+      "proj_ppg": 11.0,
+      "proj_season_total": 176.0,
+      "confidence": 0.65,
+      "rationale": "53.1% share slipping to 48.8% late, in a 57.4-plays/game offense that just drafted his replacement-candidate (Henderson RB2). Narrowing-majority projection; the trend and the draft signal both point down.",
+      "evidence": [
+        {
+          "metric": "carry_share",
+          "value": "53.1% season / 48.8% l8",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Stevenson RB1, Henderson RB2 (NE)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Henderson held to change-of-pace usage through September (up); an even split (down 5+)."
+    },
+    {
+      "rank": 31,
+      "player": "Javonte Williams",
+      "player_id": "00-0036997",
+      "proj_ppg": 10.9,
+      "proj_season_total": 174.4,
+      "confidence": 0.6,
+      "rationale": "This rank is an allocation of Dallas' 369 vacated carries to the listed RB1, made against his own collapsed 17.2% late-2024 share -- structure over personal trend, with Blue the obvious claimant if he falters.",
+      "evidence": [
+        {
+          "metric": "team_vacated_carries",
+          "value": "369",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "carry_share_l8_2024",
+          "value": "17.2%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Blue at 40%+ of early carries (down 5+); 55%+ September share (up 5+)."
+    },
+    {
+      "rank": 32,
+      "player": "TreVeyon Henderson",
+      "player_id": "00-0040734",
+      "proj_ppg": 10.7,
+      "proj_season_total": 171.2,
+      "confidence": 0.4,
+      "rationale": "Rookie (capped) listed RB2 with minimal inherited volume (45 vacated carries) -- he must take share from an incumbent rather than inherit it. Draft capital as revealed intent is the upside argument my data can only gesture at.",
+      "evidence": [
+        {
+          "metric": "depth_chart",
+          "value": "Henderson RB2 (NE)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_carries",
+          "value": "45",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Passing-down work plus 40%+ carries by October (up 5+)."
+    },
+    {
+      "rank": 33,
+      "player": "J.K. Dobbins",
+      "player_id": "00-0036158",
+      "proj_ppg": 10.5,
+      "proj_season_total": 157.5,
+      "confidence": 0.5,
+      "rationale": "50.9% share and 14.75 PPG over 13 games is real recent volume, and Denver's 139 vacated carries fit him -- but he's absent from every chart in my data (DEN captured pre-signing), so the role is a stated gap. Third pass puts him a notch above run 1 on the strength of the 2024 usage itself.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "50.9% (13 games)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart_presence",
+          "value": "absent (DEN chart 2025-04-27)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Confirmed lead-back usage Week 1 (up 5+); clear backup role (down 5+)."
+    },
+    {
+      "rank": 34,
+      "player": "Najee Harris",
+      "player_id": "00-0036893",
+      "proj_ppg": 10.4,
+      "proj_season_total": 166.4,
+      "confidence": 0.6,
+      "rationale": "263 durable carries at 49.3% share, now RB2 behind a rookie with 296 vacated carries to split -- the pie is big enough that even the minority share sustains flex value. Durability is his one elite metric.",
+      "evidence": [
+        {
+          "metric": "carries_2024",
+          "value": "263 (17 games)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Hampton RB1, Harris RB2 (LAC)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Hampton at 65%+ of carries by October (down 5+)."
+    },
+    {
+      "rank": 35,
+      "player": "Rachaad White",
+      "player_id": "00-0037256",
+      "proj_ppg": 10.0,
+      "proj_season_total": 160.0,
+      "confidence": 0.65,
+      "rationale": "The fading half of Tampa's split (34.5%\u219231.4% carries) with a preserved 11.3% target share -- PPR passing-down value in a 62-plays/game offense, declining trend priced in.",
+      "evidence": [
+        {
+          "metric": "carry_share",
+          "value": "34.5% season / 31.4% l8",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "target_share_2024",
+          "value": "11.3%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "An Irving absence (up 8+); losing passing downs too (down 5+)."
+    },
+    {
+      "rank": 36,
+      "player": "Jaylen Warren",
+      "player_id": "00-0037228",
+      "proj_ppg": 9.8,
+      "proj_season_total": 156.8,
+      "confidence": 0.6,
+      "rationale": "Locked passing-down role (13.7% late target share) plus a share of 376 vacated carries while a rookie settles -- the floor is stable and the early-season upside real.",
+      "evidence": [
+        {
+          "metric": "target_share_l8",
+          "value": "13.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_carries",
+          "value": "376",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Warren opening as actual carry leader (up 8+)."
+    },
+    {
+      "rank": 37,
+      "player": "Travis Etienne Jr.",
+      "player_id": "00-0036973",
+      "proj_ppg": 9.6,
+      "proj_season_total": 153.6,
+      "confidence": 0.55,
+      "rationale": "Listed RB1 with committee usage (42.6% carries, 53.9% snaps) in the pool's lowest-volume offense, ahead of two listed challengers under a new staff (play volume unknowable -- stated blind spot).",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "42.6%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "56.47",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "55%+ early share under the new staff (up 5+); split first-team work (down)."
+    },
+    {
+      "rank": 38,
+      "player": "Zach Charbonnet",
+      "player_id": "00-0039165",
+      "proj_ppg": 9.5,
+      "proj_season_total": 152.0,
+      "confidence": 0.6,
+      "rationale": "40.7% late-window carry share in relief plus 17 games of durability -- the most proven contingency profile in the pool given Walker's 11-game season. Slightly ahead of the standalone RB2s on this pass because the contingency is likelier than most.",
+      "evidence": [
+        {
+          "metric": "carry_share_l8",
+          "value": "40.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Walker RB1, Charbonnet RB2 (SEA)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A Walker injury or announced committee (up 8+)."
+    },
+    {
+      "rank": 39,
+      "player": "Brian Robinson Jr.",
+      "player_id": "00-0037746",
+      "proj_ppg": 9.4,
+      "proj_season_total": 150.4,
+      "confidence": 0.6,
+      "rationale": "Two-down RB1 at 41.7% share with sagging late output (8.7 PPG) and no passing-down role (Ekeler's) -- the same split continuing in a good-volume offense.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "41.7%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "8.68",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Share above 55% (up); a new early-down back (down)."
+    },
+    {
+      "rank": 40,
+      "player": "Austin Ekeler",
+      "player_id": "00-0033699",
+      "proj_ppg": 9.0,
+      "proj_season_total": 135.0,
+      "confidence": 0.6,
+      "rationale": "12.2% target share (12.9% late) at only 22.1% of carries -- a pure PPR passing-down profile with 118 vacated team targets as mild upside; 12 games played is the availability caveat.",
+      "evidence": [
+        {
+          "metric": "target_share_2024",
+          "value": "12.2%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "118",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Passing-down role shifting elsewhere (down 5+)."
+    },
+    {
+      "rank": 41,
+      "player": "Tyjae Spears",
+      "player_id": "00-0039032",
+      "proj_ppg": 8.7,
+      "proj_season_total": 139.2,
+      "confidence": 0.6,
+      "rationale": "Stable 29-31% carry share with dual usage behind a durable starter in a slow offense -- one injury from RB2 value, capped until then.",
+      "evidence": [
+        {
+          "metric": "carry_share",
+          "value": "29.0% season / 30.8% l8",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Pollard RB1, Spears RB2 (TEN)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A Pollard absence or 40%+ share week (up 8+)."
+    },
+    {
+      "rank": 42,
+      "player": "Jordan Mason",
+      "player_id": "00-0037525",
+      "proj_ppg": 8.5,
+      "proj_season_total": 136.0,
+      "confidence": 0.55,
+      "rationale": "45.0% 2024 share (fading to 29.4% late) traded into a Minnesota backfield with 137 vacated carries -- the trade is revealed intent, the late fade the counter-signal. Situation-change discount applied.",
+      "evidence": [
+        {
+          "metric": "carry_share",
+          "value": "45.0% season / 29.4% l8 (SF)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_carries",
+          "value": "137 (MIN)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "40%+ of Minnesota's September carries (up 5+)."
+    },
+    {
+      "rank": 43,
+      "player": "Isaac Guerendo",
+      "player_id": "00-0039363",
+      "proj_ppg": 7.7,
+      "proj_season_total": 123.2,
+      "confidence": 0.55,
+      "rationale": "Sole listed backup to a 4-game-2024 starter after Mason's 209 vacated carries consolidated the role -- the pool's highest-leverage handcuff, moved up one pass on the contingency odds.",
+      "evidence": [
+        {
+          "metric": "carry_share_l8",
+          "value": "24.6%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_carries",
+          "value": "209",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Any McCaffrey absence (up 10+); a veteran signing (down)."
+    },
+    {
+      "rank": 44,
+      "player": "Jaydon Blue",
+      "player_id": "00-0040586",
+      "proj_ppg": 7.8,
+      "proj_season_total": 124.8,
+      "confidence": 0.4,
+      "rationale": "Rookie (capped) RB2 behind a weak incumbent with 369 vacated carries in the room -- the most volatile backfield in the pool, and he is the cheap side of it.",
+      "evidence": [
+        {
+          "metric": "team_vacated_carries",
+          "value": "369",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Williams RB1, Blue RB2 (DAL)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Leading the backfield in touches any September week (up 8+)."
+    },
+    {
+      "rank": 45,
+      "player": "Cam Skattebo",
+      "player_id": "00-0040715",
+      "proj_ppg": 7.3,
+      "proj_season_total": 116.8,
+      "confidence": 0.35,
+      "rationale": "Rookie absent from my chart data entirely (NYG captured 2025-04-26) -- a double data gap ranked on structural inference behind an ascending starter and a veteran RB2.",
+      "evidence": [
+        {
+          "metric": "depth_chart_presence",
+          "value": "absent (NYG: Tracy 1, Singletary 2)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_carries",
+          "value": "86",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Preseason usage ahead of Singletary (up 5+)."
+    },
+    {
+      "rank": 46,
+      "player": "Trey Benson",
+      "player_id": "00-0039921",
+      "proj_ppg": 7.1,
+      "proj_season_total": 113.6,
+      "confidence": 0.6,
+      "rationale": "19.1% share with no growth trend behind a 236-carry starter -- pure handcuff value on a stable ladder.",
+      "evidence": [
+        {
+          "metric": "carry_share",
+          "value": "19.1% season / 17.7% l8",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Conner RB1, Benson RB2 (ARI)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A Conner absence (up 10+)."
+    },
+    {
+      "rank": 47,
+      "player": "Ray Davis",
+      "player_id": "00-0039875",
+      "proj_ppg": 6.5,
+      "proj_season_total": 104.0,
+      "confidence": 0.6,
+      "rationale": "Third slice of a three-way committee (23.0% carries, 4.2% targets) -- droppable depth whose value is entirely the promotion scenario.",
+      "evidence": [
+        {
+          "metric": "carry_share_2024",
+          "value": "23.0%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Cook RB1, Johnson RB2, Davis RB3 (BUF)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A Cook absence elevating him to 40%+ share (up 10+)."
+    },
+    {
+      "rank": 48,
+      "player": "Bhayshul Tuten",
+      "player_id": "00-0040719",
+      "proj_ppg": 6.0,
+      "proj_season_total": 96.0,
+      "confidence": 0.35,
+      "rationale": "Rookie (capped) listed RB3 with two incumbents ahead in the pool's lowest-volume offense and little inherited volume (64 vacated carries) -- the weakest opportunity structure among pool rookies.",
+      "evidence": [
+        {
+          "metric": "depth_chart",
+          "value": "Etienne 1, Bigsby 2, Tuten 3 (JAX)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "56.47",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Passing Bigsby on the usage ladder in September (up 5+)."
+    }
+  ]
+}

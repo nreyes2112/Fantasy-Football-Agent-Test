@@ -1,0 +1,590 @@
+{
+  "agent_id": "opportunity_analyst",
+  "position": "QB",
+  "snapshot_date": "2025-06-18",
+  "data_gaps": [
+    "designed-run vs scramble split and red-zone rush share not retrievable (needs nflverse pbp)",
+    "injury status unavailable in frozen world",
+    "Justin Fields absent from NYJ depth chart (captured 2025-02-20) -- starter status unverifiable",
+    "J.J. McCarthy: no NFL stats (2024 missed) -- confidence capped",
+    "Penix/Prescott/Tagovailoa: partial-season samples (5/8/11 games)"
+  ],
+  "rankings": [
+    {
+      "rank": 1,
+      "player": "Lamar Jackson",
+      "player_id": "00-0034796",
+      "proj_ppg": 24.1,
+      "proj_season_total": 385.6,
+      "confidence": 0.9,
+      "rationale": "139 carries/915 rushing yards plus 474 attempts, stable late -- this pass weights rush volume hardest and his is the best in the pool.",
+      "evidence": [
+        {
+          "metric": "rush_volume_2024",
+          "value": "139 car / 915 yds",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "25.59",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Carries below 6/game across Weeks 1-3."
+    },
+    {
+      "rank": 2,
+      "player": "Josh Allen",
+      "player_id": "00-0034857",
+      "proj_ppg": 23.3,
+      "proj_season_total": 372.8,
+      "confidence": 0.9,
+      "rationale": "483 attempts + 102 carries and the goal-line rush monopoly (12 TDs); TD rate regressed, dual floor intact.",
+      "evidence": [
+        {
+          "metric": "volume_2024",
+          "value": "483 att + 102 car, 12 rush TD",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "27.5",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Goal-line rushes shifting to a RB early."
+    },
+    {
+      "rank": 3,
+      "player": "Jayden Daniels",
+      "player_id": "00-0039910",
+      "proj_ppg": 22.0,
+      "proj_season_total": 352.0,
+      "confidence": 0.85,
+      "rationale": "Rush volume GREW late (66 carries/432 yards in the last 8) on top of 480 attempts -- the only pool QB whose opportunity expanded all season.",
+      "evidence": [
+        {
+          "metric": "rush_volume_l8",
+          "value": "66 car / 432 yds",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "attempts_2024",
+          "value": "480",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Designed rush volume below 5 carries/game early."
+    },
+    {
+      "rank": 4,
+      "player": "Jalen Hurts",
+      "player_id": "00-0036389",
+      "proj_ppg": 21.4,
+      "proj_season_total": 342.4,
+      "confidence": 0.85,
+      "rationale": "10.0 carries/game with 14 rushing TDs -- the highest-value rush role in football, weighted up on this pass; the 41.9%-pass offense caps only the passing side.",
+      "evidence": [
+        {
+          "metric": "rush_volume_2024",
+          "value": "150 car / 14 rush TD (15 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "41.9%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Under 8 rush-TD pace or attempts below 20/game."
+    },
+    {
+      "rank": 5,
+      "player": "Joe Burrow",
+      "player_id": "00-0036442",
+      "proj_ppg": 20.2,
+      "proj_season_total": 323.2,
+      "confidence": 0.8,
+      "rationale": "652 attempts in a 63.2%-pass offense -- an attempt-volume monopoly that substitutes for rush value; late window (24.4) confirms the base.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "652",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "24.42",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Pass rate below 58% under a healthier run game."
+    },
+    {
+      "rank": 6,
+      "player": "Bo Nix",
+      "player_id": "00-0039732",
+      "proj_ppg": 18.5,
+      "proj_season_total": 296.0,
+      "confidence": 0.75,
+      "rationale": "567 attempts + 92 carries, late window rising to 20.8 PPG -- dual volume under a stable play-caller.",
+      "evidence": [
+        {
+          "metric": "volume_2024",
+          "value": "567 att + 92 car",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "20.8",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Rush attempts below 4/game early."
+    },
+    {
+      "rank": 7,
+      "player": "Kyler Murray",
+      "player_id": "00-0035228",
+      "proj_ppg": 18.2,
+      "proj_season_total": 291.2,
+      "confidence": 0.75,
+      "rationale": "541 attempts + 78 carries/572 yards over 17 games -- this pass ranks the dual-volume profile over Mayfield's regressing TD efficiency.",
+      "evidence": [
+        {
+          "metric": "volume_2024",
+          "value": "541 att + 78 car / 572 yds",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "18.32",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Rush volume below 4 carries/game in the first month."
+    },
+    {
+      "rank": 8,
+      "player": "Baker Mayfield",
+      "player_id": "00-0034855",
+      "proj_ppg": 18.1,
+      "proj_season_total": 289.6,
+      "confidence": 0.75,
+      "rationale": "570 attempts in a 62-plays/game offense; the 41 passing TDs regress hardest of anything in this pool, which is the whole gap from his 21.5 PPG.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "570 (41 pass TD)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "62.0",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Attempts below 32/game while TD rate reverts."
+    },
+    {
+      "rank": 9,
+      "player": "Patrick Mahomes II",
+      "player_id": "00-0033873",
+      "proj_ppg": 17.4,
+      "proj_season_total": 278.4,
+      "confidence": 0.8,
+      "rationale": "581 attempts at 99.3% snaps -- maximum volume security at already-role-average efficiency.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "581",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "99.3%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A sustained run-lean shift below 54% pass."
+    },
+    {
+      "rank": 10,
+      "player": "Jared Goff",
+      "player_id": "00-0033106",
+      "proj_ppg": 17.3,
+      "proj_season_total": 276.8,
+      "confidence": 0.7,
+      "rationale": "539 attempts at 23.2 late PPG in the highest-volume offense, but zero rush value plus a new coordinator -- this pass discounts the unknown harder than run 2 did.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "539",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "rush_yards_2024",
+          "value": "56 (0 TD)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "New-coordinator play volume holding 62+/game (up)."
+    },
+    {
+      "rank": 11,
+      "player": "Caleb Williams",
+      "player_id": "00-0039918",
+      "proj_ppg": 16.6,
+      "proj_season_total": 265.6,
+      "confidence": 0.7,
+      "rationale": "562 attempts + 81 carries/489 yards with ZERO rush TDs -- the largest volume-vs-output gap in the pool, and role-average efficiency on that volume ranks him here; this pass trusts the volume most.",
+      "evidence": [
+        {
+          "metric": "volume_2024",
+          "value": "562 att + 81 car / 489 yds, 0 rush TD",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "16.69",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "New-staff play volume below 57/game, or rush volume halving."
+    },
+    {
+      "rank": 12,
+      "player": "Brock Purdy",
+      "player_id": "00-0037834",
+      "proj_ppg": 16.5,
+      "proj_season_total": 264.0,
+      "confidence": 0.75,
+      "rationale": "455 attempts + 66 carries/5 rush TDs -- balanced volume with real rush production in an offense redistributing 127 vacated targets.",
+      "evidence": [
+        {
+          "metric": "volume_2024",
+          "value": "455 att + 66 car / 5 rush TD",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_2024",
+          "value": "17.79",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Rush usage under 2 carries/game with McCaffrey healthy."
+    },
+    {
+      "rank": 13,
+      "player": "Justin Herbert",
+      "player_id": "00-0036355",
+      "proj_ppg": 16.4,
+      "proj_season_total": 262.4,
+      "confidence": 0.75,
+      "rationale": "504 attempts with a rising late window in a run-lean offense -- solid volume, thin rush value, room up if the pass rate normalizes.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "504",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "19.02",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Pass rate staying under 52%."
+    },
+    {
+      "rank": 14,
+      "player": "Justin Fields",
+      "player_id": "00-0036945",
+      "proj_ppg": 16.0,
+      "proj_season_total": 256.0,
+      "confidence": 0.5,
+      "rationale": "This pass weights the rush floor hardest: 40 carries/205 yards/5 TDs across 8 appearances scales to a top-8 season IF he starts 17 -- a role my pre-free-agency chart data cannot confirm, priced in the confidence.",
+      "evidence": [
+        {
+          "metric": "rush_volume_l8",
+          "value": "40 car / 205 yds / 5 TD",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart_presence",
+          "value": "absent from NYJ chart (2025-02-20)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Confirmed 17-start runway (up 5+); benching risk (down 8+)."
+    },
+    {
+      "rank": 15,
+      "player": "Bryce Young",
+      "player_id": "00-0039150",
+      "proj_ppg": 15.5,
+      "proj_season_total": 248.0,
+      "confidence": 0.65,
+      "rationale": "19.6 PPG with 30 carries/208 yards over the last 8 -- a genuine late-window role change, ranked over the small-sample pocket passers on the strength of the rush trend.",
+      "evidence": [
+        {
+          "metric": "ppg_l8",
+          "value": "19.64 (season 13.93)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "rush_volume_l8",
+          "value": "30 car / 208 yds",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "The late-2024 rush usage disappearing early."
+    },
+    {
+      "rank": 16,
+      "player": "Dak Prescott",
+      "player_id": "00-0033077",
+      "proj_ppg": 15.3,
+      "proj_season_total": 229.5,
+      "confidence": 0.55,
+      "rationale": "A ~600-attempt full-season pace in a 59.8%-pass offense, but an 8-game sample with no rush value -- this pass applies the small-sample discount hardest.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "286 in 8 games",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "59.8%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A healthy 36+ attempt/game September (up 5+)."
+    },
+    {
+      "rank": 17,
+      "player": "Tua Tagovailoa",
+      "player_id": "00-0036212",
+      "proj_ppg": 14.9,
+      "proj_season_total": 223.5,
+      "confidence": 0.65,
+      "rationale": "Top-3 per-game pass volume (36 att/game over 11 games), zero rush value, availability the entire risk.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "399 in 11 games",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "ppg_l8",
+          "value": "17.85",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A healthy first half (up 3-5)."
+    },
+    {
+      "rank": 18,
+      "player": "Drake Maye",
+      "player_id": "00-0039851",
+      "proj_ppg": 14.4,
+      "proj_season_total": 230.4,
+      "confidence": 0.6,
+      "rationale": "54 carries/421 rushing yards in 13 games -- this pass ranks his dual-threat base over Stroud's declining pocket profile despite the weaker offense.",
+      "evidence": [
+        {
+          "metric": "rush_volume_2024",
+          "value": "54 car / 421 yds",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "snap_share_2024",
+          "value": "80.5%",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "6+ carries/game in a faster offense (up 5+)."
+    },
+    {
+      "rank": 19,
+      "player": "C.J. Stroud",
+      "player_id": "00-0039163",
+      "proj_ppg": 14.3,
+      "proj_season_total": 228.8,
+      "confidence": 0.7,
+      "rationale": "532 attempts of secure volume, declining late window, no rush value, 105 vacated targets to unproven receivers -- volume floor, flat trajectory.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "532 (l8 ppg 11.31)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "105 (HOU)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Top-12 PPG September on unchanged volume (up 5+)."
+    },
+    {
+      "rank": 20,
+      "player": "Jordan Love",
+      "player_id": "00-0036264",
+      "proj_ppg": 13.9,
+      "proj_season_total": 222.4,
+      "confidence": 0.7,
+      "rationale": "425 attempts in a 47.7%-pass offense with no rush value -- structurally capped.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "425 (15 g)",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "47.7%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Pass rate exceeding 53% sustainably."
+    },
+    {
+      "rank": 21,
+      "player": "Trevor Lawrence",
+      "player_id": "00-0036971",
+      "proj_ppg": 13.7,
+      "proj_season_total": 219.2,
+      "confidence": 0.6,
+      "rationale": "Injury-shortened 2024 in the lowest-volume offense, new staff, 218 vacated targets -- a volume-floor rank amid maximal unknowns.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "284 in 10 games",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_plays_per_game_2024",
+          "value": "56.47",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "New-staff play volume above 62/game (up 5+)."
+    },
+    {
+      "rank": 22,
+      "player": "Matthew Stafford",
+      "player_id": "00-0026498",
+      "proj_ppg": 13.0,
+      "proj_season_total": 208.0,
+      "confidence": 0.7,
+      "rationale": "517 stable attempts, zero rush value, 214 vacated targets -- floor without ceiling.",
+      "evidence": [
+        {
+          "metric": "attempts_2024",
+          "value": "517",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_vacated_targets",
+          "value": "214 (LAR)",
+          "source": "get_vacated_opportunity/frozen",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "A 21+ PPG September on unchanged volume."
+    },
+    {
+      "rank": 23,
+      "player": "J.J. McCarthy",
+      "player_id": "00-0039923",
+      "proj_ppg": 12.8,
+      "proj_season_total": 204.8,
+      "confidence": 0.4,
+      "rationale": "No NFL usage data -- capped by rule; QB1 listing plus an intact receiving corps is the entire case.",
+      "evidence": [
+        {
+          "metric": "depth_chart_order",
+          "value": "QB1 (MIN)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "team_pass_rate_2024",
+          "value": "54.5%",
+          "source": "get_team_context/frozen 2024 team_stats",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "Early rushing usage (up 3-5); quick-hook risk (down)."
+    },
+    {
+      "rank": 24,
+      "player": "Michael Penix Jr.",
+      "player_id": "00-0039917",
+      "proj_ppg": 12.4,
+      "proj_season_total": 198.4,
+      "confidence": 0.5,
+      "rationale": "105 attempts across 5 games, negligible rush value -- the thinnest returning-starter evidence base; the QB1 runway in a 62-plays/game offense is the case.",
+      "evidence": [
+        {
+          "metric": "sample_2024",
+          "value": "105 att / 5 games",
+          "source": "get_player_stats/frozen 2024 weekly_stats",
+          "snapshot_date": "2025-06-18"
+        },
+        {
+          "metric": "depth_chart",
+          "value": "Penix QB1 (ATL)",
+          "source": "get_depth_chart/frozen Ourlads",
+          "snapshot_date": "2025-06-18"
+        }
+      ],
+      "what_would_change_my_mind": "34+ attempts/game at positive EPA in September (up 5+)."
+    }
+  ]
+}

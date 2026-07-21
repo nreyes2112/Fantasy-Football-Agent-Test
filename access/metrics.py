@@ -130,6 +130,66 @@ def compute_carry_share(window_rows: pd.DataFrame, team_stats_df: pd.DataFrame) 
     return round(float(merged["carries_player"].sum() / total_team_carries), 4)
 
 
+# D-017 (agents/prompts.py's opportunity_analyst methodology named this data
+# gap explicitly: "weighted opportunity ... red-zone and end-zone usage
+# weighted up" / "designed-run vs scramble split... not retrievable").
+# Sourced from capture/pull_pbp.py's redzone_player_stats/redzone_team_stats
+# (curated-only, D-017 -- full pbp is never persisted). UNLIKE snap_share,
+# a missing rz_targets/rz_carries/designed_carries/scramble_carries value
+# after the curated-layer left join genuinely MEANS zero (no red-zone/rush
+# involvement that game, the overwhelmingly common case) -- fillna(0) is
+# correct here, not a data-availability workaround.
+_RZ_COUNT_COLUMNS = ["rz_targets", "rz_pass_tds", "rz_carries", "rz_rush_tds", "designed_carries", "scramble_carries"]
+
+
+def compute_red_zone_target_share(window_rows: pd.DataFrame, team_rz_stats_df: pd.DataFrame) -> float | None:
+    """Player red-zone targets / team red-zone pass attempts, matched
+    game-by-game (same team, season, week) -- the receiver-side counterpart
+    to compute_carry_share, using red-zone (yardline_100 <= 20) volume only."""
+    rows = window_rows.copy()
+    rows["rz_targets"] = rows["rz_targets"].fillna(0)
+    merged = rows.merge(
+        team_rz_stats_df[["team", "season", "week", "team_rz_pass_attempts"]],
+        on=["team", "season", "week"],
+    )
+    total_team_rz_attempts = merged["team_rz_pass_attempts"].sum()
+    if total_team_rz_attempts == 0:
+        return None
+    return round(float(merged["rz_targets"].sum() / total_team_rz_attempts), 4)
+
+
+def compute_red_zone_carry_share(window_rows: pd.DataFrame, team_rz_stats_df: pd.DataFrame) -> float | None:
+    """Player red-zone carries / team red-zone rush attempts, matched
+    game-by-game (same team, season, week)."""
+    rows = window_rows.copy()
+    rows["rz_carries"] = rows["rz_carries"].fillna(0)
+    merged = rows.merge(
+        team_rz_stats_df[["team", "season", "week", "team_rz_rush_attempts"]],
+        on=["team", "season", "week"],
+    )
+    total_team_rz_attempts = merged["team_rz_rush_attempts"].sum()
+    if total_team_rz_attempts == 0:
+        return None
+    return round(float(merged["rz_carries"].sum() / total_team_rz_attempts), 4)
+
+
+def compute_designed_run_rate(window_rows: pd.DataFrame) -> float | None:
+    """designed_carries / (designed_carries + scramble_carries) -- QB-
+    specific by construction (scramble_carries is 0 for every non-QB by
+    definition, so this returns ~1.0 for any rushing RB/WR, which is
+    correct but not the metric's intended use; agents should gate on
+    position before reading it, same as any other position-scoped metric
+    here). None when the player had zero qualifying rush attempts (kneels
+    excluded at the source), not 0 -- "100% scramble" and "never ran" must
+    not collapse to the same reported value."""
+    designed = window_rows["designed_carries"].fillna(0).sum()
+    scramble = window_rows["scramble_carries"].fillna(0).sum()
+    total = designed + scramble
+    if total == 0:
+        return None
+    return round(float(designed / total), 4)
+
+
 # draft_capital_tier: round boundaries are a build-time judgment call, not a
 # standard published tiering -- documented here so the boundaries are a
 # decision-log-worthy choice, not an implicit one.

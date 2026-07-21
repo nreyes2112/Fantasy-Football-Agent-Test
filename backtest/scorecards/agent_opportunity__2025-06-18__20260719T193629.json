@@ -1,0 +1,55 @@
+{
+  "run_id": "agent_opportunity__2025-06-18__20260719T193629",
+  "config_hash": "172a8bf8cff180ba",
+  "world": "2025-06-18",
+  "outcome_season": 2025,
+  "system": "agent_opportunity",
+  "runs": 3,
+  "generated_at": "2026-07-19T19:36:29.243829",
+  "code_git_commit": "4e1f5086924fc70ebd54bc6c4145935aedb2bcc6",
+  "headline": {
+    "spearman_overall": null,
+    "spearman_overall_naive": {
+      "mean": 0.5951,
+      "range": [
+        0.5814,
+        0.602
+      ]
+    },
+    "spearman_by_pos": {
+      "QB": null,
+      "RB": {
+        "mean": 0.573,
+        "range": [
+          0.5618,
+          0.582
+        ]
+      },
+      "WR": null,
+      "TE": null
+    },
+    "tier_accuracy": null,
+    "myguys_sim": null
+  },
+  "diagnostics": {
+    "mae_by_pos": {
+      "QB": null,
+      "RB": {
+        "mean": 11.5833,
+        "range": [
+          11.46,
+          11.75
+        ]
+      },
+      "WR": null,
+      "TE": null
+    },
+    "topN_hits": null,
+    "calibration": null,
+    "bust_avoidance": null,
+    "positional_failure_flags": null
+  },
+  "vs_baselines": null,
+  "verdict": null,
+  "notes": "Each of the 3 runs is a DISTINCT stored LLM output (backtest/agent_runs/), so mean/range reflects real run-to-run output differences. CAVEAT (honest, per phase2 \u00a75's intent): runs executed within one Claude Code session share conversational context and are CORRELATED, so this range UNDERSTATES true fresh-session variance -- treat it as a lower bound until runs from independent sessions exist. vs_baselines/verdict remain null here; the CI comparison lives in backtest/scorecards/bootstrap_ci_*.json per D-013's standing precedent."
+}

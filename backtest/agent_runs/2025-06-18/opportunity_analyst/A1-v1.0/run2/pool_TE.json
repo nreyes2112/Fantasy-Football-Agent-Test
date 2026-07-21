@@ -1,0 +1,170 @@
+[
+  {
+    "gsis_id":"00-0039338",
+    "player_name":"Brock Bowers",
+    "team":"LV",
+    "position":"TE",
+    "pool_rank_source":1
+  },
+  {
+    "gsis_id":"00-0037744",
+    "player_name":"Trey McBride",
+    "team":"ARI",
+    "position":"TE",
+    "pool_rank_source":2
+  },
+  {
+    "gsis_id":"00-0033288",
+    "player_name":"George Kittle",
+    "team":"SF",
+    "position":"TE",
+    "pool_rank_source":3
+  },
+  {
+    "gsis_id":"00-0039065",
+    "player_name":"Sam LaPorta",
+    "team":"DET",
+    "position":"TE",
+    "pool_rank_source":4
+  },
+  {
+    "gsis_id":"00-0035229",
+    "player_name":"T.J. Hockenson",
+    "team":"MIN",
+    "position":"TE",
+    "pool_rank_source":5
+  },
+  {
+    "gsis_id":"00-0030506",
+    "player_name":"Travis Kelce",
+    "team":"KC",
+    "position":"TE",
+    "pool_rank_source":6
+  },
+  {
+    "gsis_id":"00-0033881",
+    "player_name":"Evan Engram",
+    "team":"DEN",
+    "position":"TE",
+    "pool_rank_source":7
+  },
+  {
+    "gsis_id":"00-0034753",
+    "player_name":"Mark Andrews",
+    "team":"BAL",
+    "position":"TE",
+    "pool_rank_source":8
+  },
+  {
+    "gsis_id":"00-0033858",
+    "player_name":"Jonnu Smith",
+    "team":"MIA",
+    "position":"TE",
+    "pool_rank_source":9
+  },
+  {
+    "gsis_id":"00-0033885",
+    "player_name":"David Njoku",
+    "team":"CLE",
+    "position":"TE",
+    "pool_rank_source":10
+  },
+  {
+    "gsis_id":"00-0040128",
+    "player_name":"Tyler Warren",
+    "team":"IND",
+    "position":"TE",
+    "pool_rank_source":11
+  },
+  {
+    "gsis_id":"00-0040126",
+    "player_name":"Colston Loveland",
+    "team":"CHI",
+    "position":"TE",
+    "pool_rank_source":12
+  },
+  {
+    "gsis_id":"00-0038996",
+    "player_name":"Tucker Kraft",
+    "team":"GB",
+    "position":"TE",
+    "pool_rank_source":13
+  },
+  {
+    "gsis_id":"00-0038933",
+    "player_name":"Dalton Kincaid",
+    "team":"BUF",
+    "position":"TE",
+    "pool_rank_source":14
+  },
+  {
+    "gsis_id":"00-0034351",
+    "player_name":"Dallas Goedert",
+    "team":"PHI",
+    "position":"TE",
+    "pool_rank_source":15
+  },
+  {
+    "gsis_id":"00-0037838",
+    "player_name":"Isaiah Likely",
+    "team":"BAL",
+    "position":"TE",
+    "pool_rank_source":16
+  },
+  {
+    "gsis_id":"00-0038041",
+    "player_name":"Jake Ferguson",
+    "team":"DAL",
+    "position":"TE",
+    "pool_rank_source":17
+  },
+  {
+    "gsis_id":"00-0036970",
+    "player_name":"Kyle Pitts",
+    "team":"ATL",
+    "position":"TE",
+    "pool_rank_source":18
+  },
+  {
+    "gsis_id":"00-0038935",
+    "player_name":"Brenton Strange",
+    "team":"JAX",
+    "position":"TE",
+    "pool_rank_source":19
+  },
+  {
+    "gsis_id":"00-0036894",
+    "player_name":"Pat Freiermuth",
+    "team":"PIT",
+    "position":"TE",
+    "pool_rank_source":20
+  },
+  {
+    "gsis_id":"00-0033090",
+    "player_name":"Hunter Henry",
+    "team":"NE",
+    "position":"TE",
+    "pool_rank_source":21
+  },
+  {
+    "gsis_id":"00-0030061",
+    "player_name":"Zach Ertz",
+    "team":"WAS",
+    "position":"TE",
+    "pool_rank_source":22
+  },
+  {
+    "gsis_id":"00-0034829",
+    "player_name":"Mike Gesicki",
+    "team":"CIN",
+    "position":"TE",
+    "pool_rank_source":23
+  },
+  {
+    "gsis_id":"00-0038129",
+    "player_name":"Cade Otton",
+    "team":"TB",
+    "position":"TE",
+    "pool_rank_source":24
+  }
+]

@@ -1,0 +1,94 @@
+{
+  "run_id": "agent_opportunity__2025-06-18__20260719T195358",
+  "config_hash": "172a8bf8cff180ba",
+  "world": "2025-06-18",
+  "outcome_season": 2025,
+  "system": "agent_opportunity",
+  "runs": 3,
+  "generated_at": "2026-07-19T19:53:58.778717",
+  "code_git_commit": "4e1f5086924fc70ebd54bc6c4145935aedb2bcc6",
+  "headline": {
+    "spearman_overall": null,
+    "spearman_overall_naive": {
+      "mean": 0.5889,
+      "range": [
+        0.5807,
+        0.5932
+      ]
+    },
+    "spearman_by_pos": {
+      "QB": {
+        "mean": 0.1926,
+        "range": [
+          0.1886,
+          0.196
+        ]
+      },
+      "RB": {
+        "mean": 0.573,
+        "range": [
+          0.5618,
+          0.582
+        ]
+      },
+      "WR": {
+        "mean": 0.6094,
+        "range": [
+          0.6047,
+          0.6123
+        ]
+      },
+      "TE": {
+        "mean": 0.2217,
+        "range": [
+          0.209,
+          0.2329
+        ]
+      }
+    },
+    "tier_accuracy": null,
+    "myguys_sim": null
+  },
+  "diagnostics": {
+    "mae_by_pos": {
+      "QB": {
+        "mean": 8.2767,
+        "range": [
+          8.25,
+          8.33
+        ]
+      },
+      "RB": {
+        "mean": 11.5833,
+        "range": [
+          11.46,
+          11.75
+        ]
+      },
+      "WR": {
+        "mean": 18.4533,
+        "range": [
+          18.43,
+          18.5
+        ]
+      },
+      "TE": {
+        "mean": 10.89,
+        "range": [
+          10.83,
+          10.92
+        ]
+      }
+    },
+    "topN_hits": null,
+    "calibration": null,
+    "bust_avoidance": null,
+    "positional_failure_flags": [
+      "QB",
+      "TE"
+    ]
+  },
+  "vs_baselines": null,
+  "verdict": null,
+  "notes": "Each of the 3 runs is a DISTINCT stored LLM output (backtest/agent_runs/), so mean/range reflects real run-to-run output differences. CAVEAT (honest, per phase2 \u00a75's intent): runs executed within one Claude Code session share conversational context and are CORRELATED, so this range UNDERSTATES true fresh-session variance -- treat it as a lower bound until runs from independent sessions exist. vs_baselines/verdict remain null here; the CI comparison lives in backtest/scorecards/bootstrap_ci_*.json per D-013's standing precedent."
+}

@@ -6,15 +6,22 @@ etc.) -- useful, but not the actual "curated/weekly_stats" table §5's data
 dictionary literally names as several metrics' source_tables.
 
 Joins player_stats (already gsis_id-keyed) with snap_counts_resolved's
-offense_pct (renamed to snap_share, matching phase1 §5's metric name) on
-(gsis_id, season, week) -- verified 2026-07-18 that this key has zero
-duplicates in snap_counts_resolved, so the join can't silently fan out
-rows. Does NOT bake in derived ratio metrics (aDOT, EPA_per_target,
-TD_rate) as columns here -- those need window-level sum-of-ratios, not a
-per-game average of per-game ratios, which would be a subtly wrong number
-for any multi-game request. access/metrics.py remains the single source of
-truth for those; this table only adds columns that are correct at any
-grain (a raw count and a directly-reported percentage).
+offense_pct (renamed to snap_share, matching phase1 §5's metric name) AND
+(D-017) pull_pbp.py's redzone_player_stats -- both on (gsis_id, season,
+week) -- verified 2026-07-18 (snap_counts) and 2026-07-19 (redzone_player_
+stats) that this key has zero duplicates in either source, so neither join
+can silently fan out rows. redzone_player_stats is REG-only by construction
+(pull_pbp.py filters season_type=='REG' during aggregation) and joined on
+(gsis_id, season, week) alone, NOT season_type -- POST rows in player_stats
+simply get null red-zone/rush-type columns, same as any other unmatched row,
+and access/layer.py's _reg_only() filter excludes POST rows before any
+metric ever reads them anyway. Does NOT bake in derived ratio metrics
+(aDOT, EPA_per_target, TD_rate, red_zone_target_share, red_zone_carry_share,
+designed_run_rate) as columns here -- those need window-level sum-of-ratios,
+not a per-game average of per-game ratios, which would be a subtly wrong
+number for any multi-game request. access/metrics.py remains the single
+source of truth for those; this table only adds columns that are correct at
+any grain (a raw count and a directly-reported percentage).
 
 Runs after both pull_daily.py (raw) and pull_crosswalk.py (identity
 resolution + snap_counts) in the weekly workflow -- depends on both. Writes
@@ -50,26 +57,46 @@ _SCHEMA_NOTES = {
     "season": "season year",
     "week": "week number",
     "snap_share": "this player's share of the team's offensive snaps that game -- joined in from snap_counts_resolved.offense_pct; null where snap_counts has no matching (gsis_id, season, week) row",
-    "...": "plus every column from raw/nflverse/player_stats.parquet, unchanged -- this table adds snap_share, it doesn't replace or filter player_stats",
+    "rz_targets/rz_pass_tds/rz_carries/rz_rush_tds/designed_carries/scramble_carries": "joined in from redzone_player_stats.parquet (D-017, pull_pbp.py) -- REG-only. UNLIKE snap_share, null here genuinely MEANS zero (no red-zone/rush involvement that game is the overwhelmingly common case, not a resolution gap) -- access/metrics.py's red-zone/rush-type functions fillna(0) accordingly, never treating these nulls as unavailable data the way snap_share's nulls are treated",
+    "...": "plus every column from raw/nflverse/player_stats.parquet, unchanged -- this table adds snap_share and the red-zone/rush-type columns, it doesn't replace or filter player_stats",
 }
 
 
-def run() -> int:
+def _target_snapshot_date() -> str:
+    """Today, if a raw snapshot already exists for it. Otherwise the latest
+    existing snapshot -- same rationale as capture/pull_pbp.py's identical
+    helper (D-017): rebuilding this table for already-captured historical
+    seasons doesn't require a same-day raw capture to have just run."""
     today = datetime.now(LEAGUE_TIMEZONE).strftime("%Y-%m-%d")
+    root = Path(SNAPSHOT_ROOT)
+    if (root / today / "manifest.json").exists():
+        return today
+    existing = sorted(d.name for d in root.iterdir() if d.is_dir() and (d / "manifest.json").exists())
+    if not existing:
+        raise SystemExit(f"No raw snapshot for {today} yet, and none exist at all -- run `python -m capture.pull_daily` (.venv) first.")
+    return existing[-1]
+
+
+def run() -> int:
+    today = _target_snapshot_date()
     snapshot_dir = Path(SNAPSHOT_ROOT) / today
     raw_dir = snapshot_dir / "raw"
     curated_dir = snapshot_dir / "curated"
 
     player_stats_path = raw_dir / "nflverse" / "player_stats.parquet"
     snap_counts_path = curated_dir / "snap_counts_resolved.parquet"
+    redzone_player_path = curated_dir / "redzone_player_stats.parquet"
     if not player_stats_path.exists():
         raise SystemExit(f"No {player_stats_path} yet -- run `python -m capture.pull_stats` (.venv311) first.")
     if not snap_counts_path.exists():
         raise SystemExit(f"No {snap_counts_path} yet -- run `python -m capture.pull_crosswalk` (.venv311) first.")
+    if not redzone_player_path.exists():
+        raise SystemExit(f"No {redzone_player_path} yet -- run `python -m capture.pull_pbp` (.venv311) first.")
 
-    print("[curated-stats] loading player_stats + snap_counts_resolved...")
+    print("[curated-stats] loading player_stats + snap_counts_resolved + redzone_player_stats...")
     player_stats = pd.read_parquet(player_stats_path)
     snap_counts = pd.read_parquet(snap_counts_path)
+    redzone_player = pd.read_parquet(redzone_player_path)
 
     snap_share_by_key = (
         snap_counts.dropna(subset=["gsis_id"])[["gsis_id", "season", "week", "offense_pct"]]
@@ -81,6 +108,16 @@ def run() -> int:
         raise SystemExit(
             f"BUG: join fanned out rows ({len(player_stats)} -> {len(weekly_stats)}) -- "
             "snap_counts_resolved must have duplicate (gsis_id, season, week) keys; investigate before trusting this table"
+        )
+
+    _RZ_COLS = ["rz_targets", "rz_pass_tds", "rz_carries", "rz_rush_tds", "designed_carries", "scramble_carries"]
+    redzone_by_key = redzone_player[["player_id", "season", "week"] + _RZ_COLS]
+    before_rz_join = len(weekly_stats)
+    weekly_stats = weekly_stats.merge(redzone_by_key, on=["player_id", "season", "week"], how="left")
+    if len(weekly_stats) != before_rz_join:
+        raise SystemExit(
+            f"BUG: redzone join fanned out rows ({before_rz_join} -> {len(weekly_stats)}) -- "
+            "redzone_player_stats must have duplicate (player_id, season, week) keys; investigate before trusting this table"
         )
 
     curated_dir.mkdir(parents=True, exist_ok=True)
@@ -107,6 +144,11 @@ def run() -> int:
             "detail": f"{snap_share_coverage}% of player-attributed rows have a snap_share value "
             "(not 100% expected -- snap_counts_resolved itself resolves ~81% of its rows to gsis_id)",
         },
+        {
+            "check": "weekly_stats_row_count_matches_player_stats_after_redzone_join",
+            "passed": len(weekly_stats) == len(player_stats),
+            "detail": f"{len(weekly_stats)} rows after both joins (player_stats had {len(player_stats)})",
+        },
     ]
     all_passed = all(c["passed"] for c in checks)
 
@@ -114,7 +156,11 @@ def run() -> int:
         "snapshot_date": today,
         "generated_at": datetime.now(LEAGUE_TIMEZONE).isoformat(),
         "code_git_commit": git_commit(),
-        "built_from": [str(player_stats_path.relative_to(Path("."))), str(snap_counts_path.relative_to(Path(".")))],
+        "built_from": [
+            str(player_stats_path.relative_to(Path("."))),
+            str(snap_counts_path.relative_to(Path("."))),
+            str(redzone_player_path.relative_to(Path("."))),
+        ],
         "files": [
             {
                 "table": "weekly_stats",

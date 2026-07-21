@@ -77,17 +77,46 @@ def _uniform_blend(world_date: str) -> pd.DataFrame:
     return candidate
 
 
-# Every "system" this project can score today. A future Phase 3 agent config
-# registers here the same way -- run_backtest doesn't know or care whether a
-# candidate came from a deterministic baseline or an LLM agent chain, only
-# that it produces the same [gsis_id, position, positional_rank, overall_rank]
-# shape scoring.py already expects.
+def _agent_opportunity(world_date: str, run_index: int = 0) -> pd.DataFrame:
+    """Phase 3 Agent 1 (opportunity/volume). Unlike the deterministic
+    baselines, each of the N runs is a DIFFERENT stored, validated LLM
+    output (agents/runner.py) -- the harness scores what exists, it never
+    re-invokes the LLM (D-006)."""
+    from agents.runner import load_agent_candidate
+
+    try:
+        return load_agent_candidate(world_date, run_index)
+    except FileNotFoundError as exc:
+        raise SystemUnavailableError(str(exc)) from exc
+
+
+# Every "system" this project can score today. run_backtest doesn't know or
+# care whether a candidate came from a deterministic baseline or an LLM agent
+# chain, only that it produces the same [gsis_id, position, positional_rank,
+# overall_rank] shape scoring.py already expects. Agent systems additionally
+# accept run_index (each run is a distinct stored output, not a re-execution).
 SYSTEM_REGISTRY = {
     "baseline_adp_order": _adp_order,
     "baseline_ecr": _ecr,
     "baseline_naive_repeat": _naive_repeat,
     "baseline_uniform_blend": _uniform_blend,
+    "agent_opportunity": _agent_opportunity,
 }
+
+# Config payloads that feed compute_config_hash for systems that have real
+# prompt/config identity (phase2 §1's bisectability requirement). Baselines
+# stay None-config. Lazy import avoids paying the agents-package import for
+# baseline-only runs.
+def _system_config(system: str) -> dict | None:
+    if system == "agent_opportunity":
+        from agents.prompts import PROMPT_VERSIONS
+
+        # metric_dictionary_version bumped to v2 with A1-v1.1: D-017 added
+        # red_zone_target_share/red_zone_carry_share/designed_run_rate to the
+        # dictionary, so the metric set the agent could draw on genuinely
+        # changed -- part of what makes v1.1's config hash distinct from v1.0's.
+        return {"prompt_version": PROMPT_VERSIONS["opportunity_analyst"], "metric_dictionary_version": "v2"}
+    return None
 
 
 def compute_config_hash(system: str, world_date: str, config: dict | None = None) -> str:
@@ -130,9 +159,14 @@ def run_backtest(system: str, world_date: str, runs: int = 3, config: dict | Non
     season = baselines.WORLD_TO_SEASON[world_date]
     ground_truth = baselines.load_ground_truth(season)
 
+    import inspect
+
+    fn = SYSTEM_REGISTRY[system]
+    takes_run_index = "run_index" in inspect.signature(fn).parameters
     per_run_results = []
-    for _ in range(runs):
-        candidate = SYSTEM_REGISTRY[system](world_date)  # raises SystemUnavailableError if genuinely can't run
+    for i in range(runs):
+        # raises SystemUnavailableError if genuinely can't run
+        candidate = fn(world_date, run_index=i) if takes_run_index else fn(world_date)
         per_run_results.append(score_candidate(candidate, ground_truth))
 
     positions = list(SM2_UNIVERSE_SIZES)
@@ -186,6 +220,13 @@ def run_backtest(system: str, world_date: str, runs: int = 3, config: dict | Non
             "deterministic (no LLM involved yet), so this mechanically proves the N-run/mean/range "
             "infrastructure (phase2 §5) rather than measuring real variance -- range will be [x,x] until a real "
             "nondeterministic agent exists.".format(runs=runs)
+            if not system.startswith("agent_")
+            else "Each of the {runs} runs is a DISTINCT stored LLM output (backtest/agent_runs/), so mean/range "
+            "reflects real run-to-run output differences. CAVEAT (honest, per phase2 §5's intent): runs executed "
+            "within one Claude Code session share conversational context and are CORRELATED, so this range "
+            "UNDERSTATES true fresh-session variance -- treat it as a lower bound until runs from independent "
+            "sessions exist. vs_baselines/verdict remain null here; the CI comparison lives in "
+            "backtest/scorecards/bootstrap_ci_*.json per D-013's standing precedent.".format(runs=runs)
         ),
     }
     SCORECARDS_ROOT.mkdir(parents=True, exist_ok=True)
@@ -204,7 +245,7 @@ def main() -> int:
     parser.add_argument("--runs", type=int, default=3)
     args = parser.parse_args()
     try:
-        run_backtest(args.system, args.world_date, args.runs)
+        run_backtest(args.system, args.world_date, args.runs, config=_system_config(args.system))
     except SystemUnavailableError as exc:
         print(f"[run_backtest] SKIPPED -- {exc}")
         return 1

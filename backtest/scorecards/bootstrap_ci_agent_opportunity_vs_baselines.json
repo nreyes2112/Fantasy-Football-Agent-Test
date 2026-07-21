@@ -1,0 +1,199 @@
+{
+  "world": "2025-06-18",
+  "methodology": "intersection of both systems' top-N universes per position, shared resampled index, seed=42 -- identical to bootstrap_ci_ecr_vs_adp.json (D-013)",
+  "agent_runs_used": "3-run mean positional rank (re-ranked) as central candidate",
+  "positions": {
+    "QB": {
+      "vs_adp_order": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 24,
+        "candidate_spearman": {
+          "point_estimate": 0.1876,
+          "ci_low": -0.2398,
+          "ci_high": 0.5732,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.2385,
+          "ci_low": -0.1895,
+          "ci_high": 0.6325,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.051,
+          "ci_low": -0.2536,
+          "ci_high": 0.1393,
+          "n_valid": 2000
+        }
+      },
+      "vs_ecr": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 24,
+        "candidate_spearman": {
+          "point_estimate": 0.1876,
+          "ci_low": -0.2398,
+          "ci_high": 0.5732,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.2799,
+          "ci_low": -0.1704,
+          "ci_high": 0.6555,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.0924,
+          "ci_low": -0.2228,
+          "ci_high": 0.0336,
+          "n_valid": 2000
+        }
+      }
+    },
+    "RB": {
+      "vs_adp_order": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 48,
+        "candidate_spearman": {
+          "point_estimate": 0.5734,
+          "ci_low": 0.353,
+          "ci_high": 0.7698,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.5812,
+          "ci_low": 0.3917,
+          "ci_high": 0.7511,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.0079,
+          "ci_low": -0.1103,
+          "ci_high": 0.0855,
+          "n_valid": 2000
+        }
+      },
+      "vs_ecr": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 45,
+        "candidate_spearman": {
+          "point_estimate": 0.5463,
+          "ci_low": 0.3068,
+          "ci_high": 0.7545,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.5969,
+          "ci_low": 0.4052,
+          "ci_high": 0.7603,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.0506,
+          "ci_low": -0.1533,
+          "ci_high": 0.052,
+          "n_valid": 2000
+        }
+      }
+    },
+    "WR": {
+      "vs_adp_order": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 60,
+        "candidate_spearman": {
+          "point_estimate": 0.6048,
+          "ci_low": 0.4263,
+          "ci_high": 0.7503,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.6359,
+          "ci_low": 0.4705,
+          "ci_high": 0.7674,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.0311,
+          "ci_low": -0.1208,
+          "ci_high": 0.0528,
+          "n_valid": 2000
+        }
+      },
+      "vs_ecr": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 55,
+        "candidate_spearman": {
+          "point_estimate": 0.4986,
+          "ci_low": 0.2819,
+          "ci_high": 0.6781,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.5453,
+          "ci_low": 0.3421,
+          "ci_high": 0.7158,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.0467,
+          "ci_low": -0.1542,
+          "ci_high": 0.0547,
+          "n_valid": 2000
+        }
+      }
+    },
+    "TE": {
+      "vs_adp_order": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 24,
+        "candidate_spearman": {
+          "point_estimate": 0.2144,
+          "ci_low": -0.2332,
+          "ci_high": 0.5856,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.2868,
+          "ci_low": -0.1282,
+          "ci_high": 0.6281,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.0724,
+          "ci_low": -0.3672,
+          "ci_high": 0.1937,
+          "n_valid": 2000
+        }
+      },
+      "vs_ecr": {
+        "n_iterations": 2000,
+        "confidence_level": 0.95,
+        "n_players": 23,
+        "candidate_spearman": {
+          "point_estimate": 0.2283,
+          "ci_low": -0.2386,
+          "ci_high": 0.6294,
+          "n_valid": 2000
+        },
+        "baseline_spearman": {
+          "point_estimate": 0.3158,
+          "ci_low": -0.1596,
+          "ci_high": 0.7029,
+          "n_valid": 2000
+        },
+        "delta": {
+          "point_estimate": -0.0875,
+          "ci_low": -0.3653,
+          "ci_high": 0.151,
+          "n_valid": 2000
+        }
+      }
+    }
+  }
+}

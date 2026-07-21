@@ -1,0 +1,16 @@
+{
+  "table": "redzone_player_stats",
+  "version": "v1",
+  "columns": {
+    "player_id": "canonical gsis_id (verified 2026-07-19: pbp's rusher/receiver_player_id are already gsis_id, no crosswalk join needed)",
+    "season": "season year",
+    "week": "week number (REG only -- pull_pbp filters season_type == 'REG', matching ground_truth.py/charter \u00a73)",
+    "team": "posteam, normalized LA->LAR per this project's convention (capture/sources/nflverse.py)",
+    "rz_targets": "pass attempts targeting this player with yardline_100 <= 20",
+    "rz_pass_tds": "of rz_targets, how many were touchdowns",
+    "rz_carries": "rush attempts by this player with yardline_100 <= 20",
+    "rz_rush_tds": "of rz_carries, how many were touchdowns",
+    "designed_carries": "ALL non-red-zone-restricted rush attempts by this player where qb_scramble != 1 and qb_kneel != 1 (season-long run-call profile, not red-zone-only)",
+    "scramble_carries": "same scope as designed_carries but qb_scramble == 1 -- nonzero only for QBs by construction"
+  }
+}
