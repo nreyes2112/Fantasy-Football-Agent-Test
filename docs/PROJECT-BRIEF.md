@@ -1,5 +1,5 @@
 # PROJECT BRIEF — Multi-Agent Fantasy Football Research System
-**Owner:** Nick | **Brief version:** 1.31 (2026-07-20) | **Update this header whenever status changes**
+**Owner:** Nick | **Brief version:** 1.32 (2026-07-20) | **Update this header whenever status changes**
 
 > **Purpose of this document:** Load this at the start of any new Claude conversation about this project. It carries the project's history, decisions, current status, and working rules so any new chat can continue without re-explaining. It is a living document — the STATUS and NEXT ACTIONS sections should be updated as work progresses; everything else changes rarely.
 

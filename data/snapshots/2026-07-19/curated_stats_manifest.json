@@ -1,17 +1,18 @@
 {
   "snapshot_date": "2026-07-19",
-  "generated_at": "2026-07-19T08:51:33.514807-04:00",
-  "code_git_commit": "8f0ceefab92253023b3b23395d458ddd5589f587",
+  "generated_at": "2026-07-20T20:50:48.358462-04:00",
+  "code_git_commit": "3df374ace066bbd2cbde9e0f403b28e2b92cbe9d",
   "built_from": [
     "data/snapshots/2026-07-19/raw/nflverse/player_stats.parquet",
-    "data/snapshots/2026-07-19/curated/snap_counts_resolved.parquet"
+    "data/snapshots/2026-07-19/curated/snap_counts_resolved.parquet",
+    "data/snapshots/2026-07-19/curated/redzone_player_stats.parquet"
   ],
   "files": [
     {
       "table": "weekly_stats",
       "path": "data/snapshots/2026-07-19/curated/weekly_stats.parquet",
       "row_count": 38402,
-      "sha256": "4b23e0d28380c18a072ace55c61002245413e25ea4b1889e043117eb2fb63376",
+      "sha256": "c2f42101d5a767514e6213079112f87c60d23dddbc7efddad00cefaaa5c49ea0",
       "schema_version": "v1"
     }
   ],
@@ -26,6 +27,11 @@
         "check": "weekly_stats_snap_share_reasonable_coverage",
         "passed": true,
         "detail": "94.53% of player-attributed rows have a snap_share value (not 100% expected -- snap_counts_resolved itself resolves ~81% of its rows to gsis_id)"
+      },
+      {
+        "check": "weekly_stats_row_count_matches_player_stats_after_redzone_join",
+        "passed": true,
+        "detail": "38402 rows after both joins (player_stats had 38402)"
       }
     ],
     "all_passed": true

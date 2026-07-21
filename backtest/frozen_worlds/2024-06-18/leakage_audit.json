@@ -1,6 +1,6 @@
 {
   "world_date": "2024-06-18",
-  "audited_at": "2026-07-20T20:35:58.089783",
+  "audited_at": "2026-07-20T20:51:00.241999",
   "auditor": "backtest/leakage_audit.py (automated)",
   "checks": [
     {

@@ -62,23 +62,30 @@ _SCHEMA_NOTES = {
 }
 
 
-def _target_snapshot_date() -> str:
-    """Today, if a raw snapshot already exists for it. Otherwise the latest
-    existing snapshot -- same rationale as capture/pull_pbp.py's identical
-    helper (D-017): rebuilding this table for already-captured historical
-    seasons doesn't require a same-day raw capture to have just run."""
-    today = datetime.now(LEAGUE_TIMEZONE).strftime("%Y-%m-%d")
+def _target_snapshot_date(date: str | None = None) -> str:
+    """The latest snapshot that has this table's prerequisite
+    (raw/nflverse/player_stats.parquet), or an explicit --date. Gating on the
+    prerequisite -- not just any raw manifest -- avoids targeting a daily-only
+    capture (e.g. a weekday that ran pull_daily but not the weekly pull_stats),
+    which has a manifest but no player_stats to build from. Rebuilding for
+    already-captured historical seasons doesn't require a same-day raw capture
+    to have just run (D-017)."""
     root = Path(SNAPSHOT_ROOT)
-    if (root / today / "manifest.json").exists():
-        return today
-    existing = sorted(d.name for d in root.iterdir() if d.is_dir() and (d / "manifest.json").exists())
-    if not existing:
-        raise SystemExit(f"No raw snapshot for {today} yet, and none exist at all -- run `python -m capture.pull_daily` (.venv) first.")
-    return existing[-1]
+    if date is not None:
+        if not (root / date / "raw" / "nflverse" / "player_stats.parquet").exists():
+            raise SystemExit(f"--date {date} has no raw/nflverse/player_stats.parquet -- run `python -m capture.pull_stats` for it first.")
+        return date
+    with_stats = sorted(
+        d.name for d in root.iterdir()
+        if d.is_dir() and (d / "raw" / "nflverse" / "player_stats.parquet").exists()
+    )
+    if not with_stats:
+        raise SystemExit("No snapshot has raw/nflverse/player_stats.parquet yet -- run `python -m capture.pull_stats` (.venv311) first.")
+    return with_stats[-1]
 
 
-def run() -> int:
-    today = _target_snapshot_date()
+def run(date: str | None = None) -> int:
+    today = _target_snapshot_date(date)
     snapshot_dir = Path(SNAPSHOT_ROOT) / today
     raw_dir = snapshot_dir / "raw"
     curated_dir = snapshot_dir / "curated"
@@ -181,5 +188,13 @@ def run() -> int:
     return 0 if all_passed else 1
 
 
+def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--date", default=None, help="snapshot date to (re)build (default: latest with player_stats)")
+    return run(parser.parse_args().date)
+
+
 if __name__ == "__main__":
-    sys.exit(run())
+    sys.exit(main())

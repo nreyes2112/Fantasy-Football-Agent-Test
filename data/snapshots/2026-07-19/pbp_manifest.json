@@ -1,0 +1,56 @@
+{
+  "snapshot_date": "2026-07-19",
+  "generated_at": "2026-07-20T20:50:45.953486-04:00",
+  "code_git_commit": "3df374ace066bbd2cbde9e0f403b28e2b92cbe9d",
+  "seasons_pulled": [
+    2024,
+    2025
+  ],
+  "source_endpoint": "nflreadpy.load_pbp() -- aggregated in-memory, full pbp never persisted (D-017 deviation, see capture/pull_pbp.py docstring)",
+  "files": [
+    {
+      "table": "redzone_player_stats",
+      "path": "data/snapshots/2026-07-19/curated/redzone_player_stats.parquet",
+      "row_count": 6812,
+      "sha256": "c67f71470ecb346e83a2f2ba2f6bd64610e8ec8246d1bbac725e0ff99bb1e555",
+      "schema_version": "v1"
+    },
+    {
+      "table": "redzone_team_stats",
+      "path": "data/snapshots/2026-07-19/curated/redzone_team_stats.parquet",
+      "row_count": 1081,
+      "sha256": "728a41db78abcc97309d6bc596ede7bf6ca36426ce559b4e8e08e4de9e3a446d",
+      "schema_version": "v1"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "check": "redzone_player_stats_2024_min_rows",
+        "passed": true,
+        "detail": "3404 rows (floor 300)"
+      },
+      {
+        "check": "redzone_team_stats_2024_min_rows",
+        "passed": true,
+        "detail": "541 rows (floor 250)"
+      },
+      {
+        "check": "redzone_player_stats_2025_min_rows",
+        "passed": true,
+        "detail": "3408 rows (floor 300)"
+      },
+      {
+        "check": "redzone_team_stats_2025_min_rows",
+        "passed": true,
+        "detail": "540 rows (floor 250)"
+      },
+      {
+        "check": "redzone_player_stats_player_id_non_null",
+        "passed": true,
+        "detail": "0/6812 rows missing player_id"
+      }
+    ],
+    "all_passed": true
+  }
+}

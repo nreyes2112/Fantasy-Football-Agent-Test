@@ -56,27 +56,38 @@ _TEAM_SCHEMA_NOTES = {
 }
 
 
-def _target_snapshot_date() -> str:
-    """Today, if a raw snapshot already exists for it (the normal same-day
-    workflow-chain case, matching pull_stats.py/build_curated_stats.py).
-    Otherwise, the latest existing snapshot -- pbp for 2024/2025 (completed
-    seasons) is time-invariant, so there's no correctness reason to gate
-    this backfill behind a brand-new same-day raw capture run existing
+def _target_snapshot_date(date: str | None = None) -> str:
+    """The latest snapshot that has the prerequisite stats (or an explicit
+    --date). pbp for 2024/2025 (completed seasons) is time-invariant, so
+    there's no correctness reason to gate this backfill behind a brand-new
+    same-day raw capture run existing
     first; forcing one would mean touching Sleeper/FFC/ESPN's live APIs
     (network + credentials) purely to satisfy a directory-naming convention
-    for data that hasn't changed."""
-    today = datetime.now(LEAGUE_TIMEZONE).strftime("%Y-%m-%d")
+    for data that hasn't changed.
+
+    Gates on the PREREQUISITE (raw/nflverse/player_stats.parquet), not just any
+    raw manifest: the red-zone tables get joined onto player_stats by
+    build_curated_stats.py, so they must land in a snapshot that actually has
+    player_stats. This matters because a daily-only capture (e.g. a weekday
+    that ran pull_daily but not the weekly pull_stats) HAS a raw manifest but
+    NO player_stats -- targeting it would strand the red-zone tables in a
+    snapshot nothing joins them into. An explicit `date` overrides the search."""
     root = Path(SNAPSHOT_ROOT)
-    if (root / today / "manifest.json").exists():
-        return today
-    existing = sorted(d.name for d in root.iterdir() if d.is_dir() and (d / "manifest.json").exists())
-    if not existing:
-        raise SystemExit(f"No raw snapshot for {today} yet, and none exist at all -- run `python -m capture.pull_daily` (.venv) first.")
-    return existing[-1]
+    if date is not None:
+        if not (root / date / "raw" / "nflverse" / "player_stats.parquet").exists():
+            raise SystemExit(f"--date {date} has no raw/nflverse/player_stats.parquet -- run `python -m capture.pull_stats` for it first.")
+        return date
+    with_stats = sorted(
+        d.name for d in root.iterdir()
+        if d.is_dir() and (d / "raw" / "nflverse" / "player_stats.parquet").exists()
+    )
+    if not with_stats:
+        raise SystemExit("No snapshot has raw/nflverse/player_stats.parquet yet -- run `python -m capture.pull_stats` (.venv311) first.")
+    return with_stats[-1]
 
 
-def run() -> int:
-    target_date = _target_snapshot_date()
+def run(date: str | None = None) -> int:
+    target_date = _target_snapshot_date(date)
     snapshot_dir = Path(SNAPSHOT_ROOT) / target_date
     curated_dir = snapshot_dir / "curated"
     curated_dir.mkdir(parents=True, exist_ok=True)
@@ -126,5 +137,13 @@ def run() -> int:
     return 0 if all_passed else 1
 
 
+def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--date", default=None, help="snapshot date to backfill (default: latest with player_stats)")
+    return run(parser.parse_args().date)
+
+
 if __name__ == "__main__":
-    sys.exit(run())
+    sys.exit(main())
