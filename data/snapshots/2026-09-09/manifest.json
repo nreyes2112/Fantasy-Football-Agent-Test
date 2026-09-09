@@ -1,0 +1,90 @@
+{
+  "snapshot_date": "2026-09-09",
+  "generated_at": "2026-09-09T10:08:34.617208-04:00",
+  "code_git_commit": "3f877c4541f6e268f57cf73458da1446ebdfd0d0",
+  "source_endpoints": {
+    "sleeper_players": "https://api.sleeper.app/v1/players/nfl",
+    "sleeper_trending_adds": "https://api.sleeper.app/v1/players/nfl/trending/add",
+    "sleeper_trending_drops": "https://api.sleeper.app/v1/players/nfl/trending/drop",
+    "ffc_adp": "https://fantasyfootballcalculator.com/api/v1/adp/ppr",
+    "espn_player_pool": "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2026/segments/0/leagues/94172663?view=kona_player_info"
+  },
+  "files": [
+    {
+      "source": "sleeper",
+      "table": "players",
+      "path": "data/snapshots/2026-09-09/raw/sleeper/players.parquet",
+      "row_count": 12226,
+      "sha256": "c4afecb127cd5bf438c5194d062800a7c92fac7e3c6bf15d25634e8f41cfc85e",
+      "schema_version": "v1",
+      "pulled_at": "2026-09-09T10:08:34.168960-04:00"
+    },
+    {
+      "source": "sleeper",
+      "table": "trending_adds",
+      "path": "data/snapshots/2026-09-09/raw/sleeper/trending_adds.parquet",
+      "row_count": 100,
+      "sha256": "85d7120dc59e4c621e39ab28bebd0bbaf4946e464da9a43bfa9cdc3f626d0530",
+      "schema_version": "v1",
+      "pulled_at": "2026-09-09T10:08:34.217491-04:00"
+    },
+    {
+      "source": "sleeper",
+      "table": "trending_drops",
+      "path": "data/snapshots/2026-09-09/raw/sleeper/trending_drops.parquet",
+      "row_count": 100,
+      "sha256": "c8a6645d1a162303688d9131afdf19ccdb793b3eaaf488e0a988bdfbea279129",
+      "schema_version": "v1",
+      "pulled_at": "2026-09-09T10:08:34.258582-04:00"
+    },
+    {
+      "source": "ffc",
+      "table": "adp",
+      "path": "data/snapshots/2026-09-09/raw/ffc/adp.parquet",
+      "row_count": 249,
+      "sha256": "bf0204003467869f2bddb8f16e745d21ca4ebaea62e84f81719017fb76bb0864",
+      "schema_version": "v1",
+      "pulled_at": "2026-09-09T10:08:34.385237-04:00"
+    },
+    {
+      "source": "espn",
+      "table": "player_pool",
+      "path": "data/snapshots/2026-09-09/raw/espn/player_pool.parquet",
+      "row_count": 600,
+      "sha256": "e39f75cc3760517241a9f7b3a3110f4404a3c32a2b67f91e92863ce34bbadf8b",
+      "schema_version": "v1",
+      "pulled_at": "2026-09-09T10:08:34.617112-04:00"
+    }
+  ],
+  "validation": {
+    "stage": "stage1_lite (row-count sanity only; full stage1-3 validation runs later from pull_crosswalk.py, see capture/validation.py)",
+    "checks": [
+      {
+        "check": "sleeper_players_min_rows",
+        "passed": true,
+        "detail": "12226 rows (floor 8000)"
+      },
+      {
+        "check": "sleeper_trending_adds_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "check": "sleeper_trending_drops_non_empty",
+        "passed": true,
+        "detail": "100 rows"
+      },
+      {
+        "check": "ffc_adp_min_rows",
+        "passed": true,
+        "detail": "249 rows (floor 50)"
+      },
+      {
+        "check": "espn_player_pool_min_rows",
+        "passed": true,
+        "detail": "600 rows (floor 400)"
+      }
+    ],
+    "all_passed": true
+  }
+}
